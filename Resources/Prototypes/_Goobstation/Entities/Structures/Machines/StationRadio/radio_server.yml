@@ -8,6 +8,7 @@
     sprite: _Goobstation/Structures/Machines/StationRadio/stationradioserver.rsi
     layers:
     - state: icon
+    drawdepth: SmallObjects
   - type: StationRadioServer
   - type: DeviceLinkSource
     ports:
@@ -34,6 +35,7 @@
     sprite: _Goobstation/Structures/Machines/StationRadio/radiostationrig.rsi
     layers:
     - state: icon
+    drawdepth: SmallObjects
     # TODO: unlit & maints panel sprite
   - type: DeviceLinkSink
     ports:
