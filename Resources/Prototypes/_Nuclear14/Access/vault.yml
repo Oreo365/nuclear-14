@@ -13,6 +13,10 @@
 - type: accessLevel
   id: VaultMedical
   name: id-card-access-level-vault-medical
+
+- type: accessLevel
+  id: VaultChemistry
+  name: id-card-access-level-vault-chemistry
   
 - type: accessLevel
   id: VaultEngineer
@@ -35,5 +39,6 @@
   - VaultSecurity
   - VaultEngineer
   - VaultMedical
+  - VaultChemistry
   - VaultDweller
   - VaultControlsPanel # Misfits Add - exclusive to Overseer; NOT in AllAccess

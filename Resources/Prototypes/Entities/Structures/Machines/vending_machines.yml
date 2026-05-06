@@ -2324,7 +2324,7 @@
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
   - type: AccessReader
-    access: [["Chemistry"]]
+    access: [["Chemistry"], ["VaultChemistry"]]
   # #Misfits Removed - GuideHelp: guide entries not present in Nuclear-14 (Chemicals)
 
 - type: entity

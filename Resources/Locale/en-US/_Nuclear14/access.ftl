@@ -13,6 +13,7 @@ id-card-access-level-townie-inn3 = Inn Room #3
 id-card-access-level-vault-overseer = Vault Office
 id-card-access-level-vault-security = Vault Brig
 id-card-access-level-vault-medical = Vault Medbay
+id-card-access-level-vault-chemistry = Vault Chemistry
 id-card-access-level-vault-engineer = Vault Maint.
 id-card-access-level-vault-dweller = Vault Basic
 
