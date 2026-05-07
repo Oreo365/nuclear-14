@@ -533,7 +533,9 @@
     solutions:
       buffer:
         maxVol: 1000 # #Misfits Tweak - cap buffer at 150u to prevent super-chem stacking
-      pillBuffer: { }
+        canReact: false
+      pillBuffer:
+        canReact: false
   - type: DumpableSolution
     solution: buffer
   - type: Anchorable
