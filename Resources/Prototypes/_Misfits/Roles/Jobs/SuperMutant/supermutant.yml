@@ -258,6 +258,8 @@
   playTimeTracker: SuperMutantNCRTrooper
   icon: JobIconBorg
   supervisors: job-supervisors-ncr
+  access:
+    - NCR
   canBeAntag: false
   setPreference: true
   overrideConsoleVisibility: true
