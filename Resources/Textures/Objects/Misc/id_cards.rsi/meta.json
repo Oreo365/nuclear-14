@@ -1,7 +1,7 @@
 {
     "version": 1,
     "license": "CC-BY-SA-3.0",
-    "copyright": "Taken from https://github.com/tgstation/tgstation // Icon Edit by FoxxoTrystan",
+    "copyright": "Taken from https://github.com/tgstation/tgstation // Icon Edit by FoxxoTrystan, idradiohost made by john john (github)",
     "size": {
         "x": 32,
         "y": 32
@@ -202,6 +202,9 @@
         {
             "name": "blue-inhand-right",
             "directions": 4
+        },
+        {
+          "name": "idradiohost"
         }
     ]
 }

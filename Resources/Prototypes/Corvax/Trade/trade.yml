@@ -776,6 +776,10 @@
     price: 40
   - proto: MisfitsWendoverMap
     price: 75
+  - proto: CrateRadioStationVinyls
+    price: 150
+  - proto: BoxTapeRecorder
+    price: 100
 
 - type: storeCategoryStructured
   id: CaravanBuy2_Sprouts

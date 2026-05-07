@@ -6,7 +6,6 @@ using Robust.Shared.Random;
 using System.Buffers;
 using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
-using Content.Shared.DeviceNetwork.Components;
 using Content.Shared.Examine;
 
 namespace Content.Server.DeviceNetwork.Systems
@@ -228,7 +227,9 @@ namespace Content.Server.DeviceNetwork.Systems
         public void SetTransmitFrequency(EntityUid uid, uint? frequency, DeviceNetworkComponent? device = null)
         {
             if (Resolve(uid, ref device, false))
+            {
                 device.TransmitFrequency = frequency;
+            }
         }
 
         public void SetReceiveAll(EntityUid uid, bool receiveAll, DeviceNetworkComponent? device = null)

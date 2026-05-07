@@ -1,0 +1,43 @@
+- type: latheRecipe
+  abstract: true
+  parent: BaseElectronicsRecipe
+  id: N14BaseCircuitboardRecipe
+  completetime: 4
+  materials:
+    Circuitry: 200
+    Steel: 300
+
+- type: latheRecipe
+  abstract: true
+  parent: BaseElectronicsRecipe
+  id: N14BaseCircuitboardGoldRecipe
+  completetime: 4
+  materials:
+    Circuitry: 200
+    Steel: 300
+    N14Gold: 100
+
+- type: latheRecipe
+  id: N14VinylPlayerCircuitboard
+  parent: N14BaseCircuitboardRecipe
+  result: VinylPlayerCircuitboard
+
+- type: latheRecipe
+  id: N14TapeDeckCircuitboard
+  parent: N14BaseCircuitboardRecipe
+  result: TapeDeckCircuitboard
+
+- type: latheRecipe
+  id: N14StationRadioServerCircuitboard
+  parent: N14BaseCircuitboardGoldRecipe
+  result: StationRadioServerCircuitboard
+
+- type: latheRecipe
+  id: N14StationRadioRigCircuitboard
+  parent: N14BaseCircuitboardGoldRecipe
+  result: StationRadioRigCircuitboard
+
+- type: latheRecipe
+  id: N14StationRadioCircuitboard
+  parent: N14BaseCircuitboardRecipe
+  result: StationRadioCircuitboard

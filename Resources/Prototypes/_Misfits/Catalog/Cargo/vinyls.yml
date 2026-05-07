@@ -1,0 +1,9 @@
+- type: cargoProduct
+  id: RadioVinylCrateCargo
+  icon:
+    sprite: _Goobstation/Objects/Misc/RadioStation/vinyls.rsi
+    state: red-vinyl-disk
+  product: CrateRadioStationVinyls
+  cost: 100
+  category: Fun
+  group: market

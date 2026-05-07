@@ -174,3 +174,30 @@
   materials:
     Circuitry: 100
     Steel: 50
+
+- type: latheRecipe
+  id: N14JunkComponentCapacitor1
+  result: N14JunkComponentCapacitor1
+  category: N14Parts
+  completetime: 2
+  materials:
+    Circuitry: 50
+    Steel: 25
+
+- type: latheRecipe
+  id: N14JunkComponentDiode1
+  result: N14JunkComponentDiode1
+  category: N14Parts
+  completetime: 2
+  materials:
+    Circuitry: 50
+    Steel: 25
+
+- type: latheRecipe
+  id: N14JunkComponentFuse1
+  result: N14JunkComponentFuse1
+  category: N14Parts
+  completetime: 2
+  materials:
+    Circuitry: 50
+    Steel: 25

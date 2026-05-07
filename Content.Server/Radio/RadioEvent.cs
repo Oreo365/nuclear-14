@@ -40,3 +40,11 @@ public record struct RadioSendAttemptEvent(RadioChannelPrototype Channel, Entity
     public readonly EntityUid RadioSource = RadioSource;
     public bool Cancelled = false;
 }
+
+[ByRefEvent]
+public record struct ToggleRadioSpeakerEvent(bool Enabled, EntityUid RadioSource)
+{
+    public readonly bool Enabled = Enabled;
+    public readonly EntityUid RadioSource = RadioSource;
+    public bool Cancelled = false;
+}

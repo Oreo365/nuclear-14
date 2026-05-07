@@ -1,0 +1,72 @@
+- type: entity
+  id: StationRadioReceiver
+  name: station radio
+  parent: [ BaseMachinePowered, ConstructibleMachine ]
+  description: Listen to the top hits of your stations local radio.
+  components:
+  - type: Appearance
+  - type: Sprite
+    sprite: _Goobstation/Structures/Machines/StationRadio/stationradio.rsi
+    layers:
+    - state: icon
+    - state: unlit
+      shader: unshaded
+      map: [ "enum.PowerDeviceVisualLayers.Powered" ]
+    drawdepth: SmallObjects
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.10,-0.10,0.10,0.10"
+        density: 500
+        mask:
+        - TabletopMachineMask
+        layer:
+        - BulletImpassable
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 80
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalGlassBreak
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: RadioSpeaker
+    powerRequired: true
+    channels:
+    - PBS
+    enabled: true
+    toggleOnInteract: true
+    speakNormally: true
+    IsSpeaker: true
+  - type: Tag
+    tags:
+    - Radio
+  - type: Speech
+    speechVerb: StationRadio
+  - type: ActiveRadio
+    channels:
+    - PBS
+  - type: RadioMicrophone
+    powerRequired: true
+    broadcastChannel: PBS
+    toggleOnInteract: false
+    frequency: 1225
+  - type: TTS
+  - type: Machine
+    board: StationRadioCircuitboard
+  - type: DeviceNetwork
+    receiveAll: true
+    deviceNetId: Wireless
+    receiveFrequencyId: StationRadio # Default value, can be changed
+  - type: DeviceCustomFrequency
+    frequencyChange: true
+  - type: UserInterface
+    interfaces:
+      enum.DeviceCustomFrequencyUiKey.Key:
+        type: DeviceCustomFrequencyBoundUserInterface
+  - type: StationRadioReceiver

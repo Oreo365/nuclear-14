@@ -1,3 +1,4 @@
+using Content.Server._Goobstation.StationRadio.Systems;
 using Content.Server.Radio.EntitySystems;
 using Content.Shared.Chat;
 using Content.Shared.Radio;
@@ -10,7 +11,7 @@ namespace Content.Server.Radio.Components;
 ///     Listens for local chat messages and relays them to some radio frequency
 /// </summary>
 [RegisterComponent]
-[Access(typeof(RadioDeviceSystem))]
+[Access(typeof(RadioDeviceSystem), typeof(StationRadioSystem))]
 public sealed partial class RadioMicrophoneComponent : Component
 {
     [ViewVariables(VVAccess.ReadWrite)]
@@ -48,3 +49,4 @@ public sealed partial class RadioMicrophoneComponent : Component
     [DataField]
     public int Frequency = 1459; // Common channel frequency
 }
+

@@ -14,6 +14,7 @@ using Content.Shared.Interaction;
 using Content.Shared.Power;
 using Content.Shared.Radio;
 using Content.Shared.Chat;
+using Content.Shared.Power.EntitySystems;
 using Content.Shared.Radio.Components;
 using Content.Shared.UserInterface; // Nuclear-14
 using Content.Shared._NC.Radio; // Nuclear-14
@@ -42,6 +43,7 @@ public sealed class RadioDeviceSystem : EntitySystem
     [Dependency] private readonly INetManager _netMan = default!;
     [Dependency] private readonly LanguageSystem _language = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!; // Forge-Change
+    [Dependency] private readonly SharedPowerReceiverSystem _power = default!; // Goob
 
     // Used to prevent a shitter from using a bunch of radios to spam chat.
     private HashSet<(string, EntityUid)> _recentlySent = new();
@@ -181,6 +183,11 @@ public sealed class RadioDeviceSystem : EntitySystem
 
         component.Enabled = enabled;
 
+        // Misfits Start
+        var toggleEv = new ToggleRadioSpeakerEvent(enabled, uid);
+        RaiseLocalEvent(uid, ref toggleEv);
+        // Misfits End
+
         if (!quiet && user != null)
         {
             var state = Loc.GetString(component.Enabled ? "handheld-radio-component-on-state" : "handheld-radio-component-off-state");
@@ -234,6 +241,9 @@ public sealed class RadioDeviceSystem : EntitySystem
 
     private void OnReceiveRadio(EntityUid uid, RadioSpeakerComponent component, ref RadioReceiveEvent args)
     {
+        if (uid == args.RadioSource || component.PowerRequired && !_power.IsPowered(uid)) // Goobstation, powered required
+            return;
+
         // Forge-Change-Start
         var nameEv = new TransformSpeakerNameEvent(args.MessageSource, Name(args.MessageSource));
         RaiseLocalEvent(args.MessageSource, nameEv);

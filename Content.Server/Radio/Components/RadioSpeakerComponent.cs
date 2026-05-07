@@ -28,4 +28,19 @@ public sealed partial class RadioSpeakerComponent : Component
     [DataField("IsSpeaker")] // Set to true for broadcast radio speakers so that it speaks instead of whispers the message.
     public bool IsSpeaker;
 
+
+    // Goob start
+    /// <summary>
+    /// speaks normally when true whispers when false
+    /// </summary>
+    [DataField]
+    public bool SpeakNormally;
+
+    /// <summary>
+    /// Does the radio need to be on a power grid to work?
+    /// </summary>
+    [DataField]
+    public bool PowerRequired;
+    // Goob end
 }
+

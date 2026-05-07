@@ -37,3 +37,28 @@
   parent: BaseSilverCircuitboardRecipe
   id: DurandTargetingElectronics
   result: DurandTargetingElectronics
+
+- type: latheRecipe
+  parent: [ BaseCircuitboardRecipe ]
+  id: VinylPlayerCircuitboard
+  result: VinylPlayerCircuitboard
+
+- type: latheRecipe
+  parent: [ BaseCircuitboardRecipe ]
+  id: TapeDeckCircuitboard
+  result: TapeDeckCircuitboard
+
+- type: latheRecipe
+  parent: [ BaseGoldCircuitboardRecipe ]
+  id: StationRadioServerCircuitboard
+  result: StationRadioServerCircuitboard
+
+- type: latheRecipe
+  parent: [ BaseSilverCircuitboardRecipe ]
+  id: StationRadioRigCircuitboard
+  result: StationRadioRigCircuitboard
+
+- type: latheRecipe
+  parent: [ BaseCircuitboardRecipe ]
+  id: StationRadioCircuitboard
+  result: StationRadioCircuitboard

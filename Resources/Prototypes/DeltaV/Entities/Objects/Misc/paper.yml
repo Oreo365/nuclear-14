@@ -23,3 +23,9 @@
     backgroundModulate: "#e0bc99"
     backgroundPatchMargin: 16.0, 16.0, 16.0, 16.0
     contentMargin: 32.0, 16.0, 32.0, 0.0
+
+- type: entity
+  parent: Paper
+  id: TapeRecorderTranscript
+  name: record transcript
+  # TODO: could have a unique sprite in the future

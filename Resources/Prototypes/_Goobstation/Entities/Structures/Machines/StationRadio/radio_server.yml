@@ -1,0 +1,107 @@
+- type: entity
+  id: StationRadioServer
+  name: radio server
+  parent: [ BaseMachinePowered, ConstructibleMachine ]
+  description: A rack of servers, controls whether your voice is being broadcasted or not
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Structures/Machines/StationRadio/stationradioserver.rsi
+    layers:
+    - state: icon
+  - type: Transform
+    noRot: false
+  - type: Rotatable
+  - type: Machine
+    board: StationRadioServerCircuitboard
+  - type: DeviceNetworkRequiresPower
+  - type: DeviceLinkSink
+    ports:
+    - StationRadioRelay
+  - type: DeviceNetwork
+    receiveAll: true
+    deviceNetId: Wireless
+    receiveFrequencyId: StationRadio
+    transmitFrequencyId: StationRadio
+    receiveFrequency: 1667
+    transmitFrequency: 1667
+  - type: DeviceCustomFrequency
+    frequencyChange: true
+  - type: ActivatableUI
+    key: enum.DeviceCustomFrequencyUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.DeviceCustomFrequencyUiKey.Key:
+        type: DeviceCustomFrequencyBoundUserInterface
+  - type: ActivatableUIRequiresPower
+  - type: StationRadioServer
+  - type: RadioMicrophone
+    powerRequired: true
+    broadcastChannel: PBS
+    toggleOnInteract: false
+    frequency: 1667
+
+- type: entity
+  id: StationRadioServerBazaar
+  parent: StationRadioServer
+  suffix: Bazaar
+  components:
+  - type: RadioMicrophone
+    frequency: 6996
+  - type: DeviceNetwork
+    receiveFrequency: 6996
+    transmitFrequency: 6996
+
+- type: entity
+  id: StationRadioServerWasteland
+  parent: StationRadioServer
+  suffix: Wasteland
+  components:
+  - type: RadioMicrophone
+    frequency: 1728
+  - type: DeviceNetwork
+    receiveFrequency: 1728
+    transmitFrequency: 1728
+
+- type: entity
+  id: StationRadioRig
+  parent: [ BaseMachinePowered, ConstructibleMachine ]
+  name: radio rig
+  description: A collection of everything you need to play music over the station.
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Structures/Machines/StationRadio/radiostationrig.rsi
+    layers:
+    - state: icon
+  - type: Transform
+    noRot: false
+  - type: Rotatable
+  - type: Machine
+    board: StationRadioRigCircuitboard
+  - type: RadioRig
+  - type: DeviceLinkSource
+    ports:
+    - Microphone
+  - type: RadioMicrophone
+    powerRequired: true
+    broadcastChannel: PBS
+    toggleOnInteract: true
+    frequency: 1667
+  - type: ActiveRadio
+    channels:
+    - PBS
+
+- type: entity
+  id: StationRadioRigBazaar
+  parent: StationRadioRig
+  suffix: Bazaar
+  components:
+  - type: RadioMicrophone
+    frequency: 6996
+
+- type: entity
+  id: StationRadioRigrWasteland
+  parent: StationRadioRig
+  suffix: Wasteland
+  components:
+  - type: RadioMicrophone
+    frequency: 1728
