@@ -13,3 +13,11 @@
   sprites:
     - sprite: _Misfits/Mobs/Customization/hair.rsi
       state: gloomylong
+
+- type: marking
+  id: newyou
+  bodyPart: Hair
+  markingCategory: Hair
+  sprites:
+    - sprite: _Misfits/Mobs/Customization/hair.rsi
+      state: newyou
