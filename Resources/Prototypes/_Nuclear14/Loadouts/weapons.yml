@@ -300,7 +300,25 @@
   items:
     - N14MagazinePistol9mm
 
-
+- type: loadout
+  id: N14MagazinePistol22lr
+  category: Weapons
+  cost: 1
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutAmmo
+    - !type:CharacterDepartmentRequirement # Corvax-Change
+      inverted: true
+      departments:
+      - Vault
+    - !type:CharacterJobRequirement # Forge-Change
+      inverted: true
+      jobs:
+      - BoSMidSerf
+      - CaesarLegionSlave
+      - NCRPisoner
+  items:
+    - N14MagazinePistol22lr
 
 
 - type: loadout
