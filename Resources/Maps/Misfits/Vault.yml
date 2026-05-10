@@ -4,8 +4,8 @@ meta:
   engineVersion: 275.2.0
   forkId: ""
   forkVersion: ""
-  time: 05/04/2026 19:27:56
-  entityCount: 26529
+  time: 05/09/2026 10:42:35
+  entityCount: 26535
 maps:
 - 1
 grids:
@@ -33145,8 +33145,9 @@ entities:
           showEnts: False
           occludes: True
           ents:
-          - 5299
+          - 26534
           - 5300
+          - 5299
         paper_label: !type:ContainerSlot
           showEnts: False
           occludes: True
@@ -33162,8 +33163,9 @@ entities:
           showEnts: False
           occludes: True
           ents:
-          - 5303
+          - 26535
           - 5302
+          - 5303
         paper_label: !type:ContainerSlot
           showEnts: False
           occludes: True
@@ -39011,7 +39013,7 @@ entities:
       containers:
       - drink
     - type: PressurizedSolution
-      sprayFizzinessThresholdRoll: 0.6063953
+      sprayFizzinessThresholdRoll: 0.44053084
     - type: Physics
       angularDamping: 0
       linearDamping: 0
@@ -39363,7 +39365,7 @@ entities:
       containers:
       - drink
     - type: PressurizedSolution
-      sprayFizzinessThresholdRoll: 0.007944563
+      sprayFizzinessThresholdRoll: 0.51452196
     - type: Physics
       angularDamping: 0
       linearDamping: 0
@@ -39642,7 +39644,7 @@ entities:
       containers:
       - drink
     - type: PressurizedSolution
-      sprayFizzinessThresholdRoll: 0.968578
+      sprayFizzinessThresholdRoll: 0.14282355
     - type: Physics
       angularDamping: 0
       linearDamping: 0
@@ -43751,7 +43753,7 @@ entities:
       pos: -33.5,10.5
       parent: 2
     - type: Drain
-      accumulator: 0.63035494
+      accumulator: 0.27549818
     - type: Fixtures
       fixtures: {}
   - uid: 6963
@@ -43760,7 +43762,7 @@ entities:
       pos: 72.5,23.5
       parent: 2
     - type: Drain
-      accumulator: 0.085783
+      accumulator: 0.028060468
     - type: Fixtures
       fixtures: {}
   - uid: 6964
@@ -43770,7 +43772,7 @@ entities:
       pos: 74.5,21.5
       parent: 2
     - type: Drain
-      accumulator: 0.7452308
+      accumulator: 0.6630513
     - type: Fixtures
       fixtures: {}
   - uid: 6965
@@ -43780,7 +43782,7 @@ entities:
       pos: 76.5,21.5
       parent: 2
     - type: Drain
-      accumulator: 0.040469766
+      accumulator: 0.5499092
     - type: Fixtures
       fixtures: {}
   - uid: 6966
@@ -43789,7 +43791,7 @@ entities:
       pos: 72.5,21.5
       parent: 2
     - type: Drain
-      accumulator: 0.39211655
+      accumulator: 0.3243916
     - type: Fixtures
       fixtures: {}
   - uid: 6967
@@ -43799,7 +43801,7 @@ entities:
       pos: 76.5,23.5
       parent: 2
     - type: Drain
-      accumulator: 0.62888175
+      accumulator: 0.5384127
     - type: Fixtures
       fixtures: {}
   - uid: 6968
@@ -43808,7 +43810,7 @@ entities:
       pos: -209.5,-5.5
       parent: 2
     - type: Drain
-      accumulator: 0.47650227
+      accumulator: 0.3528825
     - type: Fixtures
       fixtures: {}
   - uid: 6969
@@ -43817,7 +43819,7 @@ entities:
       pos: -214.5,-3.5
       parent: 2
     - type: Drain
-      accumulator: 0.9823806
+      accumulator: 0.86292773
     - type: Fixtures
       fixtures: {}
   - uid: 6970
@@ -43826,7 +43828,7 @@ entities:
       pos: -106.5,-9.5
       parent: 2
     - type: Drain
-      accumulator: 0.590201
+      accumulator: 0.37148267
     - type: Fixtures
       fixtures: {}
   - uid: 6971
@@ -43835,7 +43837,7 @@ entities:
       pos: 37.5,-0.5
       parent: 2
     - type: Drain
-      accumulator: 0.1716396
+      accumulator: 0.22326595
     - type: Fixtures
       fixtures: {}
   - uid: 6972
@@ -43844,7 +43846,7 @@ entities:
       pos: 37.5,-2.5
       parent: 2
     - type: Drain
-      accumulator: 0.6519201
+      accumulator: 0.087975904
     - type: Fixtures
       fixtures: {}
   - uid: 6973
@@ -43853,7 +43855,7 @@ entities:
       pos: -95.5,58.5
       parent: 2
     - type: Drain
-      accumulator: 0.9015656
+      accumulator: 0.72663903
     - type: Fixtures
       fixtures: {}
   - uid: 6974
@@ -43863,7 +43865,7 @@ entities:
       pos: -81.5,72.5
       parent: 2
     - type: Drain
-      accumulator: 0.112436354
+      accumulator: 0.39300027
     - type: Fixtures
       fixtures: {}
   - uid: 6975
@@ -43872,7 +43874,7 @@ entities:
       pos: 32.5,26.5
       parent: 2
     - type: Drain
-      accumulator: 0.33261108
+      accumulator: 0.1071879
     - type: Fixtures
       fixtures: {}
   - uid: 6976
@@ -43881,7 +43883,7 @@ entities:
       pos: 34.5,26.5
       parent: 2
     - type: Drain
-      accumulator: 0.42051432
+      accumulator: 0.49424908
     - type: Fixtures
       fixtures: {}
 - proto: FloorTileItemSteel
@@ -61142,7 +61144,7 @@ entities:
       pos: -40.5,56.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -1078072.4
+      secondsUntilStateChange: -1078138.4
       state: Opening
     - type: DeviceLinkSink
       invokeCounter: 3
@@ -63642,11 +63644,12 @@ entities:
           showEnts: False
           occludes: True
           ents:
-          - 1505
+          - 26530
           - 1508
-          - 1506
-          - 1507
           - 1504
+          - 1507
+          - 1506
+          - 1505
         paper_label: !type:ContainerSlot
           showEnts: False
           occludes: True
@@ -63662,11 +63665,12 @@ entities:
           showEnts: False
           occludes: True
           ents:
-          - 1510
           - 1514
+          - 1510
           - 1512
           - 1513
           - 1511
+          - 26531
         paper_label: !type:ContainerSlot
           showEnts: False
           occludes: True
@@ -63682,11 +63686,12 @@ entities:
           showEnts: False
           occludes: True
           ents:
-          - 1517
           - 1519
+          - 1517
           - 1518
           - 1520
           - 1516
+          - 26532
         paper_label: !type:ContainerSlot
           showEnts: False
           occludes: True
@@ -63702,11 +63707,12 @@ entities:
           showEnts: False
           occludes: True
           ents:
-          - 1524
+          - 26533
           - 1526
-          - 1523
-          - 1525
           - 1522
+          - 1525
+          - 1523
+          - 1524
         paper_label: !type:ContainerSlot
           showEnts: False
           occludes: True
@@ -80266,7 +80272,7 @@ entities:
       pos: -92.5,67.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -1097624.2
+      secondsUntilStateChange: -1097690.2
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -80322,7 +80328,7 @@ entities:
       pos: -1.5,15.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -1842613.4
+      secondsUntilStateChange: -1842679.4
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -80521,7 +80527,7 @@ entities:
       pos: 2.5,26.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -984571.25
+      secondsUntilStateChange: -984637.3
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -81162,7 +81168,7 @@ entities:
       pos: -85.5,-47.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -333336.56
+      secondsUntilStateChange: -333402.6
       canPry: False
       state: Opening
   - uid: 11744
@@ -81284,7 +81290,7 @@ entities:
       pos: -94.5,-48.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -332524.38
+      secondsUntilStateChange: -332590.4
       canPry: False
       state: Opening
   - uid: 11759
@@ -90623,7 +90629,7 @@ entities:
       pos: -80.5,4.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -1100005.4
+      secondsUntilStateChange: -1100071.4
       state: Closing
   - uid: 12952
     components:
@@ -90636,7 +90642,7 @@ entities:
       pos: -171.5,-57.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -50207.023
+      secondsUntilStateChange: -50273.06
       state: Closing
 - proto: N14JunkDresser
   entities:
@@ -92050,7 +92056,7 @@ entities:
     - type: Openable
       opened: True
     - type: PressurizedSolution
-      sprayFizzinessThresholdRoll: 0.9260764
+      sprayFizzinessThresholdRoll: 0.9809722
     - type: ContainerContainer
       containers:
         solution@drink: !type:ContainerSlot
@@ -162536,6 +162542,62 @@ entities:
     - type: Transform
       pos: 36.5,14.5
       parent: 2
+- proto: OxygenTankFilled
+  entities:
+  - uid: 26530
+    components:
+    - type: Transform
+      parent: 1503
+    - type: Physics
+      angularDamping: 0
+      linearDamping: 0
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 26531
+    components:
+    - type: Transform
+      parent: 1509
+    - type: Physics
+      angularDamping: 0
+      linearDamping: 0
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 26532
+    components:
+    - type: Transform
+      parent: 1515
+    - type: Physics
+      angularDamping: 0
+      linearDamping: 0
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 26533
+    components:
+    - type: Transform
+      parent: 1521
+    - type: Physics
+      angularDamping: 0
+      linearDamping: 0
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 26534
+    components:
+    - type: Transform
+      parent: 5298
+    - type: Physics
+      angularDamping: 0
+      linearDamping: 0
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 26535
+    components:
+    - type: Transform
+      parent: 5301
+    - type: Physics
+      angularDamping: 0
+      linearDamping: 0
+      canCollide: False
+    - type: InsideEntityStorage
 - proto: PaintingMonkey
   entities:
   - uid: 25145
@@ -162784,32 +162846,32 @@ entities:
         [head=3]FOOT BACK №2274-12[head/]
 
 
-        Accounting period: 01/12/2274 - 31/12/2274  
+        Accounting period: 01/12/2274 - 31/12/2274
 
-        Presented: the city shop. "Bazaar"         
-
-
-        Total income for December:  
+        Presented: the city shop. "Bazaar"
 
 
-        * Arms trade: 3.845 covers  
-
-        * From supply of medicines: 1,230 lids  
-
-        * Other income (including "Special transportation"): 2,100 Covers 
+        Total income for December:
 
 
-        Expenditure:  
+        * Arms trade: 3.845 covers
+
+        * From supply of medicines: 1,230 lids
+
+        * Other income (including "Special transportation"): 2,100 Covers
 
 
-        * Procurement of goods: 4,200 lids 
-
-        * I'm sorry. I'm sorry. "McCor-Terminal": 1,000 Covers  
-
-        * Unforeseen loss: 500 lids  
+        Expenditure:
 
 
-        Tax base: 5.075 covers  
+        * Procurement of goods: 4,200 lids
+
+        * I'm sorry. I'm sorry. "McCor-Terminal": 1,000 Covers
+
+        * Unforeseen loss: 500 lids
+
+
+        Tax base: 5.075 covers
 
         Taxes paid (10%): 507 Covers
     - type: Physics
@@ -162828,20 +162890,20 @@ entities:
       - stampedColor: '#2F4F4FFF'
         stampedName: L. Frost
       content: >+
-        [head=3]APPROVAL NOTIFICATION №2275-03 [head/] 
+        [head=3]APPROVAL NOTIFICATION №2275-03 [head/]
 
-        Buzzar Wendover's Office  
+        Buzzar Wendover's Office
 
-        Date: 10/02/2275  
-
-
-        Notification to residents and traders  
+        Date: 10/02/2275
 
 
-        In connection with the sudden relocation of the Malcor-Terminal central office, we report the following:  
+        Notification to residents and traders
 
 
-        Reasons for moving:  
+        In connection with the sudden relocation of the Malcor-Terminal central office, we report the following:
+
+
+        Reasons for moving:
 
         * Trade expansion
 
@@ -162850,11 +162912,11 @@ entities:
         * Logistical optimization
 
 
-        What does that mean for you:  
+        What does that mean for you:
 
-        * All existing contracts remain valid  
+        * All existing contracts remain valid
 
-        * Goods can be obtained from the local shop  
+        * Goods can be obtained from the local shop
 
 
         Victor Malcor remains the owner of the shop and will oversee the overall development of the trade.
@@ -163036,10 +163098,10 @@ entities:
         [bullet][color=#26b496][bold]An art born in a wasteland:/bold][/color] [italic]Galleries full of rare pieces of pre-war life and works of modern craftsmanship./italic]
 
 
-        [bullet][bold][color=#5441be]Intellectual elite:[/color][bold] [italic]Meet with scientists, philosophers, and engineers who seek to revive knowledge of the past and create a future./italic] 
+        [bullet][bold][color=#5441be]Intellectual elite:[/color][bold] [italic]Meet with scientists, philosophers, and engineers who seek to revive knowledge of the past and create a future./italic]
 
 
-        [bullet][color=#a7243d][bold]Safety and order:[/bold][/color] [italic] Our security guards keep an eye on the safety of every resident and guest./italic] 
+        [bullet][color=#a7243d][bold]Safety and order:[/bold][/color] [italic] Our security guards keep an eye on the safety of every resident and guest./italic]
 
 
         [bold]And most importantly, what you won't find anywhere else:/bold] [/bold][color=#4f7fbc]The great theater!/color][bold]
@@ -163082,30 +163144,30 @@ entities:
         [head=3]INSTRUCTION FOR A NEW ARCHIVARIUS/head]
 
 
-        Your predecessor is no longer with us due to a recent misunderstanding. 
+        Your predecessor is no longer with us due to a recent misunderstanding.
 
 
-        Current status of the archive:  
+        Current status of the archive:
 
         ~60% lost documents
 
 
-        Saved documents are sorted according to the system: 
+        Saved documents are sorted according to the system:
 
-        * Red Folders - Trade Contracts  
+        * Red Folders - Trade Contracts
 
-        * Blue Folders - Tax Reports  
+        * Blue Folders - Tax Reports
 
         * Yellow Folders - Bazar's Internal Documents
 
 
-        Your main responsibilities are:  
+        Your main responsibilities are:
 
-        * Re-establish the records of the surviving documents  
+        * Re-establish the records of the surviving documents
 
-        * Accept new reports from traders  
+        * Accept new reports from traders
 
-        * Report weekly to the Mayor of Bazar on the state of affairs  
+        * Report weekly to the Mayor of Bazar on the state of affairs
 
 
         [italic]"The archive is Buzzard's memory./italic]
@@ -163197,7 +163259,7 @@ entities:
 
 
 
-        I heard voices recently. 
+        I heard voices recently.
 
         Asylum syndrome takes me to my grave.
 
@@ -163227,7 +163289,7 @@ entities:
         stampedName: stamp-component-stamped-name-warden
       content: >2-
 
-                                                        [color=blue]REFRIGERANT 14[/color]                               
+                                                        [color=blue]REFRIGERANT 14[/color]
                                         ╔══════════════════╗
                                         ║[b][color=#ffcc00]AVARIOUS PROTOCOL[/color][/b]║
                                         ╚══════════════════╝
@@ -163246,8 +163308,8 @@ entities:
            [color=#55ff55]✓[/color] Activation of security systems
 
         [color=#ff9999]✦ [b]PREVENTION:[/b][/color]
-           [color=#ff5555]☠[/color] [color=#ff5555][i]Unauthorised use is punishable 
-           Article 14-B of the Constitution of the Asylum (Isolation in a cell) 
+           [color=#ff5555]☠[/color] [color=#ff5555][i]Unauthorised use is punishable
+           Article 14-B of the Constitution of the Asylum (Isolation in a cell)
            For a period of up to 15 minutes.[/i][/color]
 
         [color=#444444]▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄[/color]
@@ -163272,7 +163334,7 @@ entities:
         stampedName: stamp-component-stamped-name-warden
       content: >2-
 
-                                                        [color=blue]REFRIGERANT 14[/color]                               
+                                                        [color=blue]REFRIGERANT 14[/color]
                                         ╔══════════════════╗
                                         ║[b][color=#ffcc00]AVARIOUS PROTOCOL[/color][/b]║
                                         ╚══════════════════╝
@@ -163291,8 +163353,8 @@ entities:
            [color=#55ff55]✓[/color] Activation of security systems
 
         [color=#ff9999]✦ [b]PREVENTION:[/b][/color]
-           [color=#ff5555]☠[/color] [color=#ff5555][i]Unauthorised use is punishable 
-           Article 14-B of the Constitution of the Asylum (Isolation in a cell) 
+           [color=#ff5555]☠[/color] [color=#ff5555][i]Unauthorised use is punishable
+           Article 14-B of the Constitution of the Asylum (Isolation in a cell)
            For a period of up to 15 minutes.[/i][/color]
 
         [color=#444444]▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄[/color]
@@ -163348,7 +163410,7 @@ entities:
                                 ██[color=#fff]██[color=#997059]██[color=#956b53]██[color=#a07a65]██[color=#b97a57]██[color=#ff7e8f]██[color=#b97a57]██[color=#966a53]██[color=#8e6148]██[color=#997059]██[color=#fff]████
         [color=#0][color=#d43539][head=1]==========================[/head][/color]
 
-        [color=#d43539][head=1]           ""OVER-LOOK"[/head][/color] 
+        [color=#d43539][head=1]           ""OVER-LOOK"[/head][/color]
 
                                                         [head=2]ME./head]
         [bold]====================================================[/bold]  [color=#d43539][italic]We're happy to welcome you to the wet rat bar./italic]
@@ -163434,7 +163496,7 @@ entities:
 
         [color=#0][color=#0][color=#d43539][head=1]==========================[/head][/color]
 
-        [color=#d43539][head=1]           ""OVER-LOOK"[/head][/color] 
+        [color=#d43539][head=1]           ""OVER-LOOK"[/head][/color]
                                               [head=2]BAR CART[/head]
         [bold]====================================================[/bold] [color=#d43539][italic]We'll give you the best drinks in the desert until it becomes a danger to your health./italic]
 
@@ -163457,7 +163519,7 @@ entities:
 
         Brave bull ....30 cc.
 
-        E. Communication No. 
+        E. Communication No.
 
         Self-propelled 40 cc.
 
@@ -163923,7 +163985,7 @@ entities:
       - stampedColor: '#2F4F4FFF'
         stampedName: Your future!
       content: >-
-        [bold] 
+        [bold]
 
         Are you sick of worrying about tomorrow?
 
@@ -163977,7 +164039,7 @@ entities:
       - stampedColor: '#2F4F4FFF'
         stampedName: Your future!
       content: >-
-        [bold] 
+        [bold]
 
         Are you sick of worrying about tomorrow?
 
