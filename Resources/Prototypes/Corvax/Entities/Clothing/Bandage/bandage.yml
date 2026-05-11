@@ -23,7 +23,7 @@
 
 - type: entity
   parent: Clothing
-  id: NCClothingBrasletNCRBase
+  id: NCClothingBraceletNCRBase
   abstract: true
   components:
   - type: Sprite
@@ -42,10 +42,10 @@
   - type: NCRPrisonerBracelet # #Misfits Add: Enables rescue cutting and crafted-key unlock logic.
 
 - type: entity
-  parent: NCClothingBrasletNCRBase
-  id: NCClothingBrasletNCRPrisoner
-  name: Prisoner braslet NCR
-  description: A braslet use to track prisoners
+  parent: NCClothingBraceletNCRBase
+  id: NCClothingBraceletNCRPrisoner
+  name: NCR Prisoner Bracelet
+  description: A bracelet use to track prisoners
   components:
   - type: Construction # #Misfits Fix: Required for item-construction targets; without this the recipe refunds materials and spawns nothing.
     graph: NCRPrisonerBracelet

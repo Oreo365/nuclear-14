@@ -38,7 +38,7 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitPrisoner
     shoes: N14ClothingShoesBlack
-    bandage: NCClothingBrasletNCRPrisoner
+    bandage: NCClothingBraceletNCRPrisoner
 
 - type: playTimeTracker
   id: NCRPisoner
