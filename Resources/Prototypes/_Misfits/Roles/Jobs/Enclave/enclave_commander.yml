@@ -26,7 +26,7 @@
       tracker: EnclaveSeniorOfficer
       min: 43200 # 12 hours
   startingGear: EnclaveCommanderGear
-  icon: "JobIconHeadOfSecurity"
+  icon: "JobIconEnclaveCommander"
   supervisors: job-supervisors-enclave-commander
   requireAdminNotify: true
   alwaysUseSpawner: true
