@@ -1,11 +1,11 @@
 - type: RandomPlantMutationList
   id: RandomPlantMutations
   mutations:
-    - name: Sentient
-      description: mutation-plant-sentient
-      baseOdds: 0.0072
-      appliesToPlant: false
-      effect: !type:MakeSentient
+    # - name: Sentient
+    #   description: mutation-plant-sentient
+    #   baseOdds: 0.0072
+    #   appliesToPlant: false
+    #   effect: !type:MakeSentient
     - name: Slippery
       description: mutation-plant-slippery
       baseOdds: 0.036
