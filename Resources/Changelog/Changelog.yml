@@ -5131,3 +5131,10 @@ Entries:
   id: 5892
   time: '2026-05-15T02:54:45.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/521
+- author: qevie
+  changes:
+    - type: Tweak
+      message: Changed NCRMP timelocks.
+  id: 5893
+  time: '2026-05-16T01:39:36.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/524
