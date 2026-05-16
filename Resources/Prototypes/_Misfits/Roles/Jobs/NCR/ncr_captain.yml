@@ -1,26 +1,26 @@
 - type: job
-  id: NCRCaptain
-  setPreference: true # #Misfits Tweak - visible in job selection
-  hideWithoutJobWhitelist: false # #Misfits Tweak - visible in all menus
-  hideIfPlaytimeRequirementsNotMet: false # #Misfits Tweak - all jobs visible in selection
-  jobWhitelistBypassesRoleTimers: true # #Misfits Change
+  id: NCRCommander
+  setPreference: true
+  hideWithoutJobWhitelist: false
+  hideIfPlaytimeRequirementsNotMet: false
+  jobWhitelistBypassesRoleTimers: true
   overrideConsoleVisibility: false
   canBeAntag: true
-  name: job-name-ncr-captain
-  description: job-description-ncr-captain
-  playTimeTracker: NCRCaptain
+  name: job-name-ncr-commander
+  description: job-description-ncr-commander
+  playTimeTracker: NCRCommander
   requirements:
     - !type:CharacterSpeciesRequirement
       species:
       - Human
       - Ghoul
-    - !type:CharacterDepartmentTimeRequirement # #Misfits Tweak - T7 faction timelock (40h NCR)
+    - !type:CharacterDepartmentTimeRequirement # T7 faction timelock (40h NCR)
       department: NCR
       min: 144000 # 40 hours
   weight: 120
-  startingGear: NCRCaptainGear
+  startingGear: NCRCommanderGear
   icon: "JobIconNcrLeader"
-  supervisors: job-supervisors-ncr-captain
+  supervisors: job-supervisors-ncr-commander
   requireAdminNotify: true
   alwaysUseSpawner: true
   access:
@@ -28,7 +28,7 @@
   - NCRSGT
   - NCRMedic
   - NCRLT
-  - NCRCaptain # #Misfits Add
+  - NCRCaptain
   special:
   - !type:AddComponentSpecial
     components:
@@ -38,25 +38,25 @@
           - NCR
 
 - type: startingGear
-  id: NCRCaptainGear
+  id: NCRCommanderGear
   equipment:
     head: N14ClothingHeadHatNCRBeretOfficer
-    back: N14ClothingBackpackNCR # Corvax-Change
-    jumpsuit: N14ClothingOfficerUniformNCRDesert # Corvax-Change
+    back: N14ClothingBackpackNCR
+    jumpsuit: N14ClothingOfficerUniformNCRDesert
     outerClothing: N14ClothingOuterNCRDressJacketCO
     shoes: N14ClothingBootsCombatFilled
-    neck: ClothingNeckPinNCRCaptain
+    neck: ClothingNeckPinNCRCaptain # Captain (O-3) starting pin; Major unlocks via loadout
     belt: ClothingBeltNCR
     eyes: ClothingEyesGlassesSunglasses
     ears: N14ClothingHeadsetNCR
     pocket1: NCRcaptainloadoutkits
     pocket2: TrainingManualPowerArmorOperation
     id: N14IDNCRDogtagCaptain
-  innerClothingSkirt: N14ClothingOfficerUniformNCRDesert # Corvax-Change
+  innerClothingSkirt: N14ClothingOfficerUniformNCRDesert
   satchel: N14ClothingBackpackSatchelNCRFilled
-  storage: # Corvax-Change
+  storage:
     back:
     - N14BoxPlasticFilledMilitaryNCR
 
 - type: playTimeTracker
-  id: NCRCaptain
+  id: NCRCommander

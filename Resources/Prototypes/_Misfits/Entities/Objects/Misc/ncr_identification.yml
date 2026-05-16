@@ -68,7 +68,7 @@
   suffix: Captain
   components:
   - type: PresetIdCard
-    job: NCRCaptain
+    job: NCRCommander
 
 - type: entity
   parent: N14IDNCRDogtagCaptain

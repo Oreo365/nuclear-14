@@ -4,11 +4,11 @@
   hideIfPlaytimeRequirementsNotMet: false # #Misfits Tweak - all jobs visible in selection
   jobWhitelistBypassesRoleTimers: true # #Misfits Change
   weight: 40
-  showBorder: true
+  showBorder: false
   overrideConsoleVisibility: false
   canBeAntag: false
-  name: job-name-ncr-specialist # #Misfits Tweak - renamed from Corporal to Specialist
-  description: job-description-ncr-specialist # #Misfits Tweak - renamed from Corporal to Specialist
+  name: job-name-ncr-weapon-specialist
+  description: job-description-ncr-weapon-specialist
   playTimeTracker: NCRWS
   requirements:
     - !type:CharacterSpeciesRequirement
@@ -45,7 +45,7 @@
     outerClothing: MisfitsNCRPouchedCombatArmor # #Misfits Tweak: T4 armor (0.75/0.70) — Specialist gets combat-grade protection while keeping utility pouches
     shoes: N14ClothingBootsLeatherFilled
     ears: N14ClothingHeadsetNCR # #Misfits Add - NCR radio earpiece
-    neck: ClothingNeckPinNCRSpecialist # #Misfits Fix - Specialist rank pin instead of Corporal
+    neck: ClothingNeckPinNCRPrivate # PV2 (E-2) starting pin; PFC/SPC unlock via loadout
     belt: ClothingBeltNCR
     pocket1: NCRcorporalloadoutkits
     id: N14IDNCRDogtagWS

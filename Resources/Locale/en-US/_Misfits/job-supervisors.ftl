@@ -1,3 +1,7 @@
+# #Misfits Add - NCR role rehaul supervisor strings.
+job-supervisors-ncr-commander = NCR high command and your mission
+job-supervisors-ncr-nco = the NCR officers and your chain of command
+
 # #Misfits Add - Enclave supervisor locale (expanded 8-role hierarchy). Reformer is admin-only apex role.
 job-supervisors-enclave-reformer = Eden and the Enclave's founding mandate
 job-supervisors-enclave = the Enclave chain of command

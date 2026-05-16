@@ -330,11 +330,14 @@
         - NCRSoldier
         - NCRPrivateFirstClass
         - NCRWS
-        - NCRSGT
+        - NCREngineer
+        - NCRMedic
+        - NCRNCO
         - NCRFirstSergeant
         - NCRHeavyTrooper
-        - NCRLT
-        - NCRCaptain
+        - NCRExecutiveOfficer
+        - NCRPlatoonLeader
+        - NCRCommander
         - NCRMajor
         - NCRDoctor
   items:
@@ -519,11 +522,14 @@
         - NCRSoldier
         - NCRPrivateFirstClass
         - NCRWS
-        - NCRSGT
+        - NCREngineer
+        - NCRMedic
+        - NCRNCO
         - NCRFirstSergeant
         - NCRHeavyTrooper
-        - NCRLT
-        - NCRCaptain
+        - NCRExecutiveOfficer
+        - NCRPlatoonLeader
+        - NCRCommander
         - NCRMajor
         - NCRDoctor
   items:
@@ -536,8 +542,9 @@
   requirements:
     - !type:CharacterJobRequirement
       jobs:
-        - NCRLT
-        - NCRCaptain
+        - NCRExecutiveOfficer
+        - NCRPlatoonLeader
+        - NCRCommander
         - NCRMajor
   items:
     - N14ClothingHeadHatNCRBeretOfficer
@@ -561,7 +568,9 @@
     - !type:CharacterJobRequirement
       jobs:
         - NCRWS
-        - NCRSGT
+        - NCREngineer
+        - NCRMedic
+        - NCRNCO
         - NCRFirstSergeant
         - NCRHeavyTrooper
   items:
@@ -876,11 +885,14 @@
         - NCRSoldier
         - NCRPrivateFirstClass
         - NCRWS
-        - NCRSGT
+        - NCREngineer
+        - NCRMedic
+        - NCRNCO
         - NCRFirstSergeant
         - NCRHeavyTrooper
-        - NCRLT
-        - NCRCaptain
+        - NCRExecutiveOfficer
+        - NCRPlatoonLeader
+        - NCRCommander
         - NCRMajor
         - NCRDoctor
   items:
@@ -900,11 +912,14 @@
         - NCRSoldier
         - NCRPrivateFirstClass
         - NCRWS
-        - NCRSGT
+        - NCREngineer
+        - NCRMedic
+        - NCRNCO
         - NCRFirstSergeant
         - NCRHeavyTrooper
-        - NCRLT
-        - NCRCaptain
+        - NCRExecutiveOfficer
+        - NCRPlatoonLeader
+        - NCRCommander
         - NCRMajor
         - NCRDoctor
   items:
@@ -920,11 +935,12 @@
       group: N14LoadoutNeck
     - !type:CharacterJobRequirement
       jobs:
-        - NCRSGT
+        - NCRNCO
         - NCRFirstSergeant
         - NCRHeavyTrooper
-        - NCRLT
-        - NCRCaptain
+        - NCRExecutiveOfficer
+        - NCRPlatoonLeader
+        - NCRCommander
         - NCRMajor
   items:
     - N14ClothingNeckMantleNCR

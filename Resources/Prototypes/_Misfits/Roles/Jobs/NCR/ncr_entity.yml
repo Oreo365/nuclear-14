@@ -57,7 +57,7 @@
     - type: RandomHumanoidAppearance
       randomizeName: true
     - type: Loadout
-      prototypes: [NCRSGTGear]
+      prototypes: [NCRNCOGear]
     - type: NpcFactionMember
       factions:
       - Wastelander
@@ -73,7 +73,7 @@
     - type: RandomHumanoidAppearance
       randomizeName: true
     - type: Loadout
-      prototypes: [NCRSGTGear]
+      prototypes: [NCRNCOGear]
     - type: NpcFactionMember
       factions:
       - Wastelander
@@ -89,7 +89,7 @@
     - type: RandomHumanoidAppearance
       randomizeName: true
     - type: Loadout
-      prototypes: [NCRSGTGear]
+      prototypes: [NCRNCOGear]
     - type: NpcFactionMember
       factions:
       - Wastelander
@@ -105,7 +105,7 @@
     - type: RandomHumanoidAppearance
       randomizeName: true
     - type: Loadout
-      prototypes: [NCRLTGear]
+      prototypes: [NCRExecutiveOfficerGear]
     - type: NpcFactionMember
       factions:
       - Wastelander
@@ -121,7 +121,7 @@
     - type: RandomHumanoidAppearance
       randomizeName: true
     - type: Loadout
-      prototypes: [NCRLTGear]
+      prototypes: [NCRCommanderGear]
     - type: NpcFactionMember
       factions:
       - Wastelander

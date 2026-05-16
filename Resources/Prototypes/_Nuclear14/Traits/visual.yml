@@ -14,19 +14,19 @@
     - TribalElder
     - TownMayor
     - TownSheriff
-    - NCRCaptain
-    - NCRLT
+    - NCRCommander
+    - NCRExecutiveOfficer
+    - NCRPlatoonLeader
     - NCRDoctor
     - NCRVeteranRanger
     - NCRFieldRanger
     - NCRPatrolRanger
     - NCRFirstSergeant
     - NCRStaffSergeant
-    - NCRSGT
-    - NCRMPinvestigator
+    - NCRNCO
     - NCRWS
-    #- NCREngineer #Misfits Change /Comment-out/: consolidated into Specialist
-    #- NCRMedic #Misfits Change /Comment-out/: consolidated into Specialist
+    - NCREngineer
+    - NCRMedic
     - NCRPrivateFirstClass
     - NCRSoldier
     - NCRCadet

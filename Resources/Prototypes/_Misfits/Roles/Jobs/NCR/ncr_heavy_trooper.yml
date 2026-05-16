@@ -45,7 +45,7 @@
     outerClothing: N14ClothingOuterPowerArmorT45NCRSalvaged  # salvaged T-45 (no training required)
     shoes: N14ClothingBootsCombatFilled
     ears: N14ClothingHeadsetNCR               # NCR radio earpiece
-    neck: ClothingNeckPinNCRSpecialist        # enlisted heavy weapons rank
+    neck: ClothingNeckPinNCRPrivate           # PV2 (E-2) starting pin; PFC/SPC unlock via loadout
     belt: ClothingBeltNCR
     pocket1: N14WeaponMinigun                 # #Misfits Tweak - downgraded to minigun again -bill
     pocket2: RadioHandheld

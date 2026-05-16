@@ -15,13 +15,14 @@
     - NCRMedic
     - NCREngineer
     - NCRDoctor
-    - NCRSGT
+    - NCRNCO
     - NCRStaffSergeant
     - NCRFirstSergeant
-    - NCRLT
-    - NCRCaptain
-    - NCRMajor # Misfits Add: NCRMajor was missing from NCR armor loadout
-    - NCRMPinvestigator
+    - NCRExecutiveOfficer
+    - NCRPlatoonLeader
+    - NCRCommander
+    - NCRMajor
+
     - NCRFieldRanger # #Misfits Fix - renamed from NCRRanger
     - NCRVeteranRanger #Misfits Change - consolidated NCRRangerVeteran into RangerVeteran
   - !type:CharacterPlaytimeRequirement
@@ -47,13 +48,14 @@
     - NCRMedic
     - NCREngineer
     - NCRDoctor
-    - NCRSGT
+    - NCRNCO
     - NCRStaffSergeant
     - NCRFirstSergeant
-    - NCRLT
-    - NCRCaptain
-    - NCRMajor # Misfits Add: NCRMajor was missing from NCR armor loadout
-    - NCRMPinvestigator
+    - NCRExecutiveOfficer
+    - NCRPlatoonLeader
+    - NCRCommander
+    - NCRMajor
+
     - NCRFieldRanger # #Misfits Fix - renamed from NCRRanger
     - NCRVeteranRanger #Misfits Change - consolidated NCRRangerVeteran into RangerVeteran
   - !type:CharacterPlaytimeRequirement
@@ -79,13 +81,14 @@
     - NCRMedic
     - NCREngineer
     - NCRDoctor
-    - NCRSGT
+    - NCRNCO
     - NCRStaffSergeant
     - NCRFirstSergeant
-    - NCRLT
-    - NCRCaptain
-    - NCRMajor # Misfits Add: NCRMajor was missing from NCR armor loadout
-    - NCRMPinvestigator
+    - NCRExecutiveOfficer
+    - NCRPlatoonLeader
+    - NCRCommander
+    - NCRMajor
+
     - NCRFieldRanger # #Misfits Fix - renamed from NCRRanger
     - NCRVeteranRanger #Misfits Change - consolidated NCRRangerVeteran into RangerVeteran
   - !type:CharacterPlaytimeRequirement
@@ -111,17 +114,17 @@
     - SuperMutantTribal
   - !type:CharacterJobRequirement
     jobs:
-    - NCRSGT
-    - NCRStaffSergeant # Misfits Change /Add/: expand access to all NCR senior roles
+    - NCRNCO
+    - NCRStaffSergeant
     - NCRFirstSergeant
-    - NCRLT
-    - NCRCaptain
-    - NCRMajor # Misfits Add: NCRMajor authority warrants access to combat veteran armor
+    - NCRExecutiveOfficer
+    - NCRPlatoonLeader
+    - NCRCommander
+    - NCRMajor
   - !type:CharacterPlaytimeRequirement
     tracker: NCRNCO
     min: 72000 # 20 hours veterancy unlock
-    # Misfits Note: Only NCRSGT accumulates NCRNCO time; StaffSgt/FirstSgt/NCRLT/Captain/Major use their own trackers.
-    # TODO: Split into per-tracker entries so each senior role can unlock via their own playtime.
+    # Note: Uses NCRNCO tracker; NCO slots 2-4 and senior roles use their own trackers.
   items:
   - N14ClothingOuterNCRCombatVeteranArmorDesert
 
@@ -133,9 +136,9 @@
   requirements:
   - !type:CharacterJobRequirement
     jobs:
-    - NCRMPinvestigator
+    - NCRMilitaryPoliceCaptain
   - !type:CharacterPlaytimeRequirement
-    tracker: NCRMPinvestigator
+    tracker: NCRMilitaryPoliceCaptain
     min: 72000 # 20 hours veterancy unlock
   items:
   - N14ClothingNeckNCRMPCoat
@@ -148,9 +151,9 @@
   requirements:
   - !type:CharacterJobRequirement
     jobs:
-    - NCRMPinvestigator
+    - NCRMilitaryPoliceCaptain
   - !type:CharacterPlaytimeRequirement
-    tracker: NCRMPinvestigator
+    tracker: NCRMilitaryPoliceCaptain
     min: 72000 # 20 hours veterancy unlock
   items:
   - N14ClothingHeadHatNCRMPBeret

@@ -2,6 +2,22 @@
 job-name-ncr-heavy-trooper = NCR Heavy Trooper
 job-description-ncr-heavy-trooper = You are the NCR's walking artillery. Strapped into a salvaged T-45 suit and armed with an LMG, your job is simple: hold the line and lay down fire until there is nothing left standing.
 
+# #Misfits Add - NCR role rehaul: new role-based job locale strings.
+job-name-ncr-commander = NCR Commander
+job-description-ncr-commander = You command the NCR detachment. Set operational priorities, direct your officers, and answer only to high command. Your rank runs from Captain to Major as your service record grows.
+
+job-name-ncr-executive-officer = NCR Executive Officer
+job-description-ncr-executive-officer = You are the Commander's second, managing the detachment's day-to-day operations and keeping the NCOs in line. Lead by example and bridge command and the ranks below.
+
+job-name-ncr-platoon-leader = NCR Platoon Leader
+job-description-ncr-platoon-leader = You lead a platoon in the field, directing NCOs and executing the Commander's orders. Your commision begins at 2LT — earn your 1LT through service.
+
+job-name-ncr-nco = NCR Squad Leader
+job-description-ncr-nco = You lead a squad of NCR troopers, responsible for a fire team and the enlisted under your watch. You start as a Corporal — your chevrons grow from SGT to SSG to SFC with time served.
+
+job-name-ncr-weapon-specialist = NCR Weapon Specialist
+job-description-ncr-weapon-specialist = You are a weapons-qualified specialist of the NCR. Your focus is firepower and combat effectiveness — not command. Your rank tracks PV2 through SPC as you accumulate experience.
+
 # #Misfits Add - Enclave job locale (expanded 8-role hierarchy). Reformer is admin-only apex role.
 job-name-enclave-reformer = The Reformer
 job-description-enclave-reformer = You are the Enclave's supreme authority on the field — its Reformer. Shape the cell's doctrine, judge its members, and determine its future. Answerable only to Eden.

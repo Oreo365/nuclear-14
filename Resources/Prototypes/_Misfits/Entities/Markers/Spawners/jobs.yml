@@ -429,10 +429,10 @@
 - type: entity
   parent: MisfitsSpawnPointNCRCadet
   id: MisfitsSpawnPointNCRSGT
-  name: NCR Sergeant
+  name: NCR NCO
   components:
   - type: SpawnPoint
-    job_id: NCRSGT
+    job_id: NCRNCO
   - type: Sprite
     layers:
       - state: green
@@ -441,10 +441,10 @@
 - type: entity
   parent: MisfitsSpawnPointNCRCadet
   id: MisfitsSpawnPointNCRCaptain
-  name: NCR Captain
+  name: NCR Commander
   components:
   - type: SpawnPoint
-    job_id: NCRCaptain
+    job_id: NCRCommander
   - type: Sprite
     layers:
       - state: green
@@ -453,10 +453,10 @@
 - type: entity
   parent: MisfitsSpawnPointNCRCadet
   id: MisfitsSpawnPointNCRLT
-  name: NCR Lieutenant
+  name: NCR Executive Officer
   components:
   - type: SpawnPoint
-    job_id: NCRLT
+    job_id: NCRExecutiveOfficer
   - type: Sprite
     layers:
       - state: green

@@ -56,9 +56,10 @@
           TownShopkeeper: [ 1, 1 ]
           TownShopkeeperHelper: [ 1, 1 ] # Forge-Town
           Townsperson: [ 5, 5 ]
-          NCRMajor: [ 1, 0 ] # #Misfits Add - whitelist-only command role; 0 active late-join slots
-          NCRCaptain: [ 1, 1 ] # #Misfits Tweak - keep 1 roundstart slot and seed 1 active department slot for admins
-          NCRLT: [ 1, 1 ]
+          NCRMajor: [ 1, 0 ] # whitelist-only command role; 0 active late-join slots
+          NCRCommander: [ 1, 1 ]
+          NCRExecutiveOfficer: [ 1, 1 ]
+          NCRPlatoonLeader: [ 1, 1 ]
           NCRChiefRanger: [ 1, 0 ]  # #Misfits Change - admin-only Chief Ranger; renamed from ChiefRanger
           NCRVeteranRanger: [ 1, 1 ] # #Misfits Change - renamed from RangerVeteran
           NCRFieldRanger: [ 1, 1 ]   # #Misfits Add - Field Ranger slot
@@ -66,17 +67,16 @@
           NCRRangerRecruit: [ 1, 1 ] # #Misfits Add - entry-level Ranger Recruit slot
           NCRFirstSergeant: [ 1, 1 ]
           #NCRStaffSergeant: [ 1, 1 ] # #Misfits Removed - replaced by NCRHeavyTrooper as T5 specialist slot
-          NCRHeavyTrooper: [ 2, 2 ] # #Misfits Add - Heavy Trooper: 2 slots, between Specialist and Sergeant
-          NCRSGT: [ 1, 1 ]
-          NCRWS: [ 3, 3 ] # #Misfits Tweak - increased: absorbs Engineer (2) + Medic (1) slots
-          #NCREngineer: [ 2, 2 ] #Misfits Change /Comment-out/: consolidated into Specialist
+          NCRHeavyTrooper: [ 2, 2 ]
+          NCRNCO: [ 4, 4 ]
+          NCRWS: [ 2, 2 ]
+          NCREngineer: [ 3, 3 ]
           NCRDoctor: [ 1, 1 ]
-          #NCRMedic: [ 1, 1 ] #Misfits Change /Comment-out/: consolidated into Specialist
+          NCRMedic: [ 4, 4 ]
           NCRPrivateFirstClass: [ 4, 4 ]
           NCRSoldier: [ 4, 4 ]
-          NCRCadet: [ 6, 6 ]
+          NCRCadet: [ 9, 9 ]
           NCRPisoner : [ 2, 2 ]
-          NCRMPinvestigator : [ 1, 1 ]
           NCRMilitaryPoliceSergeant: [ 1, 1 ]
           NCRMilitaryPoliceRecruit: [ 2, 2 ]
           NCRMilitaryPoliceCaptain: [ 1, 1 ]
@@ -111,16 +111,16 @@
           CaesarLegionCenturion: [ 1, 1 ] # Forge-Legion
           CaesarLegionVeteranDecanus: [ 1, 1 ] # Forge-Legion
           CaesarLegionDean: [ 1, 1 ] # Forge-Legion
-          CaesarLegionLegionnaireVeteran: [ 2, 2 ] # Forge-Legion
-          CaesarLegionLegionnaireWarrior: [ 2, 2 ] # Forge-Legion
-          CaesarLegionLegionnaireRecruit: [ 4, 4 ] # Forge-Legion
+          CaesarLegionLegionnaireVeteran: [ 6, 6 ] # Forge-Legion
+          CaesarLegionLegionnaireWarrior: [ 6, 6 ] # Forge-Legion
+          CaesarLegionLegionnaireRecruit: [ 6, 6 ] # Forge-Legion
           CaesarLegionVexillarius: [ 1, 1 ] # Forge-Legion
           CaesarLegionFrumentarii: [ 2, 2 ] # Forge-Legion # #Misfits Tweak - raised total and initial slots from 1 to 2
           CaesarLegionPrimeDecanus: [ 1, 1 ] # Misfits-Legion
           CaesarLegionExplorer: [ 1, 2 ] # Misfits-Legion
           CaesarLegionOrator: [ 1, 1 ] # Misfits-Legion
           CaesarLegionPriestessOfMars: [ 1, 1 ] # Misfits-Legion — Priestess of Mars late-join slot
-          CaesarLegionHoundmaster: [ 1, 1 ] # Forge-Legion
+          CaesarLegionHoundmaster: [ 2, 2 ] # Forge-Legion
           # #Misfits Change: CaesarLegionRecruit slot removed — CaesarLegionLegionnaireRecruit (line 103) already covers entry-level.
           CaesarLegionAuxilia: [ 4, 4 ] # #Misfits Change - activated
           CaesarLegionSlave: [ 4, 4 ] # Forge-Legion

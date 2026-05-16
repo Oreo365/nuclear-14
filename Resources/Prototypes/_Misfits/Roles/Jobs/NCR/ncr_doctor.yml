@@ -20,7 +20,7 @@
       min: 57600 # 16 hours
   startingGear: NCRDoctorGear
   icon: "JobIconNcrMedic"
-  supervisors: job-supervisors-ncr-lt
+  supervisors: job-supervisors-ncr-commander
   alwaysUseSpawner: true
   access:
   - NCR
@@ -42,7 +42,7 @@
     back: N14ClothingBackpackNCR # Corvax-Change
     shoes: N14ClothingBootsLeatherFilled
     ears: N14ClothingHeadsetNCR # #Misfits Add - NCR radio earpiece
-    neck: ClothingNeckPinNCRDoctor
+    neck: ClothingNeckPinNCRCaptain # Captain (O-3) pin; Major unlocks via loadout; Doctor pin available as loadout cosmetic
     belt: ClothingBeltNCR
     id: N14IDNCRDogtagDoctorSenior
     pocket2: NCRmedicloadoutkits

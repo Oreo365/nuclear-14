@@ -36,17 +36,19 @@
       jobs:
         - TownSheriff
         - TownDeputy
-        - NCRCaptain
-        - NCRLT
+        - NCRCommander
+        - NCRExecutiveOfficer
+        - NCRPlatoonLeader
         - NCRVeteranRanger
         - NCRFieldRanger
         - NCRPatrolRanger
         - NCRDoctor
         - NCRFirstSergeant
         - NCRStaffSergeant
-        - NCRSGT
+        - NCRNCO
         - NCRWS
-        #- NCREngineer #Misfits Change /Comment-out/: consolidated into Specialist
+        - NCREngineer
+        - NCRMedic
         - NCRPrivateFirstClass
         - NCRSoldier
         - NCRCadet
@@ -60,7 +62,6 @@
         - BoSMidKnight
         - BoSMidSquire
         # Forge-Change-Start
-        - NCRMPinvestigator
         #- BoSMidInquisitor # Misfits Fix: job prototype commented out
         - BoSWestElderCommander
         - CaesarLegionCenturion

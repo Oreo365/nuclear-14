@@ -46,8 +46,9 @@
   accessWrite:
   - NCR
   leadershipJobs:
-  - NCRCaptain
-  - NCRLT
+  - NCRCommander
+  - NCRExecutiveOfficer
+  - NCRPlatoonLeader
   - NCRFirstSergeant
   adminJobs:
   - NCRMajor

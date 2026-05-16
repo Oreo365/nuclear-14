@@ -4,6 +4,8 @@
   name: recruit pin
   description: A worn Republic Armed Forces badge showing the wearer's rank.
   components:
+  - type: RankTitle
+    rankTitle: Recruit
   - type: Sprite
     sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
     layers:
@@ -19,6 +21,8 @@
   id: ClothingNeckPinNCRPrivate
   name: private pin
   components:
+  - type: RankTitle
+    rankTitle: Private
   - type: Sprite
     sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
     layers:
@@ -34,6 +38,8 @@
   id: ClothingNeckPinNCRPrivate1st
   name: private 1st pin
   components:
+  - type: RankTitle
+    rankTitle: Private First Class
   - type: Sprite
     sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
     layers:
@@ -44,6 +50,8 @@
   id: ClothingNeckPinNCRCorporal
   name: corporal pin
   components:
+  - type: RankTitle
+    rankTitle: Corporal
   - type: Sprite
     sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
     layers:
@@ -54,6 +62,8 @@
   id: ClothingNeckPinNCRSpecialist
   name: specialist pin
   components:
+  - type: RankTitle
+    rankTitle: Specialist
   - type: Sprite
     sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
     layers:
@@ -64,6 +74,8 @@
   id: ClothingNeckPinNCRSergeant
   name: sergeant pin
   components:
+  - type: RankTitle
+    rankTitle: Sergeant
   - type: Sprite
     sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
     layers:
@@ -72,8 +84,10 @@
 - type: entity
   parent: ClothingNeckPinNCRPrivate
   id: ClothingNeckPinNCRSergeant1st
-  name: sergeant 1st pin
+  name: staff sergeant pin
   components:
+  - type: RankTitle
+    rankTitle: Staff Sergeant
   - type: Sprite
     sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
     layers:
@@ -82,8 +96,10 @@
 - type: entity
   parent: ClothingNeckPinNCRPrivate
   id: ClothingNeckPinNCRMasterSergeant
-  name: master sergeant pin
+  name: sergeant first class pin
   components:
+  - type: RankTitle
+    rankTitle: Sergeant First Class
   - type: Sprite
     sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
     layers:
@@ -94,6 +110,8 @@
   id: ClothingNeckPinNCRSergeantMajor
   name: sergeant major pin
   components:
+  - type: RankTitle
+    rankTitle: Sergeant Major
   - type: Sprite
     sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
     layers:
@@ -104,6 +122,8 @@
   id: ClothingNeckPinNCRSecondLieutenant
   name: second lieutenant pin
   components:
+  - type: RankTitle
+    rankTitle: Second Lieutenant
   - type: Sprite
     sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
     layers:
@@ -114,6 +134,8 @@
   id: ClothingNeckPinNCRFirstlLieutenant
   name: first lieutenant pin
   components:
+  - type: RankTitle
+    rankTitle: First Lieutenant
   - type: Sprite
     sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
     layers:
@@ -129,6 +151,8 @@
   id: ClothingNeckPinNCRCaptain
   name: captain pin
   components:
+  - type: RankTitle
+    rankTitle: Captain
   - type: Sprite
     sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
     layers:
@@ -144,6 +168,8 @@
   id: ClothingNeckPinNCRMajor
   name: major pin
   components:
+  - type: RankTitle
+    rankTitle: Major
   - type: Sprite
     sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
     layers:
@@ -154,6 +180,8 @@
   id: ClothingNeckPinNCRDoctor
   name: doctor pin
   components:
+  - type: RankTitle
+    rankTitle: Corpsman
   - type: Sprite
     sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
     layers:
@@ -167,8 +195,10 @@
 - type: entity
   parent: ClothingNeckPinNCRPrivate
   id: ClothingNeckPinNCRChiefPhysician
-  name: chiefphysician pin
+  name: chief physician pin
   components:
+  - type: RankTitle
+    rankTitle: Chief Physician
   - type: Sprite
     sprite: _Nuclear14/Clothing/Neck/Misc/pins.rsi
     layers:

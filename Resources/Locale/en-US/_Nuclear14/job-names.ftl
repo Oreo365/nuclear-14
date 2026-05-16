@@ -32,10 +32,10 @@ job-name-caravan-guard = Caravan Guard
 job-description-caravan-guard = Protect the caravan company traders, their livestock, and their inventory.
 
 # NCR
-job-name-ncr-recruit = NCR Recruit
-job-description-ncr-recruit = Learn the ropes, follow orders, and prove that you are ready for full service in the NCR.
-job-name-ncr-cadet = NCR Recruit
-job-description-ncr-cadet = Learn the ropes, follow orders, and prove that you are ready for full service in the NCR.
+job-name-ncr-recruit = NCR Trooper
+job-description-ncr-recruit = You are the backbone of the NCR. Follow orders, hold the line, and earn your stripes — your rank climbs from Recruit to Specialist with time served.
+job-name-ncr-cadet = NCR Trooper
+job-description-ncr-cadet = You are the backbone of the NCR. Follow orders, hold the line, and earn your stripes — your rank climbs from Recruit to Specialist with time served.
 job-name-ncr-doctor = NCR Medical Doctor
 job-description-ncr-doctor = Oversee battlefield care, keep the detachment alive, and direct NCR medical treatment.
 job-name-ncr-medic = NCR Medic

@@ -1,0 +1,36 @@
+- type: job
+  id: NCRNCO2
+  setPreference: false
+  hideIfPlaytimeRequirementsNotMet: false
+  jobWhitelistBypassesRoleTimers: true
+  weight: 51
+  overrideConsoleVisibility: false
+  canBeAntag: false
+  name: job-name-ncr-nco
+  description: job-description-ncr-nco
+  playTimeTracker: NCRNCO2
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+      - Ghoul
+    - !type:CharacterDepartmentTimeRequirement # T5 faction timelock (16h NCR)
+      department: NCR
+      min: 57600 # 16 hours
+  startingGear: NCRNCOGear
+  icon: "JobIconNcrSerg"
+  supervisors: job-supervisors-ncr-nco
+  alwaysUseSpawner: true
+  access:
+  - NCR
+  - NCRSGT
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Wastelander
+          - NCR
+
+- type: playTimeTracker
+  id: NCRNCO2

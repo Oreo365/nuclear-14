@@ -69,30 +69,31 @@
   color: "#fbc02d"
   uiCategory: MajorFaction
   roles:
-  # Command (Admin Whitelist Only)
-  - NCRMajor             # NCR Major (whitelist)   | _Misfits/Roles/Jobs/NCR/ncr_major.yml  # #Misfits Add
-  # Officers
-  - NCRCaptain           # NCR Captain             | _Misfits/Roles/Jobs/NCR/ncr_captain.yml
-  - NCRLT                # NCR Lieutenant          | _Misfits/Roles/Jobs/NCR/ncr_lieutenant.yml
+  # Command Officers (Captain/Major pins) — repurposed from NCRCaptain
+  - NCRCommander         # NCR Commander           | _Misfits/Roles/Jobs/NCR/ncr_captain.yml
   - NCRDoctor            # NCR Medical Doctor      | _Misfits/Roles/Jobs/NCR/ncr_doctor.yml
-  # NCOs
-  - NCRFirstSergeant     # NCR Sergeant First Class | _Misfits/Roles/Jobs/NCR/ncr_first_sergeant.yml
-  #- NCRStaffSergeant    # NCR Staff Sergeant      | _Misfits/Roles/Jobs/NCR/ncr_staff_sergeant.yml  # #Misfits Removed - replaced by NCRHeavyTrooper
-  - NCRHeavyTrooper      # NCR Heavy Trooper       | _Misfits/Roles/Jobs/NCR/ncr_heavy_trooper.yml   # #Misfits Add
-  - NCRSGT               # NCR Sergeant            | _Misfits/Roles/Jobs/NCR/ncr_sergeant.yml
-  # Enlisted
-  - NCRWS                # NCR Specialist          | _Misfits/Roles/Jobs/NCR/ncr_specialist.yml  # #Misfits Fix - renamed from ncr_corporal.yml to match in-game role name
-  #- NCRMedic             # NCR Medic (consolidated into Specialist) #Misfits Change /Comment-out/
-  #- NCREngineer          # NCR Engineer (consolidated into Specialist) #Misfits Change /Comment-out/
-  - NCRPrivateFirstClass # NCR Private First Class | _Misfits/Roles/Jobs/NCR/ncr_private_first_class.yml
-  - NCRSoldier           # NCR Private             | _Misfits/Roles/Jobs/NCR/ncr_private.yml
+  # Junior Officers (2LT/1LT pins) — repurposed from NCRLT
+  - NCRExecutiveOfficer  # NCR Executive Officer   | _Misfits/Roles/Jobs/NCR/ncr_lieutenant.yml
+  - NCRPlatoonLeader     # NCR Platoon Leader      | _Misfits/Roles/Jobs/NCR/ncr_platoon_leader.yml
+  # NCOs — 4 map slots, one job (CPL/SGT/SSG/SFC pins)
+  - NCRNCO               # NCR NCO (4 slots)       | _Misfits/Roles/Jobs/NCR/ncr_sergeant.yml
+  # Specialists (PV2/PFC/SPC pins)
+  - NCREngineer          # NCR Engineer            | _Misfits/Roles/Jobs/NCR/ncr_engineer.yml
+  - NCRMedic             # NCR Medic               | _Misfits/Roles/Jobs/NCR/ncr_medic.yml
+  - NCRWS                # NCR Weapon Specialist   | _Misfits/Roles/Jobs/NCR/ncr_specialist.yml
+  - NCRHeavyTrooper      # NCR Heavy Trooper       | _Misfits/Roles/Jobs/NCR/ncr_heavy_trooper.yml
+  # Entry
   - NCRCadet             # NCR Recruit             | _Misfits/Roles/Jobs/NCR/ncr_recruit.yml
   # Special
   - NCRPisoner           # NCR Prisoner            | _Misfits/Roles/Jobs/NCR/ncr_prisoner.yml
-  # Special roles outside the visible ladder:
-  - NCRMPinvestigator  # NCR MP Investigator     | _Misfits/Roles/Jobs/NCR/ncr_mp_investigator.yml
-  # - NCRRanger
-  # - NCRRangerVeteran
+  # Special roles outside the visible ladder (hidden from character creation):
+  #- NCRMPinvestigator    # NCR MP Investigator     | _Misfits/Roles/Jobs/NCR/ncr_mp_investigator.yml
+  # Hidden — kept for compatibility, not visible in character creation:
+  #- NCRMajor            # Superseded — Major is now a loadout pin for NCRCommander
+  #- NCRFirstSergeant    # Superseded — SFC is now a loadout pin for NCRNCO
+  #- NCRStaffSergeant    # Superseded — SSG is now a loadout pin for NCRNCO
+  #- NCRPrivateFirstClass # Superseded — PFC is now a loadout pin for specialists
+  #- NCRSoldier          # Retired — replaced by specialist roles + NCRCadet
 
 - type: department # #Misfits Add - Rangers department ladder moved into _Nuclear14 job definitions.
   id: Rangers

@@ -1,3 +1,361 @@
+# NCR Rank Pin Progression Loadouts
+# Officers (Command tier): Captain (O-3) default → Major (O-4) at 20h NCROfficer
+# Officers (Junior tier):  2LT (O-1) default → 1LT (O-2) at 20h NCROfficer
+# NCOs:                    CPL (E-4) default → SGT (E-5) at 20h → SSG (E-6) at 40h → SFC (E-7) at 60h NCRNCO
+# Specialists:             PV2 (E-2) default → PFC (E-3) at 20h → SPC (E-4) at 40h (role-specific tracker)
+
+# ── COMMAND OFFICER PINS (NCRCommander / NCRDoctor) ──────────────────────────
+
+- type: loadout
+  id: LoadoutNCRPinCaptainCommander
+  category: Roles
+  cost: 1
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRCommander
+        - NCRDoctor
+  items:
+    - ClothingNeckPinNCRCaptain
+
+- type: loadout
+  id: LoadoutNCRPinMajorCommander
+  category: Roles
+  cost: 1
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRCommander
+    - !type:CharacterPlaytimeRequirement
+      tracker: NCRCommander
+      min: 72000 # 20 hours as Commander
+  items:
+    - ClothingNeckPinNCRMajor
+
+- type: loadout
+  id: LoadoutNCRPinMajorDoctor
+  category: Roles
+  cost: 1
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRDoctor
+    - !type:CharacterPlaytimeRequirement
+      tracker: NCRDoctor
+      min: 72000 # 20 hours as Doctor
+  items:
+    - ClothingNeckPinNCRMajor
+
+# Doctor insignia pin — cosmetic alternative for the Doctor role
+- type: loadout
+  id: LoadoutNCRPinDoctorInsignia
+  category: Roles
+  cost: 1
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRDoctor
+  items:
+    - ClothingNeckPinNCRDoctor
+
+- type: loadout
+  id: LoadoutNCRPinChiefPhysicianDoctor
+  category: Roles
+  cost: 1
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRDoctor
+    - !type:CharacterPlaytimeRequirement
+      tracker: NCRDoctor
+      min: 72000 # 20 hours veterancy unlock
+  items:
+    - ClothingNeckPinNCRChiefPhysician
+
+# ── JUNIOR OFFICER PINS (NCRExecutiveOfficer / NCRPlatoonLeader) ──────────────
+
+- type: loadout
+  id: LoadoutNCRPin2LT
+  category: Roles
+  cost: 1
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRExecutiveOfficer
+        - NCRPlatoonLeader
+  items:
+    - ClothingNeckPinNCRSecondLieutenant
+
+- type: loadout
+  id: LoadoutNCRPin1LTXO
+  category: Roles
+  cost: 1
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRExecutiveOfficer
+    - !type:CharacterPlaytimeRequirement
+      tracker: NCROfficer
+      min: 72000 # 20 hours as Executive Officer
+  items:
+    - ClothingNeckPinNCRFirstlLieutenant
+
+- type: loadout
+  id: LoadoutNCRPin1LTPL
+  category: Roles
+  cost: 1
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRPlatoonLeader
+    - !type:CharacterPlaytimeRequirement
+      tracker: NCRPlatoonLeader
+      min: 72000 # 20 hours as Platoon Leader
+  items:
+    - ClothingNeckPinNCRFirstlLieutenant
+
+# ── NCO PINS (NCRNCO — 4 map slots, shared tracker) ──────────────────────────
+
+- type: loadout
+  id: LoadoutNCRPinCPL
+  category: Roles
+  cost: 1
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRNCO
+  items:
+    - ClothingNeckPinNCRCorporal
+
+- type: loadout
+  id: LoadoutNCRPinSGT
+  category: Roles
+  cost: 1
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs: [NCRNCO]
+    - !type:CharacterPlaytimeRequirement
+      tracker: NCRNCO
+      min: 72000 # 20 hours
+  items:
+    - ClothingNeckPinNCRSergeant
+
+- type: loadout
+  id: LoadoutNCRPinSSG
+  category: Roles
+  cost: 1
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs: [NCRNCO]
+    - !type:CharacterPlaytimeRequirement
+      tracker: NCRNCO
+      min: 144000 # 40 hours
+  items:
+    - ClothingNeckPinNCRSergeant1st
+
+- type: loadout
+  id: LoadoutNCRPinSFC
+  category: Roles
+  cost: 1
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs: [NCRNCO]
+    - !type:CharacterPlaytimeRequirement
+      tracker: NCRNCO
+      min: 216000 # 60 hours
+  items:
+    - ClothingNeckPinNCRMasterSergeant
+
+# ── SPECIALIST PINS — WEAPON SPECIALIST (NCRWS) ───────────────────────────────
+
+- type: loadout
+  id: LoadoutNCRPinPV2WSpec
+  category: Roles
+  cost: 1
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRWS
+  items:
+    - ClothingNeckPinNCRPrivate
+
+- type: loadout
+  id: LoadoutNCRPinPFCWSpec
+  category: Roles
+  cost: 1
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRWS
+    - !type:CharacterPlaytimeRequirement
+      tracker: NCRWS
+      min: 72000 # 20 hours
+  items:
+    - ClothingNeckPinNCRPrivate1st
+
+- type: loadout
+  id: LoadoutNCRPinSPCWSpec
+  category: Roles
+  cost: 1
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRWS
+    - !type:CharacterPlaytimeRequirement
+      tracker: NCRWS
+      min: 144000 # 40 hours
+  items:
+    - ClothingNeckPinNCRSpecialist
+
+# ── SPECIALIST PINS — ENGINEER (NCREngineer) ─────────────────────────────────
+
+- type: loadout
+  id: LoadoutNCRPinPV2Engineer
+  category: Roles
+  cost: 1
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCREngineer
+  items:
+    - ClothingNeckPinNCRPrivate
+
+- type: loadout
+  id: LoadoutNCRPinPFCEngineer
+  category: Roles
+  cost: 1
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCREngineer
+    - !type:CharacterPlaytimeRequirement
+      tracker: NCREngineer
+      min: 72000 # 20 hours
+  items:
+    - ClothingNeckPinNCRPrivate1st
+
+- type: loadout
+  id: LoadoutNCRPinSPCEngineer
+  category: Roles
+  cost: 1
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCREngineer
+    - !type:CharacterPlaytimeRequirement
+      tracker: NCREngineer
+      min: 144000 # 40 hours
+  items:
+    - ClothingNeckPinNCRSpecialist
+
+# ── SPECIALIST PINS — MEDIC (NCRMedic) ───────────────────────────────────────
+
+- type: loadout
+  id: LoadoutNCRPinPV2Medic
+  category: Roles
+  cost: 1
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRMedic
+  items:
+    - ClothingNeckPinNCRPrivate
+
+- type: loadout
+  id: LoadoutNCRPinPFCMedic
+  category: Roles
+  cost: 1
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRMedic
+    - !type:CharacterPlaytimeRequirement
+      tracker: NCRMedic
+      min: 72000 # 20 hours
+  items:
+    - ClothingNeckPinNCRPrivate1st
+
+- type: loadout
+  id: LoadoutNCRPinSPCMedic
+  category: Roles
+  cost: 1
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRMedic
+    - !type:CharacterPlaytimeRequirement
+      tracker: NCRMedic
+      min: 144000 # 40 hours
+  items:
+    - ClothingNeckPinNCRSpecialist
+
+# ── SPECIALIST PINS — HEAVY TROOPER (NCRHeavyTrooper) ────────────────────────
+
+- type: loadout
+  id: LoadoutNCRPinPV2HeavyTrooper
+  category: Roles
+  cost: 1
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRHeavyTrooper
+  items:
+    - ClothingNeckPinNCRPrivate
+
+- type: loadout
+  id: LoadoutNCRPinPFCHeavyTrooper
+  category: Roles
+  cost: 1
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRHeavyTrooper
+    - !type:CharacterPlaytimeRequirement
+      tracker: NCRHeavyTrooper
+      min: 72000 # 20 hours
+  items:
+    - ClothingNeckPinNCRPrivate1st
+
+- type: loadout
+  id: LoadoutNCRPinSPCHeavyTrooper
+  category: Roles
+  cost: 1
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRHeavyTrooper
+    - !type:CharacterPlaytimeRequirement
+      tracker: NCRHeavyTrooper
+      min: 144000 # 40 hours
+  items:
+    - ClothingNeckPinNCRSpecialist
+
+# ── TROOPER PINS (NCRCadet — Recruit/PV2/PFC/SPC progression) ────────────────
+
 - type: loadout
   id: LoadoutNCRPinRecruit
   category: Roles
@@ -11,328 +369,53 @@
     - ClothingNeckPinNCRRecruit
 
 - type: loadout
-  id: LoadoutNCRPinPrivateSoldier # Forge-Change
+  id: LoadoutNCRPinPV2Trooper
   category: Roles
   cost: 1
   exclusive: true
   requirements:
     - !type:CharacterJobRequirement
       jobs:
-        - NCRSoldier
+        - NCRCadet
+    - !type:CharacterPlaytimeRequirement
+      tracker: NCRCadet
+      min: 72000 # 20 hours
   items:
     - ClothingNeckPinNCRPrivate
 
 - type: loadout
-  id: LoadoutNCRPinPrivateNCRWS # Forge-Change
+  id: LoadoutNCRPinPFCTrooper
   category: Roles
   cost: 1
   exclusive: true
   requirements:
     - !type:CharacterJobRequirement
       jobs:
-        - NCRWS
-  items:
-    - ClothingNeckPinNCRPrivate
-
-- type: loadout
-  id: LoadoutNCRPinPrivate1stSoldier # Forge-Change
-  category: Roles
-  cost: 1
-  exclusive: true
-  requirements:
-    - !type:CharacterJobRequirement
-      jobs:
-        - NCRSoldier
+        - NCRCadet
     - !type:CharacterPlaytimeRequirement
-      tracker: NCRSoldier
-      min: 72000 # 20 hours veterancy unlock
+      tracker: NCRCadet
+      min: 144000 # 40 hours
   items:
     - ClothingNeckPinNCRPrivate1st
 
 - type: loadout
-  id: LoadoutNCRPinPrivate1stNCRWS # Forge-Change
+  id: LoadoutNCRPinSPCTrooper
   category: Roles
   cost: 1
   exclusive: true
   requirements:
     - !type:CharacterJobRequirement
       jobs:
-        - NCRWS
+        - NCRCadet
     - !type:CharacterPlaytimeRequirement
-      tracker: NCRWS
-      min: 72000 # 20 hours veterancy unlock
-  items:
-    - ClothingNeckPinNCRPrivate1st
-
-- type: loadout
-  id: LoadoutNCRPinCorporalSoldier # Forge-Change
-  category: Roles
-  cost: 1
-  exclusive: true
-  requirements:
-    - !type:CharacterJobRequirement
-      jobs:
-        - NCRSoldier
-    - !type:CharacterPlaytimeRequirement
-      tracker: NCRSoldier
-      min: 144000 # 40 hours veterancy unlock
-  items:
-    - ClothingNeckPinNCRCorporal
-
-- type: loadout
-  id: LoadoutNCRPinCorporalNCRWS # Forge-Change
-  category: Roles
-  cost: 1
-  exclusive: true
-  requirements:
-    - !type:CharacterJobRequirement
-      jobs:
-        - NCRWS
-    - !type:CharacterPlaytimeRequirement
-      tracker: NCRWS
-      min: 144000 # 40 hours veterancy unlock
-  items:
-    - ClothingNeckPinNCRCorporal
-
-- type: loadout
-  id: LoadoutNCRPinSpecialistSoldier # Forge-Change
-  category: Roles
-  cost: 1
-  exclusive: true
-  requirements:
-    - !type:CharacterJobRequirement
-      jobs:
-        - NCRSoldier
-    - !type:CharacterPlaytimeRequirement
-      tracker: NCRSoldier
-      min: 216000 # 60 hours veterancy unlock
+      tracker: NCRCadet
+      min: 216000 # 60 hours
   items:
     - ClothingNeckPinNCRSpecialist
 
-- type: loadout
-  id: LoadoutNCRPinSpecialistSNCRWS # Forge-Change
-  category: Roles
-  cost: 1
-  exclusive: true
-  requirements:
-    - !type:CharacterJobRequirement
-      jobs:
-        - NCRWS
-    - !type:CharacterPlaytimeRequirement
-      tracker: NCRWS
-      min: 216000 # 60 hours veterancy unlock
-  items:
-    - ClothingNeckPinNCRSpecialist
+# ── COSMETIC LOADOUTS ─────────────────────────────────────────────────────────
+# Shared cosmetics available to all active NCR roles.
 
-- type: loadout
-  id: LoadoutNCRPinSergeant
-  category: Roles
-  cost: 1
-  exclusive: true
-  requirements:
-    - !type:CharacterJobRequirement
-      jobs:
-        - NCRSGT
-  items:
-    - ClothingNeckPinNCRSergeant
-
-- type: loadout
-  id: LoadoutNCRPinSergeant1st
-  category: Roles
-  cost: 1
-  exclusive: true
-  requirements:
-    - !type:CharacterJobRequirement
-      jobs:
-        - NCRSGT
-    - !type:CharacterPlaytimeRequirement
-      tracker: NCRNCO
-      min: 72000 # 20 hours veterancy unlock
-  items:
-    - ClothingNeckPinNCRSergeant1st
-
-- type: loadout
-  id: LoadoutNCRPinMasterSergeant
-  category: Roles
-  cost: 1
-  exclusive: true
-  requirements:
-    - !type:CharacterJobRequirement
-      jobs:
-        - NCRSGT
-    - !type:CharacterPlaytimeRequirement
-      tracker: NCRNCO
-      min: 144000 # 40 hours veterancy unlock
-  items:
-    - ClothingNeckPinNCRMasterSergeant
-
-- type: loadout
-  id: LoadoutNCRPinSergeantMajor
-  category: Roles
-  cost: 1
-  exclusive: true
-  requirements:
-    - !type:CharacterJobRequirement
-      jobs:
-        - NCRSGT
-    - !type:CharacterPlaytimeRequirement
-      tracker: NCRNCO
-      min: 216000 # 60 hours veterancy unlock
-  items:
-    - ClothingNeckPinNCRSergeantMajor
-
-- type: loadout
-  id: LoadoutNCRPinSecondLieutenant
-  category: Roles
-  cost: 1
-  exclusive: true
-  requirements:
-    - !type:CharacterJobRequirement
-      jobs:
-        - NCRLT
-  items:
-    - ClothingNeckPinNCRSecondLieutenant
-
-- type: loadout
-  id: LoadoutNCRPinFirstlLieutenant
-  category: Roles
-  cost: 1
-  exclusive: true
-  requirements:
-    - !type:CharacterJobRequirement
-      jobs:
-        - NCRLT
-    - !type:CharacterPlaytimeRequirement
-      tracker: NCROfficer
-      min: 72000 # 20 hours veterancy unlock
-  items:
-    - ClothingNeckPinNCRFirstlLieutenant
-
-# Misfits Change /Comment-out/: LoadoutNCRPinCaptain superseded — NCRCaptain is now a separate job.
-# LoadoutNCRPinCaptainMisfits (bottom of file) correctly gates this to the NCRCaptain job.
-#- type: loadout
-#  id: LoadoutNCRPinCaptain
-#  category: Roles
-#  cost: 1
-#  exclusive: true
-#  requirements:
-#    - !type:CharacterJobRequirement
-#      jobs:
-#        - NCRLT
-#    - !type:CharacterPlaytimeRequirement
-#      tracker: NCROfficer
-#      min: 144000 # 40 hours veterancy unlock
-#  items:
-#    - ClothingNeckPinNCRCaptain
-
-# Misfits Change - Disabled: NCR Major insignia should no longer be selectable in character setup.
-# The NCRMajor job now receives the correct collar pin through starting gear instead.
-#- type: loadout
-#  id: LoadoutNCRPinMajor
-#  category: Roles
-#  cost: 1
-#  exclusive: true
-#  requirements:
-#    - !type:CharacterJobRequirement
-#      jobs:
-#        - NCRCaptain # Misfits Change /Fix/: was NCRLT — Major is above Captain, not Lieutenant
-#    - !type:CharacterPlaytimeRequirement
-#      tracker: NCROfficer
-#      min: 72000 # 20 hours as Captain to display Major insignia
-#  items:
-#    - ClothingNeckPinNCRMajor
-
-# Misfits Change - Disabled: armor/weapons removed from roundstart loadout menu
-#- type: loadout # Corvax Fallout
-#  id: LoadoutNCRPowerArmorT45Sierra
-#  category: Roles
-#  cost: 4
-#  exclusive: true
-#  requirements:
-#    - !type:CharacterJobRequirement
-#      jobs:
-#        - NCRLT
-#    - !type:CharacterPlaytimeRequirement
-#      tracker: NCROfficer
-#      min: 144000 # 40 hours veterancy unlock 60
-#  items:
-#    - N14ClothingOuterPowerArmorT45Sierra # Corvax Fallout
-#
-- type: loadout
-  id: LoadoutNCRPinDoctor
-  category: Roles
-  cost: 1
-  exclusive: true
-  requirements:
-    - !type:CharacterJobRequirement
-      jobs:
-        - NCRMedic
-        - NCRDoctor # Misfits Change /Add/: NCRDoctor is a separate job, should also get the doctor pin
-  items:
-    - ClothingNeckPinNCRDoctor
-
-# Misfits Change /Fix/: Split into two entries — NCRMedic and NCRDoctor use different trackers;
-# the original single entry used NCRDoctor tracker, blocking NCRMedic players who never accumulate NCRDoctor time.
-- type: loadout
-  id: LoadoutNCRPinChiefPhysician
-  category: Roles
-  cost: 1
-  exclusive: true
-  requirements:
-    - !type:CharacterJobRequirement
-      jobs:
-        - NCRDoctor # NCRDoctor earns Chief Physician pin through NCRDoctor tracker
-    - !type:CharacterPlaytimeRequirement
-      tracker: NCRDoctor
-      min: 72000 # 20 hours veterancy unlock
-  items:
-    - ClothingNeckPinNCRChiefPhysician
-
-- type: loadout
-  id: LoadoutNCRPinChiefPhysicianMedic
-  category: Roles
-  cost: 1
-  exclusive: true
-  requirements:
-    - !type:CharacterJobRequirement
-      jobs:
-        - NCRMedic # NCRMedic earns Chief Physician pin through their own NCRMedic tracker
-    - !type:CharacterPlaytimeRequirement
-      tracker: NCRMedic
-      min: 72000 # 20 hours veterancy unlock
-  items:
-    - ClothingNeckPinNCRChiefPhysician
-
-# Misfits Change - Disabled: armor with resistance values removed from roundstart loadout menu
-#- type: loadout
-#  id: LoadoutNCRSnowHelmet
-#  category: Head # Forge-Change
-#  cost: 1
-#  exclusive: true
-#  requirements:
-#    - !type:CharacterJobRequirement
-#      jobs:
-#        - NCRSoldier
-#        - NCRSGT
-#        - NCRWS # Forge-Change
-#  items:
-#    - N14ClothingHeadHatNCRHelmetMetalSnow
-#
-# Misfits Change - Disabled: armor with resistance values removed from roundstart loadout menu
-#- type: loadout
-#  id: LoadoutNCRWoodsHelmet
-#  category: Head # Forge-Change
-#  cost: 1
-#  exclusive: true
-#  requirements:
-#    - !type:CharacterJobRequirement
-#      jobs:
-#        - NCRSoldier
-#        - NCRSGT
-#        - NCRWS # Forge-Change
-#  items:
-#    - N14ClothingHeadHatNCRHelmetMetalWoods
-#
 - type: loadout
   id: LoadoutClothingEyesGlassesGoggles
   category: Roles
@@ -341,144 +424,114 @@
   requirements:
     - !type:CharacterJobRequirement
       jobs:
-        - NCRSoldier
-        - NCRCadet
-        - NCRSGT
-        - NCRWS # Forge-Change
-        - NCRPrivateFirstClass # Misfits Change /Add/: expand access to all NCR roles
-        - NCRMedic
-        - NCREngineer
+        - NCRCommander
         - NCRDoctor
-        - NCRStaffSergeant
-        - NCRFirstSergeant
-        - NCRLT
-        - NCRCaptain
-        - NCRMajor # Misfits Add: NCRMajor was missing from shared NCR cosmetics
-        - NCRMPinvestigator
-        - NCRFieldRanger # #Misfits Fix - renamed from NCRRanger
+        - NCRExecutiveOfficer
+        - NCRPlatoonLeader
+        - NCRNCO
+        - NCREngineer
+        - NCRMedic
+        - NCRWS
+        - NCRHeavyTrooper
+        - NCRCadet
+
+        - NCRFieldRanger
         - NCRVeteranRanger
   items:
     - N14ClothingEyesGlassesGoggles
 
 - type: loadout
   id: LoadoutClothingHandsGlovesNCR
-  category: Hands # Forge-Change
+  category: Hands
   cost: 1
   exclusive: true
   requirements:
     - !type:CharacterJobRequirement
       jobs:
-        - NCRSoldier
-        - NCRCadet
-        - NCRSGT
-        - NCRWS # Forge-Change
-        - NCRPrivateFirstClass # Misfits Change /Add/: expand access to all NCR roles
-        - NCRMedic
-        - NCREngineer
+        - NCRCommander
         - NCRDoctor
-        - NCRStaffSergeant
-        - NCRFirstSergeant
-        - NCRLT
-        - NCRCaptain
-        - NCRMajor # Misfits Add: NCRMajor was missing from shared NCR cosmetics
-        - NCRMPinvestigator
-        - NCRFieldRanger # #Misfits Fix - renamed from NCRRanger
+        - NCRExecutiveOfficer
+        - NCRPlatoonLeader
+        - NCRNCO
+        - NCREngineer
+        - NCRMedic
+        - NCRWS
+        - NCRHeavyTrooper
+        - NCRCadet
+
+        - NCRFieldRanger
         - NCRVeteranRanger
   items:
     - N14ClothingHandsGlovesNCR
 
-# Misfits Change - Disabled: armor with resistance values removed from roundstart loadout menu
-#- type: loadout
-#  id: LoadoutNCRWoodsHelmetGhillie
-#  category: Head # Forge-Change
-#  cost: 1
-#  exclusive: true
-#  requirements:
-#    - !type:CharacterJobRequirement
-#      jobs:
-#        - NCRSoldier
-#        - NCRSGT
-#        - NCRWS # Forge-Change
-#  items:
-#    - N14ClothingHeadHatNCRHelmetMetalGhillie
-#
 - type: loadout
   id: LoadoutNCRWhiteBoonie
-  category: Head # Forge-Change
+  category: Head
   cost: 1
   exclusive: true
   requirements:
     - !type:CharacterJobRequirement
       jobs:
-        - NCRSoldier
-        - NCRSGT
-        - NCRWS # Forge-Change
-        - NCRCadet # Misfits Change /Add/: expand access to all NCR roles
-        - NCRPrivateFirstClass
-        - NCRMedic
-        - NCREngineer
+        - NCRCommander
         - NCRDoctor
-        - NCRStaffSergeant
-        - NCRFirstSergeant
-        - NCRLT
-        - NCRCaptain
-        - NCRMajor # Misfits Add: NCRMajor was missing from shared NCR cosmetics
-        - NCRMPinvestigator
-        - NCRFieldRanger # #Misfits Fix - renamed from NCRRanger
+        - NCRExecutiveOfficer
+        - NCRPlatoonLeader
+        - NCRNCO
+        - NCREngineer
+        - NCRMedic
+        - NCRWS
+        - NCRHeavyTrooper
+        - NCRCadet
+
+        - NCRFieldRanger
         - NCRVeteranRanger
   items:
     - N14ClothingHeadHatWinterBoonie
 
 - type: loadout
   id: LoadoutNCRGreenBoonie
-  category: Head # Forge-Change
+  category: Head
   cost: 1
   exclusive: true
   requirements:
     - !type:CharacterJobRequirement
       jobs:
-        - NCRSoldier
-        - NCRSGT
-        - NCRWS # Forge-Change
-        - NCRCadet # Misfits Change /Add/: expand access to all NCR roles
-        - NCRPrivateFirstClass
-        - NCRMedic
-        - NCREngineer
+        - NCRCommander
         - NCRDoctor
-        - NCRStaffSergeant
-        - NCRFirstSergeant
-        - NCRLT
-        - NCRCaptain
-        - NCRMajor # Misfits Add: NCRMajor was missing from shared NCR cosmetics
-        - NCRMPinvestigator
-        - NCRFieldRanger # #Misfits Fix - renamed from NCRRanger
+        - NCRExecutiveOfficer
+        - NCRPlatoonLeader
+        - NCRNCO
+        - NCREngineer
+        - NCRMedic
+        - NCRWS
+        - NCRHeavyTrooper
+        - NCRCadet
+
+        - NCRFieldRanger
         - NCRVeteranRanger
   items:
     - N14ClothingHeadHatWoodBoonie
 
 - type: loadout
-  id: LoadoutNCRBrownBoonie # Forge-Change
-  category: Head # Forge-Change
+  id: LoadoutNCRBrownBoonie
+  category: Head
   cost: 1
   exclusive: true
   requirements:
     - !type:CharacterJobRequirement
       jobs:
-        - NCRSoldier
-        - NCRSGT
-        - NCRWS
-        - NCRCadet # Misfits Change /Add/: expand access to all NCR roles
-        - NCRPrivateFirstClass
-        - NCRMedic
-        - NCREngineer
+        - NCRCommander
         - NCRDoctor
-        - NCRStaffSergeant
-        - NCRFirstSergeant
-        - NCRLT
-        - NCRCaptain
-        - NCRMajor # Misfits Add: NCRMajor was missing from shared NCR cosmetics
-        - NCRMPinvestigator
-        - NCRFieldRanger # #Misfits Fix - renamed from NCRRanger
+        - NCRExecutiveOfficer
+        - NCRPlatoonLeader
+        - NCRNCO
+        - NCREngineer
+        - NCRMedic
+        - NCRWS
+        - NCRHeavyTrooper
+        - NCRCadet
+
+        - NCRFieldRanger
         - NCRVeteranRanger
   items:
     - N14ClothingHeadHatDesertBoonie
@@ -491,20 +544,18 @@
   requirements:
     - !type:CharacterJobRequirement
       jobs:
-        - NCRSoldier
-        - NCRSGT
-        - NCRWS # Forge-Change
-        - NCRCadet # Misfits Change /Add/: expand access to all NCR roles
-        - NCRPrivateFirstClass
-        - NCRMedic
-        - NCREngineer
+        - NCRCommander
         - NCRDoctor
-        - NCRStaffSergeant
-        - NCRFirstSergeant
-        - NCRLT
-        - NCRCaptain
-        - NCRMPinvestigator
-        - NCRFieldRanger # #Misfits Fix - renamed from NCRRanger
+        - NCRExecutiveOfficer
+        - NCRPlatoonLeader
+        - NCRNCO
+        - NCREngineer
+        - NCRMedic
+        - NCRWS
+        - NCRHeavyTrooper
+        - NCRCadet
+
+        - NCRFieldRanger
         - NCRVeteranRanger
   items:
     - N14ClothingNeckCloakNCR
@@ -517,21 +568,18 @@
   requirements:
     - !type:CharacterJobRequirement
       jobs:
-        - NCRSoldier
-        - NCRSGT
-        - NCRWS # Forge-Change
-        - NCRCadet # Misfits Change /Add/: expand access to all NCR roles
-        - NCRPrivateFirstClass
-        - NCRMedic
-        - NCREngineer
+        - NCRCommander
         - NCRDoctor
-        - NCRStaffSergeant
-        - NCRFirstSergeant
-        - NCRLT
-        - NCRCaptain
-        - NCRMajor # Misfits Add: NCRMajor was missing from shared NCR cosmetics
-        - NCRMPinvestigator
-        - NCRFieldRanger # #Misfits Fix - renamed from NCRRanger
+        - NCRExecutiveOfficer
+        - NCRPlatoonLeader
+        - NCRNCO
+        - NCREngineer
+        - NCRMedic
+        - NCRWS
+        - NCRHeavyTrooper
+        - NCRCadet
+
+        - NCRFieldRanger
         - NCRVeteranRanger
   items:
     - N14ClothingNeckCloakGhillie
@@ -544,21 +592,18 @@
   requirements:
     - !type:CharacterJobRequirement
       jobs:
-        - NCRSoldier
-        - NCRSGT
-        - NCRWS # Forge-Change
-        - NCRCadet # Misfits Change /Add/: expand access to all NCR roles
-        - NCRPrivateFirstClass
-        - NCRMedic
-        - NCREngineer
+        - NCRCommander
         - NCRDoctor
-        - NCRStaffSergeant
-        - NCRFirstSergeant
-        - NCRLT
-        - NCRCaptain
-        - NCRMajor # Misfits Add: NCRMajor was missing from shared NCR cosmetics
-        - NCRMPinvestigator
-        - NCRFieldRanger # #Misfits Fix - renamed from NCRRanger
+        - NCRExecutiveOfficer
+        - NCRPlatoonLeader
+        - NCRNCO
+        - NCREngineer
+        - NCRMedic
+        - NCRWS
+        - NCRHeavyTrooper
+        - NCRCadet
+
+        - NCRFieldRanger
         - NCRVeteranRanger
   items:
     - N14ClothingNeckCloakNCRSnow
@@ -571,21 +616,18 @@
   requirements:
     - !type:CharacterJobRequirement
       jobs:
-        - NCRSoldier
-        - NCRSGT
-        - NCRWS # Forge-Change
-        - NCRCadet # Misfits Change /Add/: expand access to all NCR roles
-        - NCRPrivateFirstClass
-        - NCRMedic
-        - NCREngineer
+        - NCRCommander
         - NCRDoctor
-        - NCRStaffSergeant
-        - NCRFirstSergeant
-        - NCRLT
-        - NCRCaptain
-        - NCRMajor # Misfits Add: NCRMajor was missing from shared NCR cosmetics
-        - NCRMPinvestigator
-        - NCRFieldRanger # #Misfits Fix - renamed from NCRRanger
+        - NCRExecutiveOfficer
+        - NCRPlatoonLeader
+        - NCRNCO
+        - NCREngineer
+        - NCRMedic
+        - NCRWS
+        - NCRHeavyTrooper
+        - NCRCadet
+
+        - NCRFieldRanger
         - NCRVeteranRanger
   items:
     - N14ClothingNeckCloakNCRWoods
@@ -598,74 +640,21 @@
   requirements:
     - !type:CharacterJobRequirement
       jobs:
-        - NCRSoldier
-        - NCRSGT
-        - NCRWS # Forge-Change
-        - NCRCadet # Misfits Change /Add/: expand access to all NCR roles
-        - NCRPrivateFirstClass
-        - NCRMedic
-        - NCREngineer
+        - NCRCommander
         - NCRDoctor
-        - NCRStaffSergeant
-        - NCRFirstSergeant
-        - NCRLT
-        - NCRCaptain
-        - NCRMajor # Misfits Add: NCRMajor was missing from shared NCR cosmetics
-        - NCRMPinvestigator
-        - NCRFieldRanger # #Misfits Fix - renamed from NCRRanger
+        - NCRExecutiveOfficer
+        - NCRPlatoonLeader
+        - NCRNCO
+        - NCREngineer
+        - NCRMedic
+        - NCRWS
+        - NCRHeavyTrooper
+        - NCRCadet
+
+        - NCRFieldRanger
         - NCRVeteranRanger
   items:
     - N14ClothingMaskBrownBalaclava
-
-#Misfits Change /Add/: Rank pin loadouts for Misfits NCR jobs that were missing entries.
-
-- type: loadout
-  id: LoadoutNCRPinPrivateFirstClass
-  category: Roles
-  cost: 1
-  exclusive: true
-  requirements:
-    - !type:CharacterJobRequirement
-      jobs:
-        - NCRPrivateFirstClass
-  items:
-    - ClothingNeckPinNCRPrivate1st
-
-- type: loadout
-  id: LoadoutNCRPinStaffSergeant
-  category: Roles
-  cost: 1
-  exclusive: true
-  requirements:
-    - !type:CharacterJobRequirement
-      jobs:
-        - NCRStaffSergeant
-  items:
-    - ClothingNeckPinNCRSergeant1st
-
-- type: loadout
-  id: LoadoutNCRPinFirstSergeant
-  category: Roles
-  cost: 1
-  exclusive: true
-  requirements:
-    - !type:CharacterJobRequirement
-      jobs:
-        - NCRFirstSergeant
-  items:
-    - ClothingNeckPinNCRMasterSergeant
-
-- type: loadout
-  id: LoadoutNCRPinCaptainMisfits
-  category: Roles
-  cost: 1
-  exclusive: true
-  requirements:
-    - !type:CharacterJobRequirement
-      jobs:
-        - NCRCaptain
-  items:
-    - ClothingNeckPinNCRCaptain
 
 - type: loadout
   id: LoadoutNCRuniformPants
@@ -675,25 +664,22 @@
   requirements:
     - !type:CharacterJobRequirement
       jobs:
-        - NCRSoldier
-        - NCRSGT
-        - NCRWS # Forge-Change
-        - NCRCadet # Misfits Change /Add/: expand access to all NCR roles
-        - NCRPrivateFirstClass
-        - NCRMedic
-        - NCREngineer
+        - NCRCommander
         - NCRDoctor
-        - NCRStaffSergeant
-        - NCRFirstSergeant
-        - NCRLT
-        - NCRCaptain
-        - NCRMajor # Misfits Add: NCRMajor was missing from shared NCR cosmetics
-        - NCRMPinvestigator
-        - NCRMilitaryPoliceRecruit # Misfits Add: MPs are apart of the NCR
-        - NCRMilitaryPoliceSergeant # Misfits Add: MPs are apart of the NCR
-        - NCRMilitaryPoliceCaptain # Misfits Add: MPs are apart of the NCR
+        - NCRExecutiveOfficer
+        - NCRPlatoonLeader
+        - NCRNCO
+        - NCREngineer
+        - NCRMedic
+        - NCRWS
+        - NCRHeavyTrooper
+        - NCRCadet
+
+        - NCRMilitaryPoliceRecruit
+        - NCRMilitaryPoliceSergeant
+        - NCRMilitaryPoliceCaptain
         - NCRRangerRecruit
-        - NCRFieldRanger # #Misfits Fix - renamed from NCRRanger
+        - NCRFieldRanger
         - NCRPatrolRanger
         - NCRVeteranRanger
   items:
@@ -707,25 +693,22 @@
   requirements:
     - !type:CharacterJobRequirement
       jobs:
-        - NCRSoldier
-        - NCRSGT
-        - NCRWS # Forge-Change
-        - NCRCadet # Misfits Change /Add/: expand access to all NCR roles
-        - NCRPrivateFirstClass
-        - NCRMedic
-        - NCREngineer
+        - NCRCommander
         - NCRDoctor
-        - NCRStaffSergeant
-        - NCRFirstSergeant
-        - NCRLT
-        - NCRCaptain
-        - NCRMajor # Misfits Add: NCRMajor was missing from shared NCR cosmetics
-        - NCRMPinvestigator
-        - NCRMilitaryPoliceRecruit # Misfits Add: MPs are apart of the NCR
-        - NCRMilitaryPoliceSergeant # Misfits Add: MPs are apart of the NCR
-        - NCRMilitaryPoliceCaptain # Misfits Add: MPs are apart of the NCR
+        - NCRExecutiveOfficer
+        - NCRPlatoonLeader
+        - NCRNCO
+        - NCREngineer
+        - NCRMedic
+        - NCRWS
+        - NCRHeavyTrooper
+        - NCRCadet
+
+        - NCRMilitaryPoliceRecruit
+        - NCRMilitaryPoliceSergeant
+        - NCRMilitaryPoliceCaptain
         - NCRRangerRecruit
-        - NCRFieldRanger # #Misfits Fix - renamed from NCRRanger
+        - NCRFieldRanger
         - NCRPatrolRanger
         - NCRVeteranRanger
   items:
@@ -739,39 +722,23 @@
   requirements:
     - !type:CharacterJobRequirement
       jobs:
-        - NCRSoldier
-        - NCRSGT
-        - NCRWS # Forge-Change
-        - NCRCadet # Misfits Change /Add/: expand access to all NCR roles
-        - NCRPrivateFirstClass
-        - NCRMedic
-        - NCREngineer
+        - NCRCommander
         - NCRDoctor
-        - NCRStaffSergeant
-        - NCRFirstSergeant
-        - NCRLT
-        - NCRCaptain
-        - NCRMajor # Misfits Add: NCRMajor was missing from shared NCR cosmetics
-        - NCRMPinvestigator
-        - NCRMilitaryPoliceRecruit # Misfits Add: MPs are apart of the NCR
-        - NCRMilitaryPoliceSergeant # Misfits Add: MPs are apart of the NCR
-        - NCRMilitaryPoliceCaptain # Misfits Add: MPs are apart of the NCR
+        - NCRExecutiveOfficer
+        - NCRPlatoonLeader
+        - NCRNCO
+        - NCREngineer
+        - NCRMedic
+        - NCRWS
+        - NCRHeavyTrooper
+        - NCRCadet
+
+        - NCRMilitaryPoliceRecruit
+        - NCRMilitaryPoliceSergeant
+        - NCRMilitaryPoliceCaptain
         - NCRRangerRecruit
-        - NCRFieldRanger # #Misfits Fix - renamed from NCRRanger
+        - NCRFieldRanger
         - NCRPatrolRanger
         - NCRVeteranRanger
   items:
     - ClothingBeltNCRHarness
-
-# Misfits Change - Disabled: NCR Major insignia is now granted by NCRMajor starting gear, not the character setup menu.
-#- type: loadout
-#  id: LoadoutNCRPinMajorMisfits
-#  category: Roles
-#  cost: 1
-#  exclusive: true
-#  requirements:
-#    - !type:CharacterJobRequirement
-#      jobs:
-#        - NCRMajor # Base rank pin for the NCRMajor job — selectable without a time gate since it is their starting rank
-#  items:
-#    - ClothingNeckPinNCRMajor

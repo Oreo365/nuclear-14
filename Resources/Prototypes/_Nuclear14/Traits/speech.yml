@@ -91,25 +91,25 @@
     - TribalElder
     - TownMayor
     - TownSheriff
-    - NCRCaptain
-    - NCRLT
+    - NCRCommander
+    - NCRExecutiveOfficer
+    - NCRPlatoonLeader
     - NCRVeteranRanger
     - NCRFieldRanger
     - NCRPatrolRanger
     - NCRDoctor
     - NCRFirstSergeant
     - NCRStaffSergeant
-    - NCRSGT
+    - NCRNCO
 #    - CaravanLeader
 #    - BoSWashingtonCommander
 #    - BoSWashingtonPaladin
     - BoSMidPaladinCommander
     - BoSMidPaladin
     # Forge-Change-Start
-    - NCRMPinvestigator
     - NCRWS
-    #- NCREngineer #Misfits Change /Comment-out/: consolidated into Specialist
-    #- NCRMedic #Misfits Change /Comment-out/: consolidated into Specialist
+    - NCREngineer
+    - NCRMedic
     - NCRPrivateFirstClass
     - NCRSoldier
     - NCRCadet

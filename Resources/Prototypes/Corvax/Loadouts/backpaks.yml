@@ -211,8 +211,8 @@
   requirements:
     - !type:CharacterJobRequirement
       jobs:
-        - NCRSGT
-    # Misfits Tweak - Removed the NCRNCO hour gate so any NCRSGT can take the NCR radio backpack.
+        - NCRNCO
+    # Misfits Tweak - Removed the NCRNCO hour gate so any NCO can take the NCR radio backpack.
     # - !type:CharacterPlaytimeRequirement
     #   tracker: NCRNCO
     #   min: 36000 # 10 hours

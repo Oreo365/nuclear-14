@@ -1,9 +1,11 @@
+# #Misfits Change /Hide/: NCRFirstSergeant replaced by NCRNCO role system.
+# Job kept defined for compatibility; prototype references remain valid.
 - type: job
   id: NCRFirstSergeant
-  setPreference: true
-  hideWithoutJobWhitelist: false # #Misfits Tweak - visible in all menus
-  hideIfPlaytimeRequirementsNotMet: false # #Misfits Tweak - all jobs visible in selection
-  jobWhitelistBypassesRoleTimers: true # #Misfits Change
+  setPreference: false # Hidden — role superseded by NCRNCO system with SFC pin progression
+  hideWithoutJobWhitelist: false
+  hideIfPlaytimeRequirementsNotMet: false
+  jobWhitelistBypassesRoleTimers: true
   weight: 70
   showBorder: true
   overrideConsoleVisibility: false

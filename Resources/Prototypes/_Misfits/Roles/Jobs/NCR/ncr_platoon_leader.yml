@@ -1,29 +1,33 @@
 - type: job
-  id: NCRNCO
+  id: NCRPlatoonLeader
   setPreference: true
+  hideWithoutJobWhitelist: false
   hideIfPlaytimeRequirementsNotMet: false
   jobWhitelistBypassesRoleTimers: true
-  weight: 50
   overrideConsoleVisibility: false
-  canBeAntag: false
-  name: job-name-ncr-nco
-  description: job-description-ncr-nco
-  playTimeTracker: NCRNCO
+  canBeAntag: true
+  name: job-name-ncr-platoon-leader
+  description: job-description-ncr-platoon-leader
+  playTimeTracker: NCRPlatoonLeader
   requirements:
     - !type:CharacterSpeciesRequirement
       species:
       - Human
       - Ghoul
-    - !type:CharacterDepartmentTimeRequirement # T5 faction timelock (16h NCR)
+    - !type:CharacterDepartmentTimeRequirement # T6 faction timelock (20h NCR)
       department: NCR
-      min: 57600 # 16 hours
-  startingGear: NCRNCOGear
-  icon: "JobIconNcrSerg"
-  supervisors: job-supervisors-ncr-nco
+      min: 72000 # 20 hours
+  weight: 105
+  startingGear: NCRPlatoonLeaderGear
+  icon: "JobIconNcrLeader"
+  supervisors: job-supervisors-ncr-commander
+  requireAdminNotify: true
   alwaysUseSpawner: true
   access:
   - NCR
   - NCRSGT
+  - NCRMedic
+  - NCRLT
   special:
   - !type:AddComponentSpecial
     components:
@@ -33,19 +37,20 @@
           - NCR
 
 - type: startingGear
-  id: NCRNCOGear
+  id: NCRPlatoonLeaderGear
   equipment:
+    head: N14ClothingHeadHatNCRBeretOfficer
     back: N14ClothingBackpackNCR
-    hands: N14ClothingHandsGlovesCombat
     jumpsuit: N14ClothingOfficerUniformNCRDesert
+    outerClothing: N14ClothingOuterNCRDressJacket
     shoes: N14ClothingBootsCombatFilled
-    ears: N14ClothingHeadsetNCR
-    neck: ClothingNeckPinNCRCorporal # CPL (E-4) starting pin; SGT/SSG/SFC unlock via loadout
+    neck: ClothingNeckPinNCRSecondLieutenant # 2LT (O-1) starting pin; 1LT unlocks via loadout
     belt: ClothingBeltNCR
-    outerClothing: MisfitsNCRHeavyCombatArmor # T5 armor (0.70/0.65)
-    pocket1: NCRSGTloadoutkits
+    eyes: ClothingEyesGlassesSunglasses
+    ears: N14ClothingHeadsetNCR
+    pocket1: NCRLTloadoutkits
     pocket2: RadioHandheld
-    id: N14IDNCRDogtagNCO
+    id: N14IDNCRDogtagOfficer
   innerClothingSkirt: N14ClothingOfficerUniformNCRDesert
   satchel: N14ClothingBackpackSatchelNCRFilled
   storage:
@@ -53,4 +58,4 @@
     - N14BoxPlasticFilledMilitaryNCR
 
 - type: playTimeTracker
-  id: NCRNCO
+  id: NCRPlatoonLeader
