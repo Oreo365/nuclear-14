@@ -5265,3 +5265,10 @@ Entries:
   id: 5904
   time: '2026-05-17T05:22:37.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/543
+- author: pierow
+  changes:
+    - type: Add
+      message: Peter Poley Plushie (he pro)
+  id: 5905
+  time: '2026-05-18T15:25:06.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/550
