@@ -25,8 +25,8 @@
     - id: N14JunkAbraxoCleaner
 
 - type: entity
-  id: MisfitsShelfWoodMedicalTribeChangeThis
-  suffix: Filled, Medical, Tribe
+  id: MisfitsShelfWoodMedicalTribeChems
+  suffix: Filled, Medical, Tribe, Chems
   parent: N14ShelfWood1
   components:
   - type: StorageFill

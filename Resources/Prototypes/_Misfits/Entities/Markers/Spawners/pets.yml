@@ -11,3 +11,28 @@
     rules: ghost-role-component-default-rules
   - type: GhostRoleMobSpawner
     prototype: MisfitsMobRabbitFollowersPet
+
+
+- type: entity
+  parent: MisfitsPetSpawnerBase
+  id: MisfitsPetMisfitsMobLizardBoSPet1
+  name: dr. thumper rabbit pet followers spawner
+  components:
+  - type: GhostRole
+    name: ghost-role-information-misfitpet-lizard1-bos-name
+    description: ghost-role-information-n14pet-generic-description
+    rules: ghost-role-component-default-rules
+  - type: GhostRoleMobSpawner
+    prototype: MisfitsMobLizardBoSPet1
+
+- type: entity
+  parent: MisfitsPetSpawnerBase
+  id: MisfitsPetMisfitsMobLizardBoSPet2
+  name: dr. thumper rabbit pet followers spawner
+  components:
+  - type: GhostRole
+    name: ghost-role-information-misfitpet-lizard1-bos-name
+    description: ghost-role-information-n14pet-generic-description
+    rules: ghost-role-component-default-rules
+  - type: GhostRoleMobSpawner
+    prototype: MisfitsMobLizardBoSPet2

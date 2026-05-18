@@ -149,3 +149,19 @@
     - id: N14Ethanol
     - id: ClothingHandsGlovesChemist
     - id: ClothingEyesGlassesChemist
+
+- type: entity
+  id: MisfitsClosetCabinetWoodChemistry
+  suffix: Filled, Medical, Chemistry
+  parent: N14ClosetCabinetWood
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingOuterApronChemist
+      amount: 2
+    - id: ClothingNeckTieChem
+      amount: 2
+    - id: ClothingHandsGlovesChemist
+      amount: 2
+    - id: ClothingEyesGlassesChemist
+      amount: 2

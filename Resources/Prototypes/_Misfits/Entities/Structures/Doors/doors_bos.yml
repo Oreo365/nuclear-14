@@ -1,0 +1,32 @@
+﻿- type: entity
+  parent: N14DoorMetalBarSlanted
+  id: MisfitsDoorMetalBarSlantedBoSMidwestKnight
+  suffix: BoSMidwest, Locked, Knight
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsBOSMidwestKnight ]
+  - type: Wires
+    layoutId: HighSec
+
+  - type: entity
+    parent: HighSecDoor
+    id: MisfitsHighSecDoorLockedBoSMidwestKnight
+    suffix: BoSMidwest, Locked, Knight
+    components:
+    - type: ContainerFill
+      containers:
+        board: [ DoorElectronicsBOSMidwestKnight ]
+    - type: Wires
+      layoutId: HighSec
+
+- type: entity
+  parent: HighSecDoor
+  id: NMisfitsHighSecDoorLockedBoSMidwest
+  suffix: BoSMidwest, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsBOSMidwestGeneral ]
+  - type: Wires
+    layoutId: HighSec

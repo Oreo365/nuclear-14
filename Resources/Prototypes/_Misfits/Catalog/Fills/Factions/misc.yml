@@ -8,31 +8,11 @@
     - id: MisfitsClothingNeckGoldbearmedalNCR
       amount: 2
     - id: MisfitsClothingNeckBronzebearNCR
-      amount: 2
+      amount: 3
     - id: MisfitsClothingNeckPredatormedalNCR
     - id: MisfitsClothingNeckBrahminBrainmedalNCR
     - id: MisfitsClothingNeckEngineeringmedalNCR
     - id: MisfitsClothingNeckMedicalmedalNCR
     - id: MisfitsClothingNeckScoutmedalNCR
     - id: MisfitsCClothingNeckSecuritymedalNCR
-      amount: 2
-    - id: PaperMedalInstructions
-    - id: PaperMedalInformation
-
-- type: entity
-  id: PaperMedalInformation
-  name: "medal information"
-  description: "A paper with information regarding medals."
-  parent: Paper
-  components:
-  - type: Paper
-    content: book-text-medal-information
-
-- type: entity
-  id: PaperMedalInstructions
-  name: "medal instructions"
-  description: "A paper with instructions regarding medals."
-  parent: Paper
-  components:
-  - type: Paper
-    content: book-text-medal-instructions
+      amount: 3

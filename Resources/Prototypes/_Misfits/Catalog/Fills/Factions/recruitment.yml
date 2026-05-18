@@ -22,8 +22,9 @@
   - type: StorageFill
     contents:
     - id: BoxIDLegion
-    - id: BoxIDLegionSlave
     - id: BoxHeadsetLegion
+    - id: NCClothingCollarLegionSlave
+      amount: 4
     - id: BoxEncryptionKeyLegion
     - id: N14AccessConfigurator
     - id: SheetSteel10
@@ -41,9 +42,10 @@
   - type: StorageFill
     contents:
     - id: BoxIDNCR
-    - id: BoxIDNCRPrisoner
     - id: MisfitsBriefcaseBrownNCRMedals
     - id: BoxHeadsetNCR
+    - id: NCClothingBraceletNCRPrisoner
+      amount: 4
     - id: BoxEncryptionKeyNCR
     - id: N14AccessConfigurator
     - id: SheetSteel10

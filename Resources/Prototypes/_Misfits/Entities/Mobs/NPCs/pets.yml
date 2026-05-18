@@ -32,3 +32,40 @@
     factions:
     - Followers
     - SimpleMob
+
+
+- type: entity
+  name: Timmy
+  id: MisfitsMobLizardBoSPet1
+  parent: MobLizard
+  description: Oddly, not a deathclaw. You have been lied to.
+  components:
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      200: Dead
+  - type: Tag
+    tags:
+    - FootstepSound
+    - DoorBumpOpener
+    - CannotSuicide
+  - type: MobPrice
+    price: 200
+
+- type: entity
+  name: Timmy
+  id: MisfitsMobLizardBoSPet2
+  parent: MobLizard
+  description: Seems very friendly!
+  components:
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      200: Dead
+  - type: Tag
+    tags:
+    - FootstepSound
+    - DoorBumpOpener
+    - CannotSuicide
+  - type: MobPrice
+    price: 200

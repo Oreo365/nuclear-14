@@ -1,0 +1,116 @@
+- type: entity
+  id: MisfitsShelfMetalIngots5
+  suffix: Filled, Ingots, 5
+  parent: N14ShelfMetal
+  components:
+  - type: StorageFill
+    contents:
+    - id: N14IngotAluminum5
+    - id: N14IngotCopper5
+    - id: N14IngotGold5
+    - id: N14IngotBrass5
+    - id: N14IngotLead5
+    - id: N14IngotIron5
+    - id: N14IngotSilver5
+
+- type: entity
+  id: MisfitsShelfMetalIngotsRandom
+  suffix: Filled, Ingots, Random
+  parent: N14ShelfMetal
+  components:
+  - type: StorageFill
+    contents:
+    - id: N14IngotAluminum5
+      prob: 0.4
+    - id: N14IngotCopper5
+      prob: 0.4
+    - id: N14IngotGold5
+      prob: 0.4
+    - id: N14IngotBrass5
+      prob: 0.4
+    - id: N14IngotLead5
+      prob: 0.4
+    - id: N14IngotIron5
+      prob: 0.4
+    - id: N14IngotSilver5
+      prob: 0.4
+
+- type: entity
+  id: MisfitsShelfMetalScrap
+  suffix: Filled, Scrap
+  parent: N14ShelfMetal
+  components:
+  - type: StorageFill
+    contents:
+    - id: N14Scrap10
+    - id: N14ScrapGold5
+    - id: N14ScrapBrass5
+    - id: N14ScrapCopper10
+    - id: N14ScrapLead5
+    - id: N14ScrapSteel10
+    - id: N14ScrapElectronic10
+
+- type: entity
+  id: MisfitsShelfMetalScrapRandom
+  suffix: Filled, Scrap, Random
+  parent: N14ShelfMetal
+  components:
+  - type: StorageFill
+    contents:
+    - id: N14Scrap10
+      prob: 0.4
+    - id: N14ScrapGold5
+      prob: 0.4
+    - id: N14ScrapBrass5
+      prob: 0.4
+    - id: N14ScrapCopper10
+      prob: 0.4
+    - id: N14ScrapLead5
+      prob: 0.4
+    - id: N14ScrapSteel10
+      prob: 0.4
+    - id: N14ScrapElectronic10
+      prob: 0.4
+
+- type: entity
+  id: MisfitsShelfMetalMaterials10
+  suffix: Filled, Materials, 10
+  parent: N14ShelfMetal
+  components:
+  - type: StorageFill
+    contents:
+    - id: N14MaterialCircuitry10
+    - id: N14MaterialLeather10
+    - id: N14MaterialThread10
+    - id: MaterialCardboard10
+    - id: MaterialCloth15
+    - id: MaterialWoodPlank15
+    - id: SheetGlass15
+    - id: SheetPlastic15
+    - id: SheetSteel15
+
+- type: entity
+  id: MisfitsShelfMetalMaterialsRandom
+  suffix: Filled, Materials, Random
+  parent: N14ShelfMetal
+  components:
+  - type: StorageFill
+    contents:
+    - id: N14MaterialCircuitry10
+      prob: 0.4
+    - id: N14MaterialLeather10
+      prob: 0.4
+    - id: N14MaterialThread10
+      prob: 0.4
+    - id: MaterialCardboard10
+      prob: 0.4
+    - id: MaterialCloth15
+      prob: 0.4
+    - id: MaterialWoodPlank15
+      prob: 0.4
+    - id: SheetGlass15
+      prob: 0.4
+    - id: SheetPlastic15
+      prob: 0.4
+    - id: SheetSteel15
+      prob: 0.4

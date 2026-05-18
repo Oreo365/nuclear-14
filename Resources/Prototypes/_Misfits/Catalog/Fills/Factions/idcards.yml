@@ -41,24 +41,6 @@
     - state: pda
 
 - type: entity
-  name: prisoner box
-  parent: BoxCardboardNormal
-  id: BoxIDNCRPrisoner
-  description: A box of spare prisoner bracelets.
-  components:
-  - type: StorageFill
-    contents:
-    - id: NCClothingBraceletNCRPrisoner
-      amount: 4
-  - type: Sprite
-    layers:
-    - state: box
-    - state: pda
-  whitelist:
-    components:
-    - NCRPrisonerBracelet
-
-- type: entity
   name: dog tag box
   parent: BoxCardboard
   id: BoxIDNCR
@@ -78,24 +60,6 @@
     layers:
     - state: box
     - state: pda
-
-- type: entity
-  name: slave box
-  parent: BoxCardboardNormal
-  id: BoxIDLegionSlave
-  description: A box of spare collars.
-  components:
-  - type: StorageFill
-    contents:
-    - id: NCClothingCollarLegionSlave
-      amount: 4
-  - type: Sprite
-    layers:
-    - state: box
-    - state: pda
-  whitelist:
-    components:
-    - LegionSlaveCollar
 
 - type: entity
   name: followers ID card box
@@ -184,13 +148,3 @@
     layers:
     - state: box
     - state: pda
-
-- type: entity
-  name: bigger cardboard box # not craftable, only for the slave / prisoner collars
-  parent: BoxCardboard
-  id: BoxCardboardNormal
-  description: A box made for normal sized objects.
-  components:
-  - type: Storage
-    MaxItemSize: Normal
-

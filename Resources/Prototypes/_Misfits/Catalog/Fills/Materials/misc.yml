@@ -15,19 +15,18 @@
     - id: ClothingHandsGlovesColorYellow
     - id: N14FuelTankHandyRusty
 
-# edit here later
+# janitorial
 
 - type: entity
-  id: MisfitsClosetSafeSpinnerChangeThis
-  suffix: Filled, Mechanical
-  parent: N14ClosetSafeSpinner
+  id: MisfitsN14ClosetDoubleJanitorial
+  suffix: Filled, Janitorial
+  parent: N14ClosetDouble
   components:
   - type: StorageFill
     contents:
-    - id: N14Paper
-    - id: SheetSteel10
-    - id: ToolboxElectricalFilled
-    - id: ClothingOuterVestHazard
-    - id: ClothingShoesBootsWork
-    - id: ClothingHandsGlovesColorYellow
-    - id: N14FuelTankHandyRusty
+    - id: WetFloorSign
+      amount: 4
+    - id: TrashBag
+    - id: MopItem
+    - id: FlashlightLantern
+    - id: ClothingHandsGlovesJanitor
