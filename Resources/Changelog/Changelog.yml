@@ -5337,3 +5337,20 @@ Entries:
   id: 5911
   time: '2026-05-19T22:24:16.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/546
+- author: Squagg
+  changes:
+    - type: Tweak
+      message: Reduced cost of backpacks/duffels/satchels to 0
+    - type: Add
+      message: Lets ghouls choose hair and facial hair options in character creation
+    - type: Tweak
+      message: Adds a 30s cooldown to warhorns
+    - type: Tweak
+      message: Reduces noise and interval of hotplates and grills
+    - type: Fix
+      message: Fixes bug that shows/announces dead NPCs on FoTA Tacmap
+    - type: Fix
+      message: Fixes ghoul's being stuck at 200 years old
+  id: 5912
+  time: '2026-05-19T22:27:39.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/555
