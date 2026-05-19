@@ -3,6 +3,8 @@ using Content.Server.Chemistry.Components;
 using Content.Server.Power.Components;
 using Content.Server.Temperature.Components;
 using Content.Shared.Audio;
+using Content.Shared.Sound;
+using Content.Shared.Sound.Components;
 using Content.Shared.Temperature;
 using Content.Shared._Misfits.Sound;
 using Robust.Server.Audio;
@@ -16,6 +18,7 @@ namespace Content.Server._Misfits.Sound;
 public sealed class GrillHeaterSoundSystem : EntitySystem
 {
     [Dependency] private readonly SharedAmbientSoundSystem _ambientSound = default!;
+    [Dependency] private readonly SharedEmitSoundSystem _emitSound = default!;
     [Dependency] private readonly AudioSystem _audio = default!;
 
     // Misfits Fix: polling heater state at 20 Hz is wasteful — state changes are
@@ -37,6 +40,9 @@ public sealed class GrillHeaterSoundSystem : EntitySystem
 
         if (TryComp<AmbientSoundComponent>(uid, out var ambient))
             _ambientSound.SetAmbience(uid, active, ambient);
+
+        if (TryComp<SpamEmitSoundComponent>(uid, out var spam))
+            _emitSound.SetEnabled((uid, spam), active);
     }
 
     public override void Update(float frameTime)
@@ -60,6 +66,9 @@ public sealed class GrillHeaterSoundSystem : EntitySystem
 
             if (TryComp<AmbientSoundComponent>(uid, out var ambient))
                 _ambientSound.SetAmbience(uid, active, ambient);
+
+            if (TryComp<SpamEmitSoundComponent>(uid, out var spam))
+                _emitSound.SetEnabled((uid, spam), active);
 
             if (active)
                 _audio.PlayPvs(sound.StartSound, uid);

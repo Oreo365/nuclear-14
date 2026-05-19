@@ -45,12 +45,15 @@
   - type: SolutionHeater
     heatPerSecond: 160
   # #Misfits Change /Add/ - Give the hotplate an audible active state like the other cooking heaters.
-  - type: AmbientSound
+  - type: SpamEmitSound
     enabled: false
-    volume: -10
-    range: 4
+    minInterval: 20
+    maxInterval: 45
     sound:
       path: /Audio/_Misfits/Machines/steam_long.ogg
+      params:
+        volume: -10
+        maxDistance: 4
   - type: GrillHeaterSound
     startSound:
       path: /Audio/_Misfits/Machines/steam_short.ogg

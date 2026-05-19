@@ -39,12 +39,15 @@
           Medium: { visible: true, state: stove_on }
           High: { visible: true, state: stove_on }
   # #Misfits Change /Add/ - Keep the stove audible while it is actively heating.
-  - type: AmbientSound
+  - type: SpamEmitSound
     enabled: false
-    volume: -8
-    range: 5
+    minInterval: 20
+    maxInterval: 45
     sound:
       path: /Audio/_Misfits/Machines/steam_long.ogg
+      params:
+        volume: -8
+        maxDistance: 5
   - type: GrillHeaterSound
     startSound:
       path: /Audio/_Misfits/Machines/grill.ogg
@@ -88,12 +91,15 @@
     powerLoad: 0
     needsPower: false
   - type: EntityHeater
-  - type: AmbientSound
+  - type: SpamEmitSound
     enabled: false
-    volume: -8
-    range: 5
+    minInterval: 20
+    maxInterval: 45
     sound:
       path: /Audio/_Misfits/Machines/steam_long.ogg
+      params:
+        volume: -8
+        maxDistance: 5
   - type: GrillHeaterSound
     startSound:
       path: /Audio/_Misfits/Machines/grill.ogg
