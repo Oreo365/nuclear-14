@@ -5326,3 +5326,14 @@ Entries:
   id: 5910
   time: '2026-05-18T23:26:15.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/554
+- author: Bradysgaming
+  changes:
+    - type: Add
+      message: Added Supermutant Muffalo Skull Helmet.
+    - type: Add
+      message: Added Supermutant Tribal Gloves
+    - type: Tweak
+      message: Replaced combat jumpsuit
+  id: 5911
+  time: '2026-05-19T22:24:16.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/546
