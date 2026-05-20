@@ -5388,3 +5388,20 @@ Entries:
   id: 5916
   time: '2026-05-20T02:18:49.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/561
+- author: Squagg
+  changes:
+    - type: Fix
+      message: Fix FoTA spawn points
+    - type: Fix
+      message: Allows C-27s to choose NCR or BoS at round start
+    - type: Fix
+      message: Allows SMs to choose their variants at round start
+    - type: Fix
+      message: Fixes C-27 spawn points
+    - type: Fix
+      message: Updates SM and C-27 spawn points to be at proper faction bases
+    - type: Add
+      message: Prestige drip for Head Paladins
+  id: 5917
+  time: '2026-05-20T22:29:01.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/560
