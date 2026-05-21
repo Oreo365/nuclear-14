@@ -26,6 +26,7 @@
   - type: ExaminableSolution
     solution: pen
   - type: Hypospray
+    doAfterDuration: 1.5
     onlyAffectsMobs: false
     solutionName: pen
     transferAmount: 30
@@ -36,8 +37,6 @@
   - type: Tag
     tags:
     - Syringe
-  - type: DoAfter
-    doAfterDuration: 1.5
 
 - type: entity
   name: doctors syringe
@@ -61,6 +60,7 @@
         maxVol: 15
   - type: Injector
     injectOnly: false
+    doAfterDuration: 1.5
   - type: ExaminableSolution
     solution: injector
   - type: Spillable
@@ -78,8 +78,6 @@
   - type: Tag
     tags:
     - Syringe
-  - type: DoAfter
-    doAfterDuration: 1.5
 
 - type: entity
   parent: N14BaseSyringe
@@ -148,8 +146,6 @@
         reagents:
         - ReagentId: DirtyStimpak
           Quantity: 25
-  - type: DoAfter
-    doAfterDuration: 1.5
 
 - type: entity
   parent: N14ChemicalSyringe
