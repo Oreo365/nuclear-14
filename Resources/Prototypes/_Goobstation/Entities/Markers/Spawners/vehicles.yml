@@ -40,3 +40,17 @@
     prototypes:
       - VehicleJanicart
 
+- type: entity
+  name: Motorbike Spawner
+  id: SpawnVehicleMotorbike
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: Objects/Vehicles/motorbike.rsi
+        state: keys
+  - type: ConditionalSpawner
+    prototypes:
+      - N14VehicleBikeScrambler
+      - N14VehicleBikeFlamey
