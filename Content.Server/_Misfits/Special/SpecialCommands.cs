@@ -2,6 +2,7 @@ using Content.Shared._Misfits.Special;
 using Content.Shared._Misfits.Special.Components;
 using Content.Server.Administration;
 using Content.Shared.Administration;
+using Robust.Server.Player;
 using Robust.Shared.Console;
 
 namespace Content.Server._Misfits.Special;
@@ -10,20 +11,24 @@ namespace Content.Server._Misfits.Special;
 public sealed class SpecialGetCommand : IConsoleCommand
 {
     [Dependency] private readonly IEntityManager _entities = default!;
+    [Dependency] private readonly IPlayerManager _players = default!;
 
     public string Command => "specialget";
-    public string Description => "Shows an entity's SPECIAL values.";
-    public string Help => "Usage: specialget [entityUid]";
+    public string Description => "Shows a player's SPECIAL values.";
+    public string Help => "Usage: specialget <username>";
 
     public void Execute(IConsoleShell shell, string argStr, string[] args)
     {
-        var target = args.Length == 0
-            ? shell.Player?.AttachedEntity
-            : ParseEntity(shell, args[0], _entities);
+        if (args.Length != 1)
+        {
+            shell.WriteError(Help);
+            return;
+        }
+
+        var target = ParsePlayerEntity(shell, args[0], _players);
 
         if (target == null)
         {
-            shell.WriteError("No target entity.");
             return;
         }
 
@@ -40,21 +45,33 @@ public sealed class SpecialGetCommand : IConsoleCommand
         }
     }
 
-    internal static EntityUid? ParseEntity(IConsoleShell shell, string text, IEntityManager entities)
+    public CompletionResult GetCompletion(IConsoleShell shell, string[] args)
     {
-        if (!NetEntity.TryParse(text, out var netEntity))
+        if (args.Length == 1)
         {
-            shell.WriteError("Entity UID must be a number.");
+            return CompletionResult.FromHintOptions(
+                CompletionHelper.SessionNames(players: _players),
+                "<username>");
+        }
+
+        return CompletionResult.Empty;
+    }
+
+    internal static EntityUid? ParsePlayerEntity(IConsoleShell shell, string username, IPlayerManager players)
+    {
+        if (!players.TryGetSessionByUsername(username, out var player))
+        {
+            shell.WriteError("Unable to find that player.");
             return null;
         }
 
-        if (!entities.TryGetEntity(netEntity, out var target))
+        if (player.AttachedEntity is not { } target)
         {
-            shell.WriteError("Invalid entity UID.");
+            shell.WriteError("Player has no attached entity.");
             return null;
         }
 
-        return target.Value;
+        return target;
     }
 }
 
@@ -62,10 +79,11 @@ public sealed class SpecialGetCommand : IConsoleCommand
 public sealed class SpecialSetCommand : IConsoleCommand
 {
     [Dependency] private readonly IEntityManager _entities = default!;
+    [Dependency] private readonly IPlayerManager _players = default!;
 
     public string Command => "specialset";
-    public string Description => "Sets an entity's base SPECIAL stat.";
-    public string Help => "Usage: specialset <entityUid> <strength|perception|endurance|charisma|intelligence|agility|luck> <1-10>";
+    public string Description => "Sets a player's base SPECIAL stat.";
+    public string Help => "Usage: specialset <username> <strength|perception|endurance|charisma|intelligence|agility|luck> <1-10>";
 
     public void Execute(IConsoleShell shell, string argStr, string[] args)
     {
@@ -75,7 +93,7 @@ public sealed class SpecialSetCommand : IConsoleCommand
             return;
         }
 
-        var target = SpecialGetCommand.ParseEntity(shell, args[0], _entities);
+        var target = SpecialGetCommand.ParsePlayerEntity(shell, args[0], _players);
         if (target == null)
             return;
 
@@ -100,6 +118,19 @@ public sealed class SpecialSetCommand : IConsoleCommand
         }
 
         shell.WriteLine($"{stat} set to {value}.");
+    }
+
+    public CompletionResult GetCompletion(IConsoleShell shell, string[] args)
+    {
+        return args.Length switch
+        {
+            1 => CompletionResult.FromHintOptions(
+                CompletionHelper.SessionNames(players: _players),
+                "<username>"),
+            2 => CompletionResult.FromHintOptions(StatCompletions, "<stat>"),
+            3 => CompletionResult.FromHintOptions(ValueCompletions, "<1-10>"),
+            _ => CompletionResult.Empty,
+        };
     }
 
     internal static bool TryParseStat(string text, out SpecialStat stat)
@@ -158,16 +189,42 @@ public sealed class SpecialSetCommand : IConsoleCommand
                 return false;
         }
     }
+
+    internal static readonly string[] StatCompletions =
+    [
+        "strength",
+        "perception",
+        "endurance",
+        "charisma",
+        "intelligence",
+        "agility",
+        "luck",
+    ];
+
+    private static readonly string[] ValueCompletions =
+    [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+    ];
 }
 
 [AdminCommand(AdminFlags.Debug)]
 public sealed class SpecialModCommand : IConsoleCommand
 {
     [Dependency] private readonly IEntityManager _entities = default!;
+    [Dependency] private readonly IPlayerManager _players = default!;
 
     public string Command => "specialmod";
-    public string Description => "Adds a temporary SPECIAL modifier to an entity.";
-    public string Help => "Usage: specialmod <entityUid> <strength|perception|endurance|charisma|intelligence|agility|luck> <modifier> [durationSeconds] [source]";
+    public string Description => "Adds a temporary SPECIAL modifier to a player.";
+    public string Help => "Usage: specialmod <username> <strength|perception|endurance|charisma|intelligence|agility|luck> <modifier> [durationSeconds] [source]";
 
     public void Execute(IConsoleShell shell, string argStr, string[] args)
     {
@@ -177,7 +234,7 @@ public sealed class SpecialModCommand : IConsoleCommand
             return;
         }
 
-        var target = SpecialGetCommand.ParseEntity(shell, args[0], _entities);
+        var target = SpecialGetCommand.ParsePlayerEntity(shell, args[0], _players);
         if (target == null)
             return;
 
@@ -216,5 +273,20 @@ public sealed class SpecialModCommand : IConsoleCommand
         }
 
         shell.WriteLine($"{stat} temporary modifier {modifier:+#;-#;0} applied.");
+    }
+
+    public CompletionResult GetCompletion(IConsoleShell shell, string[] args)
+    {
+        return args.Length switch
+        {
+            1 => CompletionResult.FromHintOptions(
+                CompletionHelper.SessionNames(players: _players),
+                "<username>"),
+            2 => CompletionResult.FromHintOptions(SpecialSetCommand.StatCompletions, "<stat>"),
+            3 => CompletionResult.FromHint("<modifier>"),
+            4 => CompletionResult.FromHint("<durationSeconds>"),
+            5 => CompletionResult.FromHint("<source>"),
+            _ => CompletionResult.Empty,
+        };
     }
 }
