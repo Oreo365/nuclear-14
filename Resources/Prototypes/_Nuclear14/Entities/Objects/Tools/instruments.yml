@@ -1,5 +1,5 @@
 - type: entity
-  parent: TrumpetInstrument 
+  parent: TrumpetInstrument
   id: N14InstrumentTrumpet
   name: trumpet
   description: A jazzy and versatile instrument.
@@ -14,8 +14,8 @@
     price: 15
 
 - type: entity
-  parent: TromboneInstrument 
-  id: N14InstrumentTrombone 
+  parent: TromboneInstrument
+  id: N14InstrumentTrombone
   name: trombone
   description: A brass instrument with an adjustable slide, has some weight to it.
   components:
@@ -29,7 +29,7 @@
     price: 15
 
 - type: entity
-  parent: BanjoInstrument 
+  parent: BanjoInstrument
   id: N14InstrumentBanjo
   name: banjo
   description: An old rustic country instrument.
@@ -44,7 +44,7 @@
     price: 15
 
 - type: entity
-  parent: ViolinInstrument 
+  parent: ViolinInstrument
   id: N14InstrumentViolin
   name: violin
   description: Played in first chairs and lawn chairs.
@@ -59,7 +59,7 @@
     price: 15
 
 - type: entity
-  parent: AcousticGuitarInstrument 
+  parent: AcousticGuitarInstrument
   id: N14InstrumentGuitar
   name: acoustic guitar
   description: Play it again... My Johnny...
@@ -79,7 +79,7 @@
     price: 15
 
 - type: entity
-  parent: SaxophoneInstrument 
+  parent: SaxophoneInstrument
   id: N14InstrumentSaxaphone
   name: saxophone
   description: Takes more than a few bombs to kill jazz.
@@ -94,7 +94,7 @@
     price: 15
 
 - type: entity
-  parent: HarmonicaInstrument 
+  parent: HarmonicaInstrument
   id: N14InstrumentHarmonica
   name: harmonica
   description: "A nifty pocket-sized instrument, for lettin' your soul sing on the trails..."
@@ -109,7 +109,7 @@
     price: 15
 
 - type: entity
-  parent: ClarinetInstrument 
+  parent: ClarinetInstrument
   id: N14InstrumentClarinet
   name: clarinet
   description: A refined reed instrument.
@@ -126,7 +126,7 @@
     price: 15
 
 - type: entity
-  parent: FluteInstrument 
+  parent: FluteInstrument
   id: N14InstrumentFlute
   name: flute
   description: An elegant woodwind instrument.
@@ -143,7 +143,7 @@
     price: 15
 
 - type: entity
-  parent: PanFluteInstrument 
+  parent: PanFluteInstrument
   id: N14InstrumentPanflute
   name: pan flute
   description: A tribal instrument of ancient design, constructed from reeds.
@@ -156,5 +156,68 @@
   - type: Item
     size: Small
     sprite: Objects/Fun/Instruments/panflute.rsi
+  - type: StaticPrice # Forge-Add
+    price: 15
+
+- type: entity
+  parent: ElectricGuitarInstrument
+  id: N14InstrumentElectricGuitar
+  name: electric guitar
+  description: Now this makes you feel like a rock star!
+  components:
+  - type: Instrument
+    program: 27
+  - type: Sprite
+    sprite: Objects/Fun/Instruments/eguitar.rsi
+    state: icon
+  - type: Item
+    size: Normal
+    sprite: Objects/Fun/Instruments/eguitar.rsi
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - back
+    sprite: Objects/Fun/Instruments/eguitar.rsi
+  - type: StaticPrice # Forge-Add
+    price: 15
+
+- type: entity
+  parent: BassGuitarInstrument
+  id: N14InstrumentBassGuitar
+  name: bass guitar
+  description: You feel really cool holding this. Shame you're the only one that thinks that.
+  components:
+  - type: Instrument
+    program: 33
+  - type: Sprite
+    sprite: Objects/Fun/Instruments/bassguitar.rsi
+    state: icon
+  - type: Item
+    size: Normal
+    sprite: Objects/Fun/Instruments/bassguitar.rsi
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - back
+    sprite: Objects/Fun/Instruments/bassguitar.rsi
+  - type: StaticPrice # Forge-Add
+    price: 15
+
+- type: entity
+  parent: RockGuitarInstrument
+  id: N14InstrumentRockGuitar
+  name: rock guitar
+  description: What an axe!
+  components:
+  - type: Instrument
+    program: 29
+  - type: Item
+    size: Normal
+    sprite: Objects/Fun/Instruments/rockguitar.rsi
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - back
+    sprite: Objects/Fun/Instruments/rockguitar.rsi
   - type: StaticPrice # Forge-Add
     price: 15

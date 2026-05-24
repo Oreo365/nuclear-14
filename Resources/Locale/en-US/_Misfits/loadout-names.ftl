@@ -237,6 +237,9 @@ loadout-name-N14InstrumentFlute = flute
 loadout-name-N14InstrumentClarinet = clarinet
 loadout-name-N14InstrumentTrumpet = trumpet
 loadout-name-N14InstrumentTrombone = trombone
+loadout-name-N14InstrumentElectricGuitar = electric guitar
+loadout-name-N14InstrumentBassGuitar = bass guitar
+loadout-name-N14InstrumentRockGuitar = rock guitar
 
 # Cosmetic loadouts (Misfits Add - drip expansion)
 loadout-name-MisfitsLoadoutNeckDesertScarf = desert scarf

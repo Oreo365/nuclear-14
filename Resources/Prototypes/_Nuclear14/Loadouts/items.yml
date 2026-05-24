@@ -227,6 +227,30 @@
   items:
     - N14FoodPorkBeans
 
+- type: loadout
+  id: N14InstrumentElectricGuitar
+  category: Items
+  cost: 2
+  items:
+    - N14InstrumentElectricGuitar
+
+- type: loadout
+  id: N14InstrumentBassGuitar
+  category: Items
+  cost: 2
+  items:
+    - N14InstrumentBassGuitar
+
+- type: loadout
+  id: N14InstrumentRockGuitar
+  category: Items
+  cost: 2
+  items:
+    - N14InstrumentRockGuitar
+
+
+
+
 # Misc
 # Misfits Change: Removed bottlecap (N14CurrencyCap100) loadout entry — caps are no longer granted to players at round start via loadouts.
 #- type: loadout
