@@ -161,7 +161,7 @@
 
 - type: entity
   parent: ClothingNeckPinNCRPrivate
-  id: ClothingNeckPinNCRFirstlLieutenant
+  id: ClothingNeckPinNCRFirstLieutenant
   name: first lieutenant pin
   components:
   - type: RankTitle
