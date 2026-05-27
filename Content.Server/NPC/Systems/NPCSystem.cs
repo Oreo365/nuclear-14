@@ -398,6 +398,23 @@ namespace Content.Server.NPC.Systems
             _chat.TrySendInGameICMessage(user, Loc.GetString("npc-order-response-recruit"), InGameICChatType.Speak, false);
         }
 
+        public void AutoRecruitPetFollower(EntityUid pet, EntityUid owner)
+        {
+            if (!TryComp<HTNComponent>(pet, out var htn))
+                return;
+
+            _npcFaction.AddFriendlyEntity(pet, owner);
+            _npcFaction.IgnoreEntity(pet, owner);
+
+            var recruited = EnsureComp<RecruitedFollowerComponent>(pet);
+            recruited.Commander = owner;
+            if (string.IsNullOrEmpty(recruited.OriginalRootTask))
+                recruited.OriginalRootTask = htn.RootTask.Task;
+
+            ApplyFollowerOrder(pet, owner, htn, recruited, FollowerOrderType.Follow);
+            UpdateCommanderFollowerCount(owner);
+        }
+
         private void StopFollowingUser(EntityUid target, EntityUid user, HTNComponent htn, bool showPopup = true)
         {
             if (!TryComp<RecruitedFollowerComponent>(target, out var recruited) ||

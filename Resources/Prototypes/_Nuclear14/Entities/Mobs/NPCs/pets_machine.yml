@@ -100,7 +100,7 @@
   - type: MobMover
   - type: NpcFactionMember
     factions:
-    - Wastelander
+    - SimpleNeutral
   - type: Sprite
     sprite: _Nuclear14/Mobs/Pets/eyebot_smile.rsi
     layers:
@@ -263,7 +263,7 @@
   components:
   - type: NpcFactionMember
     factions:
-    - BrotherhoodOfSteel
+    - SimpleNeutral
   - type: Sprite
     sprite: _Nuclear14/Mobs/Pets/eyebot_mbos.rsi
     layers:
@@ -296,7 +296,7 @@
   components:
   - type: NpcFactionMember
     factions:
-    - BrotherhoodOfSteel
+    - SimpleNeutral
   - type: Sprite
     sprite: _Nuclear14/Mobs/Pets/eyebot_wbos.rsi
     layers:
