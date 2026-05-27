@@ -138,6 +138,12 @@
     - N14Robot
     - N14BrotherBeep
     - Sign
+  - type: GhostRole
+    name: ghost-role-information-n14pet-dog-name
+    description: ghost-role-information-n14pet-generic-description
+    rules: ghost-role-component-default-rules
+    makeSentient: false
+    allowMovement: true
   - type: Speech # Corvax-Change
     speechSounds: Dog
   #- type: DogVision # Corvax-Change | #Misfits Change: Disabled — greyscale shader should not apply to players inhabiting pet mobs

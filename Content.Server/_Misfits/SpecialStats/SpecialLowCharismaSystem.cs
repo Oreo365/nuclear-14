@@ -1,6 +1,8 @@
 using Content.Server._Misfits.SpecialStats.Components;
 using Content.Server.Speech;
+using Content.Shared.Dataset;
 using Content.Shared.Examine;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
 namespace Content.Server._Misfits.SpecialStats;
@@ -10,22 +12,11 @@ namespace Content.Server._Misfits.SpecialStats;
 /// </summary>
 public sealed class SpecialLowCharismaSystem : EntitySystem
 {
+    private const string AwkwardOpenerDatasetId = "SpecialLowCharismaOpeners";
+    private const string AwkwardCloserDatasetId = "SpecialLowCharismaClosers";
+
+    [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
-
-    private static readonly string[] AwkwardOpeners =
-    [
-        "Uh, ",
-        "Look, ",
-        "I mean, ",
-        "So, ",
-    ];
-
-    private static readonly string[] AwkwardClosers =
-    [
-        ", I guess",
-        ", or whatever",
-        ", if that makes sense",
-    ];
 
     public override void Initialize()
     {
@@ -67,10 +58,10 @@ public sealed class SpecialLowCharismaSystem : EntitySystem
             message = StutterFirstWord(message);
 
         if (_random.Prob(openerChance))
-            message = _random.Pick(AwkwardOpeners) + message;
+            message = PickLocalizedDatasetValue(AwkwardOpenerDatasetId) + message;
 
         if (_random.Prob(closerChance))
-            message = AddCloser(message, _random.Pick(AwkwardClosers));
+            message = AddCloser(message, PickLocalizedDatasetValue(AwkwardCloserDatasetId));
 
         return message;
     }
@@ -103,5 +94,13 @@ public sealed class SpecialLowCharismaSystem : EntitySystem
             return message[..^1] + closer + last;
 
         return message + closer;
+    }
+
+    private string PickLocalizedDatasetValue(string datasetId)
+    {
+        if (!_prototype.TryIndex<LocalizedDatasetPrototype>(datasetId, out var dataset))
+            return string.Empty;
+
+        return Loc.GetString(_random.Pick(dataset.Values));
     }
 }

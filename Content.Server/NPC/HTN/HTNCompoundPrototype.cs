@@ -12,4 +12,19 @@ public sealed partial class HTNCompoundPrototype : IPrototype
 
     [DataField("branches", required: true)]
     public List<HTNBranch> Branches = new();
+
+    /// <summary>
+    /// If set, marks this as the base of a follower-capable compound family and names the Follow-order variant.
+    /// Passive and Neutral default to this value if not specified.
+    /// </summary>
+    [DataField]
+    public string? FollowerFollow;
+
+    /// <summary>Compound to use for Passive order. Defaults to <see cref="FollowerFollow"/> if unset.</summary>
+    [DataField]
+    public string? FollowerPassive;
+
+    /// <summary>Compound to use for Neutral order. Defaults to <see cref="FollowerFollow"/> if unset.</summary>
+    [DataField]
+    public string? FollowerNeutral;
 }

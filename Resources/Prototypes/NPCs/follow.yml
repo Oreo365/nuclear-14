@@ -30,23 +30,27 @@
           operator: !type:WaitOperator
             key: IdleTime
 
-    # Pick a new idle spot near the follow target
+- type: htnCompound
+  id: OrderedFollowCompound
+  branches:
     - tasks:
         - !type:HTNPrimitiveTask
-          operator: !type:PickAccessibleOperator
-            # originKey: FollowTarget
-            rangeKey: FollowCloseRange
-            targetCoordinates: FollowIdleTarget
-
-        - !type:HTNPrimitiveTask
+          preconditions:
+            - !type:CoordinatesNotInRangePrecondition
+              targetKey: FollowTarget
+              rangeKey: FollowCloseRange
           operator: !type:MoveToOperator
-            targetKey: FollowIdleTarget
+            pathfindInPlanning: false
+            targetKey: FollowTarget
+            rangeKey: FollowCloseRange
+            removeKeyOnFinish: false
 
+    - tasks:
         - !type:HTNPrimitiveTask
           operator: !type:RandomOperator
             targetKey: IdleTime
-            minKey: MinimumIdleTime
-            maxKey: MaximumIdleTime
+            minKey: FollowWaitMin
+            maxKey: FollowWaitMax
 
         - !type:HTNPrimitiveTask
           preconditions:
@@ -54,6 +58,6 @@
               key: IdleTime
             - !type:CoordinatesInRangePrecondition
               targetKey: FollowTarget
-              rangeKey: FollowRange
+              rangeKey: FollowCloseRange
           operator: !type:WaitOperator
             key: IdleTime

@@ -26,6 +26,22 @@ public sealed partial class NpcFactionSystem
         component.ExceptionalFriendlies.Add(fEntity);
     }
 
+    public void RemoveFriendlyEntity(EntityUid uid, EntityUid fEntity, NpcFactionMemberComponent? component = null)
+    {
+        if (!Resolve(uid, ref component, false))
+            return;
+
+        component.ExceptionalFriendlies.Remove(fEntity);
+    }
+
+    public bool IsExceptionalFriendly(Entity<NpcFactionMemberComponent?> ent, EntityUid target)
+    {
+        if (!Resolve(ent, ref ent.Comp, false))
+            return false;
+
+        return ent.Comp.ExceptionalFriendlies.Contains(target);
+    }
+
     private void OnGetNearbyHostiles(EntityUid uid, NpcFactionMemberComponent component, ref GetNearbyHostilesEvent args)
     {
         args.ExceptionalFriendlies.UnionWith(component.ExceptionalFriendlies);

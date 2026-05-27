@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Content.Server.NPC.Components;
 using Content.Server.NPC.Pathfinding;
 using Content.Server.NPC.Systems;
+using Robust.Shared.Log;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics.Components;
@@ -18,6 +19,7 @@ public sealed partial class MoveToOperator : HTNOperator, IHtnConditionalShutdow
     private NPCSteeringSystem _steering = default!;
     private PathfindingSystem _pathfind = default!;
     private SharedTransformSystem _transform = default!;
+    private ISawmill _followSawmill = default!;
 
     /// <summary>
     /// When to shut the task down.
@@ -69,6 +71,7 @@ public sealed partial class MoveToOperator : HTNOperator, IHtnConditionalShutdow
         _pathfind = sysManager.GetEntitySystem<PathfindingSystem>();
         _steering = sysManager.GetEntitySystem<NPCSteeringSystem>();
         _transform = sysManager.GetEntitySystem<SharedTransformSystem>();
+        _followSawmill = Logger.GetSawmill("npc.follow.move");
     }
 
     public override async Task<(bool Valid, Dictionary<string, object>? Effects)> Plan(NPCBlackboard blackboard,
@@ -84,12 +87,6 @@ public sealed partial class MoveToOperator : HTNOperator, IHtnConditionalShutdow
         if (!_entManager.TryGetComponent<TransformComponent>(owner, out var xform) ||
             !_entManager.TryGetComponent<PhysicsComponent>(owner, out var body))
             return (false, null);
-
-        if (!_entManager.TryGetComponent<MapGridComponent>(xform.GridUid, out var ownerGrid) ||
-            !_entManager.TryGetComponent<MapGridComponent>(targetCoordinates.GetGridUid(_entManager), out var targetGrid))
-        {
-            return (false, null);
-        }
 
         var range = blackboard.GetValueOrDefault<float>(RangeKey, _entManager);
 
@@ -108,6 +105,12 @@ public sealed partial class MoveToOperator : HTNOperator, IHtnConditionalShutdow
             {
                 {NPCBlackboard.OwnerCoordinates, targetCoordinates}
             });
+        }
+
+        if (!_entManager.TryGetComponent<MapGridComponent>(xform.GridUid, out var ownerGrid) ||
+            !_entManager.TryGetComponent<MapGridComponent>(targetCoordinates.GetGridUid(_entManager), out var targetGrid))
+        {
+            return (false, null);
         }
 
         var path = await _pathfind.GetPath(
@@ -137,10 +140,25 @@ public sealed partial class MoveToOperator : HTNOperator, IHtnConditionalShutdow
     {
         base.Startup(blackboard);
 
+        var uid = blackboard.GetValue<EntityUid>(NPCBlackboard.Owner);
+
         // Need to remove the planning value for execution.
         blackboard.Remove<EntityCoordinates>(NPCBlackboard.OwnerCoordinates);
-        var targetCoordinates = blackboard.GetValue<EntityCoordinates>(TargetKey);
-        var uid = blackboard.GetValue<EntityUid>(NPCBlackboard.Owner);
+        var isFollowerMove = blackboard.TryGetValue<EntityCoordinates>(NPCBlackboard.FollowTarget, out var followTarget, _entManager);
+
+        if (!blackboard.TryGetValue<EntityCoordinates>(TargetKey, out var targetCoordinates, _entManager))
+        {
+            if (isFollowerMove)
+            {
+                _followSawmill.Debug(
+                    $"StartupMissingTarget: owner={_entManager.ToPrettyString(uid)} targetKey={TargetKey} followTarget={followTarget}.");
+            }
+
+            return;
+        }
+
+        isFollowerMove =
+            followTarget == targetCoordinates;
 
         // Re-use the path we may have if applicable.
         var comp = _steering.Register(uid, targetCoordinates);
@@ -164,6 +182,14 @@ public sealed partial class MoveToOperator : HTNOperator, IHtnConditionalShutdow
 
             comp.CurrentPath = new Queue<PathPoly>(result.Path);
         }
+
+        if (isFollowerMove && _entManager.TryGetComponent<TransformComponent>(uid, out var xform))
+        {
+            var hasDistance = xform.Coordinates.TryDistance(_entManager, targetCoordinates, out var distance);
+            _followSawmill.Debug(
+                $"Startup: owner={_entManager.ToPrettyString(uid)} target={_entManager.ToPrettyString(targetCoordinates.EntityId)} " +
+                $"distance={(hasDistance ? distance : -1f):F2} range={comp.Range:F2} pathNodes={comp.CurrentPath.Count} pathfindInPlanning={PathfindInPlanning}.");
+        }
     }
 
     public override HTNOperatorStatus Update(NPCBlackboard blackboard, float frameTime)
@@ -179,13 +205,25 @@ public sealed partial class MoveToOperator : HTNOperator, IHtnConditionalShutdow
             return HTNOperatorStatus.Finished;
         }
 
-        return steering.Status switch
+        var status = steering.Status switch
         {
             SteeringStatus.InRange => HTNOperatorStatus.Finished,
             SteeringStatus.NoPath => HTNOperatorStatus.Failed,
             SteeringStatus.Moving => HTNOperatorStatus.Continuing,
             _ => throw new ArgumentOutOfRangeException()
         };
+
+        if (status != HTNOperatorStatus.Continuing &&
+            blackboard.TryGetValue<EntityCoordinates>(NPCBlackboard.FollowTarget, out var followTarget, _entManager) &&
+            blackboard.TryGetValue<EntityCoordinates>(TargetKey, out var targetCoordinates, _entManager) &&
+            followTarget == targetCoordinates)
+        {
+            _followSawmill.Debug(
+                $"Update: owner={_entManager.ToPrettyString(owner)} target={_entManager.ToPrettyString(targetCoordinates.EntityId)} " +
+                $"steeringStatus={steering.Status} operatorStatus={status} currentPath={steering.CurrentPath.Count} range={steering.Range:F2}.");
+        }
+
+        return status;
     }
 
     public void ConditionalShutdown(NPCBlackboard blackboard)

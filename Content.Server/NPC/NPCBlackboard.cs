@@ -21,7 +21,12 @@ public sealed partial class NPCBlackboard : IEnumerable<KeyValuePair<string, obj
     {
         {"BufferRange", 10f},
         {"FollowCloseRange", 3f},
-        {"FollowRange", 7f},
+        {"FollowerWanderRange", 2f},
+        {"FollowRange", 5f},
+        {"FollowWaitMin", 0.1f},
+        {"FollowWaitMax", 0.3f},
+        {"HoldWaitMin", 0.5f},
+        {"HoldWaitMax", 1.0f},
         {"IdleRange", 7f},
         {"InteractRange", SharedInteractionSystem.InteractionRange},
         {"MaximumIdleTime", 7f},

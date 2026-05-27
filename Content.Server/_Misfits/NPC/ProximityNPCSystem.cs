@@ -1,3 +1,4 @@
+using Content.Server.NPC.Components;
 using Content.Server.NPC.HTN;
 using Content.Server.NPC.Systems;
 using Content.Shared._Misfits.CCVar;
@@ -180,6 +181,9 @@ public sealed class ProximityNPCSystem : EntitySystem
                 // The sleep radius being larger than the wake radius prevents thrashing.
                 if (!HasPlayerWithin(mapPos, prox.SleepRange))
                 {
+                    if (HasComp<RecruitedFollowerComponent>(uid))
+                        continue;
+
                     // Sleep first (stops HTN/steering writes), then strip InputMover
                     // so MoverController.UpdateBeforeSolve skips this entity.
                     _npc.SleepNPC(uid);

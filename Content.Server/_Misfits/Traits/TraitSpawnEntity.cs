@@ -6,15 +6,15 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.Manager;
 
 // #Misfits Add - TraitSpawnEntity: spawns a separate entity at the player's position when the trait activates.
-// Used for pet companion traits so each pet gets its own ghost-role spawner entity,
-// avoiding the component-duplication limitation of TraitAddComponent.
+// Used for pet companion traits. If the spawner prototype contains a GhostRoleMobSpawner with a valid
+// prototype, the companion mob is spawned immediately as an AI NPC (no ghost player required).
 
 namespace Content.Server._Misfits.Traits;
 
 /// <summary>
 ///     Spawns one or more entities at the player's location when the trait is applied.
-///     Unlike <c>TraitAddComponent</c>, each entity is independent, so multiple traits
-///     can each spawn their own ghost-role spawner without component conflicts.
+///     If a spawned entity has a <c>GhostRoleMobSpawnerComponent</c> with a valid prototype,
+///     the mob is spawned immediately as an AI NPC and the spawner is deleted.
 /// </summary>
 [UsedImplicitly]
 public sealed partial class TraitSpawnEntity : TraitFunction
@@ -37,14 +37,19 @@ public sealed partial class TraitSpawnEntity : TraitFunction
 
         foreach (var proto in Prototypes)
         {
-            var spawned = entityManager.SpawnEntity(proto, coords);
+            var spawner = entityManager.SpawnEntity(proto, coords);
 
-            // Tag pet ghost-role spawners with the owning player so the pet
-            // is later relocated to the player's live position when a ghost
-            // takes the role (handled by MisfitsPetSpawnerOwnerSystem).
-            if (entityManager.HasComponent<GhostRoleMobSpawnerComponent>(spawned))
+            if (entityManager.TryGetComponent<GhostRoleMobSpawnerComponent>(spawner, out var mobSpawner)
+                && mobSpawner.Prototype is { } mobProto)
             {
-                var ownerComp = entityManager.EnsureComponent<MisfitsPetSpawnerOwnerComponent>(spawned);
+                // Spawn the companion immediately as an AI NPC; no ghost player required.
+                entityManager.SpawnEntity(mobProto, coords);
+                entityManager.DeleteEntity(spawner);
+            }
+            else if (entityManager.HasComponent<GhostRoleMobSpawnerComponent>(spawner))
+            {
+                // Spawner exists but prototype is unset: fall back to ghost-role flow.
+                var ownerComp = entityManager.EnsureComponent<MisfitsPetSpawnerOwnerComponent>(spawner);
                 ownerComp.Owner = uid;
             }
         }

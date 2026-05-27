@@ -35,6 +35,9 @@
 
 - type: htnCompound
   id: SimpleRangedHostileCompound
+  followerFollow: SimpleRangedFollowHostileCompound
+  followerPassive: SimpleRangedPassiveHostileCompound
+  followerNeutral: SimpleRangedNeutralHostileCompound
   branches:
     - tasks:
         - !type:HTNCompoundTask
@@ -47,7 +50,74 @@
           task: IdleCompound
 
 - type: htnCompound
+  id: SimpleRangedFollowHostileCompound
+  branches:
+    - tasks:
+        - !type:HTNCompoundTask
+          task: InnateRangedCombatCompound
+    - tasks:
+        - !type:HTNCompoundTask
+          task: MeleeCombatCompound
+    - tasks:
+        - !type:HTNPrimitiveTask
+          preconditions:
+            - !type:CoordinatesNotInRangePrecondition
+              targetKey: FollowTarget
+              rangeKey: FollowRange
+          operator: !type:MoveToOperator
+            pathfindInPlanning: false
+            targetKey: FollowTarget
+            rangeKey: FollowCloseRange
+            removeKeyOnFinish: false
+    - tasks:
+        - !type:HTNCompoundTask
+          task: FollowerWanderCompound
+    - tasks:
+        - !type:HTNCompoundTask
+          task: HoldPositionCompound
+
+- type: htnCompound
+  id: SimpleRangedPassiveHostileCompound
+  branches:
+    - tasks:
+        - !type:HTNPrimitiveTask
+          preconditions:
+            - !type:CoordinatesNotInRangePrecondition
+              targetKey: FollowTarget
+              rangeKey: FollowRange
+          operator: !type:MoveToOperator
+            pathfindInPlanning: false
+            targetKey: FollowTarget
+            rangeKey: FollowCloseRange
+            removeKeyOnFinish: false
+    - tasks:
+        - !type:HTNCompoundTask
+          task: FollowerWanderCompound
+    - tasks:
+        - !type:HTNCompoundTask
+          task: HoldPositionCompound
+
+- type: htnCompound
+  id: SimpleRangedNeutralHostileCompound
+  branches:
+    - tasks:
+        - !type:HTNCompoundTask
+          task: OrderedInnateRangedCombatCompound
+    - tasks:
+        - !type:HTNCompoundTask
+          task: OrderedMeleeCombatCompound
+    - tasks:
+        - !type:HTNCompoundTask
+          task: OrderedFollowCompound
+    - tasks:
+        - !type:HTNCompoundTask
+          task: IdleCompound
+
+- type: htnCompound
   id: SimpleHumanoidHostileCompound
+  followerFollow: SimpleHumanoidFollowHostileCompound
+  followerPassive: SimpleHumanoidPassiveHostileCompound
+  followerNeutral: SimpleHumanoidNeutralHostileCompound
   branches:
     - tasks:
         - !type:HTNCompoundTask
@@ -55,6 +125,70 @@
     - tasks:
         - !type:HTNCompoundTask
           task: MeleeCombatCompound
+    - tasks:
+        - !type:HTNCompoundTask
+          task: IdleCompound
+
+- type: htnCompound
+  id: SimpleHumanoidFollowHostileCompound
+  branches:
+    - tasks:
+        - !type:HTNCompoundTask
+          task: RangedCombatCompound
+    - tasks:
+        - !type:HTNCompoundTask
+          task: MeleeCombatCompound
+    - tasks:
+        - !type:HTNPrimitiveTask
+          preconditions:
+            - !type:CoordinatesNotInRangePrecondition
+              targetKey: FollowTarget
+              rangeKey: FollowRange
+          operator: !type:MoveToOperator
+            pathfindInPlanning: false
+            targetKey: FollowTarget
+            rangeKey: FollowCloseRange
+            removeKeyOnFinish: false
+    - tasks:
+        - !type:HTNCompoundTask
+          task: FollowerWanderCompound
+    - tasks:
+        - !type:HTNCompoundTask
+          task: HoldPositionCompound
+
+- type: htnCompound
+  id: SimpleHumanoidPassiveHostileCompound
+  branches:
+    - tasks:
+        - !type:HTNPrimitiveTask
+          preconditions:
+            - !type:CoordinatesNotInRangePrecondition
+              targetKey: FollowTarget
+              rangeKey: FollowRange
+          operator: !type:MoveToOperator
+            pathfindInPlanning: false
+            targetKey: FollowTarget
+            rangeKey: FollowCloseRange
+            removeKeyOnFinish: false
+    - tasks:
+        - !type:HTNCompoundTask
+          task: FollowerWanderCompound
+    - tasks:
+        - !type:HTNCompoundTask
+          task: HoldPositionCompound
+
+- type: htnCompound
+  id: SimpleHumanoidNeutralHostileCompound
+  branches:
+    - tasks:
+        - !type:HTNCompoundTask
+          task: OrderedRangedCombatCompound
+    - tasks:
+        - !type:HTNCompoundTask
+          task: OrderedMeleeCombatCompound
+    - tasks:
+        - !type:HTNCompoundTask
+          task: OrderedFollowCompound
     - tasks:
         - !type:HTNCompoundTask
           task: IdleCompound

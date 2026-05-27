@@ -14,6 +14,12 @@
   categories: [ HideSpawnMenu ]
   description: A two-headed mutant cow, somehow your companion.
   components:
+  - type: GhostRole
+    name: ghost-role-information-n14pet-brahmin-name
+    description: ghost-role-information-n14pet-generic-description
+    rules: ghost-role-component-default-rules
+    makeSentient: false
+    allowMovement: true
   - type: MobThresholds # #Misfits Add - allow revival by medics
     allowRevives: true
   - type: Puller # #Misfits Add - explicit puller for drag mechanic (SimpleMobBase doesn't define one)
@@ -40,6 +46,12 @@
   categories: [ HideSpawnMenu ]
   description: A glowing wasteland chicken, somehow your companion.
   components:
+  - type: GhostRole
+    name: ghost-role-information-n14pet-radchicken-name
+    description: ghost-role-information-n14pet-generic-description
+    rules: ghost-role-component-default-rules
+    makeSentient: false
+    allowMovement: true
   - type: MobThresholds # #Misfits Add - allow revival by medics
     allowRevives: true
   - type: Puller # #Misfits Add - explicit puller for drag mechanic
@@ -66,6 +78,12 @@
   categories: [ HideSpawnMenu ]
   description: A basic wasteland cat, somehow your companion.
   components:
+  - type: GhostRole
+    name: ghost-role-information-n14pet-cat-name
+    description: ghost-role-information-n14pet-generic-description
+    rules: ghost-role-component-default-rules
+    makeSentient: false
+    allowMovement: true
   - type: MobThresholds # #Misfits Add - allow revival by medics
     allowRevives: true
   - type: Puller # #Misfits Add - explicit puller for drag mechanic
@@ -73,6 +91,67 @@
   - type: Hands # #Misfits Add - allows dragging; no hand slots so no actual item holding
   - type: MisfitsPetNoPickup # #Misfits Add - cancels PickupAttemptEvent; drag only, no item pickup
   - type: PassiveDamage # #Misfits Add - slow natural regeneration for player-controlled pet cats
+    allowedStates:
+    - Alive
+    - Critical
+    damageCap: 0
+    damage:
+      groups:
+        Brute: -0.5
+        Burn: -0.5
+        Toxin: -0.5
+        Airloss: -3
+
+
+- type: entity
+  name: mirelurk
+  id: N14MobPetMirelurk
+  parent: N14MobMirelurk
+  categories: [ HideSpawnMenu ]
+  description: A massive irradiated crab, somehow your companion.
+  components:
+  - type: NpcFactionMember
+    factions:
+    - SimpleNeutral
+  - type: GhostRole
+    name: ghost-role-information-n14pet-mirelurk-name
+    description: ghost-role-information-n14pet-generic-description
+    rules: ghost-role-component-default-rules
+    makeSentient: false
+    allowMovement: true
+  - type: MobThresholds
+    allowRevives: true
+  - type: PassiveDamage
+    allowedStates:
+    - Alive
+    - Critical
+    damageCap: 0
+    damage:
+      groups:
+        Brute: -0.5
+        Burn: -0.5
+        Toxin: -0.5
+        Airloss: -3
+
+- type: entity
+  name: centaur
+  id: N14MobPetCentaur
+  parent: N14MobCentaur
+  categories: [ HideSpawnMenu ]
+  description: A horrific FEV abomination, somehow your companion.
+  components:
+  - type: NpcFactionMember
+    factions:
+    - SimpleNeutral
+  - type: GhostRole
+    name: ghost-role-information-n14pet-centaur-name
+    description: ghost-role-information-n14pet-generic-description
+    rules: ghost-role-component-default-rules
+    makeSentient: false
+    allowMovement: true
+  - type: MobThresholds
+    allowRevives: true
+  - type: PassiveDamage
     allowedStates:
     - Alive
     - Critical

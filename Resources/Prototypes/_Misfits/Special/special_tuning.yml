@@ -21,6 +21,13 @@
   enduranceToxinDamageReductionAtTen: 0.15
   charismaTradePenaltyAtOne: 0.10
   charismaTradeBonusAtTen: 0.10
+  charismaWarcryRangePenaltyAtOne: 0.15
+  charismaWarcryRangeBonusAtTen: 0.15
+  charismaWarcryDurationPenaltyAtOne: 0.15
+  charismaWarcryDurationBonusAtTen: 0.15
+  charismaWarcrySpeedPenaltyAtOne: 0.15
+  charismaWarcrySpeedBonusAtTen: 0.15
+  charismaNeutralFollowerMinimum: 8
   intelligenceLatheMinimumTimeMultiplierAtTen: 0.50
   intelligenceLatheMaterialDiscountAtTen: 0.25
   agilityMovementSpeedPenaltyAtOne: 0.075

@@ -18,6 +18,7 @@ using Content.Shared.Weapons.Ranged.Systems;
 using Content.Shared.Weapons.Reflect;
 using Content.Shared.Damage.Components;
 using Content.Shared._Misfits.Weapons; // #Misfits Add - GunDamageBonusComponent support
+using Content.Server.Weapons.Ranged.Events;
 using Robust.Shared.Audio;
 using Robust.Shared.Map;
 using Robust.Shared.Physics;
@@ -276,6 +277,12 @@ public sealed partial class GunSystem : SharedGunSystem
                     else
                     {
                         FireEffects(fromEffect, hitscan.MaxLength, dir.ToAngle(), hitscan);
+                    }
+
+                    if (lastHit != null && user != null)
+                    {
+                        var hitEv = new HitscanHitEntityEvent(lastHit.Value);
+                        RaiseLocalEvent(user.Value, ref hitEv);
                     }
 
                     Audio.PlayPredicted(gun.SoundGunshotModified, gunUid, user);

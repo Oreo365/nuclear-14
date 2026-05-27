@@ -81,12 +81,33 @@ public sealed partial class SpecialTuningPrototype : IPrototype
     [DataField("enduranceToxinDamageReductionAtTen")]
     public float EnduranceToxinDamageReductionAtTen = 0.15f;
 
-    // Charisma: economy, loadout points, and presentation hooks.
+    // Charisma: economy, loadout points, presentation, and leadership hooks.
     [DataField("charismaTradePenaltyAtOne")]
     public float CharismaTradePenaltyAtOne = 0.10f;
 
     [DataField("charismaTradeBonusAtTen")]
     public float CharismaTradeBonusAtTen = 0.10f;
+
+    [DataField("charismaWarcryRangePenaltyAtOne")]
+    public float CharismaWarcryRangePenaltyAtOne = 0.15f;
+
+    [DataField("charismaWarcryRangeBonusAtTen")]
+    public float CharismaWarcryRangeBonusAtTen = 0.15f;
+
+    [DataField("charismaWarcryDurationPenaltyAtOne")]
+    public float CharismaWarcryDurationPenaltyAtOne = 0.15f;
+
+    [DataField("charismaWarcryDurationBonusAtTen")]
+    public float CharismaWarcryDurationBonusAtTen = 0.15f;
+
+    [DataField("charismaWarcrySpeedPenaltyAtOne")]
+    public float CharismaWarcrySpeedPenaltyAtOne = 0.15f;
+
+    [DataField("charismaWarcrySpeedBonusAtTen")]
+    public float CharismaWarcrySpeedBonusAtTen = 0.15f;
+
+    [DataField("charismaNeutralFollowerMinimum")]
+    public int CharismaNeutralFollowerMinimum = 8;
 
     // Intelligence: crafting/medical quality-of-life gates.
     [DataField("intelligenceLatheMinimumTimeMultiplierAtTen")]

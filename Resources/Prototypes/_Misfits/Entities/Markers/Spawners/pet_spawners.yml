@@ -47,7 +47,7 @@
     description: ghost-role-information-n14pet-generic-description
     rules: ghost-role-component-default-rules
   - type: GhostRoleMobSpawner
-    prototype: N14MobMirelurk
+    prototype: N14MobPetMirelurk
 
 # Rad Chicken companion spawner
 - type: entity
@@ -86,7 +86,7 @@
     description: ghost-role-information-n14pet-generic-description
     rules: ghost-role-component-default-rules
   - type: GhostRoleMobSpawner
-    prototype: N14MobCentaur
+    prototype: N14MobPetCentaur
 
 # --- N14 upstream pet spawners (converted from TraitAddComponent to fix stacking) ---
 

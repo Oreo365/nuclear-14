@@ -1,7 +1,68 @@
 - type: htnCompound
   id: N14HostileCompound
+  followerFollow: N14FollowHostileCompound
+  followerPassive: N14PassiveHostileCompound
+  followerNeutral: N14NeutralHostileCompound
   branches:
     - tasks:
         - !type:HTNCompoundTask
           task: N14MeleeCombatCompound
 # Same as the base version, but without idle walking around & about
+
+- type: htnCompound
+  id: N14FollowHostileCompound
+  branches:
+    - tasks:
+        - !type:HTNCompoundTask
+          task: N14MeleeCombatCompound
+    - tasks:
+        - !type:HTNPrimitiveTask
+          preconditions:
+            - !type:CoordinatesNotInRangePrecondition
+              targetKey: FollowTarget
+              rangeKey: FollowRange
+          operator: !type:MoveToOperator
+            pathfindInPlanning: false
+            targetKey: FollowTarget
+            rangeKey: FollowCloseRange
+            removeKeyOnFinish: false
+    - tasks:
+        - !type:HTNCompoundTask
+          task: FollowerWanderCompound
+    - tasks:
+        - !type:HTNCompoundTask
+          task: HoldPositionCompound
+
+- type: htnCompound
+  id: N14PassiveHostileCompound
+  branches:
+    - tasks:
+        - !type:HTNPrimitiveTask
+          preconditions:
+            - !type:CoordinatesNotInRangePrecondition
+              targetKey: FollowTarget
+              rangeKey: FollowRange
+          operator: !type:MoveToOperator
+            pathfindInPlanning: false
+            targetKey: FollowTarget
+            rangeKey: FollowCloseRange
+            removeKeyOnFinish: false
+    - tasks:
+        - !type:HTNCompoundTask
+          task: FollowerWanderCompound
+    - tasks:
+        - !type:HTNCompoundTask
+          task: HoldPositionCompound
+
+- type: htnCompound
+  id: N14NeutralHostileCompound
+  branches:
+    - tasks:
+        - !type:HTNCompoundTask
+          task: N14OrderedMeleeCombatCompound
+    - tasks:
+        - !type:HTNCompoundTask
+          task: OrderedFollowCompound
+    - tasks:
+        - !type:HTNCompoundTask
+          task: IdleCompound

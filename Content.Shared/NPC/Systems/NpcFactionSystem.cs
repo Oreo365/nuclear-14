@@ -234,6 +234,20 @@ public sealed partial class NpcFactionSystem : EntitySystem
         return intersect.Count() > 0 || ent.Comp.FriendlyFactions.Overlaps(other.Comp.Factions);
     }
 
+    public bool IsEntityHostile(Entity<NpcFactionMemberComponent?, FactionExceptionComponent?> ent, Entity<NpcFactionMemberComponent?> other)
+    {
+        if (!Resolve(ent, ref ent.Comp1, false) || !Resolve(other, ref other.Comp, false))
+            return false;
+
+        foreach (var faction in ent.Comp1.HostileFactions)
+        {
+            if (other.Comp.Factions.Contains(faction))
+                return true;
+        }
+
+        return Resolve(ent, ref ent.Comp2, false) && IsAggroed((ent.Owner, ent.Comp2), other.Owner);
+    }
+
     public bool IsFactionFriendly(string target, string with)
     {
         return _factions[target].Friendly.Contains(with) && _factions[with].Friendly.Contains(target);
