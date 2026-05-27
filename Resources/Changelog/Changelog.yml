@@ -5896,3 +5896,10 @@ Entries:
   id: 5965
   time: '2026-05-26T21:51:24.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/611
+- author: Bradysgaming
+  changes:
+    - type: Tweak
+      message: Renamed the explosive .50 for clarity
+  id: 5966
+  time: '2026-05-27T17:39:29.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/613
