@@ -16,11 +16,9 @@ public sealed partial class HTNCompoundPrototype : IPrototype
     [DataField]
     public string? FollowerFollow;
 
-    /// <summary>Compound to use for Passive order. Defaults to <see cref="FollowerFollow"/> if unset.</summary>
     [DataField]
     public string? FollowerPassive;
 
-    /// <summary>Compound to use for Neutral order. Defaults to <see cref="FollowerFollow"/> if unset.</summary>
     [DataField]
     public string? FollowerNeutral;
 }

@@ -43,8 +43,13 @@ namespace Content.Server.NPC.Systems
         private const string IdleTimeKey = "IdleTime";
         private const string FollowIdleTargetKey = "FollowIdleTarget";
         private const string HoldPositionCompoundId = "HoldPositionCompound";
+        private const float AutoHoldResumeRange = 3f;
+        private const float NeutralDetectionInterval = 0.5f;
+        private const float NeutralDetectionRange = 8f;
 
-        private Dictionary<string, (string Follow, string Passive, string Neutral)> _compoundFamilies = new();
+        private float _neutralDetectionAccumulator;
+
+        private readonly Dictionary<string, (string Follow, string Passive, string Neutral)> _compoundFamilies = new();
 
         [Dependency] private readonly ChatSystem _chat = default!;
         [Dependency] private readonly IConfigurationManager _configurationManager = default!;
@@ -87,6 +92,7 @@ namespace Content.Server.NPC.Systems
             SubscribeLocalEvent<FollowerCommanderComponent, ComponentStartup>(OnCommanderStartup);
             SubscribeLocalEvent<FollowerCommanderComponent, EntParentChangedMessage>(OnCommanderParentChanged);
             SubscribeAllEvent<IssueFollowerOrderMessage>(OnIssueFollowerOrder);
+            SubscribeLocalEvent<FollowerAutoRecruitComponent, ComponentStartup>(OnFollowerAutoRecruitStartup);
         }
 
         public void OnPlayerNPCAttach(EntityUid uid, HTNComponent component, PlayerAttachedEvent args)
@@ -189,6 +195,8 @@ namespace Content.Server.NPC.Systems
             _htn.UpdateNPC(ref _count, _maxUpdates, frameTime);
 
             UpdateFollowerNoPathTimeout(frameTime);
+            UpdateAutoHeldFollowers();
+            UpdateNeutralEscortDetection(frameTime);
             UpdateGridTeleports(frameTime);
         }
 
@@ -233,10 +241,86 @@ namespace Content.Server.NPC.Systems
 
                 recruited.NoPathAccumulator = 0f;
                 ApplyFollowerOrder(follower, recruited.Commander, htn, recruited, FollowerOrderType.HoldPosition);
+                recruited.WasAutoHeld = true;
                 _popup.PopupEntity(Loc.GetString("npc-follower-lost"), follower, recruited.Commander, PopupType.Small);
             }
 
             _followersToHold.Clear();
+        }
+
+        private void UpdateNeutralEscortDetection(float frameTime)
+        {
+            _neutralDetectionAccumulator += frameTime;
+            if (_neutralDetectionAccumulator < NeutralDetectionInterval)
+                return;
+            _neutralDetectionAccumulator = 0f;
+
+            var commanders = new Dictionary<EntityUid, (Vector2 Pos, NpcFactionMemberComponent? Faction)>();
+            var followerQuery = EntityQueryEnumerator<RecruitedFollowerComponent>();
+            while (followerQuery.MoveNext(out _, out var recruited))
+            {
+                if (recruited.Order != FollowerOrderType.Neutral || commanders.ContainsKey(recruited.Commander))
+                    continue;
+                if (TerminatingOrDeleted(recruited.Commander))
+                    continue;
+                TryComp<NpcFactionMemberComponent>(recruited.Commander, out var commanderFaction);
+                commanders[recruited.Commander] = (_transform.GetWorldPosition(recruited.Commander), commanderFaction);
+            }
+
+            if (commanders.Count == 0)
+                return;
+
+            var handled = new HashSet<EntityUid>();
+            var targetQuery = EntityQueryEnumerator<NpcFactionMemberComponent, MobStateComponent>();
+            while (targetQuery.MoveNext(out var target, out var targetFaction, out _))
+            {
+                if (handled.Count == commanders.Count)
+                    break;
+                if (!_mobState.IsAlive(target))
+                    continue;
+
+                var targetPos = _transform.GetWorldPosition(target);
+
+                foreach (var (commander, (commanderPos, commanderFaction)) in commanders)
+                {
+                    if (handled.Contains(commander) || target == commander)
+                        continue;
+                    if ((targetPos - commanderPos).Length() > NeutralDetectionRange)
+                        continue;
+                    if (!_npcFaction.IsEntityHostile((target, targetFaction), (commander, commanderFaction)))
+                        continue;
+
+                    IssueNeutralEscortTarget(commander, target, "ProximityDetection");
+                    handled.Add(commander);
+                }
+            }
+        }
+
+        private void UpdateAutoHeldFollowers()
+        {
+            var query = EntityQueryEnumerator<RecruitedFollowerComponent, HTNComponent>();
+            while (query.MoveNext(out var follower, out var recruited, out var htn))
+            {
+                if (!recruited.WasAutoHeld || recruited.Order != FollowerOrderType.HoldPosition)
+                    continue;
+                if (TerminatingOrDeleted(recruited.Commander))
+                    continue;
+                var dist = (_transform.GetWorldPosition(follower) - _transform.GetWorldPosition(recruited.Commander)).Length();
+                if (dist <= AutoHoldResumeRange)
+                    ApplyFollowerOrder(follower, recruited.Commander, htn, recruited, FollowerOrderType.Follow);
+            }
+        }
+
+        public void OnFollowerWarped(EntityUid follower)
+        {
+            if (!TryComp<RecruitedFollowerComponent>(follower, out var recruited) ||
+                !TryComp<HTNComponent>(follower, out var htn))
+                return;
+
+            if (recruited.WasAutoHeld)
+                ApplyFollowerOrder(follower, recruited.Commander, htn, recruited, FollowerOrderType.Follow);
+            else
+                _htn.Replan(htn);
         }
 
         public void OnMobStateChange(EntityUid uid, HTNComponent component, MobStateChangedEvent args)
@@ -393,26 +477,32 @@ namespace Content.Server.NPC.Systems
                 recruited.OriginalRootTask = htn.RootTask.Task;
 
             ApplyFollowerOrder(target, user, htn, recruited, FollowerOrderType.Follow);
+            EstablishCoFollowerIgnores(target, user);
             UpdateCommanderFollowerCount(user);
             _popup.PopupEntity(Loc.GetString("npc-order-followed-neutral"), target, user, PopupType.Small);
             _chat.TrySendInGameICMessage(user, Loc.GetString("npc-order-response-recruit"), InGameICChatType.Speak, false);
         }
 
-        public void AutoRecruitPetFollower(EntityUid pet, EntityUid owner)
+        private void OnFollowerAutoRecruitStartup(Entity<FollowerAutoRecruitComponent> ent, ref ComponentStartup args)
         {
+            var pet = ent.Owner;
+            var commander = ent.Comp.Commander;
+            RemCompDeferred<FollowerAutoRecruitComponent>(ent);
+
             if (!TryComp<HTNComponent>(pet, out var htn))
                 return;
 
-            _npcFaction.AddFriendlyEntity(pet, owner);
-            _npcFaction.IgnoreEntity(pet, owner);
+            _npcFaction.AddFriendlyEntity(pet, commander);
+            _npcFaction.IgnoreEntity(pet, commander);
 
             var recruited = EnsureComp<RecruitedFollowerComponent>(pet);
-            recruited.Commander = owner;
+            recruited.Commander = commander;
             if (string.IsNullOrEmpty(recruited.OriginalRootTask))
                 recruited.OriginalRootTask = htn.RootTask.Task;
 
-            ApplyFollowerOrder(pet, owner, htn, recruited, FollowerOrderType.Follow);
-            UpdateCommanderFollowerCount(owner);
+            ApplyFollowerOrder(pet, commander, htn, recruited, FollowerOrderType.Follow);
+            EstablishCoFollowerIgnores(pet, commander);
+            UpdateCommanderFollowerCount(commander);
         }
 
         private void StopFollowingUser(EntityUid target, EntityUid user, HTNComponent htn, bool showPopup = true)
@@ -429,6 +519,7 @@ namespace Content.Server.NPC.Systems
             if (!string.IsNullOrEmpty(recruited.OriginalRootTask))
                 htn.RootTask.Task = recruited.OriginalRootTask;
 
+            CleanupCoFollowerIgnores(target, user);
             _npcFaction.RemoveFriendlyEntity(target, user);
             _npcFaction.UnignoreEntity(target, user);
             RemComp<RecruitedFollowerComponent>(target);
@@ -480,7 +571,6 @@ namespace Content.Server.NPC.Systems
             htn.Blackboard.Remove<PathResultEvent>("TargetPathfind");
             htn.Blackboard.Remove<PathResultEvent>(NPCBlackboard.PathfindKey);
 
-            // Clear any exception-list hostility that was set via AggroEntity during Neutral escort mode.
             if (TryComp<FactionExceptionComponent>(htn.Owner, out var factionException) && factionException.Hostiles.Count > 0)
             {
                 var hostilesToClear = new List<EntityUid>(factionException.Hostiles);
@@ -540,6 +630,7 @@ namespace Content.Server.NPC.Systems
         private void ApplyFollowerOrder(EntityUid target, EntityUid commander, HTNComponent htn, RecruitedFollowerComponent recruited, FollowerOrderType order)
         {
             recruited.Order = order;
+            recruited.WasAutoHeld = false;
             SleepNPC(target, htn);
             ClearFollowBlackboardState(htn);
 
@@ -552,9 +643,6 @@ namespace Content.Server.NPC.Systems
                 htn.Blackboard.Remove<EntityCoordinates>(NPCBlackboard.FollowTarget);
 
             _htn.Replan(htn);
-            // ProximityNPCSystem strips InputMoverComponent when it sleeps NPCs. WakeNPC
-            // only adds ActiveNPCComponent, so we must restore InputMoverComponent here,
-            // otherwise NPCSteeringSystem skips this entity and the follower never moves.
             EnsureComp<InputMoverComponent>(target);
             WakeNPC(target, htn);
         }
@@ -653,7 +741,6 @@ namespace Content.Server.NPC.Systems
             var oldGrid = ent.Comp.LastKnownGrid;
             ent.Comp.LastKnownGrid = newGrid;
 
-            // Don't teleport on initial parent assignment or when leaving grids entirely.
             if (oldGrid == null || newGrid == null)
                 return;
 
@@ -728,6 +815,11 @@ namespace Content.Server.NPC.Systems
                 return;
             }
 
+            // Don't issue a co-follower as an escort target.
+            if (TryComp<RecruitedFollowerComponent>(attacker, out var attackerRecruited) &&
+                attackerRecruited.Commander == ent.Comp.Commander)
+                return;
+
             IssueNeutralEscortTarget(ent.Comp.Commander, attacker, "FollowerDamaged");
         }
 
@@ -746,9 +838,35 @@ namespace Content.Server.NPC.Systems
             }
         }
 
+        private void EstablishCoFollowerIgnores(EntityUid newFollower, EntityUid commander)
+        {
+            var query = EntityQueryEnumerator<RecruitedFollowerComponent>();
+            while (query.MoveNext(out var existing, out var recruited))
+            {
+                if (existing == newFollower || recruited.Commander != commander)
+                    continue;
+                _npcFaction.IgnoreEntity(newFollower, existing);
+                _npcFaction.IgnoreEntity(existing, newFollower);
+            }
+        }
+
+        private void CleanupCoFollowerIgnores(EntityUid leavingFollower, EntityUid commander)
+        {
+            var query = EntityQueryEnumerator<RecruitedFollowerComponent>();
+            while (query.MoveNext(out var existing, out var recruited))
+            {
+                if (existing == leavingFollower || recruited.Commander != commander)
+                    continue;
+                _npcFaction.UnignoreEntity(leavingFollower, existing);
+                _npcFaction.UnignoreEntity(existing, leavingFollower);
+            }
+        }
+
         private void SetNeutralEscortTarget(EntityUid follower, EntityUid commander, EntityUid target, HTNComponent htn, string reason)
         {
             if (target == follower || target == commander)
+                return;
+            if (TryComp<RecruitedFollowerComponent>(target, out var targetRecruited) && targetRecruited.Commander == commander)
                 return;
 
             if (!_mobState.IsAlive(target))

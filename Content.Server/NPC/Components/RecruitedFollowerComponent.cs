@@ -18,4 +18,6 @@ public sealed partial class RecruitedFollowerComponent : Component
 
     [DataField]
     public float NoPathTimeoutSeconds = 15f;
+
+    public bool WasAutoHeld;
 }

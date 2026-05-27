@@ -1,5 +1,5 @@
 using Content.Server.NPC.Components;
-using Content.Server.NPC.HTN; // #Misfits Add
+using Content.Server.NPC.HTN;
 using Content.Shared.CombatMode;
 using Content.Shared.Damage;
 using Content.Shared.Mobs.Components;
@@ -85,6 +85,11 @@ public sealed class NPCRetaliationSystem : EntitySystem
 
         if (!ent.Comp.RetaliateFriendlies
             && _npcFaction.IsEntityFriendly(ent.Owner, target))
+            return false;
+
+        if (TryComp<RecruitedFollowerComponent>(ent.Owner, out var selfRecruited)
+            && TryComp<RecruitedFollowerComponent>(target, out var targetRecruited)
+            && selfRecruited.Commander == targetRecruited.Commander)
             return false;
 
         _npcFaction.AggroEntity(ent.Owner, target);

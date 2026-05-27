@@ -1,10 +1,9 @@
 using Content.Server._Misfits.Pets;
 using Content.Server.Ghost.Roles.Components;
-using Content.Server.NPC.Systems;
+using Content.Server.NPC.Components;
 using Content.Shared._Misfits.Special;
 using Content.Shared.Traits;
 using JetBrains.Annotations;
-using Robust.Shared.GameObjects;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.Manager;
 
@@ -17,7 +16,7 @@ namespace Content.Server._Misfits.Traits;
 
 /// <summary>
 ///     Spawns one or more entities at the player's location when the trait is applied.
-///     High-charisma players get an immediately-spawned companion
+///     High charisma players get an immediately-spawned companion
 ///     Low charisma players get a ghost role spawner that a ghost player can take instead.
 /// </summary>
 [UsedImplicitly]
@@ -62,7 +61,7 @@ public sealed partial class TraitSpawnEntity : TraitFunction
             {
                 var mob = entityManager.SpawnEntity(mobProto, coords);
                 entityManager.DeleteEntity(spawner);
-                EntitySystem.Get<NPCSystem>().AutoRecruitPetFollower(mob, uid);
+                entityManager.AddComponent(mob, new FollowerAutoRecruitComponent { Commander = uid });
             }
             else
             {
