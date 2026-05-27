@@ -1,39 +1,6 @@
 - type: specialTuning
   id: MisfitsSpecialTuning
   strengthMeleeDamageMultiplierPerPoint: 0.02
-  strengthCarryPullSpeedPenaltyAtOne: 0.08
-  strengthCarryPullSpeedBonusAtTen: 0.10
-  strengthHeavyGunPenaltyAtOne: 0.18
-  strengthHeavyGunReductionAtTen: 0.10
-  perceptionSpreadPenaltyAtOne: 0.15
-  perceptionSpreadReductionAtTen: 0.25
-  perceptionMineDelayPenaltyAtOne: 0.25
-  perceptionMineDelayReductionAtTen: 0.25
-  perceptionFireDelayPenaltyAtOne: 0.08
-  perceptionFireDelayReductionAtTen: 0.10
-  enduranceHealthPenaltyAtOne: 20
-  enduranceHealthBonusAtTen: 20
-  enduranceNeedDecayPenaltyAtOne: 0.15
-  enduranceNeedDecayReductionAtTen: 0.12
-  enduranceStaminaRecoveryPenaltyAtOne: 0.15
-  enduranceStaminaRecoveryBonusAtTen: 0.20
-  enduranceToxinDamagePenaltyAtOne: 0.12
-  enduranceToxinDamageReductionAtTen: 0.15
-  charismaTradePenaltyAtOne: 0.10
-  charismaTradeBonusAtTen: 0.10
-  charismaWarcryRangePenaltyAtOne: 0.15
-  charismaWarcryRangeBonusAtTen: 0.15
-  charismaWarcryDurationPenaltyAtOne: 0.15
-  charismaWarcryDurationBonusAtTen: 0.15
-  charismaWarcrySpeedPenaltyAtOne: 0.15
-  charismaWarcrySpeedBonusAtTen: 0.15
-  charismaNeutralFollowerMinimum: 8
-  intelligenceLatheMinimumTimeMultiplierAtTen: 0.50
-  intelligenceLatheMaterialDiscountAtTen: 0.25
-  agilityMovementSpeedPenaltyAtOne: 0.075
-  agilityMovementSpeedBonusAtTen: 0.075
-  agilityActionDelayPenaltyAtOne: 0.08
-  agilityActionDelayReductionAtTen: 0.10
   strengthUnarmedDamageMultiplierPerPoint: 0.03333333
   strengthCarryPullSpeedMultiplierPerPoint: 0.01333333
   perceptionSpreadMultiplierPerPoint: 0.03333333
@@ -45,6 +12,10 @@
   enduranceStaminaRecoveryMultiplierPerPoint: 0.02666667
   enduranceToxinDamageMultiplierPerPoint: 0.02
   charismaTradeMultiplierPerPoint: 0.01333333
+  charismaWarcryRangeMultiplierPerPoint: 0.02
+  charismaWarcryDurationMultiplierPerPoint: 0.02
+  charismaWarcrySpeedMultiplierPerPoint: 0.02
+  charismaNeutralFollowerMinimum: 8
   intelligenceLatheTimeMultiplierPerPoint: 0.06666667
   intelligenceLatheMaterialUseMultiplierPerPoint: 0.03333333
   agilityMovementSpeedMultiplierPerPoint: 0.01

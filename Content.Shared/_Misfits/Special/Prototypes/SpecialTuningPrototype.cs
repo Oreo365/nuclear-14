@@ -55,32 +55,17 @@ public sealed partial class SpecialTuningPrototype : IPrototype
     public float EnduranceToxinDamageMultiplierPerPoint = 0.02f;
 
     // Charisma: economy, loadout points, presentation, and leadership hooks.
-    [DataField("charismaTradePenaltyAtOne")]
-    public float CharismaTradePenaltyAtOne = 0.10f;
-
-    [DataField("charismaTradeBonusAtTen")]
-    public float CharismaTradeBonusAtTen = 0.10f;
-    // Charisma: economy, loadout points, and presentation hooks.
     [DataField("charismaTradeMultiplierPerPoint")]
     public float CharismaTradeMultiplierPerPoint = 0.01333333f;
 
-    [DataField("charismaWarcryRangePenaltyAtOne")]
-    public float CharismaWarcryRangePenaltyAtOne = 0.15f;
+    [DataField("charismaWarcryRangeMultiplierPerPoint")]
+    public float CharismaWarcryRangeMultiplierPerPoint = 0.02f;
 
-    [DataField("charismaWarcryRangeBonusAtTen")]
-    public float CharismaWarcryRangeBonusAtTen = 0.15f;
+    [DataField("charismaWarcryDurationMultiplierPerPoint")]
+    public float CharismaWarcryDurationMultiplierPerPoint = 0.02f;
 
-    [DataField("charismaWarcryDurationPenaltyAtOne")]
-    public float CharismaWarcryDurationPenaltyAtOne = 0.15f;
-
-    [DataField("charismaWarcryDurationBonusAtTen")]
-    public float CharismaWarcryDurationBonusAtTen = 0.15f;
-
-    [DataField("charismaWarcrySpeedPenaltyAtOne")]
-    public float CharismaWarcrySpeedPenaltyAtOne = 0.15f;
-
-    [DataField("charismaWarcrySpeedBonusAtTen")]
-    public float CharismaWarcrySpeedBonusAtTen = 0.15f;
+    [DataField("charismaWarcrySpeedMultiplierPerPoint")]
+    public float CharismaWarcrySpeedMultiplierPerPoint = 0.02f;
 
     [DataField("charismaNeutralFollowerMinimum")]
     public int CharismaNeutralFollowerMinimum = 8;

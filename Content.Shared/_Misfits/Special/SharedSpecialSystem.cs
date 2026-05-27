@@ -192,19 +192,6 @@ public sealed class SharedSpecialSystem : EntitySystem
         return curvedDelta * multiplierPerPoint;
     }
 
-    public float GetCurvedEffectScale(
-        EntityUid uid,
-        SpecialStat stat,
-        float penaltyAtOne,
-        float bonusAtTen,
-        SpecialComponent? component = null)
-    {
-        var delta = GetCurvedEffectDelta(uid, stat, component);
-        if (delta <= 0f)
-            return penaltyAtOne * (-delta / 5f);
-        return bonusAtTen * (delta / 7.5f);
-    }
-
     public static int GetCharismaLoadoutPointModifier(int charisma)
     {
         return (int) Math.Round(GetCurvedEffectDelta(charisma) * 2f, MidpointRounding.AwayFromZero);
@@ -277,11 +264,10 @@ public sealed class SharedSpecialSystem : EntitySystem
             return baseRange;
 
         var tuning = GetTuning();
-        var modifier = GetCurvedEffectScale(
+        var modifier = GetCurvedEffectModifier(
             uid,
             SpecialStat.Charisma,
-            -tuning.CharismaWarcryRangePenaltyAtOne,
-            tuning.CharismaWarcryRangeBonusAtTen,
+            tuning.CharismaWarcryRangeMultiplierPerPoint,
             component);
 
         return MathF.Max(0.5f, baseRange * (1f + modifier));
@@ -293,11 +279,10 @@ public sealed class SharedSpecialSystem : EntitySystem
             return baseDuration;
 
         var tuning = GetTuning();
-        var modifier = GetCurvedEffectScale(
+        var modifier = GetCurvedEffectModifier(
             uid,
             SpecialStat.Charisma,
-            -tuning.CharismaWarcryDurationPenaltyAtOne,
-            tuning.CharismaWarcryDurationBonusAtTen,
+            tuning.CharismaWarcryDurationMultiplierPerPoint,
             component);
         var scaledTicks = Math.Max(TimeSpan.TicksPerSecond, (long) Math.Round(baseDuration.Ticks * (1f + modifier)));
 
@@ -310,11 +295,10 @@ public sealed class SharedSpecialSystem : EntitySystem
             return baseSpeedBonus;
 
         var tuning = GetTuning();
-        var modifier = GetCurvedEffectScale(
+        var modifier = GetCurvedEffectModifier(
             uid,
             SpecialStat.Charisma,
-            -tuning.CharismaWarcrySpeedPenaltyAtOne,
-            tuning.CharismaWarcrySpeedBonusAtTen,
+            tuning.CharismaWarcrySpeedMultiplierPerPoint,
             component);
 
         return MathF.Max(0f, baseSpeedBonus * (1f + modifier));
