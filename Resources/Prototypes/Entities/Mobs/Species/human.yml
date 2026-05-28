@@ -8,10 +8,10 @@
   - type: Damageable
     damageTypeCaps:
       Poison: 100 # N14: Prevent unrecoverable 500+ toxin states
-      Heat: 100 # #Misfits Add - Cap burn damage at softcrit threshold; fire alone can't kill a player
-      Shock: 100 # #Misfits Add - Cap shock/burn at softcrit threshold
-      Cold: 100 # #Misfits Add - Cap cold/burn at softcrit threshold
-      Caustic: 100 # #Misfits Add - Cap caustic/burn at softcrit threshold
+      Heat: 125 # #Misfits Add - Cap burn damage at softcrit threshold; fire alone can't kill a player
+      Shock: 125 # #Misfits Add - Cap shock/burn at softcrit threshold
+      Cold: 125 # #Misfits Add - Cap cold/burn at softcrit threshold
+      Caustic: 125 # #Misfits Add - Cap caustic/burn at softcrit threshold
   - type: Perishable
     rotAfter: 1800 # Half an in-game day.
   - type: Hunger # Forge-Change
