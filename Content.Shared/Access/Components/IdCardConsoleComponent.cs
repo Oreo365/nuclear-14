@@ -90,7 +90,7 @@ public sealed partial class IdCardConsoleComponent : Component
         "BOSKnight",
         "BOSScribe",
         "BOSPaladin",
-        "BOSPaladinCommander",
+        "BOSHeadPaladin",
         "80s", // Misfit: 80s Start
         "80sHead",
     };
