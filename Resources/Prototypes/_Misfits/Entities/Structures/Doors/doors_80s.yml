@@ -39,6 +39,27 @@
     layoutId: AirlockCargo
 
 - type: entity
+  parent: N14DoorCell
+  id: N14DoorCellSlantedLocked80s
+  suffix: 80s, Locked
+  components:
+  - type: AccessReader
+    access: [["80s"]]
+  - type: Wires
+    layoutId: AirlockCargo
+
+- type: entity
+  parent: N14DoorCellRust
+  id: MisfitsDoorCellRustLocked80s
+  suffix: 80s, Locked
+  components:
+  - type: AccessReader
+    access: [["80s"]]
+  - type: Wires
+    layoutId: AirlockCargo
+
+
+- type: entity
   parent: N14DoorWoodWhiteSlanted
   id: N14DoorWoodSlantedWhiteLocked80s
   suffix: 80s, Locked

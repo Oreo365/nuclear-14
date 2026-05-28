@@ -1,6 +1,6 @@
 ﻿- type: entity
-  parent: N14DoorMetalBarSlanted
-  id: MisfitsDoorMetalBarSlantedBoSMidwestKnight
+  parent: N14DoorCell
+  id: MisfitsDoorCellBoSMidwestKnight
   suffix: BoSMidwest, Locked, Knight
   components:
   - type: ContainerFill
@@ -10,8 +10,8 @@
     layoutId: HighSec
 
 - type: entity
-  parent: HighSecDoor
-  id: MisfitsHighSecDoorLockedBoSMidwestKnight
+  parent: N14DoorCellRust
+  id: MisfitsDoorCellRustBoSMidwestKnight
   suffix: BoSMidwest, Locked, Knight
   components:
   - type: ContainerFill
