@@ -109,3 +109,13 @@
   components:
   - type: PresetIdCard
     job: NCRMilitaryPoliceCaptain
+
+- type: entity
+  parent: N14IDNCRDogtagNCO
+  id: N14IDNCRDogtagNCRRO
+  name: Requisition officer's dogtags
+  description: An ID dogtag worn by NCR Requisition Officers.
+  suffix: Requisition Officer
+  components:
+  - type: PresetIdCard
+    job: NCRRO

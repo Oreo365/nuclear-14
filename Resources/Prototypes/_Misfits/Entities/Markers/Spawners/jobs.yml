@@ -1063,3 +1063,15 @@
     sprite: Corvax/Markers/jobs.rsi
     layers:
       - state: green
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: MisfitsSpawnPointNCRRO
+  name: NCR Requisition Officer
+  components:
+  - type: SpawnPoint
+    job_id: NCRRO
+  - type: Sprite
+    sprite: Corvax/Markers/jobs.rsi
+    layers:
+      - state: green

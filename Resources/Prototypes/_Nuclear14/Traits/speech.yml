@@ -102,6 +102,7 @@
     - NCRFirstSergeant
     - NCRStaffSergeant
     - NCRNCO
+    - NCRRO
 #    - CaravanLeader
 #    - BoSWashingtonCommander
 #    - BoSWashingtonPaladin
@@ -127,6 +128,7 @@
     - CaesarLegionExplorer
     - CaesarLegionOrator
     - CaesarLegionDean
+    - CaesarLegionForgemaster
     - CaesarLegionLegionnaireVeteran
     - CaesarLegionLegionnaireWarrior
     - CaesarLegionLegionnaireRecruit
