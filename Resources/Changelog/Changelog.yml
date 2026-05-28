@@ -5926,3 +5926,19 @@ Entries:
   id: 5969
   time: '2026-05-28T02:19:16.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/619
+- author: Vixting
+  changes:
+    - type: Add
+      message: >-
+        Charisma 8+ makes you able to have neutral mobs as followers. They can
+        be ordered though the emote well. If you have 8+ charisma, the perk
+        point pet will spawn with you as a follower (they can still be overtaken
+        as a ghost role). You get an additional follower slot past 8 charisma
+        (max 3).
+    - type: Add
+      message: Charisma now effects war cry
+    - type: Add
+      message: More charisma chatscans
+  id: 5970
+  time: '2026-05-28T02:26:59.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/615
