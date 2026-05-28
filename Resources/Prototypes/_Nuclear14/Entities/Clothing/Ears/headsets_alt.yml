@@ -26,6 +26,8 @@
     # equippedPrefix: alt
     slots:
     - ears
+  - type: Item
+    size: Small
 
 - type: entity
   parent: N14ClothingHeadsetAlt
