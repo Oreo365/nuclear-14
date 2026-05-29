@@ -51,7 +51,7 @@
           TribalShaman: [ 3, 3 ] # #Misfits Change - renamed from TribalHealer
           TownMayor: [ 1, 1 ]
           TownSheriff: [ 1, 1 ]
-          TownDeputy: [ 4, 4 ]
+          TownDeputy: [ 1, 2 ]
           # TownDoctor: [ 1, 1 ] # #Misfits Tweak - disabled; FoTA FollowerDoctor slots replace town medical coverage.
           TownMechanic: [ 2, 2 ]
           TownShopkeeper: [ 1, 1 ]
@@ -61,6 +61,7 @@
           NCRCommander: [ 1, 1 ]
           NCRExecutiveOfficer: [ 1, 1 ]
           NCRPlatoonLeader: [ 1, 1 ]
+          NCRRO: [ 1, 1 ]
           NCRChiefRanger: [ 1, 0 ]  # #Misfits Change - admin-only Chief Ranger; renamed from ChiefRanger
           NCRVeteranRanger: [ 1, 1 ] # #Misfits Change - renamed from RangerVeteran
           NCRFieldRanger: [ 1, 1 ]   # #Misfits Add - Field Ranger slot
@@ -112,6 +113,7 @@
           CaesarLegionCenturion: [ 1, 1 ] # Forge-Legion
           CaesarLegionVeteranDecanus: [ 1, 1 ] # Forge-Legion
           CaesarLegionDean: [ 1, 1 ] # Forge-Legion
+          CaesarLegionForgemaster: [ 1, 1] # Forge-Legion. heh, get it? FORGE legion
           CaesarLegionLegionnaireVeteran: [ 4, 4 ] # Forge-Legion
           CaesarLegionLegionnaireWarrior: [ 4, 4 ] # Forge-Legion
           CaesarLegionLegionnaireRecruit: [ 4, 4 ] # Forge-Legion
@@ -137,8 +139,7 @@
           WhiteLegsStormDrummer: [ 0, 0 ] # #Misfits Add - prototype-ready rank, no placed map marker yet.
           # WhiteLegsPainMaker: [ 0, 0 ] # #Misfits Change - legacy hidden rank removed from join rotation; WhiteLegs now covers the visible tribal entry slot.
           FollowerVolunteer: [ 2, 2 ] # #Misfits Change - Followers job replaced by ranked hierarchy
-          FollowerGuard: [ 2, 2 ]      # #Misfits Add - FOTA compound guards
-          FollowerDoctor: [ 2, 2 ]   # #Misfits Add - Doctor rank slot
+          FollowerDoctor: [ 1, 1 ]   # #Misfits Add - Doctor rank slot
           FollowerHead: [ 1, 1 ]     # #Misfits Fix - allow Head to round-start as well as latejoin
           SyntheticMrHandy: [ 1, 3 ]
           SyntheticProtectron: [ 1, 3 ]
