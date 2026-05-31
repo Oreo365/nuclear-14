@@ -6198,3 +6198,48 @@ Entries:
   id: 5995
   time: '2026-05-31T22:31:05.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/651
+- author: Sirius
+  changes:
+    - type: Add
+      message: >-
+        Vault-Tec has added some additional strobe lights and security cameras
+        to the vault, in addition to some new branded satchels and belts to help
+        the Security personnel do their jobs.
+    - type: Add
+      message: >-
+        Don't need to visit sick-bay for rehabilitation? Just need a quick
+        check-up? Vault-Tec has you covered! A brand-new checkup office was
+        installed into the eastern medical wing of the vault, perfect for quick
+        in and out visits to the medical department.
+    - type: Tweak
+      message: >-
+        The layout of the eastern medical wing of the vault has been radically
+        altered. The morgue, med-bay, and operating room have been either moved,
+        expanded, or both. Additional medical supplies have been provided to the
+        vault as well.
+    - type: Add
+      message: >-
+        In an ongoing effort to outfit Vault-14 with the latest and greatest
+        chemical technology, an industrial reagent grinder was provided to the
+        chemistry lab.
+    - type: Add
+      message: >-
+        A material reclaimer was found in the mines during the recent repairs to
+        Vault-14. It has since been moved into the cargo bay of the engineering
+        department. Hopefully some use comes of it!
+    - type: Add
+      message: >-
+        Vault-Tec worries that the reactor has been very vulnerable to sabotage,
+        given the continued destruction of it. That is why two brand new
+        ballistic turrets have been added to the Reactor Room. Now, during a red
+        alert, the turrets will activate and the reactor room will go into
+        lockdown, with all four doors in and out of the room bolting immediately
+        to prevent catastrophic damage being inflicted on the Vault's power
+        supply.
+    - type: Remove
+      message: >-
+        We've removed a few windows from the Botanical lab. The botanist was
+        complaining they were getting in the way during our visit.
+  id: 5996
+  time: '2026-05-31T22:39:32.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/641
