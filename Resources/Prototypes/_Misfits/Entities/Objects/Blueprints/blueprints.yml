@@ -431,6 +431,7 @@
     - N14BPLegionAmmo40mmGrenade
     - N14BPLegionAmmoBox762       # #Misfits Add - 7.62mm box (for SKS)
     - N14BPLegionWeaponDynamite   # #Misfits Add - craftable dynamite
+    - N14BPLegionAmmoSKSEnbloc308
 
 - type: entity
   parent: N14BlueprintBase

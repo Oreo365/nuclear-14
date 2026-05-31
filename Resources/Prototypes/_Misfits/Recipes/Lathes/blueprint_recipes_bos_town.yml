@@ -671,13 +671,17 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Glass: 100
+    Glass: 300
 
     Circuitry: 100
 
-    ScrapElectronic: 100
+    ScrapElectronic: 300
 
-    Lead: 100
+    N14Gold: 200
+
+    N14Silver: 300
+
+    Lead: 500
 
 
 - type: latheRecipe
@@ -802,15 +806,15 @@
   availableFaction:
   - BrotherhoodOfSteel
   materials:
-    Glass: 850
+    Glass: 1000
 
-    Circuitry: 100
+    Circuitry: 300
 
-    ScrapElectronic: 100
+    ScrapElectronic: 500
 
-    N14Gold: 50
+    N14Gold: 500
 
-    Lead: 850
+    Lead: 1000
 
 # #Misfits Removed - duplicate FC recipe commented out; consolidated to single generic fusion core above
 # - type: latheRecipe

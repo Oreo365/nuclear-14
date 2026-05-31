@@ -164,7 +164,7 @@
       - N14Magazine308RifleSnipers
   - type: BallisticAmmoProvider
     proto: N14Cartridge308Rifle
-    capacity: 10
+    capacity: 5
   - type: Sprite
     netsync: false
     sprite: _Nuclear14/Objects/Weapons/Guns/Ammunition/Magazines/308/mag5.rsi

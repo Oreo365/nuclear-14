@@ -1,7 +1,7 @@
 # Misfits — Hitscan beam definitions for energy weapons.
 # Each weapon specifies its own beam via GunDamageBonusComponent.hitscanProtoOverride.
 # The cell just provides charge; the weapon controls beam color and base damage.
-# Damage hierarchy: Red (17) < Amber (19) < Yellow (17 base, Wattz +bonus) < Green (25) < Blue (30) < Violet (30)
+# Damage hierarchy: Red (25) < Amber (30) < Yellow (17 base, Wattz +bonus) < Green (35) < Blue (40) < Violet (43)
 
 #MARK: Microfusion Cell Lasers — per-weapon beam assignment
 # AER-9/Auto/RCW/Gatling/crude/makeshift -> Red
@@ -15,7 +15,8 @@
   id: N14MFLaserRed
   damage:
     types:
-      Heat: 17
+      Heat: 20
+      Pierce: 5
   muzzleFlash:
     sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
     state: muzzle_laser
@@ -32,7 +33,8 @@
   id: N14MFLaserAmber
   damage:
     types:
-      Heat: 19
+      Heat: 23
+      Pierce: 7
   tintColor: "#FF8C00"
   muzzleFlash:
     sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
@@ -49,6 +51,7 @@
   damage:
     types:
       Heat: 25
+      Pierce: 10
   muzzleFlash:
     sprite: _Misfits/Objects/Weapons/Guns/Projectiles/green_laser.rsi
     state: muzzle_green_laser
@@ -64,6 +67,7 @@
   damage:
     types:
       Heat: 30
+      Pierce: 10
   muzzleFlash:
     sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
     state: muzzle_blue
@@ -80,7 +84,8 @@
   id: N14MFLaserViolet
   damage:
     types:
-      Heat: 30
+      Heat: 40
+      Radiation: 3
   tintColor: "#8B00FF"
   muzzleFlash:
     sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi

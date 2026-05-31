@@ -211,8 +211,8 @@
   - type: Clothing
     sprite: Corvax/Clothing/OuterClothing/Armor/reconnaissancearmor.rsi
   - type: ClothingSpeedModifier
-    walkModifier: 1.10
-    sprintModifier: 1.10
+    walkModifier: 1.05
+    sprintModifier: 1.05
   - type: Armor
     modifiers:
       coefficients:
@@ -234,14 +234,14 @@
   - type: Clothing
     sprite: Corvax/Clothing/OuterClothing/Armor/lightreconnaissancearmor.rsi
   - type: ClothingSpeedModifier
-    walkModifier: 1.15
-    sprintModifier: 1.15
+    walkModifier: 1.10
+    sprintModifier: 1.10
   - type: Armor
     modifiers:
       coefficients:
         Blunt: 0.85
         Slash: 0.85
-        Piercing: 0.85
+        Piercing: 0.80
         Heat: 0.85
   - type: ExplosionResistance
     damageCoefficient: 0.85
@@ -277,8 +277,8 @@
   - type: Clothing
     sprite: Corvax/Clothing/OuterClothing/Armor/lightarmor.rsi
   - type: ClothingSpeedModifier
-    walkModifier: 1.1
-    sprintModifier: 1.1 # the little ones can enjoy the game too.
+    walkModifier: 1.05
+    sprintModifier: 1.05 # the little ones can enjoy the game too.
   - type: Armor
     modifiers:
       coefficients:
@@ -302,10 +302,10 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.80
-        Slash: 0.80
-        Piercing: 0.75
-        Heat: 0.75
+        Blunt: 0.75
+        Slash: 0.75
+        Piercing: 0.70
+        Heat: 0.70
   - type: ExplosionResistance
     damageCoefficient: 0.80
 
@@ -320,8 +320,8 @@
   - type: Clothing
     sprite: Corvax/Clothing/OuterClothing/Armor/explorerarmor.rsi
   - type: ClothingSpeedModifier
-    walkModifier: 1.15
-    sprintModifier: 1.15
+    walkModifier: 1.10
+    sprintModifier: 1.10
   - type: Armor
     modifiers:
       coefficients:

@@ -336,10 +336,10 @@
   availableFaction:
   - Vault
   materials:
-    Glass: 100
+    Glass: 500
     Circuitry: 100
-    ScrapElectronic: 100
-    N14Gold: 100
+    ScrapElectronic: 200
+    N14Gold: 800
 
 - type: latheRecipe
   id: N14BPVaultAmmoMag10mmSMG

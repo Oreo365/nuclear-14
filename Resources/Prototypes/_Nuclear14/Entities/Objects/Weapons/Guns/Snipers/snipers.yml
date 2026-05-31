@@ -537,7 +537,7 @@
     angleDecay: 16
     soundGunshot:
       collection: N14MarksmanGunshot
-    fireRate: 2
+    fireRate: 0.5
     selectedMode: SemiAuto
     availableModes:
     - SemiAuto
@@ -563,6 +563,11 @@
     backStrength: 3
   - type: StaticPrice
     price: 175
+  - type: GunDamageBonus
+    bonusDamage:
+      types:
+        Pierce: 20 # High bullet velocity sniper rifle. makes the .308 more lethal without requiring a massive rebalance of calibers.
+        Structural: 30 # Lighter anti-PA weapon. Bring down the metal monsters.
 # Forge-add-end
 
 # #Misfits Add — Cowboy Repeater, Paciencia, Ratslayer, M1 Carbine, Rangemaster

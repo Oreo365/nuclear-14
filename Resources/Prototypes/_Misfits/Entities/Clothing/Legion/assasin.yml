@@ -9,8 +9,8 @@
   - type: Clothing
     sprite: _Misfits/Clothing/CaesarLegion/assasin.rsi
   - type: ClothingSpeedModifier
-    walkModifier: 1
-    sprintModifier: 1.10
+    walkModifier: 1.05
+    sprintModifier: 1.05
   - type: Armor
     modifiers:
       coefficients:

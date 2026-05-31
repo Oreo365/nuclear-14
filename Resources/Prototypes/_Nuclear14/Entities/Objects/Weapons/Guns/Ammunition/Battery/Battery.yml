@@ -60,8 +60,8 @@
         state: o2
         shader: unshaded
   - type: Battery
-    maxCharge: 1200
-    startingCharge: 1200
+    maxCharge: 2300
+    startingCharge: 2300
   - type: HitscanBatteryAmmoProvider
     proto: N14MFLaserRed
     fireCost: 50

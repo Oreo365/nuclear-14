@@ -346,8 +346,8 @@
   components:
   - type: Wieldable
   - type: GunWieldBonus
-    minAngle: -23 # #Misfits Tweak - wielded spread 2°/13°; fast fire. fast spread.
-    maxAngle: -47
+    minAngle: -23 # #Misfits Tweak - wielded spread 2°/20°; fast fire. fast spread.
+    maxAngle: -40
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Guns/Battery/laser_autorifle.rsi
     layers:
@@ -377,7 +377,7 @@
           tags:
             - N14MicrofusionCell
   - type: Gun
-    fireRate: 8
+    fireRate: 6
     soundGunshot:
       collection: N14LaserAutoRifleGunshot
     selectedMode: FullAuto
@@ -483,13 +483,13 @@
           tags:
             - N14MicrofusionCell
   - type: Gun
-    fireRate: 4
+    fireRate: 3.5
     soundGunshot:
       collection: N14LaserAutoRifleGunshot
     selectedMode: FullAuto
     availableModes:
     - FullAuto
-  # #Misfits Add - Green beam override (25 Heat); AER-14 prototype with unique green optics
+  # #Misfits Add - Green beam override ; AER-14 prototype with unique green optics
   - type: GunDamageBonus
     hitscanProtoOverride: N14MFLaserGreen
   - type: FollowDistance
@@ -537,13 +537,13 @@
           tags:
             - N14MicrofusionCell
   - type: Gun
-    fireRate: 6 # Higher ROF than AER-9 (5); reflects advanced pre-war engineering
+    fireRate: 3 # Higher ROF than AER-9 (2.5); reflects advanced pre-war engineering
     soundGunshot:
       collection: N14LaserAutoRifleGunshot
     selectedMode: SemiAuto
     availableModes:
     - SemiAuto
-  # Amber beam override (19 Heat) — weapon controls its own beam color
+  # Amber beam override — weapon controls its own beam color
   - type: GunDamageBonus
     hitscanProtoOverride: N14MFLaserAmber
   - type: FollowDistance
@@ -591,7 +591,7 @@
           tags:
             - N14MicrofusionCell
   - type: Gun
-    fireRate: 3 # Low ROF compensates for highest damage output
+    fireRate: 2.5 # Low ROF compensates for highest damage output
     soundGunshot:
       collection: N14LaserAutoRifleGunshot
     selectedMode: SemiAuto
@@ -615,8 +615,8 @@
   components:
   - type: Wieldable
   - type: GunWieldBonus
-    minAngle: -25 # #Misfits Tweak - wielded spread 0°/2°; 0° min for rifles
-    maxAngle: -58
+    minAngle: -24 # #Misfits Tweak - wielded spread 1°/10°; 0° min for rifles
+    maxAngle: -50
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Guns/Battery/laser_rifle.rsi
     layers:
@@ -646,7 +646,7 @@
           tags:
             - N14MicrofusionCell
   - type: Gun
-    fireRate: 3
+    fireRate: 2.5
     soundGunshot:
       collection: N14LaserAutoRifleGunshot
     selectedMode: SemiAuto
@@ -669,7 +669,7 @@
   - type: Wieldable
   - type: GunWieldBonus
     minAngle: -23
-    maxAngle: -56
+    maxAngle: -45
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Guns/Battery/laser_rifle_crude.rsi
     layers:
@@ -695,7 +695,7 @@
           tags:
             - N14MicrofusionCell
   - type: Gun
-    fireRate: 2.5
+    fireRate: 2
     soundGunshot:
       collection: N14LaserAutoRifleGunshot
     selectedMode: SemiAuto
@@ -1014,12 +1014,12 @@
     backStrength: 4
   - type: StaticPrice
     price: 300
-  # #Misfits Change - Yellow beam override + focusing optics: +23 heat damage (total 40), double fireCost (12 shots)
+  # #Misfits Change - Yellow beam override + focusing optics: +23 heat damage (total 45), double fireCost (12 shots)
   - type: GunDamageBonus
     hitscanProtoOverride: N14MFLaserYellow
     bonusDamage:
       types:
-        Heat: 23
+        Heat: 28
     fireCostMultiplier: 2.0
 
 - type: entity
@@ -1071,12 +1071,12 @@
     backStrength: 4
   - type: StaticPrice
     price: 400
-  # #Misfits Change - Yellow beam override + focusing optics: +13 heat damage (total 30), double fireCost (12 shots)
+  # #Misfits Change - Yellow beam override + focusing optics: +13 heat damage (total 35), double fireCost (12 shots)
   - type: GunDamageBonus
     hitscanProtoOverride: N14MFLaserYellow
     bonusDamage:
       types:
-        Heat: 13
+        Heat: 18
     fireCostMultiplier: 2.0
 
 #MARK: Heavy

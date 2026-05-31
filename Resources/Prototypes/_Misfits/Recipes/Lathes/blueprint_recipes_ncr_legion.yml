@@ -2351,6 +2351,20 @@
 
     N14Gunpowder: 15
 
+- type: latheRecipe
+  id: N14BPLegionAmmoSKSEnbloc308 # #Misfits Change - new SKSEnbloc308 rep
+  result: SKSEnbloc308
+  category: N14BlueprintLegionAmmoT3
+  completetime: 5
+  requiresBlueprint: true
+  availableFaction:
+  - CaesarLegion
+  materials:
+    Steel: 200
+
+    Lead: 50
+
+    N14Gunpowder: 50
 
 - type: latheRecipe
   id: N14BPLegionAmmoSpeedLoader45-70

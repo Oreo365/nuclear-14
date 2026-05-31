@@ -264,7 +264,7 @@ undecided-loadout-category-mbos-init-bal-description =
 undecided-loadout-category-mbos-kni-las-name = Laser Kit
 undecided-loadout-category-mbos-kni-las-description =
     A cache containing belongings of a Brotherhood chapter member.
-    Includes 1 crude laser rifle, 3 microfusion cells, 1 12.7mm pistol,
+    Includes 1 crude laser rifle, 1 microfusion cell, 1 12.7mm pistol,
     2 12.7mm pistol magazines, 1 roll of gauze, 1 stimpak,
     and 1 K ration MRE.
 
@@ -319,7 +319,7 @@ undecided-loadout-category-mbos-pal-bal-description =
 undecided-loadout-category-mbos-pal-sni-name = Advanced Laser Kit
 undecided-loadout-category-mbos-pal-sni-description =
     A cache containing belongings of a Brotherhood chapter member.
-    Includes 1 AER-9, 3 microfusion cells,
+    Includes 1 AER-9, 1 microfusion cell,
     1 12.7mm pistol, 2 12.7mm pistol magazines, 1 roll of gauze,
     1 stimpak, and 1 K ration MRE.
 
@@ -327,7 +327,7 @@ undecided-loadout-category-mbos-pal-sni-description =
 undecided-loadout-category-mbos-pal-pla-name = Automatic Laser Kit
 undecided-loadout-category-mbos-pal-pla-description =
     A cache containing belongings of a Brotherhood chapter member.
-    Includes 1 Automatic AER-9, 3 microfusion cells, 1 12.7mm pistol,
+    Includes 1 Automatic AER-9, 1 microfusion cell1, 1 12.7mm pistol,
     2 12.7mm pistol magazines, 1 roll of gauze, 1 stimpak,
     and 1 K ration MRE.
 
