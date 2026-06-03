@@ -42,7 +42,7 @@
     id: N14ClothingNeckDogtags # #Misfits Change - wastelander supermutants get dogtag IDs
     ears: MisfitsClothingHeadsetWastelandScrap
 
-# #Misfits Add - Nightkin variant with its own whitelist entry.
+# #Misfits Add - Nightkin variant with its own whitelist entry. -REMOVED AT REUQEST OF https://github.com/Misfit-Sanctuary/nuclear-14/issues/666  -pierow
 - type: job
   id: Nightkin
   jobWhitelistBypassesRoleTimers: true
@@ -52,7 +52,7 @@
   icon: JobIconBorg
   supervisors: job-supervisors-supermutant
   canBeAntag: false
-  setPreference: true
+  setPreference: false
   overrideConsoleVisibility: true
   whitelisted: true
   hideWithoutWhitelist: true
