@@ -6461,3 +6461,10 @@ Entries:
   id: 6017
   time: '2026-06-04T13:27:02.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/688
+- author: pierow
+  changes:
+    - type: Fix
+      message: Fixes sprite error on drum magazine (9mm); it is no longer invisible.
+  id: 6018
+  time: '2026-06-04T20:33:26.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/692
