@@ -6499,3 +6499,37 @@ Entries:
   id: 6021
   time: '2026-06-05T10:17:12.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/685
+- author: BILL AGAIN
+  changes:
+    - type: Add
+      message: >-
+        Added .308 overpressure ammo. the .308 sniper exclusively can use it. it
+        won't feed into anything else.
+    - type: Tweak
+      message: >-
+        Screwed with legion armors more. A moderate retooling and some buffs,
+        like for vex and light legionnaire armor.
+    - type: Add
+      message: added .308 overpressure BPs to legion and NCR prints.
+    - type: Tweak
+      message: reduced centurion explosive resists
+    - type: Tweak
+      message: >-
+        changed the RCW to take electron charge packs, like it does in the
+        games! yes it does fire the electron bolts now.
+    - type: Remove
+      message: Legion lost the extra armors they got from kits. sorry not sorry.
+    - type: Tweak
+      message: >-
+        I FORGOT TO MENTION LAST PR THAT I INCREASED SHOPKEEP PRICES for: MFCs,
+        40mm, various melee weapons, plasma carts, and the wasteland polearm
+        that was stupidly cheap.
+    - type: Remove
+      message: >-
+        removed the forced wield on neostead. Legion REJOICE. It lost 1 ROF for
+        this
+    - type: Tweak
+      message: 'decreased circuit costs on vault BP for AER-9 and AER-9 auto. '
+  id: 6022
+  time: '2026-06-05T10:19:00.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/664
