@@ -6364,3 +6364,211 @@ Entries:
   id: 6007
   time: '2026-06-02T01:35:24.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/659
+- author: Bradysgaming
+  changes:
+    - type: Add
+      message: Added Mars
+  id: 6008
+  time: '2026-06-02T20:08:33.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/663
+- author: Vixting
+  changes:
+    - type: Tweak
+      message: Radsuit slowdown has been removed
+    - type: Fix
+      message: Radsuit mask now acts as a mask
+  id: 6009
+  time: '2026-06-02T20:09:47.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/662
+- author: pierow
+  changes:
+    - type: Add
+      message: French Accent under Perks -> Speech
+  id: 6010
+  time: '2026-06-02T20:14:41.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/655
+- author: Squagg
+  changes:
+    - type: Fix
+      message: >-
+        Fixed Enclave characters being incorrectly targeted by hostile robots
+        while preserving hostility from other NPC factions.
+    - type: Fix
+      message: Made Enclave holotags visible in the entity spawn menu.
+    - type: Add
+      message: >-
+        Added Enclave TacMap, night vision, and thermal vision support to
+        Enclave power armor helmets.
+    - type: Add
+      message: Added Enclave-locked doors and mapper tools for Enclave base mapping.
+    - type: Fix
+      message: Makes N14Paper burnable.
+  id: 6011
+  time: '2026-06-03T20:27:01.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/675
+- author: Tytos
+  changes:
+    - type: Add
+      message: Added legion and NCR civilians and traders
+  id: 6012
+  time: '2026-06-03T20:30:58.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/679
+- author: NajaTheNaja
+  changes:
+    - type: Tweak
+      message: made medx and healing powder suppress chronic pain for 20 or 5 minutes
+  id: 6013
+  time: '2026-06-03T23:46:57.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/682
+- author: Bradysgaming
+  changes:
+    - type: Add
+      message: Shaker now spawns in bartender's pocket
+  id: 6014
+  time: '2026-06-04T00:14:37.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/683
+- author: qevie
+  changes:
+    - type: Add
+      message: New NCR vet ranger cosmetic options.
+    - type: Tweak
+      message: Added a proper description to fox ranger armor.
+  id: 6015
+  time: '2026-06-04T00:54:14.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/681
+- author: qevie
+  changes:
+    - type: Fix
+      message: faction civillian descriptions
+  id: 6016
+  time: '2026-06-04T02:43:28.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/684
+- author: paige404
+  changes:
+    - type: Add
+      message: >-
+        Added the Treyebot, a tribal eyebot pet available for tribe characters.
+        Its laser doesn't work anymore, but it's got a cool knife strapped to
+        it. Sprites by beepbopbopedy!
+    - type: Add
+      message: >-
+        Added Protectron Spirit-Tender, an agricultural robot that was adopted
+        and modified over generations by the tribe. It is now a valued shaman,
+        even if its medical treatments give you tetanus. Sprites by
+        beepbopbopedy!
+    - type: Fix
+      message: Eyebots are not longer made of meat.
+  id: 6017
+  time: '2026-06-04T13:27:02.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/688
+- author: pierow
+  changes:
+    - type: Fix
+      message: Fixes sprite error on drum magazine (9mm); it is no longer invisible.
+  id: 6018
+  time: '2026-06-04T20:33:26.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/692
+- author: NajaTheNaja
+  changes:
+    - type: Remove
+      message: Duplicated chems
+  id: 6019
+  time: '2026-06-04T20:35:19.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/687
+- author: Lucky
+  changes:
+    - type: Add
+      message: Bartender has a shaker mapped.
+    - type: Tweak
+      message: misc fixes
+    - type: Add
+      message: 'preperations for Yuma move  '
+  id: 6020
+  time: '2026-06-05T10:16:14.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/693
+- author: Squagg
+  changes:
+    - type: Add
+      message: Added themed starting loadout kits for all Eighties roles.
+    - type: Add
+      message: Added motorbike keys to all Eighties roles.
+    - type: Tweak
+      message: >-
+        Replaced the Eighties' fixed starting SMG loadout with rank-specific kit
+        selectors.
+  id: 6021
+  time: '2026-06-05T10:17:12.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/685
+- author: BILL AGAIN
+  changes:
+    - type: Add
+      message: >-
+        Added .308 overpressure ammo. the .308 sniper exclusively can use it. it
+        won't feed into anything else.
+    - type: Tweak
+      message: >-
+        Screwed with legion armors more. A moderate retooling and some buffs,
+        like for vex and light legionnaire armor.
+    - type: Add
+      message: added .308 overpressure BPs to legion and NCR prints.
+    - type: Tweak
+      message: reduced centurion explosive resists
+    - type: Tweak
+      message: >-
+        changed the RCW to take electron charge packs, like it does in the
+        games! yes it does fire the electron bolts now.
+    - type: Remove
+      message: Legion lost the extra armors they got from kits. sorry not sorry.
+    - type: Tweak
+      message: >-
+        I FORGOT TO MENTION LAST PR THAT I INCREASED SHOPKEEP PRICES for: MFCs,
+        40mm, various melee weapons, plasma carts, and the wasteland polearm
+        that was stupidly cheap.
+    - type: Remove
+      message: >-
+        removed the forced wield on neostead. Legion REJOICE. It lost 1 ROF for
+        this
+    - type: Tweak
+      message: 'decreased circuit costs on vault BP for AER-9 and AER-9 auto. '
+  id: 6022
+  time: '2026-06-05T10:19:00.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/664
+- author: Oli
+  changes:
+    - type: Tweak
+      message: Mute + Deaf Trait unselectable by HT + Ranger Recruit
+  id: 6023
+  time: '2026-06-06T02:15:16.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/702
+- author: Bradysgaming
+  changes:
+    - type: Add
+      message: >-
+        Hunger and thirst is back, if you take unexplainable cold damage, thats
+        you starving/dying of thirst. make sure to eat and drink.
+  id: 6024
+  time: '2026-06-06T04:38:42.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/705
+- author: Vinny-Shick
+  changes:
+    - type: Add
+      message: Added a new mantle for the RO of the NCR
+  id: 6025
+  time: '2026-06-06T04:39:06.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/704
+- author: Bradysgaming
+  changes:
+    - type: Add
+      message: put in the eighties ID's (still need their own sprites)
+    - type: Add
+      message: gave the 80's their own channel (Y) and headset (sprite needed too)
+  id: 6026
+  time: '2026-06-06T08:16:36.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/707
+- author: Vixting
+  changes:
+    - type: Fix
+      message: Fix beaker transfer not being updated on the lcient
+  id: 6027
+  time: '2026-06-06T16:58:46.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/708

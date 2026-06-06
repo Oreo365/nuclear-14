@@ -1,0 +1,87 @@
+- type: entity
+  parent: BaseMob
+  id: MisfitsMars
+  name: Mars
+  description: "Ens antiquum a Legione colitum. Eius praesentia sola te ei cedere vult."
+  components:
+  - type: Sprite
+    sprite: _Misfits/Mobs/NPCs/Mars.rsi
+    scale: 3, 3
+    layers:
+    - state: Mars
+  - type: AnnounceOnSpawn
+    message: mars-has-awoken
+    sender: mars-has-awoken-sender
+    color: red
+  - type: ContentEye
+    maxZoom: 2.0,2.0
+  - type: Fixtures
+    fixtures:
+      EventHorizonCollider:
+        shape:
+          !type:PhysShapeCircle
+            radius: 5
+        hard: false
+        restitution: 0.8
+        density: 99999
+        mask:
+        - SingularityLayer
+        layer:
+        - SingularityLayer
+      EventHorizonConsumer:
+        shape:
+          !type:PhysShapeCircle
+            radius: 5
+        hard: false
+        mask:
+        - SingularityLayer
+        layer:
+        - SingularityLayer
+  - type: Input
+    context: "ghost"
+  - type: MovementIgnoreGravity
+  - type: IntrinsicRadioReceiver
+  - type: ActiveRadio
+    channels:
+    - WastelandGlobal
+    - VaultCommon
+    - VaultSecurity
+    - BrotherhoodOfSteel
+    - Enclave
+    - NCR
+    - Legion
+    - FollowersOfApocalypse
+    globalReceive: true
+  - type: Physics
+    bodyType: Dynamic
+    bodyStatus: InAir
+  - type: CanMoveInAir
+  - type: WarpPoint
+    follow: true
+    location: Mars
+  - type: LanguageKnowledge
+    speaks:
+    - English
+    - Latin
+    - Chinese
+    - Universal
+    understands:
+    - English
+    - Latin
+    - Chinese
+    - Universal
+  - type: CombatMode
+  - type: MeleeWeapon
+    range: 10
+    hidden: true
+    soundHit:
+      path: /Audio/Weapons/Xeno/alien_claw_flesh3.ogg
+    angle: 0
+    animation: WeaponArcClaw
+    damage:
+      types:
+        Slash: 120
+        Blunt: 150
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 5.5
+    baseSprintSpeed: 5.5

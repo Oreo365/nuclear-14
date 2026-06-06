@@ -250,11 +250,11 @@ public sealed class ThirstSystem : EntitySystem
     private void DoContinuousThirstEffects(EntityUid uid, ThirstComponent component)
     {
         // #Misfits Tweak - Dehydration damage removed; only movement speed reduction remains.
-        // if (component.CurrentThirstThreshold <= ThirstThreshold.Dead &&
-        //     component.DehydrationDamage is { } damage &&
-        //     _mobState.IsAlive(uid))
-        // {
-        //     _damageable.TryChangeDamage(uid, damage, true, false);
-        // }
+         if (component.CurrentThirstThreshold <= ThirstThreshold.Dead &&
+             component.DehydrationDamage is { } damage &&
+             _mobState.IsAlive(uid))
+         {
+             _damageable.TryChangeDamage(uid, damage, true, false);
+         }
     }
 }

@@ -512,7 +512,7 @@
   name: 308 Sniper Rifle
   parent: N14WeaponRifleBase
   id: N14WeaponRifle308SniperRifle
-  description:  sniper rifle chambered in .308.
+  description:  sniper rifle chambered in .308, its chamber can handle overpressured .308 ammo.
   components:
   - type: Clothing
     sprite: _Nuclear14/Objects/Weapons/Guns/Snipers/308SniperRifle.rsi
@@ -537,7 +537,7 @@
     angleDecay: 16
     soundGunshot:
       collection: N14MarksmanGunshot
-    fireRate: 0.5
+    fireRate: 1
     selectedMode: SemiAuto
     availableModes:
     - SemiAuto
@@ -545,29 +545,26 @@
     slots:
       gun_magazine:
         name: Magazine
-        startingItem: Magazine308RifleSniper
+        startingItem: MagazineOver308RifleSniper
         insertSound: /Audio/Weapons/Guns/MagIn/ltrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/ltrifle_magout.ogg
         priority: 2
         whitelist:
           tags:
+            - N14MagazineOver308RifleSnipers
             - N14Magazine308RifleSnipers
       gun_chamber:
         name: Chamber
-        startingItem: N14Cartridge308Rifle
+        startingItem: N14CartridgeOver308Rifle
         priority: 1
         whitelist:
           tags:
+            - N14CartridgeOver308Rifle
             - N14Cartridge308Rifle
   - type: FollowDistance
     backStrength: 3
   - type: StaticPrice
     price: 175
-  - type: GunDamageBonus
-    bonusDamage:
-      types:
-        Pierce: 20 # High bullet velocity sniper rifle. makes the .308 more lethal without requiring a massive rebalance of calibers.
-        Structural: 30 # Lighter anti-PA weapon. Bring down the metal monsters.
 # Forge-add-end
 
 # #Misfits Add — Cowboy Repeater, Paciencia, Ratslayer, M1 Carbine, Rangemaster

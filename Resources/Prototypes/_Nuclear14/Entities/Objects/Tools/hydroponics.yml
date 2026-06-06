@@ -54,3 +54,5 @@
     state: icon
   - type: Item
     sprite: Objects/Tools/Hydroponics/spade.rsi  # N14TODO: Sprite
+  - type: BoneSetter  # Misfits Add
+    speed: 0.5

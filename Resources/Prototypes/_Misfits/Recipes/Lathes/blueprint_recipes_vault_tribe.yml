@@ -97,7 +97,7 @@
   materials:
     Steel: 5000
     Glass: 575
-    Circuitry: 500
+    Circuitry: 400
     Plastic: 750
 
 - type: latheRecipe
@@ -158,7 +158,7 @@
   materials:
     Steel: 7000
     Glass: 1500
-    Circuitry: 575
+    Circuitry: 500
     ScrapElectronic: 500
     Plastic: 750
     N14Gold: 300

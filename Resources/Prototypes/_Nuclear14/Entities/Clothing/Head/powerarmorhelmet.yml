@@ -126,6 +126,12 @@
         Radiation: 0.6
   - type: ExplosionResistance
     damageCoefficient: 0.85
+  - type: NightVision
+    isEquipment: true
+  - type: ThermalVision
+    isEquipment: true
+    pulseTime: 2
+    toggleAction: PulseThermalVision
   - type: BreathMask # Misfits Change
   - type: GasFilterMask # Misfits Change
   - type: IngestionBlocker # Misfits Change
@@ -391,6 +397,12 @@
         Radiation: 0.6
   - type: ExplosionResistance
     damageCoefficient: 0.85
+  - type: NightVision
+    isEquipment: true
+  - type: ThermalVision
+    isEquipment: true
+    pulseTime: 2
+    toggleAction: PulseThermalVision
   - type: BreathMask # Misfits Change
   - type: GasFilterMask # Misfits Change
   - type: IngestionBlocker # Misfits Change
@@ -398,6 +410,21 @@
     tags:
     - HidesHair
     - HidesBeard
+  # #Misfits Change - Enclave tactical HUD
+  - type: WastelandMap
+    mapTexturePath: _Misfits/Maps/wendover_map.png
+    mapTitle: Enclave Tactical HUD
+    # #Misfits Fix - Match the corrected Wendover AABB so helmet-linked tactical markers align with the map art.
+    worldBounds: "-517,-308,484,311"
+    tacticalFeed: Enclave
+    compactHud: true
+  - type: WastelandMapAction
+    requiredSlot: HEAD
+  - type: UserInterface
+    interfaces:
+      enum.WastelandMapUiKey.Key:
+        type: WastelandMapBoundUserInterface
+  # End Misfits Change
 
 - type: entity
   parent: N14ClothingHeadHelmetPowerArmorX01

@@ -41,7 +41,7 @@
         Piercing: 0.45
         Heat: 0.45
   - type: ExplosionResistance
-    damageCoefficient: 0.40
+    damageCoefficient: 0.60
   - type: StaminaDamageResistance
     coefficient: 0.85 # 15%
 #  - type: ClothingSpecialModifier
@@ -70,7 +70,7 @@
         Piercing: 0.45
         Heat: 0.45
   - type: ExplosionResistance
-    damageCoefficient: 0.40
+    damageCoefficient: 0.60
   - type: StaminaDamageResistance
     coefficient: 0.85
 
@@ -97,7 +97,7 @@
         Piercing: 0.45
         Heat: 0.45
   - type: ExplosionResistance
-    damageCoefficient: 0.40
+    damageCoefficient: 0.60
   - type: StaminaDamageResistance
     coefficient: 0.85
 
@@ -113,7 +113,7 @@
   - type: Clothing
     sprite: Corvax/Clothing/OuterClothing/Armor/deanveteranarmor.rsi
   - type: ClothingSpeedModifier
-    walkModifier: 0.9
+    walkModifier: 0.9 # This is better than Mk2 combat it can be slow.
     sprintModifier: 0.9
   - type: Armor
     modifiers:
@@ -121,9 +121,9 @@
         Blunt: 0.65
         Slash: 0.65
         Piercing: 0.55 # Billy again. This shit is for veteran decani. 35% with 10% slow? you fuckin kidding me? buff to 45%.
-        Heat: 0.60 # light buff by bill. just 5%
+        Heat: 0.60 # light buff just 5%
   - type: ExplosionResistance
-    damageCoefficient: 0.75
+    damageCoefficient: 0.65
 #  - type: ClothingSpecialModifier
 #    strengthModifier: 2
 
@@ -138,7 +138,7 @@
   - type: Clothing
     sprite: Corvax/Clothing/OuterClothing/Armor/deanprimearmor.rsi
   - type: ClothingSpeedModifier
-    walkModifier: 0.9
+    walkModifier: 0.9 # this is combat mk2 it can be slower
     sprintModifier: 0.9
   - type: Armor
     modifiers:
@@ -148,7 +148,7 @@
         Piercing: 0.60 # prime is slightly above "recruit" so here is 5% extra resist. sprite does literally have more metal on it.
         Heat: 0.60 # light 5% buff.
   - type: ExplosionResistance
-    damageCoefficient: 0.75
+    damageCoefficient: 0.65
 #  - type: ClothingSpecialModifier
 #    strengthModifier: 2
 
@@ -163,8 +163,8 @@
   - type: Clothing
     sprite: Corvax/Clothing/OuterClothing/Armor/deanrecruitarmor.rsi
   - type: ClothingSpeedModifier
-    walkModifier: 0.9
-    sprintModifier: 0.9
+    walkModifier: 0.95 # made a little faster since its just worse than combat mk2
+    sprintModifier: 0.95
   - type: Armor
     modifiers:
       coefficients:
@@ -173,7 +173,7 @@
         Piercing: 0.65 # liquid dogshit but you're the bitch decani. -Bill
         Heat: 0.65
   - type: ExplosionResistance
-    damageCoefficient: 0.75
+    damageCoefficient: 0.65 # Heavy leather absorbs blasts and acts as padding
 #  - type: ClothingSpecialModifier
 #    strengthModifier: 2
 
@@ -188,7 +188,7 @@
   - type: Clothing
     sprite: Corvax/Clothing/OuterClothing/Armor/veteranarmor.rsi
   - type: ClothingSpeedModifier
-    walkModifier: 1.05 # makes veterans a big threat (not really) -Bill
+    walkModifier: 1.05
     sprintModifier: 1.05
   - type: Armor
     modifiers:
@@ -196,7 +196,7 @@
         Blunt: 0.75
         Slash: 0.75
         Piercing: 0.7
-        Heat: 0.7
+        Heat: 0.8 #Legion weak to heat type damage
   - type: ExplosionResistance
     damageCoefficient: 0.8
 
@@ -211,7 +211,7 @@
   - type: Clothing
     sprite: Corvax/Clothing/OuterClothing/Armor/reconnaissancearmor.rsi
   - type: ClothingSpeedModifier
-    walkModifier: 1.05
+    walkModifier: 1.05 #same as ranger recon
     sprintModifier: 1.05
   - type: Armor
     modifiers:
@@ -234,14 +234,14 @@
   - type: Clothing
     sprite: Corvax/Clothing/OuterClothing/Armor/lightreconnaissancearmor.rsi
   - type: ClothingSpeedModifier
-    walkModifier: 1.10
+    walkModifier: 1.10 #A little faster than the previous recon
     sprintModifier: 1.10
   - type: Armor
     modifiers:
       coefficients:
         Blunt: 0.85
         Slash: 0.85
-        Piercing: 0.80
+        Piercing: 0.85 #20% was a bit too good for what it provided
         Heat: 0.85
   - type: ExplosionResistance
     damageCoefficient: 0.85
@@ -262,7 +262,7 @@
         Blunt: 0.85
         Slash: 0.85
         Piercing: 0.75 # 20 fucking %? no. dogshit. here is 25%. You get nothing else. -Bill
-        Heat: 0.8
+        Heat: 0.85 #Legion is weak to heat
   - type: ExplosionResistance
     damageCoefficient: 0.85
 
@@ -282,10 +282,10 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.9
-        Slash: 0.9
-        Piercing: 0.80 # 10% is worse than some COATS btw. just want you to know that. gave them 20% -Bill
-        Heat: 0.9
+        Blunt: 0.85
+        Slash: 0.85
+        Piercing: 0.85 # 10% is worse than some COATS btw. just want you to know that. gave them 15% -Bill
+        Heat: 0.9 # Legion is weak to heat
   - type: ExplosionResistance
     damageCoefficient: 0.95
 
@@ -299,13 +299,16 @@
     sprite: Corvax/Clothing/OuterClothing/Armor/vexillariusarmor.rsi
   - type: Clothing
     sprite: Corvax/Clothing/OuterClothing/Armor/vexillariusarmor.rsi
+  - type: ClothingSpeedModifier
+    walkModifier: 1.05 # basically the same as veteran
+    sprintModifier: 1.05
   - type: Armor
     modifiers:
       coefficients:
         Blunt: 0.75
         Slash: 0.75
-        Piercing: 0.70
-        Heat: 0.70
+        Piercing: 0.70 #Vex is a honored veteran
+        Heat: 0.70 #more heat resist, metal pans cover chest and abdomen 
   - type: ExplosionResistance
     damageCoefficient: 0.80
 
@@ -327,8 +330,8 @@
       coefficients:
         Blunt: 0.85
         Slash: 0.85
-        Piercing: 0.85
-        Heat: 0.85
+        Piercing: 0.90
+        Heat: 0.90
   - type: ExplosionResistance
     damageCoefficient: 0.90
 

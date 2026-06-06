@@ -236,3 +236,39 @@
   - type: ItemBorgModule
     items:
     - N14BorgWeaponCryo
+
+# Tribal Spirit-Tender modules
+- type: entity
+  id: MisfitsBorgModuleTribalSpirit
+  parent: [ BaseBorgModule, BaseProviderBorgModule ]
+  name: spirit-tender module
+  description: A borg "module" that has been haphazardly jammed together over decades or centuries.
+  components:
+  - type: Sprite
+    layers:
+    - state: service
+    - state: icon-gardening
+  - type: ItemBorgModule
+    items:
+    - N14HydroponicsToolHoe
+    - N14HydroponicsToolClippers   # Hemostat + Retractor
+    - WelderMini                   # Cautery
+    - N14Screwdriver               # Tender + Tweezer
+
+- type: entity
+  id: MisfitsBorgModuleTribalHarvest
+  parent: [ BaseBorgModule, BaseProviderBorgModule ]
+  name: harvest module
+  description: The half-broken remains of an agricultural protectron module
+  components:
+  - type: Sprite
+    layers:
+    - state: service
+    - state: icon-harvesting
+  - type: ItemBorgModule
+    items:
+    - N14ripper                    # Scalpel + BoneSaw
+    - N14HydroponicsToolShovel     # BoneSetter
+    - Bucket
+    - Syringe
+

@@ -104,3 +104,12 @@
   materials:
     Steel: 250
     Glass: 1000
+
+- type: latheRecipe
+  id: N14VehicleWheelchairFolded
+  result: N14VehicleWheelchairFolded
+  category: N14Misc
+  completetime: 5
+  materials:
+    Cloth: 500
+    Steel: 500

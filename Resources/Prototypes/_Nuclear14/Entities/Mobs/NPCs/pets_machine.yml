@@ -62,6 +62,9 @@
       behaviors:
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
   - type: Input
     context: "human"
   - type: InputMover
@@ -237,7 +240,7 @@
       - SlipEntity
       - Chasm
   - type: Damageable
-    damageContainer: Biological
+    damageContainer: Silicon
   - type: PassiveDamage
     allowedStates:
     - Alive
@@ -247,7 +250,6 @@
       groups:
         Brute: -0.5
         Burn: -0.5
-        Airloss: -3 # Bandaid fix, soon they'll be non-organic and this will be removed
   - type: Speech # Corvax-Change
     speechSounds: Borg
   - type: TypingIndicator # Corvax-Change

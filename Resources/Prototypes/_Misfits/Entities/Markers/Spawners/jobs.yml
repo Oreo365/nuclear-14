@@ -540,7 +540,7 @@
   name: NCR Prisoner
   components:
   - type: SpawnPoint
-    job_id: NCRPisoner
+    job_id: NCRPrisoner
   - type: Sprite
     sprite: Corvax/Markers/jobs.rsi
     layers:
@@ -702,6 +702,14 @@
   components:
   - type: SpawnPoint
     job_id: SyntheticProtectron
+
+- type: entity
+  parent: MisfitsSpawnPointSyntheticProtectron
+  id: MisfitsSpawnPointSyntheticProtectronTribal
+  name: Protectron Spirit-Tender
+  components:
+  - type: SpawnPoint
+    job_id: SyntheticProtectronTribal
 
 - type: entity
   parent: MisfitsSpawnPointSyntheticMrHandy
@@ -1045,7 +1053,7 @@
     sprite: Corvax/Markers/jobs.rsi
     layers:
       - state: green
-  
+
 
 - type: entity
   parent: SpawnPointJobBase
@@ -1079,6 +1087,30 @@
   components:
   - type: SpawnPoint
     job_id: NCRRO
+  - type: Sprite
+    sprite: Corvax/Markers/jobs.rsi
+    layers:
+      - state: green
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: MisfitsSpawnPointNCRCitizen
+  name: NCR Citizen
+  components:
+  - type: SpawnPoint
+    job_id: NCRCitizen
+  - type: Sprite
+    sprite: Corvax/Markers/jobs.rsi
+    layers:
+      - state: green
+
+- type: entity
+  parent: SpawnPointJobBase
+  id: MisfitsSpawnPointNCRTrader
+  name: NCR Trader
+  components:
+  - type: SpawnPoint
+    job_id: NCRTrader
   - type: Sprite
     sprite: Corvax/Markers/jobs.rsi
     layers:

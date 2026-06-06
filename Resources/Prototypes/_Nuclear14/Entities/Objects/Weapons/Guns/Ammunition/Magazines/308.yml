@@ -180,4 +180,25 @@
     - state: mag-1
       map: ["enum.GunVisualLayers.Mag"]
 
+- type: entity # Forge-add-start
+  id: MagazineOver308RifleSniper
+  name: "sniper magazine (Overpressure .308)"
+  parent: BaseMagazine308Rifle
+  components:
+  - type: Tag
+    tags:
+      - N14MagazineOver308RifleSnipers
+  - type: BallisticAmmoProvider
+    proto: N14CartridgeOver308Rifle
+    capacity: 5
+  - type: Sprite
+    netsync: false
+    sprite: _Nuclear14/Objects/Weapons/Guns/Ammunition/Magazines/308/mag5.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+
+
 # Forge-add-end

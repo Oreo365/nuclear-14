@@ -13,7 +13,7 @@
   id: CentCom
   name: chat-radio-centcom
   # keycode: 'y'  # Misfits — disabled
-  frequency: 1337
+  frequency: 1333
   color: "#2681a5"
   longRange: true
 

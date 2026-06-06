@@ -100,6 +100,25 @@
   naming: First # #Misfits Add
 
 - type: species
+  id: RobotProtectronTribal
+  name: species-name-robot-protectron-tribal
+  roundStart: true
+  order: 21 # hidden from main selector, used by Robot Model picker
+  whitelistRequired: true
+  restrictedCustomization: true
+  jobWhitelistUnlock: SyntheticProtectron
+  restrictedJobs:
+  - SyntheticProtectronTribal
+  sprites: RobotSprites
+  markingLimits: RobotMarkingLimits
+  prototype: N14PlayerSyntheticProtectronTribal
+  dollPrototype: N14PlayerSyntheticProtectronTribal
+  skinColoration: Hues
+  maleFirstNames: RobotProtectronFirst  # TODO tribal robot names?
+  femaleFirstNames: RobotProtectronFirst
+  naming: First
+
+- type: species
   id: RobotMrGutsy
   name: species-name-robot-mr-gutsy
   roundStart: true

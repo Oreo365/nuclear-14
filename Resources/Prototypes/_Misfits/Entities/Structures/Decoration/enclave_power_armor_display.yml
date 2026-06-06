@@ -1,0 +1,27 @@
+- type: entity
+  parent: BaseStructure
+  id: MisfitsDecorationPowerArmorX01Display
+  name: X-01 power armor display
+  description: A secured display suit of Enclave X-01 power armor. It is decorative and cannot be worn.
+  suffix: Enclave, Mapping
+  components:
+  - type: Sprite
+    drawdepth: Objects
+    noRot: true
+    sprite: _Nuclear14/Clothing/OuterClothing/PowerArmor/advanced1.rsi
+    state: icon
+  - type: InteractionOutline
+
+- type: entity
+  parent: BaseStructure
+  id: MisfitsDecorationPowerArmorMutantX01Display
+  name: Super Mutant X-01 power armor display
+  description: A secured display suit of oversized Enclave X-01 power armor. It is decorative and cannot be worn.
+  suffix: Enclave, Mapping
+  components:
+  - type: Sprite
+    drawdepth: Objects
+    noRot: true
+    sprite: _Misfits/Clothing/OuterClothing/PowerArmor/Mutant_PA.rsi
+    state: icon
+  - type: InteractionOutline

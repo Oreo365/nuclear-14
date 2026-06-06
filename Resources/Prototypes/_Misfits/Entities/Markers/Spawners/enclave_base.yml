@@ -1,0 +1,116 @@
+- type: entity
+  name: Enclave Eyebot Spawner
+  id: MisfitsSpawnerEnclaveEyebot
+  suffix: Mapping
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: _Nuclear14/Mobs/Robots/eyebot.rsi
+      state: icon
+    - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+    - N14MobRobotEyebot
+
+- type: entity
+  name: Enclave Protectron Spawner
+  id: MisfitsSpawnerEnclaveProtectron
+  suffix: Mapping
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: _Nuclear14/Mobs/Robots/protectron.rsi
+      state: icon
+    - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+    - N14MobRobotProtectronHostile
+
+- type: entity
+  name: Enclave Mr. Gutsy Spawner
+  id: MisfitsSpawnerEnclaveMrGutsy
+  suffix: Mapping
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: _Nuclear14/Mobs/Robots/mrhandygutsy.rsi
+      state: icon
+    - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+    - N14MobRobotMrHandyGutsy
+
+- type: entity
+  name: Enclave Assaultron Spawner
+  id: MisfitsSpawnerEnclaveAssaultron
+  suffix: Mapping
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: _Nuclear14/Mobs/Robots/assaultron.rsi
+      state: icon
+    - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+    - N14MobRobotAssaultronHostile
+
+- type: entity
+  name: Enclave Sentry Bot Spawner
+  id: MisfitsSpawnerEnclaveSentryBot
+  suffix: Mapping
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: _Nuclear14/Mobs/Robots/sentrybot.rsi
+      state: icon
+    - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+    - N14MobRobotSentryBot
+
+- type: entity
+  name: Enclave Sentry Bot Spawner (Ballistic)
+  id: MisfitsSpawnerEnclaveSentryBotBallistic
+  suffix: Mapping
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: _Nuclear14/Mobs/Robots/sentrybot.rsi
+      state: icon
+    - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+    - N14MobRobotSentryBotBallistic
+
+- type: entity
+  name: Enclave Robot Security Spawner
+  id: MisfitsSpawnerEnclaveRobotSecurity
+  suffix: Mapping, Random
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: _Nuclear14/Mobs/Robots/eyebot.rsi
+      state: icon
+    - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+    - N14MobRobotEyebot
+    - N14MobRobotProtectronHostile
+    - N14MobRobotMrHandyGutsy
+    - N14MobRobotAssaultronHostile
+    - N14MobRobotSentryBot
+    - N14MobRobotSentryBotBallistic

@@ -99,14 +99,18 @@
     - NCRVeteranRanger
     - NCRFieldRanger
     - NCRPatrolRanger
+    - NCRRangerRecruit
     - NCRDoctor
     - NCRFirstSergeant
     - NCRStaffSergeant
     - NCRNCO
     - NCRRO
+    - NCRCitizen
+    - NCRTrader
     - BoSMidPaladinCommander
     - BoSMidPaladin
     - NCRWS
+    - NCRHeavyTrooper
     - NCREngineer
     - NCRMedic
     - NCRPrivateFirstClass
@@ -130,6 +134,8 @@
     - CaesarLegionLegionnaireRecruit
     - CaesarLegionHoundmaster
     - CaesarLegionAuxilia
+    - CaesarLegionCitizen
+    - CaesarLegionTrader
     - Overseer
     - VaultSecurity
   - !type:CharacterTraitRequirement
@@ -151,6 +157,7 @@
     - N14FrontalLisp
     - N14ScottishAccent
     - N14Liar
+    - N14FrenchieAccent
   functions:
   - !type:TraitAddComponent
     components:
@@ -171,6 +178,7 @@
     - N14ScottishAccent
     - N14Liar
     - N14TribalAccent # Misfits
+    - N14FrenchieAccent
   functions:
   - !type:TraitAddComponent
     components:
@@ -188,7 +196,25 @@
     - N14FrontalLisp
     - N14Liar
     - N14TribalAccent # Misfits
+    - N14FrenchieAccent
   functions:
   - !type:TraitAddComponent
     components:
     - type: ScottishAccent
+
+- type: trait
+  id: N14FrenchieAccent
+  category: Speech
+  points: 1 # By pierow
+  requirements:
+  - !type:CharacterTraitRequirement
+    inverted: true
+    traits:
+    - N14Stutter
+    - N14FrontalLisp
+    - N14Liar
+    - N14TribalAccent # Misfits
+  functions:
+  - !type:TraitAddComponent
+    components:
+    - type: FrenchieAccent

@@ -21,6 +21,12 @@ job-description-ncr-weapon-specialist = You are a weapons-qualified specialist o
 job-name-ncr-requisition-officer = NCR Requisition Officer
 job-description-ncr-requisition-officer = You are a Quartermaster and Requisition Officer of NCR, maintain the armies' equipment and supervise the allocation of its resources.
 
+job-name-ncr-citizen = NCR Citizen
+job-description-ncr-citizen = You are a citizen of the NCR coming east for work, to help the military as a Civilian contractor.
+
+job-name-ncr-trader = NCR Trader
+job-description-ncr-trader = You are a Caravaneer and a citizen of the NCR, supplying the republic's trade routes.
+
 # #Misfits Add - Enclave job locale (expanded 8-role hierarchy). Reformer is admin-only apex role.
 job-name-enclave-reformer = The Reformer
 job-description-enclave-reformer = You are the Enclave's supreme authority on the field — its Reformer. Shape the cell's doctrine, judge its members, and determine its future. Answerable only to Eden.
@@ -146,4 +152,6 @@ undecided-loadout-category-misfits-pal-wattz-description =
     2 12.7mm pistol magazines, 1 roll of gauze, 1 stimpak,
     and 1 K ration MRE.
 
-
+# Tribal Robot
+job-name-synthetic-protectron-tribal = Protectron Spirit-Tender
+job-description-synthetic-protectron-tribal = An agricultural robot that has been adopted by the local tribe and modified over decades or centuries.

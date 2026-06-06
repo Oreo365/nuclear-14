@@ -137,6 +137,7 @@
   - Deathclaw #Misfits Add - Deathclaw is enemy of everything
   - Raider
   - HostileRobot
+  - Enclave
   - Feral
 
 - type: npcFaction
@@ -164,6 +165,7 @@
   - Feral
   - CaesarLegion #Corvax-Legion
   - BrotherhoodOfSteel
+  - Enclave
 
 - type: npcFaction
   id: Rangers
@@ -329,6 +331,7 @@
   - Deathclaw #Misfits Add - Deathclaw is enemy of everything
   - Zetan
   - HostileRobot
+  - Enclave
   - Feral
   - CaesarLegion #Corvax-Legion
   - BrotherhoodOfSteelSecureArea
@@ -355,6 +358,7 @@
   - Deathclaw #Misfits Add - Deathclaw is enemy of everything
   - Zetan
   - HostileRobot
+  - Enclave
   - Raider
   - CaesarLegion #Corvax-Legion
   - BrotherhoodOfSteelSecureArea
@@ -380,6 +384,7 @@
   - Deathclaw #Misfits Add - Deathclaw is now a separate faction; yaoguai etc. attack deathclaws
   - Raider
   - HostileRobot
+  - Enclave
   - Feral
   - CaesarLegion #Corvax-Legion
   - BrotherhoodOfSteelSecureArea
@@ -405,6 +410,7 @@
   - Deathclaw #Misfits Add - Deathclaw is enemy of everything
   - Raider
   - HostileRobot
+  - Enclave
   - Feral
   - CaesarLegion #Corvax-Legion
   - BrotherhoodOfSteelSecureArea

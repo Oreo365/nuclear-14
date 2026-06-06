@@ -66,3 +66,17 @@
     - !type:TraitSpawnEntity
       prototypes:
         - MisfitsPetSpawnerCentaur
+
+# Tribe-exclusive variant of the Eyebot pet
+- type: trait
+  id: MisfitsPetEyebotTribe
+  category: Pets
+  points: -6
+  requirements:
+  - !type:CharacterDepartmentRequirement
+    departments:
+    - Tribe
+  functions:
+  - !type:TraitSpawnEntity
+    prototypes:
+    - MisfitsPetSpawnerEyebotTribe

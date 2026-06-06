@@ -124,6 +124,7 @@
   - Deathclaw #Misfits Add - Deathclaw is enemy of everything
   - Raider
   - HostileRobot
+  - Enclave
   - Feral
 
 - type: npcFaction
@@ -150,6 +151,7 @@
   - Raider
   - CaesarLegion
   - HostileRobot
+  - Enclave
   - Feral
 
 # #Misfits Add - Enclave remnant faction for player jobs and future map-side automation.
@@ -165,7 +167,6 @@
   - WastelandAnimal
   - Deathclaw
   - Raider
-  - HostileRobot
   - Feral
 
 # #Misfits Add - Followers of the Apocalypse player faction.
@@ -200,3 +201,4 @@
   - Feral
   - CaesarLegion
   - SuperMutant
+  - Enclave

@@ -87,7 +87,9 @@
   # Entry
   - NCRCadet             # NCR Recruit             | _Misfits/Roles/Jobs/NCR/ncr_recruit.yml
   # Special
-  - NCRPisoner           # NCR Prisoner            | _Misfits/Roles/Jobs/NCR/ncr_prisoner.yml
+  - NCRPrisoner           # NCR Prisoner            | _Misfits/Roles/Jobs/NCR/ncr_prisoner.yml
+  - NCRCitizen           # NCR Citizen             | _Misfits/Roles/Jobs/NCR/ncr_citizen.yml # Misfits Add
+  - NCRTrader            # NCR Trader              | _Misfits/Roles/Jobs/NCR/ncr_trader.yml # Misfits Add
   # Special roles outside the visible ladder (hidden from character creation):
   #- NCRMPinvestigator    # NCR MP Investigator     | _Misfits/Roles/Jobs/NCR/ncr_mp_investigator.yml
   # Hidden — kept for compatibility, not visible in character creation:
@@ -132,6 +134,7 @@
   - TribalShaman # #Misfits Change - renamed from TribalHealer
   - TribalFarmer
   - Tribal
+  - SyntheticProtectronTribal # Misfits Change
 
 - type: department
   id: Vault
@@ -228,3 +231,5 @@
   # - CaesarLegionRecruit         # Recruit             | _Misfits/Roles/Jobs/CaesarLegion/legion_recruit.yml
   - SuperMutantGladiator        # Mutant Gladiator    | _Misfits/Roles/Jobs/SuperMutant/supermutant.yml   # Misfits Add
   - CaesarLegionSlave           # Slave               | _Misfits/Roles/Jobs/CaesarLegion/legion_slave.yml # #Misfits Add
+  - CaesarLegionCitizen         # Civilian            | _Misfits/Roles/Jobs/CaesarLegion/legion_civilian.yml # #Misfits Add
+  - CaesarLegionTrader          # Trader              | _Misfits/Roles/Jobs/CaesarLegion/legion_trader.yml # #Misfits Add

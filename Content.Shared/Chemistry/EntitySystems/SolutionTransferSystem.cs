@@ -89,6 +89,7 @@ public sealed class SolutionTransferSystem : EntitySystem
             {
                 var clampedAmount = FixedPoint2.Clamp(amount, comp.MinimumTransferAmount, comp.MaximumTransferAmount);
                 comp.TransferAmount = clampedAmount;
+                Dirty(uid, comp);
                 _popup.PopupClient(Loc.GetString("comp-solution-transfer-set-amount", ("amount", clampedAmount)), uid, user);
             };
 

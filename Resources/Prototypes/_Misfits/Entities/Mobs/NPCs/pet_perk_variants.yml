@@ -167,3 +167,185 @@
         Burn: -0.5
         Toxin: -0.5
         Airloss: -3
+
+- type: entity
+  name: treyebot
+  id: MisfitsMobPetEyebotTribe
+  parent: N14MobFriendlyRobot    # can't be N14MobPetEyebot--we don't want the gun stuff
+#  categories: [ HideSpawnMenu ]
+  description: A military Eyebot that has been adopted and decorated by the local tribe. Its laser burned out, but someone has strapped a knife to it.
+  components:
+  - type: HTN
+    rootTask:
+      task: N14RangedHostileCompound
+    blackboard:
+      NavSmash: !type:Bool
+        true
+      MeleeRange: !type:Single
+        1.5
+  - type: NPCRetaliation # Aggro on the attacker when damaged from any range
+    attackMemoryLength: 30
+  - type: InputMover
+  - type: MobMover
+  - type: GhostRole
+    name: ghost-role-information-n14pet-eyebot-tribe-name
+    description: ghost-role-information-n14pet-eyebot-tribe-description
+    rules: ghost-role-component-default-rules
+    makeSentient: false
+    allowMovement: true
+  - type: GhostTakeoverAvailable
+  - type: Sprite
+    sprite: _Misfits/Mobs/Pets/eyebot-tribal.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: icon
+    - state: shadow_eyebot
+  - type: NpcFactionMember
+    factions:
+    - SimpleNeutral
+    - Tribal
+  - type: Appearance
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      75: Critical
+      150: Dead
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: icon
+      Critical:
+        Base: dead
+      Dead:
+        Base: dead
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.4
+        density: 150
+        mask:
+        - FlyingMobMask
+        layer:
+        - FlyingMobLayer
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3
+    baseSprintSpeed: 6
+  - type: MovementAlwaysTouching
+  - type: MeleeWeapon
+    altDisarm: false
+    canWideSwing: true
+    hidden: true
+    damage:
+      types:
+        Piercing: 15
+        Slash: 5
+    angle: 0
+    animation: WeaponArcSlash
+    wideAnimation: WeaponArcThrust
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: SolutionContainerManager
+    solutions:
+      melee:
+        maxVol: 10
+  - type: MeleeChemicalInjector
+    solution: melee
+  - type: RefillableSolution
+    solution: melee
+  - type: InjectableSolution
+    solution: melee
+  - type: RadioSpeaker
+    channels:
+    - PBS
+    enabled: true
+    toggleOnInteract: true
+    IsSpeaker: true
+  - type: IntrinsicRadioReceiver # Eyebot speaks binary on the Binary radio channel
+  - type: IntrinsicRadioTransmitter
+    channels:
+    - Binary
+  - type: ActiveRadio
+    channels:
+    - Binary
+    - Common
+  - type: LanguageKnowledge
+    speaks:
+    - N14Robot
+    - English
+    - Tribal
+    understands:
+    - N14Robot
+    - English
+    - Tribal
+  - type: HandheldLight
+    toggleOnInteract: false
+    addPrefix: true
+    blinkingBehaviourId: blinking
+    radiatingBehaviourId: radiating
+  - type: ToggleableLightVisuals
+  - type: PointLight
+    enabled: false
+    radius: 4.5
+    energy: 1
+    mask: /Textures/Effects/LightMasks/cone.png
+    autoRot: true
+    # netsync: false # #Misfits Fix - this was preventing flashlight state from syncing to clients after toggle
+  - type: LightBehaviour
+    behaviours:
+    - !type:FadeBehaviour
+      id: radiating
+      interpolate: Linear
+      maxDuration: 2.0
+      startValue: 3.0
+      endValue: 2.0
+      isLooped: true
+      reverseWhenFinished: true
+    - !type:PulseBehaviour
+      id: blinking
+      interpolate: Nearest
+      maxDuration: 1.0
+      minValue: 0.1
+      maxValue: 2.0
+      isLooped: true
+  - type: Battery
+    maxCharge: 600 # lights drain 3/s but recharge of 2 makes this 1/s. Therefore 600 is 10 minutes of light.
+    startingCharge: 600
+  - type: BatterySelfRecharger
+    autoRecharge: true
+    autoRechargeRate: 2
+  - type: NoSlip
+  - type: StepTriggerImmune
+    whitelist:
+      types:
+      - Shard
+      - Landmine
+      - Mousetrap
+      - SlipTile
+      - SlipEntity
+      - Chasm
+  - type: Damageable
+    damageContainer: Silicon
+  - type: PassiveDamage
+    allowedStates:
+    - Alive
+    - Critical
+    damageCap: 75
+    damage:
+      groups:
+        Brute: -0.5
+        Burn: -0.5
+  - type: Speech
+    speechSounds: Borg
+  - type: TypingIndicator
+    proto: robot
+  - type: IdleSound
+  - type: SpamEmitSound
+    minInterval: 10
+    maxInterval: 60
+    sound:
+      collection: N14EyebotIdle
+      params:
+        volume: -5
+        maxDistance: 5

@@ -1371,6 +1371,21 @@
 
 
 - type: latheRecipe
+  id: N14BPNCRAmmoOverMag308
+  result: MagazineOver308RifleSniper
+  category: N14BlueprintNCRAmmoT4
+  completetime: 8
+  requiresBlueprint: true
+  availableFaction:
+  - NCR
+  materials:
+    Steel: 1000
+
+    Lead: 500
+
+    N14Gunpowder: 750
+
+- type: latheRecipe
   id: N14BPNCRAmmoMagTopSMG12mm
   result: N14TopMagazineSMG12mm
   category: N14BlueprintNCRAmmoT4
@@ -2534,6 +2549,21 @@
     Lead: 1000
 
     N14Gunpowder: 900
+
+- type: latheRecipe
+  id: N14BPLegionAmmoOverMag308
+  result: MagazineOver308RifleSniper
+  category: N14BlueprintLegionAmmoT4
+  completetime: 8
+  requiresBlueprint: true
+  availableFaction:
+  - CaesarLegion
+  materials:
+    Steel: 1000
+
+    Lead: 500
+
+    N14Gunpowder: 750
 
 
 # =====================================================================

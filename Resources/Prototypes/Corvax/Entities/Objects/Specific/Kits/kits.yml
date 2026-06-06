@@ -184,7 +184,7 @@
       - id: N14WeaponRifle308SniperRifle  # #Misfits Change - bolt-action .50 replaces semi-auto AMR; Frumentarii use a slower, precise weapon for covert ops
       - id: ClothingBeltRope
       # #Misfits Change - AMR magazines removed; bolt-action uses single cartridges from ammo boxes
-      - id: Magazine308RifleSniper
+      - id: MagazineOver308RifleSniper
         amount: 2
       - id: ClothingEyesNightVisionGoggles
       - id: N14HealingPoultice #Misfits Change /Tweak/: replaces dirty stimpak, Legion uses tribal medicine
@@ -266,7 +266,6 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: N14ClothingOuterLegionnaireBaseArmor
       - id: N14WeaponSniperHunting # #Misfits Change: hunting rifle as Legion baseline primary
       - id: N14AmmoBox308
       - id: ClothingBeltRope
@@ -299,7 +298,6 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: N14ClothingOuterLegionnaireBaseArmor
       - id: N14WeaponSniperHunting # #Misfits Change: hunting rifle as Legion baseline primary
       - id: N14AmmoBox308
       - id: ClothingBeltRope
@@ -331,7 +329,6 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: N14ClothingOuterLegionnaireBaseArmor
       - id: N14WeaponSniperHunting # #Misfits Change: hunting rifle as Legion baseline primary (replaces SMG)
       - id: N14AmmoBox308
       - id: ClothingBeltRope
@@ -360,7 +357,6 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: N14ClothingOuterLegionnaireBaseArmor
       - id: N14WeaponSniperHunting # #Misfits Change: hunting rifle as Legion baseline primary
       - id: N14AmmoBox308
       - id: ClothingBeltRope
@@ -390,7 +386,6 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: N14ClothingOuterLegionnaireBaseArmor
       - id: N14WeaponSniperHunting # #Misfits Change: hunting rifle as Legion baseline primary
       - id: N14AmmoBox308
       - id: ClothingBeltRope
@@ -422,7 +417,6 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: N14ClothingOuterLegionnaireBaseArmor
       - id: N14WeaponSniperHunting # #Misfits Change: hunting rifle as Legion baseline primary
       - id: N14AmmoBox308
       - id: ClothingBeltRope
@@ -454,7 +448,6 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: N14ClothingOuterLegionnaireRecruitArmor
       - id: N14WeaponSniperHunting # #Misfits Change: hunting rifle as Legion baseline primary (equiv to NCR service rifle)
       - id: N14AmmoBox308
       - id: ClothingBeltRope
@@ -481,7 +474,6 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: N14ClothingOuterLegionnaireRecruitArmor
       - id: N14WeaponSniperHunting # #Misfits Change: hunting rifle baseline
       - id: N14AmmoBox308
       - id: N14WeaponPistol45Colt # #Misfits Change: .45 revolver Legion sidearm
@@ -511,7 +503,6 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: N14ClothingOuterLegionnaireRecruitArmor
       - id: N14WeaponSniperHunting # #Misfits Change: hunting rifle as Legion baseline primary
       - id: N14AmmoBox308
       - id: N14WeaponPistol45Colt # #Misfits Change: .45 revolver Legion sidearm
@@ -739,7 +730,6 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: N14ClothingOuterLegionnaireVeteranArmor
       - id: N14WeaponRifleSKS # #Misfits Change by BILL CLINTON!: Small number role made to be paired with the NCR sarge or basic ranger kits.
       - id: SKSEnbloc308
         amount: 4
@@ -771,7 +761,6 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: N14ClothingOuterLegionnaireVeteranArmor
       - id: N14WeaponRifleSKS # #Misfits Change by BILL CLINTON!: Small number role made to be paired with the NCR sarge or basic ranger kits.
       - id: SKSEnbloc308
         amount: 4
@@ -805,7 +794,6 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: N14ClothingOuterLegionnaireVeteranArmor
       - id: N14WeaponRifleSKS # #Misfits Change by BILL CLINTON!: Small number role made to be paired with the NCR sarge or basic ranger kits.
       - id: SKSEnbloc308
         amount: 4
@@ -838,7 +826,6 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: N14ClothingOuterLegionnaireVeteranArmor
       - id: N14WeaponRifleSKS # #Misfits Change by BILL CLINTON!: Small number role made to be paired with the NCR sarge or basic ranger kits.
       - id: SKSEnbloc308
         amount: 4
@@ -868,7 +855,6 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: N14ClothingOuterLegionnaireBaseArmor
       - id: N14WeaponSniperHunting # #Misfits Change: hunting rifle as Legion baseline primary
       - id: N14AmmoBox308
       - id: ClothingBeltRope
@@ -899,7 +885,6 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: N14ClothingOuterLegionnaireBaseArmor
       - id: N14WeaponSniperHunting # #Misfits Change: hunting rifle as Legion baseline primary
       - id: N14AmmoBox308
       - id: ClothingBeltRope
@@ -930,7 +915,6 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: N14ClothingOuterLegionnaireBaseArmor
       - id: N14WeaponSniperHunting # #Misfits Change: hunting rifle as Legion baseline primary
       - id: N14AmmoBox308
       - id: ClothingBeltRope
@@ -968,7 +952,6 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: N14ClothingOuterLegionnaireBaseArmor
       - id: N14WeaponSniperHunting # #Misfits Change: hunting rifle as Legion baseline primary (replaces SMG)
       - id: N14AmmoBox308
       - id: ClothingBeltRope
@@ -997,7 +980,6 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: N14ClothingOuterLegionnaireBaseArmor
       - id: N14WeaponSniperHunting # #Misfits Change: hunting rifle as Legion baseline primary
       - id: N14AmmoBox308
       - id: ClothingBeltRope
@@ -1028,7 +1010,6 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: N14ClothingOuterLegionnaireRecruitArmor
       - id: ClothingBeltQuiverSpear
       - id: N14WeaponSMGGreaseGun
       - id: Magazine45SubMachineGun
@@ -1055,7 +1036,6 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: N14ClothingOuterLegionnaireRecruitArmor
       - id: ClothingBeltQuiverSpear
       - id: N14PilumSpear
         amount: 4
@@ -1082,7 +1062,6 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: N14ClothingOuterLegionnaireRecruitArmor
       - id: N14LongSword
       - id: N14LegionnaireBuckler
       - id: N14HealingPowder #Misfits Change /Tweak/: replaces dirty stimpak, Legion uses tribal medicine
@@ -1106,7 +1085,6 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: N14ClothingOuterLegionnaireRecruitArmor
       - id: N14TribalMachete
       - id: ClothingBeltMedical
       - id: N14Bandage
@@ -1134,7 +1112,6 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: N14ClothingOuterLegionnaireRecruitArmor
       - id: N14TribalMachete
       - id: N14LegionnaireBuckler
       - id: N14HealingPowder
@@ -1157,7 +1134,6 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: N14ClothingOuterLegionnaireRecruitArmor
       - id: ClothingBeltQuiverSpear
       - id: N14PilumSpear
         amount: 3
@@ -1181,7 +1157,6 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: N14ClothingOuterLegionnaireRecruitArmor
       - id: ClothingBeltMedical
       - id: N14TribalMachete
       - id: N14Bandage

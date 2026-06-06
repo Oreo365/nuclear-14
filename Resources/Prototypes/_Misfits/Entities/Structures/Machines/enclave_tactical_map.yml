@@ -1,0 +1,44 @@
+- type: entity
+  parent: N14BrotherhoodTacticalmap
+  id: MisfitsEnclaveTacticalMap
+  name: Enclave TacMap
+  description: A secured Enclave tactical map used to coordinate base operations.
+  suffix: Enclave, Mapping
+  components:
+  - type: WastelandMap
+    mapTexturePath: _Misfits/Maps/wendover_map.png
+    mapTitle: Enclave TacMap - Wendover
+    worldBounds: "-517,-308,484,311"
+    tacticalFeed: Enclave
+  - type: AccessReader
+    access: [["Enclave"]]
+  - type: ActivatableUIRequiresAccess
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          MisfitsEnclaveTacticalMapBroken:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+
+- type: entity
+  parent: N14BrotherhoodTacticalmapBroken
+  id: MisfitsEnclaveTacticalMapBroken
+  name: Enclave TacMap
+  description: A broken Enclave tactical map.
+  suffix: Enclave, Broken
+  components:
+  - type: WastelandMap
+    mapTexturePath: _Misfits/Maps/wendover_map.png
+    mapTitle: Enclave TacMap - Wendover
+    worldBounds: "-517,-308,484,311"
+    tacticalFeed: Enclave
+  - type: AccessReader
+    access: [["Enclave"]]
+  - type: ActivatableUIRequiresAccess

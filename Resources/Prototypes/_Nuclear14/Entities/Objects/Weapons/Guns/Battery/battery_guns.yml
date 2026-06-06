@@ -1207,7 +1207,7 @@
   name: laser RCW
   parent: N14BaseWeaponPowerCell
   id: N14WeaponLaserRCW
-  description: A rapid-cycling laser weapon with the silhouette of a submachine gun. Designed for close-quarters energy weapon deployment. Inaccurate and battery-hungry, but capable of sustained continuous laser fire.
+  description: A rapid-cycling Electron laser weapon with the silhouette of a submachine gun. Designed for close-quarters energy weapon deployment. Inaccurate and battery-hungry, but capable of sustained continuous fire.
   components:
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Guns/Battery/laserrcw.rsi
@@ -1231,12 +1231,12 @@
     slots:
       gun_magazine:
         name: Power Cell
-        startingItem: N14MicrofusionCell # #Misfits Change - consolidated to single generic MFC; RCW fires red beam
+        startingItem: N14ElectronChargePack # #Misfits Change - They abused my good will and now they lose their giga yummy shit fuck these BOS players man.
         insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
         whitelist:
           tags:
-            - N14MicrofusionCell
+            - N14ElectronChargePack
   - type: Item
     size: Large
     shape:
@@ -1259,7 +1259,7 @@
       collection: N14LaserAutoRifleGunshot
   # #Misfits Add - Red beam override; weapon controls its own beam color
   - type: GunDamageBonus
-    hitscanProtoOverride: N14MFLaserRed
+    hitscanProtoOverride: N14PulseRed
   - type: FollowDistance
     backStrength: 5
   - type: StaticPrice

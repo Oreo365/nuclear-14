@@ -24,6 +24,10 @@ trait-name-N14ScottishAccent = Scottish Accent
 trait-description-N14ScottishAccent =
     Fer tha folk who come frae Hielan clan. You have Scottish accent, that's about it. Do I have to explain it?
 
+trait-name-N14FrenchieAccent = French Accent
+trait-description-N14FrenchieAccent =
+    Vive les goules!
+
 trait-name-N14Stutter = Stutter
 trait-description-N14Stutter =
     E-either d-due t-to a s-speech d-disorder, or d-due t-to a-anxiety or s-stress, you o-of-often f-find your-self s-stuttering w-while t-rying t-to s-speak.

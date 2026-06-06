@@ -142,6 +142,19 @@
   - type: GhostRoleMobSpawner
     prototype: N14MobPetEyebotMBoS
 
+# Treyebot (Tribe Eyebot) spawner
+- type: entity
+  parent: MisfitsPetSpawnerEyebot
+  id: MisfitsPetSpawnerEyebotTribe
+  name: companion eyebot tribal spawner
+  components:
+  - type: GhostRole
+    name: ghost-role-information-n14pet-eyebot-tribe-name
+    description: ghost-role-information-n14pet-eyebot-tribe-description
+    rules: ghost-role-component-default-rules
+  - type: GhostRoleMobSpawner
+    prototype: MisfitsMobPetEyebotTribe
+
 # Dog companion spawner (Wastelander/Tribe/Townsfolk)
 - type: entity
   parent: MisfitsPetSpawnerBase

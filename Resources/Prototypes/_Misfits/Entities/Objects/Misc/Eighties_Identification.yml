@@ -1,0 +1,23 @@
+- type: entity
+  parent: N14IDCard
+  id: MisfitsEightiesIDCard
+  name: 80's ID card
+  description: Some keys used by a member of the 80's.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi #placeholder sprite
+    state: passport_blank
+  - type: PresetIdCard
+    job: EightiesRoadRash
+
+- type: entity
+  parent: N14IDCard
+  id: MisfitsEightiesIDCardHead
+  name: 80's head ID card
+  description: The Block's keys.
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi #placeholder sprite
+    state: passport_presidential
+  - type: PresetIdCard
+    job: EightiesTheBlock

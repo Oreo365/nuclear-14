@@ -21,11 +21,15 @@
     - NCRVeteranRanger
     - NCRFieldRanger
     - NCRPatrolRanger
+    - NCRRangerRecruit
     - NCRFirstSergeant
     - NCRStaffSergeant
     - NCRNCO
     - NCRRO
+    - NCRTrader
+    - NCRCitizen
     - NCRWS
+    - NCRHeavyTrooper
     - NCREngineer
     - NCRMedic
     - NCRPrivateFirstClass
@@ -53,6 +57,8 @@
     - CaesarLegionLegionnaireRecruit
     - CaesarLegionHoundmaster
     - CaesarLegionAuxilia
+    - CaesarLegionTrader
+    - CaesarLegionCitizen
     # #Misfits Change: CaesarLegionRecruit removed — Legionnaire covers entry-level.
     - Overseer
     - VaultSecurity

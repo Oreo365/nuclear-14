@@ -691,7 +691,7 @@
   name: Neostead 2000
   parent: N14WeaponShotgunBase
   id: N14WeaponShotgunNeostead
-  description: A Brotherhood-issue semi-automatic shotgun fed from twin underbarrel tubes holding twelve shells total. Technology well ahead of the pre-war mainstream — and very hard to find outside Brotherhood hands.
+  description: A Brotherhood-issue semi-automatic shotgun fed from twin underbarrel tubes holding ten shells total. Technology well ahead of the pre-war mainstream — This one has the markings of Legion make.
   components:
   - type: Clothing
     sprite: _Nuclear14/Objects/Weapons/Guns/Shotguns/neostead.rsi
@@ -702,7 +702,6 @@
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Guns/Shotguns/neostead.rsi
   - type: Wieldable
-  - type: GunRequiresWield
   - type: GunWieldBonus
     minAngle: -14
     maxAngle: -38
@@ -711,7 +710,7 @@
     maxAngle: 50
     angleIncrease: 4
     angleDecay: 14
-    fireRate: 3
+    fireRate: 2
     selectedMode: SemiAuto
     availableModes:
     - SemiAuto
