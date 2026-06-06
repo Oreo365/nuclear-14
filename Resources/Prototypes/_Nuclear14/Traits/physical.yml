@@ -26,6 +26,7 @@
       jobs:
         - FollowerHead    # #Misfits Change - Followers job replaced by ranked hierarchy
         - FollowerDoctor
+        - FollowerGuard
         - FollowerVolunteer
     # Forge-Change-End
     - !type:CharacterTraitRequirement
@@ -115,6 +116,7 @@
       jobs:
         - FollowerHead    # #Misfits Change - Followers job replaced by ranked hierarchy
         - FollowerDoctor
+        - FollowerGuard
         - FollowerVolunteer
     # Forge-Change-End
     - !type:CharacterTraitRequirement
@@ -210,6 +212,7 @@
       jobs:
         - FollowerHead    # #Misfits Change - Followers job replaced by ranked hierarchy
         - FollowerDoctor
+        - FollowerGuard
         - FollowerVolunteer
     # Forge-Change-End
     - !type:CharacterTraitRequirement
@@ -252,7 +255,7 @@
 - type: trait
   id: N14UnnaturalReg
   category: Physical
-  points: -8 # Look I buff it by quite a bit, so a change from 5 to 8 is justified
+  points: -7 # Slight nerf, still able to heal out of crit but its nowhere near as able now.
   requirements:
     - !type:CharacterTraitRequirement
       inverted: true
@@ -272,17 +275,17 @@
           damage:
             types:
               # #Misfits Fix - PassiveDamage group healing is split across member types; direct types make burn regeneration visible. 1 Hp for every 4 seconds
-              Blunt: -0.25
-              Slash: -0.25
-              Piercing: -0.25
-              Heat: -0.25
-              Shock: -0.25
-              Cold: -0.25
-              Caustic: -0.25
-              Asphyxiation: -1 # Basically counteracts the critcal suffocation dmg
-              Bloodloss: -0.15
-              Poison: -0.15
-              Radiation: -0.15
+              Blunt: -0.20
+              Slash: -0.20
+              Piercing: -0.20
+              Heat: -0.20
+              Shock: -0.20
+              Cold: -0.20
+              Caustic: -0.20
+              Asphyxiation: -0.35 # Last longer in crit, takes a WHIIILE to get back up.
+              Bloodloss: -0.10
+              Poison: -0.10
+              Radiation: -0.10
 
 - type: trait
   id: N14WorldChampion
@@ -295,6 +298,7 @@
       jobs:
         - FollowerHead    # #Misfits Change - Followers job replaced by ranked hierarchy
         - FollowerDoctor
+        - FollowerGuard
         - FollowerVolunteer
   # Forge-Change-End
   functions:
@@ -384,6 +388,7 @@
       jobs:
         - FollowerHead    # #Misfits Change - Followers job replaced by ranked hierarchy
         - FollowerDoctor
+        - FollowerGuard
         - FollowerVolunteer
     # Forge-Change-End
     # Misfits Fix: CharacterTraitRequirement block removed — all referenced N14ExtremeAug* traits are commented out
@@ -456,6 +461,7 @@
         - BoSWestElderCommander
         - FollowerHead    # #Misfits Change - Followers job replaced by ranked hierarchy
         - FollowerDoctor
+        - FollowerGuard
         - FollowerVolunteer
         # Forge-Change-End
     - !type:CharacterTraitRequirement

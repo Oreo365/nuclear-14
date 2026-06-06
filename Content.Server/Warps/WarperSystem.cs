@@ -1,5 +1,10 @@
 using Content.Server.Ghost.Components;
+using Content.Server.NPC.Components;
+using Content.Server.NPC.Systems;
 using Content.Server.Popups;
+using Content.Shared.Mobs.Systems;
+using Content.Shared._Misfits.NPC;
+using Content.Shared._Misfits.NPC.Components;
 using Content.Shared.Examine;
 using Content.Shared.Ghost;
 using Content.Shared.Interaction;
@@ -17,6 +22,8 @@ public sealed class WarperSystem : EntitySystem
 {
     [Dependency] private readonly PopupSystem _popupSystem = default!;
     [Dependency] private readonly SharedMapSystem _mapSystem = default!;
+    [Dependency] private readonly MobStateSystem _mobState = default!;
+    [Dependency] private readonly NPCSystem _npcSystem = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly WarpPointSystem _warpPointSystem = default!;
     [Dependency] private readonly SharedTransformSystem _sharedTransform = default!;
@@ -114,6 +121,26 @@ public sealed class WarperSystem : EntitySystem
             _physics.SetLinearVelocity(user, Vector2.Zero);
         }
         // Forge-Change-End
+
+        if (HasComp<FollowerCommanderComponent>(user))
+        {
+            var followerQuery = EntityManager.EntityQueryEnumerator<RecruitedFollowerComponent>();
+            while (followerQuery.MoveNext(out var follower, out var recruited))
+            {
+                if (recruited.Commander != user)
+                    continue;
+                if (recruited.Order == FollowerOrderType.HoldPosition && !recruited.WasAutoHeld)
+                    continue;
+                if (!_mobState.IsAlive(follower))
+                    continue;
+
+                _sharedTransform.SetCoordinates(follower, destXform.Coordinates);
+                _sharedTransform.AttachToGridOrMap(follower);
+                if (HasComp<PhysicsComponent>(follower))
+                    _physics.SetLinearVelocity(follower, Vector2.Zero);
+                _npcSystem.OnFollowerWarped(follower);
+            }
+        }
 
         return true;
     }

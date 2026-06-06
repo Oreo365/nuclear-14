@@ -1,3 +1,25 @@
 npcfaction-component-faction-set = Faction set to: {$faction}
 npc-order-start = "Fire at will!"
 npc-order-stop = "Hold your fire!"
+npc-order-follow-neutral = "Follow me."
+npc-order-stop-following-neutral = "You can stop following me."
+npc-order-followed-neutral = They start following you.
+npc-order-stopped-following-neutral = They stop following you.
+npc-order-follow-cap-reached = You cannot command any more followers.
+npc-order-command-follow = Your followers move to follow you.
+npc-order-command-passive = Your followers go passive.
+npc-order-command-hold-position = Your followers hold position.
+npc-order-command-neutral = Your followers return to neutral.
+npc-order-command-no-followers = You do not have any followers.
+npc-order-wheel-follow = Follow
+npc-order-wheel-passive = Passive
+npc-order-wheel-hold-position = Hold Position
+npc-order-wheel-neutral = Neutral
+
+npc-order-follow-neutral-count = Followers: {$current}/{$max}
+npc-follower-lost = Lost you. Holding position.
+npc-order-response-recruit = You're with me now.
+npc-order-response-follow = Move out!
+npc-order-response-passive = Stand down.
+npc-order-response-hold-position = Hold your position.
+npc-order-response-neutral = Engage at will.

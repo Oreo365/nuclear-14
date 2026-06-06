@@ -23,3 +23,17 @@
     ref: 1
     op: Keep
     func: NotEqual
+
+- type: shader
+  id: WeatherVisibilityDraw
+  kind: source
+  path: "/Textures/Shaders/weather_visibility_draw.swsl"
+  stencil:
+    ref: 1
+    op: Keep
+    func: NotEqual
+
+- type: shader
+  id: WeatherDraw
+  kind: source
+  path: "/Textures/Shaders/weather_draw.swsl"

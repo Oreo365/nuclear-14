@@ -20,7 +20,7 @@
         Piercing: 0.45
         Heat: 0.45
   - type: ExplosionResistance
-    damageCoefficient: 0.40
+    damageCoefficient: 0.60
   - type: StaminaDamageResistance
     coefficient: 0.85 # 15%
 #  - type: ClothingSpecialModifier
@@ -74,7 +74,7 @@
         Piercing: 0.45
         Heat: 0.45
   - type: ExplosionResistance
-    damageCoefficient: 0.40
+    damageCoefficient: 0.60
   - type: StaminaDamageResistance
     coefficient: 0.85 # 15%
 
@@ -126,7 +126,7 @@
         Piercing: 0.45
         Heat: 0.45
   - type: ExplosionResistance
-    damageCoefficient: 0.40
+    damageCoefficient: 0.60
   - type: StaminaDamageResistance
     coefficient: 0.85 # 15%
 
@@ -178,7 +178,7 @@
         Piercing: 0.45
         Heat: 0.45
   - type: ExplosionResistance
-    damageCoefficient: 0.40
+    damageCoefficient: 0.60
   - type: StaminaDamageResistance
     coefficient: 0.85 # 15%
 
@@ -230,7 +230,7 @@
         Piercing: 0.45
         Heat: 0.45
   - type: ExplosionResistance
-    damageCoefficient: 0.40
+    damageCoefficient: 0.60
   - type: StaminaDamageResistance
     coefficient: 0.85 # 15%
 

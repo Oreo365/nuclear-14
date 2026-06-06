@@ -18,6 +18,15 @@ job-description-ncr-nco = You lead a squad of NCR troopers, responsible for a fi
 job-name-ncr-weapon-specialist = NCR Weapon Specialist
 job-description-ncr-weapon-specialist = You are a weapons-qualified specialist of the NCR. Your focus is firepower and combat effectiveness — not command. Your rank tracks PV2 through SPC as you accumulate experience.
 
+job-name-ncr-requisition-officer = NCR Requisition Officer
+job-description-ncr-requisition-officer = You are a Quartermaster and Requisition Officer of NCR, maintain the armies' equipment and supervise the allocation of its resources.
+
+job-name-ncr-citizen = NCR Citizen
+job-description-ncr-citizen = You are a citizen of the NCR coming east for work, to help the military as a Civilian contractor.
+
+job-name-ncr-trader = NCR Trader
+job-description-ncr-trader = You are a Caravaneer and a citizen of the NCR, supplying the republic's trade routes.
+
 # #Misfits Add - Enclave job locale (expanded 8-role hierarchy). Reformer is admin-only apex role.
 job-name-enclave-reformer = The Reformer
 job-description-enclave-reformer = You are the Enclave's supreme authority on the field — its Reformer. Shape the cell's doctrine, judge its members, and determine its future. Answerable only to Eden.
@@ -101,6 +110,8 @@ job-name-follower-head = Followers Head
 job-description-follower-head = You lead this chapter of the Followers. The sick, the curious, and the desperate look to you for direction. Set the example, protect your people, and keep the mission alive.
 job-name-follower-doctor = Followers Doctor
 job-description-follower-doctor = You are a trained Follower physician. Stitch the wounded, study the wastes, and push medicine into places NCR and Brotherhood dare not go.
+job-name-follower-guard = Followers Guard
+job-description-follower-guard = You protect the Followers' clinic, escort doctors into dangerous ground, and keep desperate people from turning the humanitarian mission into another battlefield.
 job-name-follower-volunteer = Followers Volunteer
 job-description-follower-volunteer = You are new to the Followers. You believe knowledge and compassion can outlast bullets and bombs. Prove it — learn from those above you and help anyone who needs it.
 
@@ -140,3 +151,7 @@ undecided-loadout-category-misfits-pal-wattz-description =
     Includes 1 Bozar, 1 LMG magazine, 1 12.7mm pistol,
     2 12.7mm pistol magazines, 1 roll of gauze, 1 stimpak,
     and 1 K ration MRE.
+
+# Tribal Robot
+job-name-synthetic-protectron-tribal = Protectron Spirit-Tender
+job-description-synthetic-protectron-tribal = An agricultural robot that has been adopted by the local tribe and modified over decades or centuries.

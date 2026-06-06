@@ -6,7 +6,7 @@
 - type: damageModifierSet
   id: MisfitsC27Silicon
   coefficients:
-    Shock: 1.2       # vulnerable — electrical disrupts motor control / circuitry
+    Shock: 1.0       # vulnerable — electrical disrupts motor control / circuitry # Temp disabled untill someone fixes plasma.
     Radiation: 0.0   # full immunity — sealed chassis, no organic components
   # #Misfits Tweak - stripped physical coefficients and flat reductions; physical DR now
   # comes entirely from armor tier (Armor component on clothing). Bare chassis = 400 eHP

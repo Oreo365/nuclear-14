@@ -26,6 +26,7 @@
             Tribal: [ 2, 4 ]
             TribalFarmer: [ 2, 2 ]
             TribalShaman: [ 2, 2 ] # #Misfits Change - renamed from TribalHealer
+            SyntheticProtectronTribal: [1, 1]
             TownMayor: [ 1, 1 ]
             TownSheriff: [ 1, 1 ]
             TownDeputy: [ 2, 2 ]

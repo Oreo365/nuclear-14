@@ -23,12 +23,20 @@ public sealed class ShowHealthIconsSystem : EquipmentHudSystem<ShowHealthIconsCo
     {
         base.Initialize();
 
+        SubscribeLocalEvent<ShowHealthIconsComponent, AfterAutoHandleStateEvent>(OnAfterHandleState);
         SubscribeLocalEvent<DamageableComponent, GetStatusIconsEvent>(OnGetStatusIconsEvent);
+    }
+
+    private void OnAfterHandleState(EntityUid uid, ShowHealthIconsComponent component, ref AfterAutoHandleStateEvent args)
+    {
+        RefreshOverlay(uid);
     }
 
     protected override void UpdateInternal(RefreshEquipmentHudEvent<ShowHealthIconsComponent> component)
     {
         base.UpdateInternal(component);
+
+        DamageContainers.Clear();
 
         foreach (var damageContainerId in component.Components.SelectMany(x => x.DamageContainers))
         {

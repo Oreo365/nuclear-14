@@ -1,4 +1,5 @@
 using Content.Server._Misfits.SpecialStats.Components;
+using Content.Server.Actions;
 using Content.Shared._Misfits.Special;
 using Content.Shared._Misfits.Special.Components;
 using Content.Shared._Misfits.SpecialStats;
@@ -11,6 +12,7 @@ namespace Content.Server._Misfits.SpecialStats;
 /// </summary>
 public sealed class SpecialIntelligenceHudSystem : EntitySystem
 {
+    [Dependency] private readonly ActionsSystem _actions = default!;
     [Dependency] private readonly SharedSpecialSystem _special = default!;
 
     private const int MedicalHudIntelligenceThreshold = 10;
@@ -23,6 +25,8 @@ public sealed class SpecialIntelligenceHudSystem : EntitySystem
         SubscribeLocalEvent<SpecialChangedEvent>(OnSpecialChanged);
         SubscribeLocalEvent<SpecialStatsReadyEvent>(OnStatsReady);
         SubscribeLocalEvent<SpecialShutdownEvent>(OnSpecialShutdown);
+        SubscribeLocalEvent<SpecialAppliedMedicalHudComponent, ComponentShutdown>(OnMedicalHudShutdown);
+        SubscribeLocalEvent<SpecialAppliedMedicalHudComponent, SpecialMedicalHudToggleActionEvent>(OnMedicalHudToggle);
     }
 
     private void OnSpecialChanged(ref SpecialChangedEvent args)
@@ -53,22 +57,38 @@ public sealed class SpecialIntelligenceHudSystem : EntitySystem
     private void EnsureMedicalHud(EntityUid uid)
     {
         var applied = EnsureComp<SpecialAppliedMedicalHudComponent>(uid);
+        _actions.AddAction(uid, ref applied.ActionEntity, applied.Action);
+        SetMedicalHudEnabled(uid, applied, applied.Enabled);
+    }
 
-        if (!HasComp<ShowHealthBarsComponent>(uid))
+    private void SetMedicalHudEnabled(EntityUid uid, SpecialAppliedMedicalHudComponent applied, bool enabled)
+    {
+        applied.Enabled = enabled;
+        _actions.SetToggled(applied.ActionEntity, enabled);
+
+        if (!enabled)
         {
-            var bars = EnsureComp<ShowHealthBarsComponent>(uid);
-            EnsureBiologicalContainer(bars.DamageContainers);
-            Dirty(uid, bars);
+            ClearMedicalHudComponents(uid, applied);
+            return;
+        }
+
+        if (!TryComp<ShowHealthBarsComponent>(uid, out var bars))
+        {
+            bars = EnsureComp<ShowHealthBarsComponent>(uid);
             applied.AddedHealthBars = true;
         }
 
-        if (!HasComp<ShowHealthIconsComponent>(uid))
+        EnsureBiologicalContainer(bars.DamageContainers);
+        Dirty(uid, bars);
+
+        if (!TryComp<ShowHealthIconsComponent>(uid, out var icons))
         {
-            var icons = EnsureComp<ShowHealthIconsComponent>(uid);
-            EnsureBiologicalContainer(icons.DamageContainers);
-            Dirty(uid, icons);
+            icons = EnsureComp<ShowHealthIconsComponent>(uid);
             applied.AddedHealthIcons = true;
         }
+
+        EnsureBiologicalContainer(icons.DamageContainers);
+        Dirty(uid, icons);
     }
 
     private void ClearMedicalHud(EntityUid uid)
@@ -76,13 +96,38 @@ public sealed class SpecialIntelligenceHudSystem : EntitySystem
         if (!TryComp<SpecialAppliedMedicalHudComponent>(uid, out var applied))
             return;
 
+        ClearMedicalHudComponents(uid, applied);
+        RemComp<SpecialAppliedMedicalHudComponent>(uid);
+    }
+
+    private void ClearMedicalHudComponents(EntityUid uid, SpecialAppliedMedicalHudComponent applied)
+    {
         if (applied.AddedHealthBars)
+        {
             RemComp<ShowHealthBarsComponent>(uid);
+            applied.AddedHealthBars = false;
+        }
 
         if (applied.AddedHealthIcons)
+        {
             RemComp<ShowHealthIconsComponent>(uid);
+            applied.AddedHealthIcons = false;
+        }
+    }
 
-        RemComp<SpecialAppliedMedicalHudComponent>(uid);
+    private void OnMedicalHudShutdown(EntityUid uid, SpecialAppliedMedicalHudComponent component, ComponentShutdown args)
+    {
+        _actions.RemoveAction(uid, component.ActionEntity);
+    }
+
+    private void OnMedicalHudToggle(EntityUid uid, SpecialAppliedMedicalHudComponent component, SpecialMedicalHudToggleActionEvent args)
+    {
+        if (args.Handled)
+            return;
+
+        SetMedicalHudEnabled(uid, component, !component.Enabled);
+
+        args.Handled = true;
     }
 
     private static void EnsureBiologicalContainer(ICollection<string> damageContainers)

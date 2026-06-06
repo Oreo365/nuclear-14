@@ -12,6 +12,10 @@
   enduranceStaminaRecoveryMultiplierPerPoint: 0.02666667
   enduranceToxinDamageMultiplierPerPoint: 0.02
   charismaTradeMultiplierPerPoint: 0.01333333
+  charismaWarcryRangeMultiplierPerPoint: 0.006667
+  charismaWarcryDurationMultiplierPerPoint: 0.006667
+  charismaWarcrySpeedMultiplierPerPoint: 0.006667
+  charismaNeutralFollowerMinimum: 8
   intelligenceLatheTimeMultiplierPerPoint: 0.06666667
   intelligenceLatheMaterialUseMultiplierPerPoint: 0.03333333
   agilityMovementSpeedMultiplierPerPoint: 0.01

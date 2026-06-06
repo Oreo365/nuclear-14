@@ -37,6 +37,7 @@ public sealed class NetworkConfiguratorSystem : SharedNetworkConfiguratorSystem
     [Dependency] private readonly SharedAppearanceSystem _appearanceSystem = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly IAdminLogManager _adminLogger = default!;
+    [Dependency] private readonly BlockNetworkConfiguratorSystem _blockNetworkConfigurator = default!;
 
     public override void Initialize()
     {
@@ -148,6 +149,9 @@ public sealed class NetworkConfiguratorSystem : SharedNetworkConfiguratorSystem
         if (!targetUid.HasValue || !Resolve(targetUid.Value, ref device, false))
             return;
 
+        if (IsNetworkConfiguratorBlocked(targetUid.Value, userUid))
+            return;
+
         //This checks if the device is marked as having a savable address,
         //to avoid adding pdas and whatnot to air alarms. This flag is true
         //by default, so this will only prevent devices from being added to
@@ -198,6 +202,15 @@ public sealed class NetworkConfiguratorSystem : SharedNetworkConfiguratorSystem
         if (!HasComp<DeviceLinkSourceComponent>(target) && !HasComp<DeviceLinkSinkComponent>(target))
             return;
 
+        if (target.HasValue && IsNetworkConfiguratorBlocked(target.Value, user, configurator.ActiveDeviceLink))
+            return;
+
+        if (configurator.ActiveDeviceLink.HasValue && IsNetworkConfiguratorBlocked(configurator.ActiveDeviceLink.Value, user, target))
+        {
+            configurator.ActiveDeviceLink = null;
+            return;
+        }
+
         if (configurator.ActiveDeviceLink == target)
         {
             _popupSystem.PopupEntity(Loc.GetString("network-configurator-link-mode-stopped"), target.Value, user);
@@ -229,6 +242,10 @@ public sealed class NetworkConfiguratorSystem : SharedNetworkConfiguratorSystem
             || !targetUid.HasValue || configurator.ActiveDeviceLink == targetUid)
             return;
 
+        if (IsNetworkConfiguratorBlocked(targetUid.Value, user, configurator.ActiveDeviceLink)
+            || IsNetworkConfiguratorBlocked(configurator.ActiveDeviceLink.Value, user, targetUid))
+            return;
+
         if (!HasComp<DeviceLinkSourceComponent>(targetUid) && !HasComp<DeviceLinkSinkComponent>(targetUid))
             return;
 
@@ -242,8 +259,11 @@ public sealed class NetworkConfiguratorSystem : SharedNetworkConfiguratorSystem
         }
     }
 
-    private bool AccessCheck(EntityUid target, EntityUid? user, NetworkConfiguratorComponent component)
+    private bool AccessCheck(EntityUid target, EntityUid? user, NetworkConfiguratorComponent component, EntityUid? source = null)
     {
+        if (IsNetworkConfiguratorBlocked(target, user, source))
+            return false;
+
         if (!TryComp(target, out AccessReaderComponent? reader) || user == null)
             return true;
 
@@ -254,6 +274,20 @@ public sealed class NetworkConfiguratorSystem : SharedNetworkConfiguratorSystem
         _popupSystem.PopupEntity(Loc.GetString("network-configurator-device-access-denied"), target, user.Value);
 
         return false;
+    }
+
+    private bool IsNetworkConfiguratorBlocked(EntityUid target, EntityUid? user = null, EntityUid? source = null)
+    {
+        if (!TryComp<BlockNetworkConfiguratorComponent>(target, out var component))
+            return false;
+
+        if (source.HasValue && _blockNetworkConfigurator.IsAllowedSource(component, source.Value))
+            return false;
+
+        if (user.HasValue)
+            _popupSystem.PopupCursor(Loc.GetString("signal-linker-component-connection-refused", ("machine", target)), user.Value);
+
+        return true;
     }
 
     private void OnComponentRemoved(EntityUid uid, DeviceListComponent component, ComponentRemove args)
@@ -339,6 +373,9 @@ public sealed class NetworkConfiguratorSystem : SharedNetworkConfiguratorSystem
         if (!canReach || !target.HasValue)
             return;
 
+        if (IsNetworkConfiguratorBlocked(target.Value, user, configurator.ActiveDeviceLink))
+            return;
+
         DetermineMode(uid, configurator, target, user);
 
         if (configurator.LinkModeActive)
@@ -385,6 +422,9 @@ public sealed class NetworkConfiguratorSystem : SharedNetworkConfiguratorSystem
         if (!args.CanAccess || !args.CanInteract || !args.Using.HasValue)
             return;
 
+        if (IsNetworkConfiguratorBlocked(args.Target, null, configurator.ActiveDeviceLink))
+            return;
+
         var verb = new UtilityVerb
         {
             Act = () => OnUsed(uid, configurator, args.Target, args.User),
@@ -419,6 +459,9 @@ public sealed class NetworkConfiguratorSystem : SharedNetworkConfiguratorSystem
     {
         if (!args.CanAccess || !args.CanInteract || !args.Using.HasValue
             || !TryComp<NetworkConfiguratorComponent>(args.Using.Value, out var configurator))
+            return;
+
+        if (IsNetworkConfiguratorBlocked(args.Target, null, configurator.ActiveDeviceLink))
             return;
 
         if (!configurator.LinkModeActive && HasComp<DeviceListComponent>(args.Target))
@@ -472,7 +515,8 @@ public sealed class NetworkConfiguratorSystem : SharedNetworkConfiguratorSystem
         if (Delay(configurator))
             return;
 
-        if (!targetUid.HasValue || !configurator.ActiveDeviceLink.HasValue || !AccessCheck(targetUid.Value, userUid, configurator))
+        if (!targetUid.HasValue || !configurator.ActiveDeviceLink.HasValue || !AccessCheck(targetUid.Value, userUid, configurator, configurator.ActiveDeviceLink)
+            || IsNetworkConfiguratorBlocked(configurator.ActiveDeviceLink.Value, userUid, targetUid))
             return;
 
 
@@ -651,6 +695,10 @@ public sealed class NetworkConfiguratorSystem : SharedNetworkConfiguratorSystem
         if (!configurator.ActiveDeviceLink.HasValue || !configurator.DeviceLinkTarget.HasValue)
             return;
 
+        if (IsNetworkConfiguratorBlocked(configurator.ActiveDeviceLink.Value, args.Actor, configurator.DeviceLinkTarget)
+            || IsNetworkConfiguratorBlocked(configurator.DeviceLinkTarget.Value, args.Actor, configurator.ActiveDeviceLink))
+            return;
+
         _adminLogger.Add(LogType.DeviceLinking, LogImpact.Low,
             $"{ToPrettyString(args.Actor):actor} cleared links between {ToPrettyString(configurator.ActiveDeviceLink.Value):subject} and {ToPrettyString(configurator.DeviceLinkTarget.Value):subject2} with {ToPrettyString(uid):tool}");
 
@@ -685,6 +733,10 @@ public sealed class NetworkConfiguratorSystem : SharedNetworkConfiguratorSystem
     private void OnToggleLinks(EntityUid uid, NetworkConfiguratorComponent configurator, NetworkConfiguratorToggleLinkMessage args)
     {
         if (!configurator.ActiveDeviceLink.HasValue || !configurator.DeviceLinkTarget.HasValue)
+            return;
+
+        if (IsNetworkConfiguratorBlocked(configurator.ActiveDeviceLink.Value, args.Actor, configurator.DeviceLinkTarget)
+            || IsNetworkConfiguratorBlocked(configurator.DeviceLinkTarget.Value, args.Actor, configurator.ActiveDeviceLink))
             return;
 
         if (TryComp(configurator.ActiveDeviceLink, out DeviceLinkSourceComponent? activeSource) && TryComp(configurator.DeviceLinkTarget, out DeviceLinkSinkComponent? targetSink))
@@ -723,6 +775,10 @@ public sealed class NetworkConfiguratorSystem : SharedNetworkConfiguratorSystem
     private void OnSaveLinks(EntityUid uid, NetworkConfiguratorComponent configurator, NetworkConfiguratorLinksSaveMessage args)
     {
         if (!configurator.ActiveDeviceLink.HasValue || !configurator.DeviceLinkTarget.HasValue)
+            return;
+
+        if (IsNetworkConfiguratorBlocked(configurator.ActiveDeviceLink.Value, args.Actor, configurator.DeviceLinkTarget)
+            || IsNetworkConfiguratorBlocked(configurator.DeviceLinkTarget.Value, args.Actor, configurator.ActiveDeviceLink))
             return;
 
         if (TryComp(configurator.ActiveDeviceLink, out DeviceLinkSourceComponent? activeSource) && TryComp(configurator.DeviceLinkTarget, out DeviceLinkSinkComponent? targetSink))

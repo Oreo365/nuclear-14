@@ -3,6 +3,7 @@ using Content.Server.Kitchen.Components;
 using Content.Server.Nutrition.EntitySystems;
 using Content.Shared.Body.Components;
 using Content.Shared.Administration.Logs;
+using Content.Shared.Body.Part;
 using Content.Shared.Database;
 using Content.Shared.Interaction;
 using Content.Shared.Nutrition.Components;
@@ -129,6 +130,12 @@ public sealed class SharpSystem : EntitySystem
 
         if (hasBody)
             _bodySystem.GibBody(args.Args.Target.Value, body: body);
+
+        // Misfits Change for butchering severed body parts
+        if (TryComp<BodyPartComponent>(args.Args.Target.Value, out var bodyPart))
+        {
+            _bodySystem.GibPart(args.Args.Target.Value, bodyPart);
+        }
 
         _destructibleSystem.DestroyEntity(args.Args.Target.Value);
 

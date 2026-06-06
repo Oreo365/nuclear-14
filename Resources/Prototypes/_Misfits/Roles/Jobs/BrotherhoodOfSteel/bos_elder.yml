@@ -30,6 +30,13 @@
         factions:
           - BrotherhoodOfSteel
       - type: PowerArmorProficiency # #Misfits Add: Elder can equip power armor.
+      - type: LanguageKnowledge # #Misfits Add: Elders speak and understand Brotherhood binary code by default.
+        speaks:
+        - English
+        - N14BrotherBeep
+        understands:
+        - English
+        - N14BrotherBeep
 
 - type: startingGear
   id: BoSWestElderCommanderGear

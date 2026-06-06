@@ -85,6 +85,18 @@
       - state: dean
 
 - type: entity
+  id: N14SpawnPointForgemaster
+  parent: N14SpawnPointCenturion
+  name: legion forgemaster
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionForgemaster
+  - type: Sprite
+    layers:
+      - state: green
+      - state: dean
+
+- type: entity
   id: N14SpawnPointLegionnaireVeteran
   parent: N14SpawnPointCenturion
   name: legion veteran legionary
@@ -260,17 +272,17 @@
 #      - state: inquisitor
 
 - type: entity
-  id: SpawnPointNCRPisoner
+  id: SpawnPointNCRPrisoner
   parent: SpawnPointJobBase
-  name: NCR Pisoner spawner
+  name: NCR Prisoner spawner
   components:
   - type: SpawnPoint
-    job_id: NCRPisoner
+    job_id: NCRPrisoner
   - type: Sprite
     sprite: Corvax/Markers/jobs.rsi
     layers:
       - state: green
-      - state: prisoner
+      - state: Prisoner
 
 - type: entity
   id: SpawnPointCaesarLegionSlave
@@ -279,6 +291,32 @@
   components:
   - type: SpawnPoint
     job_id: CaesarLegionSlave
+  - type: Sprite
+    sprite: Corvax/Markers/jobs.rsi
+    layers:
+      - state: green
+      - state: slave
+
+- type: entity
+  id: SpawnPointCaesarLegionCitizen
+  parent: SpawnPointJobBase
+  name: Legion civilian
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionCitizen
+  - type: Sprite
+    sprite: Corvax/Markers/jobs.rsi
+    layers:
+      - state: green
+      - state: slave
+
+- type: entity
+  id: SpawnPointCaesarLegionTrader
+  parent: SpawnPointJobBase
+  name: Legion trader
+  components:
+  - type: SpawnPoint
+    job_id: CaesarLegionTrader
   - type: Sprite
     sprite: Corvax/Markers/jobs.rsi
     layers:

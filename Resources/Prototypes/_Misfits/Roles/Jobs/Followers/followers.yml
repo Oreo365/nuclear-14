@@ -1,6 +1,6 @@
 # #Misfits Add - Followers of the Apocalypse department and ranked jobs.
 # Replaces the single upstream Followers job (now commented out in _Nuclear14/Roles/Jobs/Fun/followers.yml).
-# Hierarchy: Follower Head > Follower Doctor > Follower Volunteer
+# Hierarchy: Follower Head > Follower Doctor > Follower Guard > Follower Volunteer
 
 - type: department
   id: FollowersOfTheApocalypse
@@ -10,6 +10,7 @@
   roles:
   - FollowerHead
   - FollowerDoctor
+  - FollowerGuard
   - FollowerVolunteer
   - SuperMutantFollowerDoctor
 
@@ -165,7 +166,88 @@
 - type: playTimeTracker
   id: FollowerDoctor
 
-# ─── Follower Volunteer ───────────────────────────────────────────────────────
+# --- Follower Guard ----------------------------------------------------------
+- type: job
+  id: FollowerGuard
+  setPreference: true
+  jobWhitelistBypassesRoleTimers: true
+  weight: 103
+  displayWeight: 108
+  showBorder: true
+  canBeAntag: false
+  name: job-name-follower-guard
+  description: job-description-follower-guard
+  playTimeTracker: FollowerGuard
+  startingGear: FollowerGuardGear
+  icon: "JobIconPassenger"
+  supervisors: job-supervisors-follower-guard
+  alwaysUseSpawner: true
+  accessGroups:
+  - FollowersApocalypse
+  - FotA
+  requirements:
+  - !type:CharacterPlaytimeRequirement
+    tracker: FollowerVolunteer
+    min: 7200 # 2 hours as Follower Volunteer
+  - !type:CharacterDepartmentTimeRequirement
+    department: FollowersOfTheApocalypse
+    min: 10800 # 3 hours in faction
+  - !type:CharacterSpeciesRequirement
+    inverted: true
+    species:
+    - RobotMrHandy
+    - RobotMrGutsy
+    - RobotProtectron
+    - RobotProtectronPolice
+    - RobotProtectronBuilder
+    - RobotProtectronFire
+    - RobotAssaultron
+    - RobotAssaultronTesla
+    - RobotSentryBot
+    - RobotSentryBotLaser
+    - RobotRobobrain
+    - RobotRobobrainLaser
+    - SuperMutant
+    - Nightkin
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Wastelander
+          - Followers # #Misfits Add - enables Followers death-alert targeting
+      - type: CPRTraining
+  - !type:AddTraitSpecial
+    traits:
+    - FiremanCarry
+
+- type: startingGear
+  id: FollowerGuardGear
+  equipment:
+    jumpsuit: N14ClothingUniformJumpsuitFollowers
+    back: N14ClothingBackpackSatchelMilitary
+    shoes: N14ClothingBootsLeatherFilled
+    id: N14IDFollowerGuard
+    ears: N14ClothingHeadsetFollowers
+    outerClothing: N14ClothingOuterCoatFollowersArmored
+    belt: ClothingBelt10mmfilled
+    pocket1: Handcuffs
+    pocket2: N14HandheldHealthAnalyzer
+  innerClothingSkirt: N14ClothingUniformJumpskirtFalloutBlack
+  satchel: N14ClothingBackpackSatchelWastelanderFilled
+  duffelbag: N14ClothingBackpackDuffelFilled
+  storage:
+    back:
+    - N14BoxPlasticFilledWastelander
+    - N14PoliceBaton
+    - N14CombatKnife
+    - MagazineBox10mm
+    - Brutepack
+
+- type: playTimeTracker
+  id: FollowerGuard
+
+# --- Follower Volunteer ------------------------------------------------------
 - type: job
   id: FollowerVolunteer
   setPreference: true

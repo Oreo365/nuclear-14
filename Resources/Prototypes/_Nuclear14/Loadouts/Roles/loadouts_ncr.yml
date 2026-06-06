@@ -25,7 +25,9 @@
         - NCRHeavyTrooper
         - NCRCadet
 
+        - NCRRangerRecruit
         - NCRFieldRanger
+        - NCRPatrolRanger
         - NCRVeteranRanger
   items:
     - N14ClothingEyesGlassesGoggles
@@ -49,7 +51,9 @@
         - NCRHeavyTrooper
         - NCRCadet
 
+        - NCRRangerRecruit
         - NCRFieldRanger
+        - NCRPatrolRanger
         - NCRVeteranRanger
   items:
     - N14ClothingHandsGlovesNCR
@@ -73,7 +77,9 @@
         - NCRHeavyTrooper
         - NCRCadet
 
+        - NCRRangerRecruit
         - NCRFieldRanger
+        - NCRPatrolRanger
         - NCRVeteranRanger
   items:
     - N14ClothingHeadHatWinterBoonie
@@ -97,7 +103,9 @@
         - NCRHeavyTrooper
         - NCRCadet
 
+        - NCRRangerRecruit
         - NCRFieldRanger
+        - NCRPatrolRanger
         - NCRVeteranRanger
   items:
     - N14ClothingHeadHatWoodBoonie
@@ -121,7 +129,9 @@
         - NCRHeavyTrooper
         - NCRCadet
 
+        - NCRRangerRecruit
         - NCRFieldRanger
+        - NCRPatrolRanger
         - NCRVeteranRanger
   items:
     - N14ClothingHeadHatDesertBoonie
@@ -145,7 +155,9 @@
         - NCRHeavyTrooper
         - NCRCadet
 
+        - NCRRangerRecruit
         - NCRFieldRanger
+        - NCRPatrolRanger
         - NCRVeteranRanger
   items:
     - N14ClothingNeckCloakNCR
@@ -169,7 +181,9 @@
         - NCRHeavyTrooper
         - NCRCadet
 
+        - NCRRangerRecruit
         - NCRFieldRanger
+        - NCRPatrolRanger
         - NCRVeteranRanger
   items:
     - N14ClothingNeckCloakGhillie
@@ -193,7 +207,9 @@
         - NCRHeavyTrooper
         - NCRCadet
 
+        - NCRRangerRecruit
         - NCRFieldRanger
+        - NCRPatrolRanger
         - NCRVeteranRanger
   items:
     - N14ClothingNeckCloakNCRSnow
@@ -217,7 +233,9 @@
         - NCRHeavyTrooper
         - NCRCadet
 
+        - NCRRangerRecruit
         - NCRFieldRanger
+        - NCRPatrolRanger
         - NCRVeteranRanger
   items:
     - N14ClothingNeckCloakNCRWoods
@@ -241,7 +259,9 @@
         - NCRHeavyTrooper
         - NCRCadet
 
+        - NCRRangerRecruit
         - NCRFieldRanger
+        - NCRPatrolRanger
         - NCRVeteranRanger
   items:
     - N14ClothingMaskBrownBalaclava
@@ -272,6 +292,8 @@
         - NCRFieldRanger
         - NCRPatrolRanger
         - NCRVeteranRanger
+        - NCRCitizen
+        - NCRTrader
   items:
     - N14ClothingUniformDesertPants
 
@@ -301,6 +323,8 @@
         - NCRFieldRanger
         - NCRPatrolRanger
         - NCRVeteranRanger
+        - NCRCitizen
+        - NCRTrader
   items:
     - N14ClothingUniformDesertPantsFull
 
@@ -332,3 +356,33 @@
         - NCRVeteranRanger
   items:
     - ClothingBeltNCRHarness
+
+- type: loadout
+  id: LoadoutNCRRangerFoxArmor
+  category: Roles
+  cost: 0
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRVeteranRanger
+    - !type:CharacterPlaytimeRequirement
+     tracker: NCRVeteranRanger
+     min: 216000
+  items:
+   - N14ClothingOuterRangerFox
+
+- type: loadout
+  id: LoadoutNCRRangerEliteArmor
+  category: Roles
+  cost: 0
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRVeteranRanger
+    - !type:CharacterPlaytimeRequirement
+     tracker: NCRVeteranRanger
+     min: 108000
+  items:
+   - N14ClothingOuterRangerElite

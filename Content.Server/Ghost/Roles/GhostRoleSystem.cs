@@ -544,18 +544,19 @@ namespace Content.Server.Ghost.Roles
         }
 
         // #Misfits Add - Ghost role cooldown: checks if the player must wait before accessing ghost roles.
-        // Mirrors the death-time logic in GhostReturnToRoundSystem so both timers stay in sync.
+		// Mirrors the death-time logic in GhostReturnToRoundSystem so both timers stay in sync.
+        // Only apply the cooldown to ghosts that came from an actual death. Lobby observers / bunkered / those who ghost in console
+        //  do not have a ghost role cooldown, and GhostComponent.TimeOfDeath is set when the ghost is created -pierow 🫃
         private bool IsOnGhostRoleCooldown(ICommonSession session, EntityUid ghostUid)
         {
             var cooldownMinutes = _cfg.GetCVar(CCVars.GhostRespawnTime);
             if (cooldownMinutes <= 0)
                 return false; // server has no respawn timer — no ghost role cooldown either
 
-            // Prefer mind's death time (more accurate), fall back to GhostComponent time.
-            var deathTime = EnsureComp<GhostComponent>(ghostUid).TimeOfDeath;
-            if (_mindSystem.TryGetMind(ghostUid, out _, out var mind) && mind.TimeOfDeath.HasValue)
-                deathTime = mind.TimeOfDeath.Value;
+            if (!_mindSystem.TryGetMind(ghostUid, out _, out var mind) || !mind.TimeOfDeath.HasValue)
+                return false; // lobby observer / non-death ghost — skip ghost role cooldown
 
+            var deathTime = mind.TimeOfDeath.Value;
             var timeUntilAllowed = TimeSpan.FromMinutes(cooldownMinutes);
             var timePast = _timing.CurTime - deathTime;
 

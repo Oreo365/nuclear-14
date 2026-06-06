@@ -77,9 +77,10 @@ public sealed class GhoulifyOnRadiationDeathSystem : EntitySystem
             if (!_mobThreshold.TryGetThresholdForState(uid, MobState.Critical, out var critThreshold, thresholds))
                 critThreshold = FixedPoint2.New(100);
 
-            // Apply blunt damage equal to crit threshold so the player wakes in soft crit
+            // Apply airloss damage equal to crit threshold so the player wakes in soft crit
+            // Changed from blunt to prevent Bloody Mess characters from getting all their limbs gibbed
             var critDamage = new DamageSpecifier();
-            critDamage.DamageDict["Blunt"] = critThreshold.Value;
+            critDamage.DamageDict["Asphyxiation"] = critThreshold.Value;
             _damageable.TryChangeDamage(uid, critDamage, ignoreResistances: true);
 
             _mobThreshold.SetAllowRevives(uid, false, thresholds);

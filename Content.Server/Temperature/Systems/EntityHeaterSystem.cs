@@ -34,7 +34,7 @@ public sealed class EntityHeaterSystem : EntitySystem
         var query = EntityQueryEnumerator<EntityHeaterComponent, ItemPlacerComponent, ApcPowerReceiverComponent>();
         while (query.MoveNext(out var uid, out var comp, out var placer, out var power))
         {
-            if (!power.Powered)
+            if (power.NeedsPower && !power.Powered)
                 continue;
 
             // don't divide by total entities since its a big grill
@@ -94,7 +94,9 @@ public sealed class EntityHeaterSystem : EntitySystem
     {
         // disable heating element glowing layer if theres no power
         // doesn't actually turn it off since that would be annoying
-        var setting = args.Powered ? comp.Setting : EntityHeaterSetting.Off;
+        var setting = args.Powered || !Comp<ApcPowerReceiverComponent>(uid).NeedsPower
+            ? comp.Setting
+            : EntityHeaterSetting.Off;
         _appearance.SetData(uid, EntityHeaterVisuals.Setting, setting);
     }
 

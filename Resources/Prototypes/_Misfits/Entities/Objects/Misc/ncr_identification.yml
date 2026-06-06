@@ -109,3 +109,39 @@
   components:
   - type: PresetIdCard
     job: NCRMilitaryPoliceCaptain
+
+- type: entity
+  parent: N14IDNCRDogtagNCO
+  id: N14IDNCRDogtagNCRRO
+  name: Requisition officer's dogtags
+  description: An ID dogtag worn by NCR Requisition Officers.
+  suffix: Requisition Officer
+  components:
+  - type: PresetIdCard
+    job: NCRRO
+
+- type: entity
+  parent: N14IDPassportPhoto
+  id: N14IDNCRPassportCitizen
+  name: NCR Civilian Passport
+  description: A common Passport for NCR Civilians.
+  suffix: Citizen
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: passport
+  - type: PresetIdCard
+    job: NCRCitizen
+
+- type: entity
+  parent: N14IDPassportPhoto
+  id: N14IDNCRPassportTrader
+  name: NCR Trader Passport
+  description: A common Passport for NCR Civilians, this one is stamped by a trade union and has attached Caravaneer papers.
+  suffix: Trader
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/identification.rsi
+    state: passport
+  - type: PresetIdCard
+    job: NCRTrader

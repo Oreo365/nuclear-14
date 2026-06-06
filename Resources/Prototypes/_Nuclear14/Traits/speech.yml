@@ -60,16 +60,17 @@
   category: Speech
   points: -2
   requirements:
-  # Misfits Fix: CharacterTraitRequirement block removed — all referenced N14ExtremeAug* traits are commented out
-  #- !type:CharacterTraitRequirement
-  #  inverted: true
-  #  traits:
-  #  - N14ExtremeAugKnight
-  #  - N14ExtremeAugScribe
-  #  - N14ExtremeAugPaladin
   - !type:CharacterDepartmentRequirement
     departments:
     - BrotherhoodOfSteel
+  - !type:CharacterJobRequirement
+    inverted: true
+    jobs:
+    - BoSScribe
+    - BoSMidScribe
+    - BoSWestScribe
+    - BoSMidPaladinCommander
+    - BoSHeadKnight
   functions:
   - !type:TraitModifyLanguages
     languagesSpoken:
@@ -98,23 +99,23 @@
     - NCRVeteranRanger
     - NCRFieldRanger
     - NCRPatrolRanger
+    - NCRRangerRecruit
     - NCRDoctor
     - NCRFirstSergeant
     - NCRStaffSergeant
     - NCRNCO
-#    - CaravanLeader
-#    - BoSWashingtonCommander
-#    - BoSWashingtonPaladin
+    - NCRRO
+    - NCRCitizen
+    - NCRTrader
     - BoSMidPaladinCommander
     - BoSMidPaladin
-    # Forge-Change-Start
     - NCRWS
+    - NCRHeavyTrooper
     - NCREngineer
     - NCRMedic
     - NCRPrivateFirstClass
     - NCRSoldier
     - NCRCadet
-    #- BoSMidInquisitor # Misfits Fix: job prototype commented out
     - BoSMidScribe
     - BoSMidKnight
     - BoSMidSquire
@@ -127,13 +128,14 @@
     - CaesarLegionExplorer
     - CaesarLegionOrator
     - CaesarLegionDean
+    - CaesarLegionForgemaster
     - CaesarLegionLegionnaireVeteran
     - CaesarLegionLegionnaireWarrior
     - CaesarLegionLegionnaireRecruit
     - CaesarLegionHoundmaster
     - CaesarLegionAuxilia
-    # #Misfits Change: CaesarLegionRecruit removed — Legionnaire covers entry-level.
-    # Forge-Change-End
+    - CaesarLegionCitizen
+    - CaesarLegionTrader
     - Overseer
     - VaultSecurity
   - !type:CharacterTraitRequirement
@@ -155,6 +157,7 @@
     - N14FrontalLisp
     - N14ScottishAccent
     - N14Liar
+    - N14FrenchieAccent
   functions:
   - !type:TraitAddComponent
     components:
@@ -175,6 +178,7 @@
     - N14ScottishAccent
     - N14Liar
     - N14TribalAccent # Misfits
+    - N14FrenchieAccent
   functions:
   - !type:TraitAddComponent
     components:
@@ -192,7 +196,25 @@
     - N14FrontalLisp
     - N14Liar
     - N14TribalAccent # Misfits
+    - N14FrenchieAccent
   functions:
   - !type:TraitAddComponent
     components:
     - type: ScottishAccent
+
+- type: trait
+  id: N14FrenchieAccent
+  category: Speech
+  points: 1 # By pierow
+  requirements:
+  - !type:CharacterTraitRequirement
+    inverted: true
+    traits:
+    - N14Stutter
+    - N14FrontalLisp
+    - N14Liar
+    - N14TribalAccent # Misfits
+  functions:
+  - !type:TraitAddComponent
+    components:
+    - type: FrenchieAccent

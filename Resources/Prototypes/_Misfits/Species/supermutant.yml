@@ -44,6 +44,7 @@
   - SuperMutantNCRTrooper
   - SuperMutantTribal
   - SuperMutantFollowerDoctor
+  - SuperMutantEnclave
   prototype: N14MobSuperMutant
   sprites: MobSuperMutantSprites
   markingLimits: MobSuperMutantMarkingLimits

@@ -238,7 +238,7 @@ public partial class SharedBodySystem
             && partIdSlot is not null
             && delta != null
             && !HasComp<BodyPartReattachedComponent>(partEnt)
-            && !partEnt.Comp.Enabled
+            // && !partEnt.Comp.Enabled    // Misfits change for Bloody Mess perk. Functional limbs can be severed.
             && damageable.TotalDamage >= partEnt.Comp.SeverIntegrity
             && _severingDamageTypes.Any(damageType => delta.DamageDict.TryGetValue(damageType, out var value) && value > 0))
             severed = true;

@@ -1,0 +1,60 @@
+- type: job
+  id: CaesarLegionForgemaster
+  setPreference: true
+  hideIfPlaytimeRequirementsNotMet: false # #Misfits Tweak - all jobs visible in selection
+  jobWhitelistBypassesRoleTimers: true # #Misfits Change
+  weight: 130
+  name: job-name-caesar-legion-forgemaster
+  description: job-description-caesar-legion-forgemaster
+  playTimeTracker: CaesarLegionForgemaster
+  requirements:
+    - !type:CharacterDepartmentTimeRequirement # #Misfits Tweak - T6 faction timelock (20h Legion)
+      department: CaesarLegion
+      min: 72000 # 20 hours
+    # TEMP REMOVED - !type:CharacterDepartmentTimeRequirement
+    #   department: CaesarLegion
+    #   min: 126000 # 35 hours
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+    - !type:CharacterSexRequirement
+      sex: Male
+    - !type:CharacterGenderRequirement
+      gender: Male
+  startingGear: CaesarLegionForgeMasterGear
+  alwaysUseSpawner: true
+  icon: "JobIconlegionerDean"
+  supervisors: job-name-caesar-legion-supervisors
+  canBeAntag: false
+  accessGroups:
+  - CaesarLegionDean
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - CaesarLegion
+      - type: ReplacementAccent
+        accent: latin
+  - !type:AddTraitSpecial
+    traits: [ LanguageLatin ]
+
+- type: startingGear
+  id: CaesarLegionForgeMasterGear
+  equipment:
+    jumpsuit: N14ClothingUniformJumpsuitLegionnaire
+    ears: N14ClothingHeadsetLegion
+    neck: ClothingNeckRedScarf
+    eyes: N14ClothingEyesGlassesWelding
+    back: N14ClothingBackpackMilitary
+    shoes: N14ClothingBootsBlack
+    head: N14ClothingHeadHatDeanRecruitHelmet
+    outerClothing: N14ClothingOuterDeanLegionnaireRecruitArmor
+    gloves: N14ClothingHandsGlovesTribal
+    belt: N14Gladius
+    pocket1: LegionDeanloadoutkits
+    pocket2: N14WeaponPistol10mmPipe
+    id: N14IDLegionaryMedalForgemaster 
+
+- type: playTimeTracker
+  id: CaesarLegionForgemaster

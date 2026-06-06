@@ -1,6 +1,21 @@
-﻿- type: entity
+﻿
+# head doors
+
+- type: entity
   parent: N14DoorWoodSlanted
-  id: N14DoorWoodSecureLocked80s
+  id: MisfitsDoorWoodSecureLocked80sHead
+  suffix: 80s, Locked, Head
+  components:
+  - type: AccessReader
+    access: [["80sHead"]]
+  - type: Wires
+    layoutId: AirlockCargo
+
+# regular access doors
+
+- type: entity
+  parent: N14DoorWoodSlanted
+  id: MisfitsDoorWoodSecureLocked80s
   suffix: 80s, Locked
   components:
   - type: AccessReader
@@ -9,18 +24,48 @@
     layoutId: AirlockCargo
 
 - type: entity
-  parent: N14DoorWoodSlanted
-  id: N14DoorWoodSecureLocked80sHead
-  suffix: 80s, Locked, Head
+  parent: N14DoorMetalBlueSlanted
+  id: MisfitsDoorMetalSlantedLocked80s
+  suffix: 80s, Locked
   components:
   - type: AccessReader
-    access: [["80sHead"]]
+    access: [["80s"]]
   - type: Wires
     layoutId: AirlockCargo
 
 - type: entity
-  parent: N14DoorMetalBlueSlanted
-  id: N14DoorMetalSlantedLocked80s
+  parent: N14DoorMetalBlueWindowTall
+  id: MisfitsDoorMetalWindowLocked80s
+  suffix: 80s, Locked
+  components:
+  - type: AccessReader
+    access: [["80s"]]
+  - type: Wires
+    layoutId: AirlockCargo
+
+- type: entity
+  parent: N14DoorMetalBlueAltTall
+  id: MisfitsDoorMetalAltLocked80s
+  suffix: 80s, Locked
+  components:
+  - type: AccessReader
+    access: [["80s"]]
+  - type: Wires
+    layoutId: AirlockCargo
+
+- type: entity
+  parent: N14DoorMetalBar
+  id: MisfitsDoorMetalBarLocked80s
+  suffix: 80s, Locked
+  components:
+  - type: AccessReader
+    access: [["80s"]]
+  - type: Wires
+    layoutId: AirlockCargo
+
+- type: entity
+  parent: N14DoorCellMetal
+  id: MisfitsDoorCellMetalLocked80s
   suffix: 80s, Locked
   components:
   - type: AccessReader
@@ -30,7 +75,27 @@
 
 - type: entity
   parent: N14DoorMetalBarSlanted
-  id: N14DoorCellSlantedLocked80s
+  id: MisfitsDoorCellSlantedLocked80s
+  suffix: 80s, Locked
+  components:
+  - type: AccessReader
+    access: [["80s"]]
+  - type: Wires
+    layoutId: AirlockCargo
+
+- type: entity
+  parent: N14DoorCell
+  id: MisfitsDoorCellLocked80s
+  suffix: 80s, Locked
+  components:
+  - type: AccessReader
+    access: [["80s"]]
+  - type: Wires
+    layoutId: AirlockCargo
+
+- type: entity
+  parent: N14DoorCellRust
+  id: MisfitsDoorCellRustLocked80s
   suffix: 80s, Locked
   components:
   - type: AccessReader
@@ -40,7 +105,7 @@
 
 - type: entity
   parent: N14DoorWoodWhiteSlanted
-  id: N14DoorWoodSlantedWhiteLocked80s
+  id: MisfitsDoorWoodSlantedWhiteLocked80s
   suffix: 80s, Locked
   components:
   - type: AccessReader
@@ -50,7 +115,7 @@
 
 - type: entity
   parent: N14DoorWoodRedSlanted
-  id: N14DoorWoodSlantedRedLocked80s
+  id: MisfitsDoorWoodSlantedRedLocked80s
   suffix: 80s, Locked
   components:
   - type: AccessReader
@@ -60,7 +125,7 @@
 
 - type: entity
   parent: FenceMetalGate
-  id: N14DoorFenceMetalGateLocked80s
+  id: MisfitsDoorFenceMetalGateLocked80s
   suffix: 80s, Locked
   components:
   - type: AccessReader
@@ -68,8 +133,10 @@
   - type: Wires
     layoutId: AirlockCargo
 
+# garage door
+
 - type: entity
-  id: 80sGarageDoor
+  id: Misfits80sGarageDoor
   parent: BaseShutter
   name: 80s garage door
   description: fancy paint mate.
@@ -121,3 +188,188 @@
         mask:
         - Impassable
         - HighImpassable
+
+# slave accessible doors
+
+- type: entity
+  parent: N14DoorMetalBarSlanted
+  id: N14DoorCellSlantedLocked80sSlave
+  suffix: 80s, Slave, Locked
+  components:
+  - type: AccessReader
+    access: [["80sSlave"]]
+  - type: Wires
+    layoutId: AirlockCargo
+
+- type: entity
+  parent: N14DoorCell
+  id: MisfitsDoorCellLocked80sSlave
+  suffix: 80s, Slave, Locked
+  components:
+  - type: AccessReader
+    access: [["80sSlave"]]
+  - type: Wires
+    layoutId: AirlockCargo
+
+- type: entity
+  parent: N14DoorCellRust
+  id: MisfitsDoorCellRustLocked80sSlave
+  suffix: 80s, Slave, Locked
+  components:
+  - type: AccessReader
+    access: [["80sSlave"]]
+  - type: Wires
+    layoutId: AirlockCargo
+
+- type: entity
+  parent: N14DoorCellMetal
+  id: MisfitsDoorCellMetalLocked80sSlave
+  suffix: 80s, Slave, Locked
+  components:
+  - type: AccessReader
+    access: [["80sSlave"]]
+  - type: Wires
+    layoutId: AirlockCargo
+
+- type: entity
+  parent: N14DoorMakeshift
+  id: MisfitsDoorMakeshiftLocked80sSlave
+  suffix: 80s, Slave, Locked
+  components:
+  - type: AccessReader
+    access: [["80sSlave"]]
+  - type: Wires
+    layoutId: AirlockCargo
+
+- type: entity
+  parent: N14DoorSpikedGate
+  id: MisfitsDoorSpikedGateLocked80sSlave
+  suffix: 80s, Slave, Locked
+  components:
+  - type: AccessReader
+    access: [["80sSlave"]]
+  - type: Wires
+    layoutId: AirlockCargo
+
+- type: entity
+  parent: N14DoorMetalFenceBarbedTall
+  id: MisfitsDoorMetalFenceBarbedTallLocked80sSlave
+  suffix: 80s, Slave, Locked
+  components:
+  - type: AccessReader
+    access: [["80sSlave"]]
+  - type: Wires
+    layoutId: AirlockCargo
+
+- type: entity
+  parent: N14DoorMetalGrateTall
+  id: MisfitsDoorMetalGrateTallLocked80sSlave
+  suffix: 80s, Slave, Locked
+  components:
+  - type: AccessReader
+    access: [["80sSlave"]]
+  - type: Wires
+    layoutId: AirlockCargo
+
+
+# not slanted doors
+
+- type: entity
+  parent: N14DoorGlassStoreBroken
+  id: MisfitsDoorGlassStoreBrokenLocked80s
+  suffix: 80s, Locked
+  components:
+  - type: AccessReader
+    access: [["80s"]]
+  - type: Wires
+    layoutId: AirlockCargo
+
+- type: entity
+  parent: N14DoorGlassBroken
+  id: MisfitsDoorGlassBrokenLocked80s
+  suffix: 80s, Locked
+  components:
+  - type: AccessReader
+    access: [["80s"]]
+  - type: Wires
+    layoutId: AirlockCargo
+
+- type: entity
+  parent: N14DoorGlassDirty
+  id: MisfitsDoorGlassDirtyLocked80s
+  suffix: 80s, Locked
+  components:
+  - type: AccessReader
+    access: [["80s"]]
+  - type: Wires
+    layoutId: AirlockCargo
+
+- type: entity
+  parent: N14DoorGlassStoreDirty
+  id: MisfitsDoorGlassStoreDirtyLocked80s
+  suffix: 80s, Locked
+  components:
+  - type: AccessReader
+    access: [["80s"]]
+  - type: Wires
+    layoutId: AirlockCargo
+
+- type: entity
+  parent: N14DoorGlass
+  id: MisfitsDoorGlassLocked80s
+  suffix: 80s, Locked
+  components:
+  - type: AccessReader
+    access: [["80s"]]
+  - type: Wires
+    layoutId: AirlockCargo
+
+- type: entity
+  parent: N14DoorMetalIron
+  id: MisfitsDoorMetalIronLocked80s
+  suffix: 80s, Locked
+  components:
+  - type: AccessReader
+    access: [["80s"]]
+  - type: Wires
+    layoutId: AirlockCargo
+
+- type: entity
+  parent: N14DoorMakeshift
+  id: MisfitsDoorMakeshiftLocked80s
+  suffix: 80s, Locked
+  components:
+  - type: AccessReader
+    access: [["80s"]]
+  - type: Wires
+    layoutId: AirlockCargo
+
+- type: entity
+  parent: N14DoorSpikedGate
+  id: MisfitsDoorSpikedGateLocked80s
+  suffix: 80s, Locked
+  components:
+  - type: AccessReader
+    access: [["80s"]]
+  - type: Wires
+    layoutId: AirlockCargo
+
+- type: entity
+  parent: N14DoorMetalFenceBarbedTall
+  id: MisfitsDoorMetalFenceBarbedTallLocked80s
+  suffix: 80s, Locked
+  components:
+  - type: AccessReader
+    access: [["80s"]]
+  - type: Wires
+    layoutId: AirlockCargo
+
+- type: entity
+  parent: N14DoorMetalGrateTall
+  id: MisfitsDoorMetalGrateTallLocked80s
+  suffix: 80s, Locked
+  components:
+  - type: AccessReader
+    access: [["80s"]]
+  - type: Wires
+    layoutId: AirlockCargo

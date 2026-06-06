@@ -85,12 +85,6 @@ public sealed partial class MoveToOperator : HTNOperator, IHtnConditionalShutdow
             !_entManager.TryGetComponent<PhysicsComponent>(owner, out var body))
             return (false, null);
 
-        if (!_entManager.TryGetComponent<MapGridComponent>(xform.GridUid, out var ownerGrid) ||
-            !_entManager.TryGetComponent<MapGridComponent>(targetCoordinates.GetGridUid(_entManager), out var targetGrid))
-        {
-            return (false, null);
-        }
-
         var range = blackboard.GetValueOrDefault<float>(RangeKey, _entManager);
 
         if (xform.Coordinates.TryDistance(_entManager, targetCoordinates, out var distance) && distance <= range)
@@ -108,6 +102,12 @@ public sealed partial class MoveToOperator : HTNOperator, IHtnConditionalShutdow
             {
                 {NPCBlackboard.OwnerCoordinates, targetCoordinates}
             });
+        }
+
+        if (!_entManager.TryGetComponent<MapGridComponent>(xform.GridUid, out var ownerGrid) ||
+            !_entManager.TryGetComponent<MapGridComponent>(targetCoordinates.GetGridUid(_entManager), out var targetGrid))
+        {
+            return (false, null);
         }
 
         var path = await _pathfind.GetPath(
@@ -137,10 +137,13 @@ public sealed partial class MoveToOperator : HTNOperator, IHtnConditionalShutdow
     {
         base.Startup(blackboard);
 
+        var uid = blackboard.GetValue<EntityUid>(NPCBlackboard.Owner);
+
         // Need to remove the planning value for execution.
         blackboard.Remove<EntityCoordinates>(NPCBlackboard.OwnerCoordinates);
-        var targetCoordinates = blackboard.GetValue<EntityCoordinates>(TargetKey);
-        var uid = blackboard.GetValue<EntityUid>(NPCBlackboard.Owner);
+
+        if (!blackboard.TryGetValue<EntityCoordinates>(TargetKey, out var targetCoordinates, _entManager))
+            return;
 
         // Re-use the path we may have if applicable.
         var comp = _steering.Register(uid, targetCoordinates);

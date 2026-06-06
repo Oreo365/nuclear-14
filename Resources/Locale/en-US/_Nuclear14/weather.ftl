@@ -1,4 +1,4 @@
-weather-announcement = The weather is changing.
+weather-announcement = Weather Alert
 weather-ashfall = Ashfall is approaching.
 weather-ashfall-light = Ashfall is approaching.
 weather-ashfall-heavy = Heavy ashfall is approaching.
@@ -16,6 +16,6 @@ weather-storm = Storm is approaching.
 
 weather-sandstorm-extreme = Extreme sandstorm is approaching.
 weather-snowfall-extreme = Extreme snowfall is approaching.
-weather-radioactive-particles = Radioactive fallout is approaching. [color=red]Warning: seek shelter![/color]
-weather-radioactive-rain = Radioactive rain is approaching. [color=red]Warning: seek shelter![/color]
+weather-radioactive-particles = Radioactive fallout is approaching. Seek shelter immediately.
+weather-radioactive-rain = Radioactive rain is approaching. Seek shelter immediately.
 

@@ -81,7 +81,7 @@ public sealed class GrillHeaterSoundSystem : EntitySystem
     {
         if (TryComp<EntityHeaterComponent>(uid, out var heater)
             && TryComp<ApcPowerReceiverComponent>(uid, out var power)
-            && power.Powered)
+            && (!power.NeedsPower || power.Powered))
         {
             return heater.Setting != EntityHeaterSetting.Off;
         }

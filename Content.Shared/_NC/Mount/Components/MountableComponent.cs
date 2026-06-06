@@ -51,4 +51,16 @@ public sealed partial class MountableComponent : Component
     /// </summary>
     [DataField("controlMovement")]
     public bool ControlMovement = true;
+
+    /// <summary>
+    /// Whether the current rider was granted control over this mount.
+    /// </summary>
+    [ViewVariables]
+    public bool RiderControlsMovement;
+
+    /// <summary>
+    /// Whether this mount had NPC AI before rider control temporarily disabled it.
+    /// </summary>
+    [ViewVariables]
+    public bool HadActiveNpcBeforeMount;
 }

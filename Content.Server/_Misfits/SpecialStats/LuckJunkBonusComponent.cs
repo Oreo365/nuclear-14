@@ -82,9 +82,6 @@ public sealed partial class LuckJunkBonusComponent : Component
         new("N14PlasmaShell", LuckyLootRarity.Rare),
         new("40mmGrenadeFrag", LuckyLootRarity.Rare),
         new("40mmGrenadeFire", LuckyLootRarity.Rare),
-        new("CartridgeMissile", LuckyLootRarity.Rare),
-        new("MagazineBox50HEIAP", LuckyLootRarity.Rare),
-        new("N14Magazine50AMRHEIAP", LuckyLootRarity.Rare),
 
         new("N14SuperStimpak", LuckyLootRarity.VeryRare),
 

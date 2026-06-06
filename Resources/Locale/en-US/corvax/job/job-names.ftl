@@ -21,6 +21,8 @@ job-name-caesar-legion-orator = Legion Orator
 job-description-caesar-legion-orator = Give voice to Caesar's philosophy and spread the Legion's doctrine. The Orator fights with words as much as with steel.
 job-name-caesar-legion-dean = Legion Decanus
 job-description-caesar-legion-dean = Lead a smaller fighting unit of the Legion and keep the legionaries beneath you battle-ready and obedient.
+job-name-caesar-legion-forgemaster = Legion Forgemaster
+job-description-caesar-legion-forgemaster = Oversee the Legion's forges and workshop to produce and maintain equipment for Caesar's war machine. determine what orders to prioritize or reject, keep troublesome recruits from wasting all the steel.
 job-name-caesar-legion-legionnaire-veteran = Legion Veteran Legionnaire
 job-description-caesar-legion-legionnaire-veteran = Fight as a hardened veteran of Caesar's Legion, trusted with the front line's most brutal work.
 job-description-caesar-legionnaire-veteran = Fight as a hardened veteran of Caesar's Legion, trusted with the front line's most brutal work.
@@ -38,6 +40,10 @@ job-description-caesar-legion-priestess-of-mars = Serve as a sacred woman of the
 # #Misfits Change: Legion Recruit removed — replaced by Legionnaire as the entry-level rank.
 # job-name-caesar-legion-recruit = Legion Recruit
 # job-description-caesar-legion-recruit = Enter the Legion at its lowest free rank and prove you deserve to join the legionaries.
+job-name-caesar-legion-citizen = Legion Civilian
+job-description-caesar-legion-citizen = You are a citizen of a tribute town within Caesar's Legion. you follow legion law and Mars, but are neither a slave nor a Legionary.
+job-name-caesar-legion-trader = Legion Trader
+job-description-caesar-legion-trader = you are a caravaneer who works with and in Legion Territory. its always been safer than the NCR routes.
 job-name-caesar-legion-slave = Legion Slave
 job-description-caesar-legion-slave = You are a slave of Caesar's Legion. Obey, survive, and remember that your life belongs to your masters.
 

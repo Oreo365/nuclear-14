@@ -142,9 +142,9 @@
   - type: Armor # #Misfits Add - 15% physical damage resistance baseline
     modifiers:
       coefficients:
-        Blunt: 0.85
-        Slash: 0.85
-        Piercing: 0.85
+        Blunt: 0.70
+        Slash: 0.70
+        Piercing: 0.75
 
 # --- Gladiator Boots ---
 - type: entity
@@ -175,12 +175,12 @@
   - type: Tag
     tags:
     - SuperMutantWearable
-  - type: Armor # #Misfits Add - Haha get nerfed mutie -pierow
+  - type: Armor # #Misfits Add Glads are better at melee
     modifiers:
       coefficients:
         Blunt: 0.80
         Slash: 0.80
-        Piercing: 0.95
+        Piercing: 0.85
 
 # #Misfits Add - Ranger armor for the Supermutant Ranger job.
 # Tagged SupermutantWearable so only supermutants can equip it in Outerclothing slot.
@@ -197,12 +197,12 @@
   - type: Tag
     tags:
     - SuperMutantWearable
-  - type: Armor # #Misfits add: was the old ncr ranger dmg reduc
+  - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.80
-        Slash: 0.80
-        Piercing: 0.85
+        Blunt: 0.75
+        Slash: 0.75
+        Piercing: 0.70
 
 - type: entity
   parent: ClothingHeadBase
@@ -217,11 +217,12 @@
   - type: Tag
     tags:
     - SuperMutantWearable
-  - type: Armor # #Misfits Add - Haha get nerfed mutie -pierow
+  - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.90
-        Slash: 0.90
+        Blunt: 0.85
+        Slash: 0.85
+        Piercing: 0.80
 
 - type: entity
   parent: ClothingHeadBase
@@ -236,12 +237,12 @@
   - type: Tag
     tags:
     - SuperMutantWearable
-  - type: Armor # #Misfits Add - Haha get nerfed mutie -pierow
+  - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.90
+        Blunt: 0.85
         Slash: 0.85
-        Piercing: 0.75
+        Piercing: 0.80
 
 - type: entity
   parent: ClothingMaskBase
@@ -256,6 +257,8 @@
   - type: Tag
     tags:
     - SuperMutantWearable
+  - type: NightVision
+    isEquipment: True
 
 # #Misfits Add - Ranger armor for the playable Supermutant Ranger job variant.
 # Tagged SuperMutantWearable so only supermutants can equip it in outerClothing slot.
@@ -293,7 +296,7 @@
       coefficients:
         Blunt: 0.75
         Slash: 0.75
-        Piercing: 0.80
+        Piercing: 0.70
 
 - type: entity
   parent: ClothingHeadBase
@@ -308,12 +311,12 @@
   - type: Tag
     tags:
     - SuperMutantWearable
-  - type: Armor # #Misfits Add - Haha get nerfed mutie -pierow
+  - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.90
+        Blunt: 0.85
         Slash: 0.85
-        Piercing: 0.85
+        Piercing: 0.80
 
 # #Misfits Add - Extra supermutant outer outfit (outfit C) — spawnable standalone wearable.
 - type: entity
@@ -408,7 +411,7 @@
   - type: Tag
     tags:
     - SuperMutantWearable
-  - type: Armor # #Misfits Add - Haha get nerfed mutie -pierow
+  - type: Armor
     modifiers:
       coefficients:
         Blunt: 0.75
@@ -515,3 +518,25 @@
   - type: Tag
     tags:
     - SuperMutantWearable
+
+# FOTA armor
+
+- type: entity
+  parent: [ClothingOuterBase, AllowSuitStorageClothing]
+  id: MisfitsFOTASuperMutantArmoredLabcoat
+  name: Supermutant Followers Armored Labcoat
+  description: A large Labcoat with a bulletproof vest inside.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/SuperMutant/follower_Armored_labcoat.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/SuperMutant/follower_Armored_labcoat.rsi
+  - type: Tag
+    tags:
+    - SuperMutantWearable
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.75
+        Slash: 0.75
+        Piercing: 0.70

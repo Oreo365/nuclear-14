@@ -11,6 +11,16 @@
           task: BeforeMeleeAttackTargetCompound
 
 - type: htnCompound
+  id: OrderedMeleeCombatCompound
+  branches:
+    - tasks:
+        - !type:HTNPrimitiveTask
+          operator: !type:UtilityOperator
+            proto: OrderedTargets
+        - !type:HTNCompoundTask
+          task: BeforeMeleeAttackOrderedTargetCompound
+
+- type: htnCompound
   id: BeforeMeleeAttackTargetCompound
   branches:
     - preconditions:
@@ -77,6 +87,71 @@
     - tasks:
         - !type:HTNCompoundTask
           task: MeleeAttackTargetCompound
+
+- type: htnCompound
+  id: BeforeMeleeAttackOrderedTargetCompound
+  branches:
+    - preconditions:
+        - !type:BuckledPrecondition
+          isBuckled: true
+      tasks:
+        - !type:HTNPrimitiveTask
+          operator: !type:UnbuckleOperator
+            shutdownState: TaskFinished
+
+    - preconditions:
+        - !type:PulledPrecondition
+          isPulled: true
+      tasks:
+        - !type:HTNPrimitiveTask
+          operator: !type:UnPullOperator
+            shutdownState: TaskFinished
+
+    - preconditions:
+        - !type:InContainerPrecondition
+          isInContainer: true
+      tasks:
+        - !type:HTNCompoundTask
+          task: EscapeCompound
+
+    - preconditions:
+        - !type:ActiveHandComponentPrecondition
+            components:
+              - type: MeleeWeapon
+                damage:
+                  types:
+                    Blunt: 0
+            invert: true
+      tasks:
+        - !type:HTNCompoundTask
+          task: PickupMeleeCompound
+
+    - preconditions:
+      - !type:BuckledPrecondition
+        isBuckled: true
+      tasks:
+      - !type:HTNPrimitiveTask
+        operator: !type:UnbuckleOperator
+          shutdownState: TaskFinished
+
+    - preconditions:
+      - !type:InContainerPrecondition
+        isInContainer: true
+      tasks:
+      - !type:HTNCompoundTask
+        task: EscapeCompound
+
+    - preconditions:
+      - !type:PulledPrecondition
+        isPulled: true
+      tasks:
+      - !type:HTNPrimitiveTask
+        operator: !type:UnPullOperator
+          shutdownState: TaskFinished
+
+    - tasks:
+        - !type:HTNCompoundTask
+          task: MeleeAttackOrderedTargetCompound
 
 - type: htnCompound
   id: RatServantCombatCompound

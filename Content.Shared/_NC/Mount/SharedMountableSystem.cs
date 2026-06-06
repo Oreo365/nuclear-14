@@ -104,16 +104,24 @@ public sealed class SharedMountSystem : EntitySystem
             _transform.SetLocalPositionNoLerp(args.Buckle.Owner, offset);
         }
 
-        if (ent.Comp.ControlMovement)
+        var controlAttempt = new MountMovementControlAttemptEvent(args.Buckle.Owner);
+        RaiseLocalEvent(ent.Owner, ref controlAttempt);
+        ent.Comp.RiderControlsMovement = ent.Comp.ControlMovement && !controlAttempt.Cancelled;
+        ent.Comp.HadActiveNpcBeforeMount = HasComp<ActiveNPCComponent>(ent);
+
+        if (ent.Comp.RiderControlsMovement)
         {
             _mover.SetRelay(args.Buckle.Owner, ent.Owner);
+            RemComp<ActiveNPCComponent>(ent);
         }
 
         if (_standing.IsDown(ent))
             _standing.Stand(ent);
 
-        RemComp<ActiveNPCComponent>(ent);
         if (!TryComp<MovementSpeedModifierComponent>(ent, out var move))
+            return;
+
+        if (!ent.Comp.RiderControlsMovement)
             return;
 
         var walk = move.BaseWalkSpeed * ent.Comp.MountedSpeed;
@@ -126,16 +134,27 @@ public sealed class SharedMountSystem : EntitySystem
     /// </summary>
     private void OnUnstrapped(Entity<MountableComponent> ent, ref UnstrappedEvent args)
     {
-        if (HasComp<RelayInputMoverComponent>(args.Buckle.Owner))
+        if (TryComp<RelayInputMoverComponent>(args.Buckle.Owner, out var relay) &&
+            relay.RelayEntity == ent.Owner)
+        {
             RemComp<RelayInputMoverComponent>(args.Buckle.Owner);
+        }
 
         RemComp<RiderComponent>(args.Buckle.Owner);
         ent.Comp.Rider = null;
+        var riderControlledMovement = ent.Comp.RiderControlsMovement;
+        ent.Comp.RiderControlsMovement = false;
 
         Dirty(ent.Owner, ent.Comp);
 
-        AddComp(ent, new ActiveNPCComponent());
+        if (ent.Comp.HadActiveNpcBeforeMount)
+            EnsureComp<ActiveNPCComponent>(ent);
+
+        ent.Comp.HadActiveNpcBeforeMount = false;
         if (!TryComp<MovementSpeedModifierComponent>(ent, out var move))
+            return;
+
+        if (!riderControlledMovement)
             return;
 
         var walk = move.BaseWalkSpeed / ent.Comp.DefaultSpeed;
@@ -172,4 +191,10 @@ public sealed class SharedMountSystem : EntitySystem
                 _buckle.TryUnbuckle(ent.Comp.Rider.Value, ent.Owner);
         }
     }
+}
+
+[ByRefEvent]
+public record struct MountMovementControlAttemptEvent(EntityUid Rider)
+{
+    public bool Cancelled;
 }

@@ -1,20 +1,23 @@
 using Content.Server._Misfits.Pets;
 using Content.Server.Ghost.Roles.Components;
+using Content.Server.NPC.Components;
+using Content.Shared._Misfits.Special;
 using Content.Shared.Traits;
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.Manager;
 
 // #Misfits Add - TraitSpawnEntity: spawns a separate entity at the player's position when the trait activates.
-// Used for pet companion traits so each pet gets its own ghost-role spawner entity,
-// avoiding the component-duplication limitation of TraitAddComponent.
+// Used for pet companion traits. If the player has charisma >= CharismaNeutralFollowerMinimum, the companion
+// mob is spawned immediately as an AI NPC & auto recruited as a follower. Otherwise a ghost-role spawner
+// is left so another player can take the role manually.
 
 namespace Content.Server._Misfits.Traits;
 
 /// <summary>
 ///     Spawns one or more entities at the player's location when the trait is applied.
-///     Unlike <c>TraitAddComponent</c>, each entity is independent, so multiple traits
-///     can each spawn their own ghost-role spawner without component conflicts.
+///     High charisma players get an immediately-spawned companion
+///     Low charisma players get a ghost role spawner that a ghost player can take instead.
 /// </summary>
 [UsedImplicitly]
 public sealed partial class TraitSpawnEntity : TraitFunction
@@ -31,20 +34,38 @@ public sealed partial class TraitSpawnEntity : TraitFunction
         IEntityManager entityManager,
         ISerializationManager serializationManager)
     {
-        // Resolve the player's current map coordinates for spawning
         var xform = entityManager.GetComponent<TransformComponent>(uid);
         var coords = xform.Coordinates;
 
+        var special = EntitySystem.Get<SharedSpecialSystem>();
+        var charisma = special.GetEffective(uid, SpecialStat.Charisma);
+        var canAutoSpawn = charisma >= special.GetTuning().CharismaNeutralFollowerMinimum;
+
         foreach (var proto in Prototypes)
         {
-            var spawned = entityManager.SpawnEntity(proto, coords);
+            var spawner = entityManager.SpawnEntity(proto, coords);
 
-            // Tag pet ghost-role spawners with the owning player so the pet
-            // is later relocated to the player's live position when a ghost
-            // takes the role (handled by MisfitsPetSpawnerOwnerSystem).
-            if (entityManager.HasComponent<GhostRoleMobSpawnerComponent>(spawned))
+            if (!entityManager.TryGetComponent<GhostRoleMobSpawnerComponent>(spawner, out var mobSpawner)
+                || mobSpawner.Prototype is not { } mobProto)
             {
-                var ownerComp = entityManager.EnsureComponent<MisfitsPetSpawnerOwnerComponent>(spawned);
+                // Spawner exists but has no valid prototype
+                if (entityManager.HasComponent<GhostRoleMobSpawnerComponent>(spawner))
+                {
+                    var ownerComp = entityManager.EnsureComponent<MisfitsPetSpawnerOwnerComponent>(spawner);
+                    ownerComp.Owner = uid;
+                }
+                continue;
+            }
+
+            if (canAutoSpawn)
+            {
+                var mob = entityManager.SpawnEntity(mobProto, coords);
+                entityManager.DeleteEntity(spawner);
+                entityManager.AddComponent(mob, new FollowerAutoRecruitComponent { Commander = uid });
+            }
+            else
+            {
+                var ownerComp = entityManager.EnsureComponent<MisfitsPetSpawnerOwnerComponent>(spawner);
                 ownerComp.Owner = uid;
             }
         }

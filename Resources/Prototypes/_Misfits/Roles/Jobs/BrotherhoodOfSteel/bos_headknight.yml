@@ -86,6 +86,12 @@
       - type: NpcFactionMember
         factions:
           - BrotherhoodOfSteel
+      - type: LanguageKnowledge # #Misfits Add: Heads understand Brotherhood binary code by default.
+        speaks:
+        - English
+        understands:
+        - English
+        - N14BrotherBeep
 
 - type: startingGear
   id: BoSHeadKnightGear

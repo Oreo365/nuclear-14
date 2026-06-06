@@ -1,6 +1,7 @@
 ﻿using Content.Client.Chat.UI;
 using Content.Client.Gameplay;
 using Content.Client.UserInterface.Controls;
+using Content.Shared._Misfits.NPC;
 using Content.Shared.Chat;
 using Content.Shared.Chat.Prototypes;
 using Content.Shared.Input;
@@ -46,6 +47,7 @@ public sealed class EmotesUIController : UIController, IOnStateChanged<GameplayS
             _menu.OnClose += OnWindowClosed;
             _menu.OnOpen += OnWindowOpen;
             _menu.OnPlayEmote += OnPlayEmote;
+            _menu.OnIssueFollowerOrder += OnIssueFollowerOrder;
 
             if (EmotesButton != null)
                 EmotesButton.SetClickPressed(true);
@@ -66,6 +68,7 @@ public sealed class EmotesUIController : UIController, IOnStateChanged<GameplayS
             _menu.OnClose -= OnWindowClosed;
             _menu.OnOpen -= OnWindowOpen;
             _menu.OnPlayEmote -= OnPlayEmote;
+            _menu.OnIssueFollowerOrder -= OnIssueFollowerOrder;
 
             if (EmotesButton != null)
                 EmotesButton.SetClickPressed(false);
@@ -121,5 +124,10 @@ public sealed class EmotesUIController : UIController, IOnStateChanged<GameplayS
     private void OnPlayEmote(ProtoId<EmotePrototype> protoId)
     {
         _entityManager.RaisePredictiveEvent(new PlayEmoteMessage(protoId));
+    }
+
+    private void OnIssueFollowerOrder(FollowerOrderType order)
+    {
+        _entityManager.RaisePredictiveEvent(new IssueFollowerOrderMessage(order));
     }
 }

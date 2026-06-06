@@ -71,6 +71,8 @@
     contents:
     - id: N14IDFollowerVolunteer
       amount: 4
+    - id: N14IDFollowerGuard
+      amount: 2
     - id: N14IDFollowerDoctor
       amount: 4
   - type: Sprite

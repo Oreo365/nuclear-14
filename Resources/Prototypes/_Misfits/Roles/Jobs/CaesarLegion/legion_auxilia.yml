@@ -9,9 +9,9 @@
   description: job-description-caesar-legion-auxilia
   playTimeTracker: CaesarLegionAuxilia
   requirements:
-    - !type:CharacterDepartmentTimeRequirement # #Misfits Tweak - T2 faction timelock (4h Legion)
-      department: CaesarLegion
-      min: 14400 # 4 hours
+  #  - !type:CharacterDepartmentTimeRequirement # #Misfits Tweak - T2 faction timelock (4h Legion)
+  #   department: CaesarLegion
+  #    min: 14400 # 4 hours
     #- !type:CharacterPlaytimeRequirement # TEMP REMOVED
     #  tracker: CaesarLegionRecruit
     #  min: 10800 # 3 hours

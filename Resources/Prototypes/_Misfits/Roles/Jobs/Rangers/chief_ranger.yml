@@ -24,23 +24,9 @@
       department: Rangers
       min: 252000 # 70 hours — admin role
     - !type:CharacterSpeciesRequirement # #Misfits Change - robots, super mutants, and glowing ghouls cannot be Rangers
-      inverted: true
       species:
-      - RobotMrHandy
-      - RobotProtectron
-      - RobotProtectronPolice
-      - RobotProtectronBuilder
-      - RobotProtectronFire
-      - RobotMrGutsy
-      - RobotAssaultron
-      - RobotAssaultronTesla
-      - RobotSentryBot
-      - RobotSentryBotLaser
-      - RobotRobobrain
-      - RobotRobobrainLaser
-      - SuperMutant
-      - GhoulGlowing # #Misfits Tweak - glowing ghouls not allowed in NCR Rangers
-      - Nightkin
+      - Human
+      - Ghoul
   special:
   - !type:AddComponentSpecial
     components:

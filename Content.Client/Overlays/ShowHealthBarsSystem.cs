@@ -21,12 +21,21 @@ public sealed class ShowHealthBarsSystem : EquipmentHudSystem<ShowHealthBarsComp
     {
         base.Initialize();
 
+        SubscribeLocalEvent<ShowHealthBarsComponent, AfterAutoHandleStateEvent>(OnAfterHandleState);
+
         _overlay = new(EntityManager, _prototype);
+    }
+
+    private void OnAfterHandleState(EntityUid uid, ShowHealthBarsComponent component, ref AfterAutoHandleStateEvent args)
+    {
+        RefreshOverlay(uid);
     }
 
     protected override void UpdateInternal(RefreshEquipmentHudEvent<ShowHealthBarsComponent> component)
     {
         base.UpdateInternal(component);
+
+        _overlay.DamageContainers.Clear();
 
         foreach (var comp in component.Components)
         {

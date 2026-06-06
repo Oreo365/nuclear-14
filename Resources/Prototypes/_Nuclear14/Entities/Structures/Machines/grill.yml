@@ -38,6 +38,9 @@
           Low: { visible: true, state: stove_on }
           Medium: { visible: true, state: stove_on }
           High: { visible: true, state: stove_on }
+  - type: ApcPowerReceiver
+    powerLoad: 0
+    needsPower: false
   # #Misfits Change /Add/ - Keep the stove audible while it is actively heating.
   - type: SpamEmitSound
     enabled: false

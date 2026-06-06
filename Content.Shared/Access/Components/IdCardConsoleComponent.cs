@@ -52,42 +52,48 @@ public sealed partial class IdCardConsoleComponent : Component
         "TownieLaw",
         "TownieMayor",
         "TownsPerson",
-        "FotA", //Misfit Addition
-        "FotADoctor", //Misfit Addition
-        "FotAHead", //Misfit Addition
         "WastelandReporter",
         "WastelandBartender",
         "InnRoomOne",
         "InnRoomTwo",
         "InnRoomThree",
-        "VaultDweller",
+        "FotA", // Misfit: FotA Start
+        "FotADoctor",
+        "FotAHead",
+        "VaultDweller", // Misfit: Vault Start
         "VaultEngineer",
         "VaultMedical",
         "VaultSecurity",
         "VaultOverseer",
-        "TribeMember",
+        "TribeMember", // Misfit: Tribe Start
         "TribeChief",
-        // "CaravanCompanyGuard",
-        "WastelandChaplain",
+        "WastelandChaplain", // Misfit: Wastelander
         "WastelandFarmer",
-        // #Misfits Change /Comment-out/: Washington BoS access strings removed.
-        // "WashingtonInitiate",
-        // "WashingtonKnight",
-        // "WashingtonScribe",
-        // "WashingtonPaladin",
-        // "WashingtonCommander",
-        "NCR",
+        "NCR", // Misfit: NCR Start
         "NCRSGT",
         "NCRMedic",
         "NCRLT",
         "NCRRanger",
-        "BoSMidwest",
-        "Knight",
-        "Scribe",
-        "Paladin",
-        "PaladinCommander",
-        "80s", //Misfit Addition
-        "80sHead", //Misfit Addition
+        "CaesarLegion", // Misfit: Legion Start
+        "CaesarLegionSlave",
+        "CaesarLegionFrumentarii",
+        "CaesarLegionVexillarius",
+        "CaesarLegionLegionnaireRecruit",
+        "CaesarLegionLegionnaireWarrior",
+        "CaesarLegionLegionnaireVeteran",
+        "CaesarLegionDean",
+        "CaesarLegionVeteranDecanus",
+        "CaesarLegionOrator",
+        "CaesarLegionCenturion",
+        "BOS", // Misfit: BOS Start
+        "BOSInitiate",
+        "BOSKnight",
+        "BOSScribe",
+        "BOSPaladin",
+        "BOSHeadPaladin",
+        "80s", // Misfit: 80s Start
+        "80sHead",
+        "80sSlave",
     };
 
     [Serializable, NetSerializable]

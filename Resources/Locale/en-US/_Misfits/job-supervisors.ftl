@@ -35,4 +35,5 @@ job-supervisors-bos-initiate = the Brotherhood chain of command
 # #Misfits Add - Followers of the Apocalypse supervisor strings.
 job-supervisors-follower-head = yourself and the Followers' founding charter
 job-supervisors-follower-doctor = the Follower Head and the Followers' medical mission
+job-supervisors-follower-guard = the Follower Head and the doctors you are protecting
 job-supervisors-follower-volunteer = the Follower Doctors and Follower Head above you

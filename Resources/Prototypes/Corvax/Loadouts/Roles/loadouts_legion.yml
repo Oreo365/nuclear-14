@@ -135,6 +135,7 @@
         - CaesarLegionAuxilia
         - CaesarLegionVexillarius
         - CaesarLegionVeteranDecanus
+        - CaesarLegionForgemaster
         - CaesarLegionPrimeDecanus
         - CaesarLegionHoundmaster
         - CaesarLegionExplorer
@@ -165,6 +166,7 @@
         - CaesarLegionVeteranDecanus
         - CaesarLegionPrimeDecanus
         - CaesarLegionDean
+        - CaesarLegionForgemaster
         - CaesarLegionHoundmaster
         - CaesarLegionExplorer
         - CaesarLegionOrator
@@ -193,6 +195,7 @@
         - CaesarLegionVeteranDecanus
         - CaesarLegionPrimeDecanus
         - CaesarLegionDean
+        - CaesarLegionForgemaster
         - CaesarLegionFrumentarii
         - CaesarLegionHoundmaster
         - CaesarLegionExplorer

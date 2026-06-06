@@ -19,7 +19,13 @@
   - type: ContainerContainer
     containers:
       ballistic-ammo: !type:Container
-  - type: Appearance
+  - type: Appearance 
+  - type: Sprite
+    netsync: false
+    sprite: _Nuclear14/Objects/Weapons/Guns/Ammunition/Magazines/22lr/smgmag.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
 
 # American 180 35-round .22lr drum
 - type: entity

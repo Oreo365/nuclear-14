@@ -1,6 +1,7 @@
 # Picks a random location for the NPC to move to and idle.
 - type: htnCompound
   id: IdleCompound
+  followerFollow: IdleFollowCompound
   branches:
     # Pick a new spot and wait there.
     - preconditions:
@@ -29,6 +30,74 @@
           preconditions:
             - !type:KeyExistsPrecondition
               key: IdleTime
+
+- type: htnCompound
+  id: IdleFollowCompound
+  branches:
+    - tasks:
+        - !type:HTNPrimitiveTask
+          preconditions:
+            - !type:CoordinatesNotInRangePrecondition
+              targetKey: FollowTarget
+              rangeKey: FollowRange
+          operator: !type:MoveToOperator
+            pathfindInPlanning: false
+            targetKey: FollowTarget
+            rangeKey: FollowCloseRange
+            removeKeyOnFinish: false
+    - tasks:
+        - !type:HTNCompoundTask
+          task: FollowerWanderCompound
+    - tasks:
+        - !type:HTNCompoundTask
+          task: HoldPositionCompound
+
+- type: htnCompound
+  id: FollowerWanderCompound
+  branches:
+    - preconditions:
+        - !type:BuckledPrecondition
+          isBuckled: false
+        - !type:PulledPrecondition
+          isPulled: false
+      tasks:
+        - !type:HTNPrimitiveTask
+          operator: !type:PickAccessibleOperator
+            rangeKey: FollowerWanderRange
+
+        - !type:HTNPrimitiveTask
+          operator: !type:RandomOperator
+            targetKey: IdleTime
+            minKey: MinimumIdleTime
+            maxKey: MaximumIdleTime
+
+        - !type:HTNPrimitiveTask
+          preconditions:
+            - !type:KeyExistsPrecondition
+              key: IdleTime
+          operator: !type:WaitOperator
+            key: IdleTime
+
+        - !type:HTNPrimitiveTask
+          operator: !type:MoveToOperator
+            pathfindInPlanning: false
+
+- type: htnCompound
+  id: HoldPositionCompound
+  branches:
+    - tasks:
+        - !type:HTNPrimitiveTask
+          operator: !type:RandomOperator
+            targetKey: IdleTime
+            minKey: HoldWaitMin
+            maxKey: HoldWaitMax
+
+        - !type:HTNPrimitiveTask
+          preconditions:
+            - !type:KeyExistsPrecondition
+              key: IdleTime
+          operator: !type:WaitOperator
+            key: IdleTime
 
 # Spin to a random rotation and idle.
 - type: htnCompound

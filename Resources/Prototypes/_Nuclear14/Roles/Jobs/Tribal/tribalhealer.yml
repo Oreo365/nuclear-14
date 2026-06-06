@@ -44,6 +44,7 @@
         buffPopup: warcry-popup-buffed-tribal
         excludedJobs:
         - SuperMutantTribal
+        - SyntheticProtectronTribal
       - type: TribalHuntParticipant
         targetDepartment: Tribe
   - !type:AddTraitSpecial

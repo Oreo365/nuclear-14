@@ -1,0 +1,14 @@
+- type: entity
+  parent: N14VehicleWheelchair
+  id: N14VehicleWheelchairFolded
+  name: folded wheelchair
+  suffix: folded
+  description: A folded wheelchair.
+  components:
+  - type: Foldable
+    folded: true
+  - type: Physics
+    bodyType: Dynamic
+    canCollide: false
+  - type: Strap
+    buckleOnInteractHand: false

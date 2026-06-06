@@ -516,6 +516,59 @@
       ears: # #Misfits Fix - vault comms: wasteland + vault radio for vault-assigned robot
         - MisfitsClothingHeadsetRobotVault
 
+# Tribal Protectron
+- type: entity
+  parent: N14PlayerSyntheticProtectron
+  id: N14PlayerSyntheticProtectronTribal
+  name: protectron spirit-tender
+  suffix: player, synthetic
+  description: A RobCo Industries Protectron civil service robot, adopted and decorated by the local tribe. Years of rust have accumulated on its chassis, and rudimentary modifications by the tribals have led this unit to deviate severely from its original model.
+  components:
+  - type: HumanoidAppearance
+    species: RobotProtectronTribal
+  - type: Sprite
+    sprite: _Misfits/Mobs/Robots/protectron-tribal.rsi
+    layers:
+    - state: icon
+      map: ["enum.DamageStateVisualLayers.Base", "movement"]
+    - state: on # lit indicator; BorgSystem overrides at runtime
+      map: ["enum.BorgVisualLayers.Light"]
+      shader: unshaded
+      visible: false
+    - state: on # 'on' RSI state is the lit variant used as the flashlight glow overlay
+      shader: unshaded
+      map: ["light"]
+      visible: false
+    noMovementLayers:
+      movement:
+        state: icon
+  - type: NpcFactionMember
+    factions:
+    - Wastelander
+    - Tribal
+  - type: LanguageKnowledge
+    speaks:
+    - N14Robot
+    - English
+    - Tribal
+    understands:
+    - N14Robot
+    - English
+    - Tribal
+  - type: ContainerFill
+    containers:
+      borg_brain:
+      - PositronicBrain
+      borg_module: # tribal modifications: mostly agricultural tools
+      - MisfitsBorgModuleTribalSpirit  # The spirit-tender "module"
+      - MisfitsBorgModuleTribalHarvest # Harvest module
+      id: # pre-load the nav module into the id inventory slot
+      - MisfitsRobotNavCardRobCo # RobCo Industries Navigation? TODO maybe an alternative
+      ears: # wasteland radio?
+      - MisfitsClothingHeadsetWastelandScrap
+  - type: BorgHands # this one only gets one functioning hand, it is decrepit
+    handCount: 1
+
 - type: entity
   parent: N14BasePlayerSynthetic
   id: N14PlayerSyntheticAssaultron

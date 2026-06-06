@@ -539,15 +539,15 @@
   name: "Ammunition"
   entries:
   - proto: N14MicrofusionCellRed
-    price: 75
+    price: 375
   - proto: N14MicrofusionCellRed
-    price: 125
+    price: 250
     count: 15
   - proto: N14PlasmaCartridge
-    price: 150
+    price: 450
     count: 12
   - proto: 40mmGrenadeFrag
-    price: 150
+    price: 250
     count: 10
 
 - type: storeCategoryStructured
@@ -567,21 +567,21 @@
   - proto: N14BrassKnife
     price: 20
   - proto: N14WastelandSpear
-    price: 20
+    price: 75
   - proto: N14PilumSpear
-    price: 20
+    price: 60
   - proto: N14WastelandPolearm
-    price: 20
+    price: 235
   - proto: N14GolfClub
-    price: 20
-  - proto: N14WastelandTribalJavelin
-    price: 20
-  - proto: N14BaseAxe
     price: 50
+  - proto: N14WastelandTribalJavelin
+    price: 55
+  - proto: N14BaseAxe
+    price: 120
 #  - proto: N14ChineseSword
 #    price: 200
   - proto: N14CeremonialSword
-    price: 250
+    price: 550
   - proto: N14SledgeHammer
     price: 200
 
@@ -711,7 +711,7 @@
     amount: 10
     price: 150
   - proto: N14SuperStimpak
-    price: 250
+    price: 550
     count: 5
   - proto: N14HandheldHealthAnalyzer
     price: 350

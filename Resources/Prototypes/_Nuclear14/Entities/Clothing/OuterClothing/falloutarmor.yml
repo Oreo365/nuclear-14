@@ -1071,8 +1071,8 @@
   - type: ExplosionResistance
     damageCoefficient: 0.7
   - type: ClothingSpeedModifier
-    walkModifier: 1.1 # same as legion recon armor
-    sprintModifier: 1.1
+    walkModifier: 1.05
+    sprintModifier: 1.05
 
 #MARK: Veteran
 
@@ -1136,7 +1136,7 @@
   parent: N14ClothingOuterRangerCombat
   id: N14ClothingOuterRangerFox
   name: fox ranger combat armor
-  description: A customized and well-worn suit of riot gear with parts of the suit reinforced with leather armor and slain Centurion armor pieces by the wearer. A sniper's veil is wrapped around the neck.
+  description: A customized and well worn suit of riot gear reinforced with leather armor and pieces of a slain Centurion by the wearer. "A. Fox" is stenciled on the left breastplate.
   components:
   - type: Sprite
     sprite: _Nuclear14/Clothing/OuterClothing/Armor/falloutrangerfox.rsi

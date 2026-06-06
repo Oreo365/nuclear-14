@@ -1,0 +1,119 @@
+- type: entity
+  parent: N14DoorBunker
+  id: N14DoorBunkerLockedEnclave
+  suffix: Enclave, Locked
+  components:
+  - type: AccessReader
+    access: [["Enclave"]]
+  - type: Wires
+    layoutId: HighSec
+
+- type: entity
+  parent: N14DoorBunkerGlass
+  id: N14DoorBunkerGlassLockedEnclave
+  suffix: Enclave, Locked
+  components:
+  - type: AccessReader
+    access: [["Enclave"]]
+  - type: Wires
+    layoutId: HighSec
+
+- type: entity
+  parent: N14DoorBunker3X
+  id: N14DoorBunker3XLockedEnclave
+  suffix: Enclave, Locked
+  components:
+  - type: AccessReader
+    access: [["Enclave"]]
+  - type: Wires
+    layoutId: HighSec
+
+- type: entity
+  parent: N14DoorBunkerGlass3X
+  id: N14DoorBunkerGlass3XLockedEnclave
+  suffix: Enclave, Locked
+  components:
+  - type: AccessReader
+    access: [["Enclave"]]
+  - type: Wires
+    layoutId: HighSec
+
+- type: entity
+  parent: N14DoorMetalSecure
+  id: N14DoorMetalSecureLockedEnclave
+  suffix: Enclave, Locked
+  components:
+  - type: AccessReader
+    access: [["Enclave"]]
+  - type: Wires
+    layoutId: HighSec
+
+- type: entity
+  parent: N14DoorCellMetal
+  id: N14DoorCellMetalLockedEnclave
+  suffix: Enclave, Locked
+  components:
+  - type: AccessReader
+    access: [["Enclave"]]
+  - type: Wires
+    layoutId: HighSec
+
+- type: entity
+  parent: N14DoorBunker
+  id: N14DoorBunkerLockedEnclaveSecurity
+  suffix: Enclave, Locked, Security
+  components:
+  - type: AccessReader
+    access: [["EnclaveNCO"]]
+  - type: Wires
+    layoutId: HighSec
+
+- type: entity
+  parent: N14DoorBunker
+  id: N14DoorBunkerLockedEnclaveScience
+  suffix: Enclave, Locked, Science
+  components:
+  - type: AccessReader
+    access: [["EnclaveScience"]]
+  - type: Wires
+    layoutId: HighSec
+
+- type: entity
+  parent: N14DoorBunker
+  id: N14DoorBunkerLockedEnclaveCommand
+  suffix: Enclave, Locked, Command
+  components:
+  - type: AccessReader
+    access: [["EnclaveCommand"]]
+  - type: Wires
+    layoutId: HighSec
+
+- type: entity
+  parent: N14DoorMetalSecure
+  id: N14DoorMetalSecureLockedEnclaveSecurity
+  suffix: Enclave, Locked, Security
+  components:
+  - type: AccessReader
+    access: [["EnclaveNCO"]]
+  - type: Wires
+    layoutId: HighSec
+
+- type: entity
+  parent: N14DoorMetalSecure
+  id: N14DoorMetalSecureLockedEnclaveScience
+  suffix: Enclave, Locked, Science
+  components:
+  - type: AccessReader
+    access: [["EnclaveScience"]]
+  - type: Wires
+    layoutId: HighSec
+
+- type: entity
+  parent: N14DoorMetalSecure
+  id: N14DoorMetalSecureLockedEnclaveCommand
+  suffix: Enclave, Locked, Command
+  components:
+  - type: AccessReader
+    access: [["EnclaveCommand"]]
+  - type: Wires
+    layoutId: HighSec

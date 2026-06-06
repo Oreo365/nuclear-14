@@ -54,9 +54,21 @@ public sealed partial class SpecialTuningPrototype : IPrototype
     [DataField("enduranceToxinDamageMultiplierPerPoint")]
     public float EnduranceToxinDamageMultiplierPerPoint = 0.02f;
 
-    // Charisma: economy, loadout points, and presentation hooks.
+    // Charisma: economy, loadout points, presentation, and leadership hooks.
     [DataField("charismaTradeMultiplierPerPoint")]
     public float CharismaTradeMultiplierPerPoint = 0.01333333f;
+
+    [DataField("charismaWarcryRangeMultiplierPerPoint")]
+    public float CharismaWarcryRangeMultiplierPerPoint = 0.006667f;
+
+    [DataField("charismaWarcryDurationMultiplierPerPoint")]
+    public float CharismaWarcryDurationMultiplierPerPoint = 0.006667f;
+
+    [DataField("charismaWarcrySpeedMultiplierPerPoint")]
+    public float CharismaWarcrySpeedMultiplierPerPoint = 0.006667f;
+
+    [DataField("charismaNeutralFollowerMinimum")]
+    public int CharismaNeutralFollowerMinimum = 8;
 
     // Intelligence: crafting/medical quality-of-life gates.
     [DataField("intelligenceLatheTimeMultiplierPerPoint")]

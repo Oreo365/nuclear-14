@@ -75,6 +75,25 @@
       - EncryptionKey
 
 - type: entity
+  name: eighties encryption key box
+  parent: BoxCardboard
+  id: BoxEncryptionKeyEighties
+  description: A box of spare encryption keys.
+  components:
+  - type: StorageFill
+    contents:
+    - id: EncryptionKeyEighties
+      amount: 6
+  - type: Sprite
+    layers:
+    - state: box
+    - state: encryptokey
+  - type: Storage
+    whitelist:
+      components:
+      - EncryptionKey
+
+- type: entity
   name: wasteland encryption key box
   parent: BoxCardboard
   id: BoxEncryptionKeyWasteland
@@ -121,6 +140,25 @@
   - type: StorageFill
     contents:
     - id: EncryptionKeyEnclave
+      amount: 6
+  - type: Sprite
+    layers:
+    - state: box
+    - state: encryptokey
+  - type: Storage
+    whitelist:
+      components:
+      - EncryptionKey
+
+- type: entity
+  name: town encryption key box
+  parent: BoxCardboard
+  id: BoxEncryptionKeyTown
+  description: A box of spare encryption keys.
+  components:
+  - type: StorageFill
+    contents:
+    - id: EncryptionKeyTown
       amount: 6
   - type: Sprite
     layers:

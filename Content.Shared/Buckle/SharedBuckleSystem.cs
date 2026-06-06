@@ -11,6 +11,7 @@ using Robust.Shared.Containers;
 using Robust.Shared.Network;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Player;
+using Content.Shared.DoAfter;
 using Robust.Shared.Timing;
 
 namespace Content.Shared.Buckle;
@@ -36,6 +37,7 @@ public abstract partial class SharedBuckleSystem : EntitySystem
     [Dependency] private readonly StandingStateSystem _standing = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly SharedRotationVisualsSystem _rotationVisuals = default!;
+    [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
 
     /// <inheritdoc/>
     public override void Initialize()

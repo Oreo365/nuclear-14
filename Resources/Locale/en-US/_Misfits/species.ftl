@@ -17,3 +17,4 @@ species-name-robot-sentrybot = Sentry Bot
 species-name-robot-sentrybot-laser = Sentry Bot (Laser)
 species-name-robot-robobrain = Robobrain
 species-name-robot-robobrain-laser = Robobrain (Laser)
+species-name-robot-protectron-tribal = Protectron (Spirit-Tender)

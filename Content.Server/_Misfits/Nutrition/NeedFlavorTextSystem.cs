@@ -114,26 +114,26 @@ public sealed class NeedFlavorTextSystem : EntitySystem
         // #Misfits Fix: Defunct at 70+ players — two per-player entity-query passes every scan
         // contributed significant tick overhead. Hunger/thirst flavor text is cosmetic only.
         // Restore by un-commenting the body below and the Initialize subscriptions above.
-        //
-        // base.Update(frameTime);
-        // _scanTimer += frameTime;
-        // if (_scanTimer < ScanInterval)
-        //     return;
-        // _scanTimer -= ScanInterval;
-        // var hungerQuery = EntityQueryEnumerator<ActorComponent, HungerComponent>();
-        // while (hungerQuery.MoveNext(out var uid, out var actor, out var hunger))
-        // {
-        //     if (ShouldSkip(uid, actor.PlayerSession))
-        //         continue;
-        //     ProcessHunger(uid, actor.PlayerSession, hunger);
-        // }
-        // var thirstQuery = EntityQueryEnumerator<ActorComponent, ThirstComponent>();
-        // while (thirstQuery.MoveNext(out var uid, out var actor, out var thirst))
-        // {
-        //     if (ShouldSkip(uid, actor.PlayerSession))
-        //         continue;
-        //     ProcessThirst(uid, actor.PlayerSession, thirst);
-        // }
+        
+         base.Update(frameTime);
+         _scanTimer += frameTime;
+         if (_scanTimer < ScanInterval)
+             return;
+         _scanTimer -= ScanInterval;
+         var hungerQuery = EntityQueryEnumerator<ActorComponent, HungerComponent>();
+         while (hungerQuery.MoveNext(out var uid, out var actor, out var hunger))
+         {
+             if (ShouldSkip(uid, actor.PlayerSession))
+                 continue;
+             ProcessHunger(uid, actor.PlayerSession, hunger);
+         }
+         var thirstQuery = EntityQueryEnumerator<ActorComponent, ThirstComponent>();
+         while (thirstQuery.MoveNext(out var uid, out var actor, out var thirst))
+         {
+             if (ShouldSkip(uid, actor.PlayerSession))
+                 continue;
+             ProcessThirst(uid, actor.PlayerSession, thirst);
+         }
     }
 
     private bool ShouldSkip(EntityUid uid, ICommonSession session)

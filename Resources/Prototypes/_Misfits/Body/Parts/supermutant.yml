@@ -14,7 +14,7 @@
     # Integrity thresholds scaled ×2.22 vs default human (90→200 CriticallyWounded).
     # At default 90, legs disable at ~306 raw Slash while mob crits at ~571 raw.
     # At 200, legs disable at ~680 raw, safely after mob crit at ~571 raw.
-    severIntegrity: 200
+    severIntegrity: 300  # Updated at human part integrity has been increased
     integrityThresholds:
       CriticallyWounded: 200
       HeavilyWounded: 165
@@ -51,6 +51,12 @@
         !type:DamageTypeTrigger
         damageType: Slash
         damage: 400
+      behaviors:
+      - !type:GibPartBehavior { }
+    - trigger:
+        !type:DamageTypeTrigger
+        damageType: Piercing
+        damage: 500
       behaviors:
       - !type:GibPartBehavior { }
     - trigger:
@@ -101,6 +107,12 @@
         !type:DamageTypeTrigger
         damageType: Slash
         damage: 800
+      behaviors:
+      - !type:GibPartBehavior { }
+    - trigger:
+        !type:DamageTypeTrigger
+        damageType: Piercing
+        damage: 1000
       behaviors:
       - !type:GibPartBehavior { }
     - trigger:

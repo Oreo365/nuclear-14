@@ -632,7 +632,7 @@
   name: healing powder
   parent: BaseItem
   id: N14HealingPowder
-  description: A bag of tribal healing powder. Nausiating.
+  description: A bag of tribal healing powder. Nauseating.
   components:
   - type: Tag
     tags:

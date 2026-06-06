@@ -240,6 +240,20 @@
       params:
         volume: -3
         maxDistance: 12
+  # Misfits Add - robot/broadcast languages when player-controlled.
+  - type: LanguageKnowledge
+    speaks:
+    - N14BrotherBeep
+    - N14Robot
+    - English
+    - Latin
+    - Chinese
+    understands:
+    - N14BrotherBeep
+    - N14Robot
+    - English
+    - Latin
+    - Chinese
 
 - type: entity
   parent: N14MobRobotHostileMelee
@@ -306,6 +320,21 @@
       params:
         volume: -3
         maxDistance: 12
+  # Misfits Add - robot/broadcast languages when player-controlled.
+  - type: LanguageKnowledge
+    speaks:
+    - N14BrotherBeep
+    - N14Robot
+    - English
+    - Latin
+    - Chinese
+    understands:
+    - N14BrotherBeep
+    - N14Robot
+    - English
+    - Latin
+    - Chinese
+
 
 - type: entity
   parent: N14MobRobotProtectronHostile
@@ -326,6 +355,21 @@
       shader: unshaded
       map: ["light"]
       visible: false
+  # Misfits Add - robot/broadcast languages when player-controlled.
+  - type: LanguageKnowledge
+    speaks:
+    - N14BrotherBeep
+    - N14Robot
+    - English
+    - Latin
+    - Chinese
+    understands:
+    - N14BrotherBeep
+    - N14Robot
+    - English
+    - Latin
+    - Chinese
+
 
 - type: entity
   parent: N14MobRobotProtectronHostile
@@ -346,6 +390,21 @@
       shader: unshaded
       map: ["light"]
       visible: false
+  # Misfits Add - robot/broadcast languages when player-controlled.
+  - type: LanguageKnowledge
+    speaks:
+    - N14BrotherBeep
+    - N14Robot
+    - English
+    - Latin
+    - Chinese
+    understands:
+    - N14BrotherBeep
+    - N14Robot
+    - English
+    - Latin
+    - Chinese
+
 
 - type: entity
   parent: N14MobRobotProtectronHostile
@@ -392,6 +451,21 @@
     blackboard:
       NavSmash: !type:Bool
         true
+  # Misfits Add - robot/broadcast languages when player-controlled.
+  - type: LanguageKnowledge
+    speaks:
+    - N14BrotherBeep
+    - N14Robot
+    - English
+    - Latin
+    - Chinese
+    understands:
+    - N14BrotherBeep
+    - N14Robot
+    - English
+    - Latin
+    - Chinese
+
 
 - type: entity
   parent: N14MobRobotHostileMelee
@@ -483,6 +557,20 @@
       params:
         volume: -3
         maxDistance: 10
+  # Misfits Add - robot/broadcast languages when player-controlled.
+  - type: LanguageKnowledge
+    speaks:
+    - N14BrotherBeep
+    - N14Robot
+    - English
+    - Latin
+    - Chinese
+    understands:
+    - N14BrotherBeep
+    - N14Robot
+    - English
+    - Latin
+    - Chinese
 
 - type: entity
   parent: N14MobRobotMrHandyClaw
@@ -519,6 +607,21 @@
       params:
         volume: -3
         maxDistance: 10
+  # Misfits Add - robot/broadcast languages when player-controlled.
+  - type: LanguageKnowledge
+    speaks:
+    - N14BrotherBeep
+    - N14Robot
+    - English
+    - Latin
+    - Chinese
+    understands:
+    - N14BrotherBeep
+    - N14Robot
+    - English
+    - Latin
+    - Chinese
+
 
 - type: entity
   parent: N14MobRobotHostile
@@ -593,6 +696,20 @@
       params:
         volume: -3
         maxDistance: 10
+  # Misfits Add - robot/broadcast languages when player-controlled.
+  - type: LanguageKnowledge
+    speaks:
+    - N14BrotherBeep
+    - N14Robot
+    - English
+    - Latin
+    - Chinese
+    understands:
+    - N14BrotherBeep
+    - N14Robot
+    - English
+    - Latin
+    - Chinese
 
 - type: entity
   parent: N14MobRobotHostile
@@ -664,6 +781,20 @@
       params:
         volume: -3
         maxDistance: 10
+  # Misfits Add - robot/broadcast languages when player-controlled.
+  - type: LanguageKnowledge
+    speaks:
+    - N14BrotherBeep
+    - N14Robot
+    - English
+    - Latin
+    - Chinese
+    understands:
+    - N14BrotherBeep
+    - N14Robot
+    - English
+    - Latin
+    - Chinese
 
 - type: entity
   parent: N14MobRobotHostile
@@ -726,6 +857,20 @@
       params:
         volume: -3
         maxDistance: 12
+  # Misfits Add - robot/broadcast languages when player-controlled.
+  - type: LanguageKnowledge
+    speaks:
+    - N14BrotherBeep
+    - N14Robot
+    - English
+    - Latin
+    - Chinese
+    understands:
+    - N14BrotherBeep
+    - N14Robot
+    - English
+    - Latin
+    - Chinese
 
 - type: entity
   parent: N14MobRobotHostile
@@ -819,6 +964,20 @@
       params:
         volume: -3
         maxDistance: 12
+  # Misfits Add - robot/broadcast languages when player-controlled.
+  - type: LanguageKnowledge
+    speaks:
+    - N14BrotherBeep
+    - N14Robot
+    - English
+    - Latin
+    - Chinese
+    understands:
+    - N14BrotherBeep
+    - N14Robot
+    - English
+    - Latin
+    - Chinese
 
 - type: entity
   id: N14SentryBotOverloadLightEmitter
@@ -861,14 +1020,14 @@
   - type: MovementSpeedModifier
     # Misfits Tweak: reduced further — sentry bots are heavy siege walkers, not pursuit units.
     baseWalkSpeed: 0.75
-    baseSprintSpeed: 1.2
+    baseSprintSpeed: 1.0
   # Misfits Change /Add: Prevent players from dragging this robot around.
-  # At 350 HP and covered in combat plating it is far too heavy to be moved.
+  # At 1000 HP and covered in combat plating it is far too heavy to be moved.
   - type: NoPull
   - type: MobThresholds
     thresholds:
       0: Alive
-      350: Dead
+      750: Dead
     stateAlertDict:
       Alive: BorgHealth
       Dead: HumanDead
@@ -988,7 +1147,7 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 350
+        damage: 750
       behaviors:
       - !type:SpawnEntitiesBehavior
         spawn:
@@ -1012,6 +1171,21 @@
           path: /Audio/Machines/warning_buzzer.ogg
           params:
             volume: 2
+  # Misfits Add - robot/broadcast languages when player-controlled.
+  - type: LanguageKnowledge
+    speaks:
+    - N14BrotherBeep
+    - N14Robot
+    - English
+    - Latin
+    - Chinese
+    understands:
+    - N14BrotherBeep
+    - N14Robot
+    - English
+    - Latin
+    - Chinese
+
 
 # Misfits Change /Add: Ballistic Sentry Bot - same chassis as the laser variant but armed with a
 # 5mm minigun instead of a gatling laser. Once the drum empties the HTN falls back to a heavy stomp.
@@ -1041,13 +1215,13 @@
   - type: MovementSpeedModifier
     # Misfits Tweak: reduced further — sentry bots are heavy siege walkers, not pursuit units.
     baseWalkSpeed: 0.75
-    baseSprintSpeed: 1.2
+    baseSprintSpeed: 1.0
   # Misfits Change /Add: Prevent players from dragging this robot around.
   - type: NoPull
   - type: MobThresholds
     thresholds:
       0: Alive
-      350: Dead
+      1000: Dead
     stateAlertDict:
       Alive: BorgHealth
       Dead: HumanDead
@@ -1167,19 +1341,19 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 350
+        damage: 1000
       behaviors:
       - !type:SpawnEntitiesBehavior
         spawn:
           N14ScrapElectronic1:
             min: 2
-            max: 5
+            max: 10
           N14MaterialCircuitry1:
             min: 2
-            max: 5
+            max: 20
           N14Scrap1:
             min: 2
-            max: 5
+            max: 30
           N14CurrencyPrewar: #Misfits Change /Add: Drop prewar money on death (10-40)
             min: 10
             max: 40
@@ -1191,3 +1365,18 @@
           path: /Audio/Machines/warning_buzzer.ogg
           params:
             volume: 2
+  # Misfits Add - robot/broadcast languages when player-controlled.
+  - type: LanguageKnowledge
+    speaks:
+    - N14BrotherBeep
+    - N14Robot
+    - English
+    - Latin
+    - Chinese
+    understands:
+    - N14BrotherBeep
+    - N14Robot
+    - English
+    - Latin
+    - Chinese
+

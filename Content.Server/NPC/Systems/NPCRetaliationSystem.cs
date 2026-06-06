@@ -87,6 +87,11 @@ public sealed class NPCRetaliationSystem : EntitySystem
             && _npcFaction.IsEntityFriendly(ent.Owner, target))
             return false;
 
+        if (TryComp<RecruitedFollowerComponent>(ent.Owner, out var selfRecruited)
+            && TryComp<RecruitedFollowerComponent>(target, out var targetRecruited)
+            && selfRecruited.Commander == targetRecruited.Commander)
+            return false;
+
         _npcFaction.AggroEntity(ent.Owner, target);
         if (ent.Comp.AttackMemoryLength is {} memoryLength)
             ent.Comp.AttackMemories[target] = _timing.CurTime + memoryLength;

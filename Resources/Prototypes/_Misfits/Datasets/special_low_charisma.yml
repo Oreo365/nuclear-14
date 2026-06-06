@@ -1,0 +1,11 @@
+- type: localizedDataset
+  id: SpecialLowCharismaOpeners
+  values:
+    prefix: special-low-charisma-opener-
+    count: 16
+
+- type: localizedDataset
+  id: SpecialLowCharismaClosers
+  values:
+    prefix: special-low-charisma-closer-
+    count: 15

@@ -1,6 +1,9 @@
 # Really you should write your own
 - type: htnCompound
   id: SimpleHostileCompound
+  followerFollow: SimpleFollowHostileCompound
+  followerPassive: SimplePassiveHostileCompound
+  followerNeutral: SimpleNeutralHostileCompound
   branches:
     - tasks:
         - !type:HTNCompoundTask
@@ -31,6 +34,8 @@
 
 - type: htnCompound
   id: MouseCompound
+  followerFollow: MouseFollowCompound
+  followerPassive: MousePassiveCompound
   branches:
     - tasks:
         - !type:HTNCompoundTask
@@ -38,6 +43,74 @@
     - tasks:
         - !type:HTNCompoundTask
           task: IdleCompound
+
+- type: htnCompound
+  id: SimplePassiveHostileCompound
+  branches:
+    - tasks:
+        - !type:HTNPrimitiveTask
+          preconditions:
+            - !type:CoordinatesNotInRangePrecondition
+              targetKey: FollowTarget
+              rangeKey: FollowRange
+          operator: !type:MoveToOperator
+            pathfindInPlanning: false
+            targetKey: FollowTarget
+            rangeKey: FollowCloseRange
+            removeKeyOnFinish: false
+    - tasks:
+        - !type:HTNCompoundTask
+          task: FollowerWanderCompound
+    - tasks:
+        - !type:HTNCompoundTask
+          task: HoldPositionCompound
+
+- type: htnCompound
+  id: SimpleNeutralHostileCompound
+  branches:
+    - tasks:
+        - !type:HTNCompoundTask
+          task: OrderedMeleeCombatCompound
+    - tasks:
+        - !type:HTNCompoundTask
+          task: OrderedFollowCompound
+    - tasks:
+        - !type:HTNCompoundTask
+          task: IdleCompound
+
+- type: htnCompound
+  id: MouseFollowCompound
+  branches:
+    - tasks:
+        - !type:HTNPrimitiveTask
+          preconditions:
+            - !type:CoordinatesNotInRangePrecondition
+              targetKey: FollowTarget
+              rangeKey: FollowRange
+          operator: !type:MoveToOperator
+            pathfindInPlanning: false
+            targetKey: FollowTarget
+            rangeKey: FollowCloseRange
+            removeKeyOnFinish: false
+    - tasks:
+        - !type:HTNCompoundTask
+          task: FoodCompound
+    - tasks:
+        - !type:HTNCompoundTask
+          task: FollowerWanderCompound
+    - tasks:
+        - !type:HTNCompoundTask
+          task: HoldPositionCompound
+
+- type: htnCompound
+  id: MousePassiveCompound
+  branches:
+    - tasks:
+        - !type:HTNCompoundTask
+          task: OrderedFollowCompound
+    - tasks:
+        - !type:HTNCompoundTask
+          task: HoldPositionCompound
 
 - type: htnCompound
   id: GlockroachCompound
@@ -54,6 +127,9 @@
 
 - type: htnCompound
   id: RuminantCompound
+  followerFollow: RuminantFollowCompound
+  followerPassive: RuminantPassiveCompound
+  followerNeutral: RuminantNeutralCompound
   branches:
   - tasks:
     - !type:HTNCompoundTask
@@ -61,6 +137,58 @@
   - tasks:
     - !type:HTNCompoundTask
       task: IdleCompound
+
+- type: htnCompound
+  id: RuminantFollowCompound
+  branches:
+    - tasks:
+        - !type:HTNPrimitiveTask
+          preconditions:
+            - !type:CoordinatesNotInRangePrecondition
+              targetKey: FollowTarget
+              rangeKey: FollowRange
+          operator: !type:MoveToOperator
+            pathfindInPlanning: false
+            targetKey: FollowTarget
+            rangeKey: FollowCloseRange
+            removeKeyOnFinish: false
+    - tasks:
+        - !type:HTNCompoundTask
+          task: FollowerWanderCompound
+    - tasks:
+        - !type:HTNCompoundTask
+          task: HoldPositionCompound
+
+- type: htnCompound
+  id: RuminantPassiveCompound
+  branches:
+    - tasks:
+        - !type:HTNPrimitiveTask
+          preconditions:
+            - !type:CoordinatesNotInRangePrecondition
+              targetKey: FollowTarget
+              rangeKey: FollowRange
+          operator: !type:MoveToOperator
+            pathfindInPlanning: false
+            targetKey: FollowTarget
+            rangeKey: FollowCloseRange
+            removeKeyOnFinish: false
+    - tasks:
+        - !type:HTNCompoundTask
+          task: FollowerWanderCompound
+    - tasks:
+        - !type:HTNCompoundTask
+          task: HoldPositionCompound
+
+- type: htnCompound
+  id: RuminantNeutralCompound
+  branches:
+    - tasks:
+        - !type:HTNCompoundTask
+          task: OrderedFollowCompound
+    - tasks:
+        - !type:HTNCompoundTask
+          task: IdleCompound
 
 - type: htnCompound
   id: RuminantHostileCompound

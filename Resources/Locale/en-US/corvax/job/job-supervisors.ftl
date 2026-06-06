@@ -1,5 +1,5 @@
 job-name-caesar-legion = obey Caesar.
-job-name-caesar-legion-supervisors = obey Caesar and the Legate.
+job-name-caesar-legion-supervisors = obey Caesar, the Legate, and the Centurion.
 job-name-caesar-legion-other = obey Caesar, the Legate, the Centurion and the Decani.
 job-supervisors-caesar-legion-slave = obey Caesar, the Legate, the Centurion, the Decani and any Legionary.
 

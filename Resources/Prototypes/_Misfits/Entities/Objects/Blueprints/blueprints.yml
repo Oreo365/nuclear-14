@@ -244,6 +244,7 @@
     - N14BPNCRAmmoBox45-70
     - N14BPNCRAmmoMag556Long
     - N14BPNCRAmmoMag308LMG
+    - N14BPNCRAmmoOverMag308
     - N14BPNCRAmmoMagTopSMG12mm
 
 # =====================================================================
@@ -431,6 +432,7 @@
     - N14BPLegionAmmo40mmGrenade
     - N14BPLegionAmmoBox762       # #Misfits Add - 7.62mm box (for SKS)
     - N14BPLegionWeaponDynamite   # #Misfits Add - craftable dynamite
+    - N14BPLegionAmmoSKSEnbloc308
 
 - type: entity
   parent: N14BlueprintBase
@@ -445,6 +447,7 @@
     - N14BPLegionAmmo40mmGrenadeIncendiary
     - N14BPLegionAmmoMagazine308RifleLong  # #Misfits Add - .308 Long mag for Bren LMG
     - N14BPLegionAmmoMagazine308M60Box     # #Misfits Add - .308 50-round box mag for M60 LMG
+    - N14BPLegionAmmoOverMag308
 
 # =====================================================================
 # BROTHERHOOD OF STEEL BLUEPRINTS

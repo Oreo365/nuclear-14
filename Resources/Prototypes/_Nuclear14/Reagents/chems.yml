@@ -500,6 +500,8 @@
         - !type:MobStateCondition #Misfits Tweak: OD can push to crit but never kill
         threshold: 30
         damagePerUnit: 0.05
+      - !type:SuppressChronicPainReagent
+        SuppressionTime: 1200
 
 - type: reagent
   id: Hydra

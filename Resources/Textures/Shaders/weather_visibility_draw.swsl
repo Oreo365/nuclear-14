@@ -1,0 +1,21 @@
+uniform highp vec2 position;
+uniform highp float maxRange;
+uniform highp float minRange;
+uniform highp float bufferRange;
+uniform highp float gradient;
+
+void fragment() {
+    highp vec4 color = zTexture(UV);
+    highp float distance = length(FRAGCOORD.xy - position);
+
+    if (distance < minRange) {
+        discard;
+    }
+
+    if (distance < maxRange) {
+        highp float ratio = pow((distance - minRange) / bufferRange, gradient);
+        color.a *= ratio;
+    }
+
+    COLOR = color;
+}

@@ -42,7 +42,7 @@
     id: N14ClothingNeckDogtags # #Misfits Change - wastelander supermutants get dogtag IDs
     ears: MisfitsClothingHeadsetWastelandScrap
 
-# #Misfits Add - Nightkin variant with its own whitelist entry.
+# #Misfits Add - Nightkin variant with its own whitelist entry. -REMOVED AT REUQEST OF https://github.com/Misfit-Sanctuary/nuclear-14/issues/666  -pierow
 - type: job
   id: Nightkin
   jobWhitelistBypassesRoleTimers: true
@@ -52,7 +52,7 @@
   icon: JobIconBorg
   supervisors: job-supervisors-supermutant
   canBeAntag: false
-  setPreference: true
+  setPreference: false
   overrideConsoleVisibility: true
   whitelisted: true
   hideWithoutWhitelist: true
@@ -126,8 +126,6 @@
     id: N14IDLegionaryBadgeSlave # Gladiator serves under Legion authority
     back: N14ClothingBackpackMilitary # #Misfits Add - backslot for storing a secondary weapon
     suitstorage: N14WastelandTribalSpear # #Misfits Add - back holster slot; starts with a spear stowed on the back
-  inhand:
-    - N14WastelandTribalSpear # Starts with a tribal spear for close-combat
 
 - type: playTimeTracker
   id: SuperMutantGladiator
@@ -436,6 +434,7 @@
   id: SuperMutantFollowerDoctorGear
   equipment:
     jumpsuit: ClothingSuperMutantLabcoat
+    outerClothing: MisfitsFOTASuperMutantArmoredLabcoat
     mask: ClothingSuperMutantSterileMask
     back: ClothingBackpackDuffelSurgeryFilled
     belt: N14ClothingBeltMedicalFilled
@@ -467,6 +466,8 @@
   spawnLoadout: true
   applyTraits: true
   startingGear: SuperMutantEnclaveGear
+  accessGroups:
+  - EnclaveEnlisted
   requirements:
     - !type:CharacterSpeciesRequirement
       species:
@@ -478,7 +479,6 @@
           factions:
             - PlayerSuperMutant
             - Enclave
-            - Wastelander
         - type: PowerArmorProficiency
 - type: startingGear
   id: SuperMutantEnclaveGear

@@ -93,8 +93,10 @@
   - BronzeKey # N14 - Adds access
   - BrassKey # N14 - Adds access
   - SilverKey # N14 - Adds access
-  - FotAHead # Misfit - Follower Head
-  - FotADoctor # Misfit - Follower Doctor
-  - FotA # Misfit - Follower Access General
-  - 80s # Misfit
-  - 80sHead # Misfit
+# Misfit Addition Start
+  - FotAHead
+  - FotADoctor
+  - FotA
+  - 80s
+  - 80sHead
+  - 80sSlave

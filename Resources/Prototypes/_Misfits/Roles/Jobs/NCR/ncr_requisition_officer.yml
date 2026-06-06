@@ -1,0 +1,61 @@
+- type: job
+  id: NCRRO
+  setPreference: true
+  hideWithoutJobWhitelist: false
+  hideIfPlaytimeRequirementsNotMet: false
+  jobWhitelistBypassesRoleTimers: true
+  overrideConsoleVisibility: false
+  canBeAntag: true
+  name: job-name-ncr-requisition-officer
+  description: job-description-ncr-requisition-officer
+  playTimeTracker: NCRRO
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+      - Human
+      - Ghoul
+    - !type:CharacterDepartmentTimeRequirement # T6 faction timelock (20h NCR)
+      department: NCR
+      min: 72000 # 20 hours
+  weight: 105
+  startingGear: NCRRequisitionOfficerGear
+  icon: "JobIconNcrLeader"
+  supervisors: job-supervisors-ncr-commander
+  requireAdminNotify: true
+  alwaysUseSpawner: true
+  access:
+  - NCR
+  - NCRSGT
+  - NCRMedic
+  - NCRLT
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Wastelander
+          - NCR
+
+- type: startingGear
+  id: NCRRequisitionOfficerGear
+  equipment:
+    head: N14ClothingHeadHatNCRBeretOfficer
+    back: N14ClothingBackpackNCR
+    jumpsuit: N14ClothingOfficerUniformNCRDesert
+    outerClothing: N14ClothingOuterNCRDressJacket
+    shoes: N14ClothingBootsCombatFilled
+
+    belt: ClothingBeltNCR
+    eyes: ClothingEyesGlassesSunglasses
+    ears: N14ClothingHeadsetNCR
+    pocket1: NCRLTloadoutkits
+    pocket2: RadioHandheld
+    id: N14IDNCRDogtagNCRRO
+  innerClothingSkirt: N14ClothingOfficerUniformNCRDesert
+  satchel: N14ClothingBackpackSatchelNCRFilled
+  storage:
+    back:
+    - N14BoxPlasticFilledMilitaryNCR
+
+- type: playTimeTracker
+  id: NCRRO

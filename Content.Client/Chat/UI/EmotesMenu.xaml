@@ -17,6 +17,9 @@
         <ui:RadialMenuTextureButton StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'emote-menu-category-hands'}" TargetLayer="Hands" Visible="False">
             <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/Clothing/Hands/Gloves/latex.rsi/icon.png"/>
         </ui:RadialMenuTextureButton>
+        <ui:RadialMenuTextureButton StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'emote-menu-category-followers'}" TargetLayer="Followers" Visible="False">
+            <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/Interface/VerbIcons/group.svg.192dpi.png"/>
+        </ui:RadialMenuTextureButton>
     </ui:RadialContainer>
 
     <!-- General -->
@@ -27,5 +30,8 @@
 
     <!-- Hands -->
     <ui:RadialContainer Name="Hands"  VerticalExpand="True" HorizontalExpand="True" Radius="64"/>
+
+    <!-- Followers -->
+    <ui:RadialContainer Name="Followers"  VerticalExpand="True" HorizontalExpand="True" Radius="64"/>
 
 </ui:RadialMenu>

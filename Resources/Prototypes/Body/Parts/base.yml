@@ -7,6 +7,7 @@
   - type: Damageable
     damageContainer: OrganicPart # Shitmed Change
   - type: BodyPart
+    severIntegrity: 150  # Misfits Change
   - type: Gibbable
   - type: ContainerContainer
     containers:
@@ -28,19 +29,25 @@
     - trigger:
         !type:DamageTypeTrigger
         damageType: Blunt
-        damage: 110
+        damage: 200
       behaviors:
       - !type:GibPartBehavior { }
     - trigger:
         !type:DamageTypeTrigger
         damageType: Slash
-        damage: 150
+        damage: 250
+      behaviors:
+      - !type:GibPartBehavior { }
+    - trigger:
+        !type:DamageTypeTrigger
+        damageType: Piercing
+        damage: 250
       behaviors:
       - !type:GibPartBehavior { }
     - trigger:
         !type:DamageTypeTrigger
         damageType: Heat
-        damage: 200
+        damage: 250
       behaviors:
       - !type:SpawnEntitiesBehavior
         spawnInContainer: true
@@ -84,6 +91,12 @@
       - !type:GibPartBehavior { }
     - trigger:
         !type:DamageTypeTrigger
+        damageType: Piercing
+        damage: 500
+      behaviors:
+      - !type:GibPartBehavior { }
+    - trigger:
+        !type:DamageTypeTrigger
         damageType: Heat
         damage: 400
       behaviors:
@@ -115,6 +128,7 @@
     toolName: "a head" # Shitmed Change
     vital: true
     canSever: false # #Misfits Tweak - Disable head severing for all playable mobs
+    severIntegrity: 200 # Misfits Change
   - type: Input
     context: "ghost"
   - type: Tag
@@ -141,6 +155,10 @@
       types:
         Blunt: 7
     staminaCost: 7
+  - type: Butcherable # Misfits Addition
+    spawned:
+    - id: FoodMeatHuman
+      amount: 1
 
 - type: entity
   id: BaseRightArm
@@ -157,6 +175,10 @@
       types:
         Blunt: 7
     staminaCost: 7
+  - type: Butcherable # Misfits Addition
+    spawned:
+    - id: FoodMeatHuman
+      amount: 1
 
 - type: entity
   id: BaseLeftHand
@@ -204,6 +226,10 @@
       types:
         Blunt: 8
     staminaCost: 9
+  - type: Butcherable # Misfits Addition
+    spawned:
+    - id: FoodMeatHuman
+      amount: 2
 
 - type: entity
   id: BaseRightLeg
@@ -221,6 +247,10 @@
       types:
         Blunt: 8
     staminaCost: 9
+  - type: Butcherable # Misfits Addition
+    spawned:
+    - id: FoodMeatHuman
+      amount: 2
 
 - type: entity
   id: BaseLeftFoot

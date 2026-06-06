@@ -174,12 +174,12 @@ public sealed class HungerSystem : EntitySystem
             return;
 
         // #Misfits Tweak - Starvation damage removed; only movement speed reduction remains.
-        // if (component.CurrentThreshold <= HungerThreshold.Starving &&
-        //     component.StarvationDamage is { } damage &&
-        //     _mobState.IsAlive(uid))
-        // {
-        //     _damageable.TryChangeDamage(uid, damage, true, false);
-        // }
+         if (component.CurrentThreshold <= HungerThreshold.Starving &&
+             component.StarvationDamage is { } damage &&
+             _mobState.IsAlive(uid))
+         {
+             _damageable.TryChangeDamage(uid, damage, true, false);
+         }
     }
 
     /// <summary>

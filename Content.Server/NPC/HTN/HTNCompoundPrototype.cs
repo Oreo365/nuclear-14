@@ -12,4 +12,13 @@ public sealed partial class HTNCompoundPrototype : IPrototype
 
     [DataField("branches", required: true)]
     public List<HTNBranch> Branches = new();
+
+    [DataField]
+    public string? FollowerFollow;
+
+    [DataField]
+    public string? FollowerPassive;
+
+    [DataField]
+    public string? FollowerNeutral;
 }

@@ -72,7 +72,8 @@ public sealed class KillTrackingSystem : EntitySystem
             if (largestSource is not KillEnvironmentSource)
             {
                 // you have to do at least 50% of largest source's damage to get the assist.
-                if (component.LifetimeDamage[largestSource] >= component.LifetimeDamage[killSource] / 2)
+                var killSourceDamage = component.LifetimeDamage.GetValueOrDefault(killSource);
+                if (component.LifetimeDamage.GetValueOrDefault(largestSource) >= killSourceDamage / 2)
                 {
                     assistSource = largestSource;
                 }

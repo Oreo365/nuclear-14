@@ -64,11 +64,18 @@
     proto: robot
   - type: LanguageKnowledge # #Misfits Fix - use N14 language IDs (TauCetiBasic/RobotTalk are SS14 upstream only)
     speaks:
-    - English    # default spoken language; language system uses first entry
-    - N14Robot   # binary 0/1 obfuscation; player can switch via language menu
-    understands:
-    - English
+    - English #first language is default
     - N14Robot
+    - N14BrotherBeep
+    - Latin
+    - Chinese
+    understands:
+    - English #first language is default
+    - N14Robot
+    - N14BrotherBeep
+    - Latin
+    - Chinese
+    - Tribal
   - type: Icon
     sprite: _Misfits/Mobs/Species/C27/parts.rsi
     state: full
@@ -143,6 +150,7 @@
         Brute: -0.3
       types:
         Heat: -0.3
+        Shock: -0.3
   # #Misfits Add (Phase F) - Innate melee buff: chassis fist hits noticeably harder than a
   # human punch (spec calls for melee buff to make the slow speed worth it).
   - type: MeleeWeapon

@@ -7,6 +7,7 @@ using Content.Server.NPC.Queries.Queries;
 using Content.Server.Nutrition.Components;
 using Content.Server.Nutrition.EntitySystems;
 using Content.Server.Storage.Components;
+using Content.Server.Weather;
 using Content.Shared.Examine;
 using Content.Shared.Fluids.Components;
 using Content.Shared.Hands.Components;
@@ -48,6 +49,7 @@ public sealed class NPCUtilitySystem : EntitySystem
     [Dependency] private readonly WeldableSystem _weldable = default!;
     [Dependency] private readonly ExamineSystemShared _examine = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
+    [Dependency] private readonly WeatherSystem _weather = default!;
 
     private EntityQuery<PuddleComponent> _puddleQuery;
     private EntityQuery<TransformComponent> _xformQuery;
@@ -301,12 +303,18 @@ public sealed class NPCUtilitySystem : EntitySystem
             {
                 var radius = blackboard.GetValueOrDefault<float>(blackboard.GetVisionRadiusKey(EntityManager), EntityManager);
 
-                return _examine.InRangeUnOccluded(owner, targetUid, radius + 0.5f, null) ? 1f : 0f;
+                return _weather.CanSeeThroughWeather(owner, targetUid) &&
+                    _examine.InRangeUnOccluded(owner, targetUid, radius + 0.5f, null)
+                        ? 1f
+                        : 0f;
             }
             case TargetInLOSOrCurrentCon:
             {
                 var radius = blackboard.GetValueOrDefault<float>(blackboard.GetVisionRadiusKey(EntityManager), EntityManager);
                 const float bufferRange = 0.5f;
+
+                if (!_weather.CanSeeThroughWeather(owner, targetUid))
+                    return 0f;
 
                 if (blackboard.TryGetValue<EntityUid>("Target", out var currentTarget, EntityManager) &&
                     currentTarget == targetUid &&
@@ -440,6 +448,9 @@ public sealed class NPCUtilitySystem : EntitySystem
             {
                 foreach (var ent in _npcFaction.GetNearbyHostiles(owner, vision))
                 {
+                    if (!_weather.CanSeeThroughWeather(owner, ent))
+                        continue;
+
                     entities.Add(ent);
                 }
                 break;

@@ -71,6 +71,14 @@ public sealed partial class NpcFactionSystem
         return ent.Comp!.Hostiles;
     }
 
+    public bool IsAggroed(Entity<FactionExceptionComponent?> ent, EntityUid target)
+    {
+        if (!Resolve(ent, ref ent.Comp, false))
+            return false;
+
+        return ent.Comp.Hostiles.Contains(target);
+    }
+
     /// <summary>
     /// Prevents an entity from an enemy faction from being attacked
     /// </summary>

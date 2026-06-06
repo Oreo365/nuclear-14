@@ -48,6 +48,20 @@ accent-latin-words-24 = bruises
 accent-latin-words-replace-24 = livor
 accent-latin-words-25 = bruise
 accent-latin-words-replace-25 = livor
+accent-latin-words-26 = Mutant
+accent-latin-words-replace-26 = Monstrum
+accent-latin-words-27 = Legion
+accent-latin-words-replace-27 = Legio
+accent-latin-words-28 = God
+accent-latin-words-replace-28 = Deus
+accent-latin-words-29 = Friend
+accent-latin-words-replace-29 = Amicus
+accent-latin-words-30 = Death
+accent-latin-words-replace-30 = Mors
+accent-latin-words-31 = Dead
+accent-latin-words-replace-31 = Mortuus
+accent-latin-words-32 = Slave
+accent-latin-words-replace-32 = Servus
 
 
 

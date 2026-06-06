@@ -529,6 +529,9 @@
           MaterialCloth1:
             min: 0
             max: 2
+  - type: Tag
+    tags:
+    - ForceNoFixRotations
 
 - type: entity
   parent: N14DoorTentflap
@@ -542,6 +545,9 @@
     layers:
     - state: closed
       map: ["enum.DoorVisualLayers.Base"]
+  - type: Tag
+    tags:
+    - ForceNoFixRotations
 
 - type: entity
   parent: N14DoorTentflap
@@ -555,3 +561,6 @@
     layers:
     - state: closed
       map: ["enum.DoorVisualLayers.Base"]
+  - type: Tag
+    tags:
+    - ForceNoFixRotations

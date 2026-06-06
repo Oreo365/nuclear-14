@@ -247,9 +247,61 @@ public sealed class SharedSpecialSystem : EntitySystem
 
     public int GetCharismaChatFontSize(EntityUid uid, int baseFontSize, SpecialComponent? component = null)
     {
-        return GetEffective(uid, SpecialStat.Charisma, component) >= 7
-            ? baseFontSize + 2
-            : baseFontSize;
+        var charisma = GetEffective(uid, SpecialStat.Charisma, component);
+
+        if (charisma >= 7)
+            return baseFontSize + 2;
+
+        if (charisma <= 2)
+            return Math.Max(8, baseFontSize - 1);
+
+        return baseFontSize;
+    }
+
+    public float GetCharismaWarcryRange(EntityUid uid, float baseRange, SpecialComponent? component = null)
+    {
+        if (!Resolve(uid, ref component, false))
+            return baseRange;
+
+        var tuning = GetTuning();
+        var modifier = GetCurvedEffectModifier(
+            uid,
+            SpecialStat.Charisma,
+            tuning.CharismaWarcryRangeMultiplierPerPoint,
+            component);
+
+        return MathF.Max(0.5f, baseRange * (1f + modifier));
+    }
+
+    public TimeSpan GetCharismaWarcryDuration(EntityUid uid, TimeSpan baseDuration, SpecialComponent? component = null)
+    {
+        if (!Resolve(uid, ref component, false))
+            return baseDuration;
+
+        var tuning = GetTuning();
+        var modifier = GetCurvedEffectModifier(
+            uid,
+            SpecialStat.Charisma,
+            tuning.CharismaWarcryDurationMultiplierPerPoint,
+            component);
+        var scaledTicks = Math.Max(TimeSpan.TicksPerSecond, (long) Math.Round(baseDuration.Ticks * (1f + modifier)));
+
+        return TimeSpan.FromTicks(scaledTicks);
+    }
+
+    public float GetCharismaWarcrySpeedBonus(EntityUid uid, float baseSpeedBonus, SpecialComponent? component = null)
+    {
+        if (!Resolve(uid, ref component, false))
+            return baseSpeedBonus;
+
+        var tuning = GetTuning();
+        var modifier = GetCurvedEffectModifier(
+            uid,
+            SpecialStat.Charisma,
+            tuning.CharismaWarcrySpeedMultiplierPerPoint,
+            component);
+
+        return MathF.Max(0f, baseSpeedBonus * (1f + modifier));
     }
 
     public bool HasRequirement(EntityUid uid, SpecialStat stat, int minimum, SpecialComponent? component = null)

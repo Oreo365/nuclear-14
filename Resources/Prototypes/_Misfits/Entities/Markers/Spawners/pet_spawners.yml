@@ -47,7 +47,7 @@
     description: ghost-role-information-n14pet-generic-description
     rules: ghost-role-component-default-rules
   - type: GhostRoleMobSpawner
-    prototype: N14MobMirelurk
+    prototype: N14MobPetMirelurk
 
 # Rad Chicken companion spawner
 - type: entity
@@ -86,7 +86,7 @@
     description: ghost-role-information-n14pet-generic-description
     rules: ghost-role-component-default-rules
   - type: GhostRoleMobSpawner
-    prototype: N14MobCentaur
+    prototype: N14MobPetCentaur
 
 # --- N14 upstream pet spawners (converted from TraitAddComponent to fix stacking) ---
 
@@ -141,6 +141,19 @@
     rules: ghost-role-component-default-rules
   - type: GhostRoleMobSpawner
     prototype: N14MobPetEyebotMBoS
+
+# Treyebot (Tribe Eyebot) spawner
+- type: entity
+  parent: MisfitsPetSpawnerEyebot
+  id: MisfitsPetSpawnerEyebotTribe
+  name: companion eyebot tribal spawner
+  components:
+  - type: GhostRole
+    name: ghost-role-information-n14pet-eyebot-tribe-name
+    description: ghost-role-information-n14pet-eyebot-tribe-description
+    rules: ghost-role-component-default-rules
+  - type: GhostRoleMobSpawner
+    prototype: MisfitsMobPetEyebotTribe
 
 # Dog companion spawner (Wastelander/Tribe/Townsfolk)
 - type: entity

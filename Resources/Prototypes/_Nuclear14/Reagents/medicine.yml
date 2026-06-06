@@ -135,6 +135,8 @@
         conditions:
         - !type:ReagentThreshold
           min: 30
+      - !type:SuppressChronicPainReagent
+        SuppressionTime: 300
 
 # Strong overtime healing
 - type: reagent

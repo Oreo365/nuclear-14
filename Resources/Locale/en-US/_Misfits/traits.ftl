@@ -39,10 +39,16 @@ trait-description-N14PetCentaur =
     A grotesque FEV-warped creature bonded to you through mutation and misery. Only another mutant could earn such trust.
     (The trait creates a ghost role for another player. There is no guarantee that someone takes it.)
 
+trait-name-MisfitsPetEyebotTribe = Treyebot
+trait-description-MisfitsPetEyebotTribe =
+    You have an eyebot that you've "fixed" up for the tribe.
+    A military eyebot sporting an animal skull. Its laser rusted over long ago, but you've strapped a knife to it.
+    (The trait creates a ghost role for another player. There is no guarantee that someone takes it.)
+
 trait-name-N14RidingPerk = Riding
 trait-description-N14RidingPerk =
-    You know how to saddle up wasteland pack animals.
-    Brahmin and brahdo will let you ride them instead of throwing a fit the moment you reach for the straps.
+    You know how to handle wasteland motorcycles.
+    Old engines, bad roads, and improvised frames are familiar enough that you can keep a bike moving without wrecking yourself.
 
 trait-name-LanguageTribalGeneral = Tribal Language
 trait-description-LanguageTribalGeneral = You can understand and speak the local Tribal language. Were you from the Tribe?
