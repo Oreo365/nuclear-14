@@ -43,7 +43,7 @@
     weight: 50
   - id: caravan_contract_N14SuperSledgeHammer
     weight: 50
-  - id: caravan_contract_N14MobCazadorWave
+  - id: caravan_contract_N14MobCazador
     weight: 50
   - id: caravan_contract_N14MobRaiderBoss
     weight: 50
@@ -52,8 +52,8 @@
   - id: caravan_contract_N14FloraProduceWildBrocFlower
     weight: 50
   # Misfits Add — new contracts: Easy
-  - id: caravan_contract_N14FoodCannedFish
-    weight: 50
+  #- id: caravan_contract_N14FoodCannedFish # fish aint mapped
+  #  weight: 50
   - id: caravan_contract_N14FoodEggChicken
     weight: 50
   - id: caravan_contract_N14MobJackal
@@ -84,7 +84,7 @@
   - id: caravan_contract_N14VeteranLegionArmor
     weight: 50
   # Misfits Add — new Mithril contract
-  - id: caravan_contract_N14MobCazadorWaveLarge
+  - id: caravan_contract_N14MobCazadorLarge
     weight: 50
   # Misfits Add — new Diamond contracts
   - id: caravan_contract_N14MobDeathclawGrandHunt
@@ -517,12 +517,12 @@
       id: caravan_gold
 
 - type: storeContract
-  id: caravan_contract_N14MobCazadorWave
+  id: caravan_contract_N14MobCazador
   name: "Cazador"
   description: "Bring back the cazador bodies."
   difficulty: Gold
   targets:
-  - id: N14MobCazadorWave
+  - id: N14MobCazador
     required: 3
   rewards:
   - type: Currency
@@ -849,12 +849,12 @@
 # Misfits Add — new Mithril tier contract
 
 - type: storeContract
-  id: caravan_contract_N14MobCazadorWaveLarge
+  id: caravan_contract_N14MobCazadorLarge
   name: "Cazador Nest"
   description: "A full cazador nest has been spotted. We need five dead to clear it properly."
   difficulty: Mithril
   targets:
-  - id: N14MobCazadorWave
+  - id: N14MobCazador
     required: 5
   rewards:
   - type: Currency
