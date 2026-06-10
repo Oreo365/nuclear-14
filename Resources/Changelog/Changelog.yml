@@ -6680,3 +6680,10 @@ Entries:
   id: 6037
   time: '2026-06-09T22:52:43.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/730
+- author: Tytos
+  changes:
+    - type: Tweak
+      message: Renamed Orator to Optio and tweaked loadout.
+  id: 6038
+  time: '2026-06-10T00:44:25.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/721
