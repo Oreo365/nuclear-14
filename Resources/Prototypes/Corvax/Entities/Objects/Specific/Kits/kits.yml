@@ -538,9 +538,10 @@
   - type: SpawnItemsOnUse
     items:
       - id: N14LegionnaireShield
-      - id: N14WeaponShotgunNeostead # #Misfits Change by BILL CLINTON!: Specializing the vet decanus instead of making him a vital 1 slot char for legion
-      - id: MagazineBox12gauge # #Misfits Change by bill - two boxes should suffice.
+      - id: N14WeaponShotgunRiot 
+      - id: N14MagazineShotgun20 
         amount: 2
+      - id: N14MagazineBox20gauge
       - id: ClothingBeltRope
       - id: N14WeaponPistol45Colt # #Misfits Change: .45 revolver Legion sidearm
       - id: N14MagazinePistol45

@@ -420,7 +420,7 @@ undecided-loadout-category-corvax-auxilia-medic-description =
 
 undecided-loadout-category-corvax-veteran-decanus-command-name = Veteran Decanus Command
 undecided-loadout-category-corvax-veteran-decanus-command-description =
-    Includes a Legion shield, a neostead with two boxes of 12g,
+    Includes a Legion shield, a Riot shotgun, 2 20 gauge drums, a 20 gauge box,
     a rope belt, a .45 Colt pistol, 2 .45 magazines,
     a box of .45 ammo, a handcuff box, a bola,
     2 healing poultice, 2 K rations, and a ceramic flask.
