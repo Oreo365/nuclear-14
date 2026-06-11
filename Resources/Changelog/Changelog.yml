@@ -6762,3 +6762,22 @@ Entries:
   id: 6046
   time: '2026-06-11T01:32:51.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/746
+- author: cythisiax
+  changes:
+    - type: Add
+      message: >-
+        Added cross-compatible bun + meat burger recipes (upstream bun now works
+        with N14 meats and vice versa)
+    - type: Add
+      message: >-
+        Added microwave cooking recipes for radhog, pigrat, fire gecko, golden
+        gecko, iguana, squirrel, and radchicken etc.
+    - type: Add
+      message: >-
+        Added craftable duck burger recipe just because it was there. Not sure
+        there are even ducks on tile lol.
+    - type: Fix
+      message: Fixed FoodBreadBun and N14CookedFoodBreadBun not being cross-compatible.
+  id: 6047
+  time: '2026-06-11T02:45:50.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/747
