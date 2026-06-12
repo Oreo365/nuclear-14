@@ -207,7 +207,7 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 4000
+    Steel: 5000
 
     Wood: 1500
 
@@ -301,13 +301,15 @@
   availableFaction:
   - NCR
   materials:
-    Steel: 4000
+    Steel: 6500
 
     Wood: 1500
 
     Glass: 1000
 
-    N14Iron: 500
+    N14Iron: 800
+
+    N14Brass: 300
 
 
 # --- NCR Tier 3 Weapons (Ranger/Veteran grade) ---
