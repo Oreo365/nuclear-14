@@ -10,11 +10,11 @@
   - type: Sprite
     layers:
     - state: tail
-      color: darkred
+      color: red
     - state: rod
-      color: darkbrown
+      color: brown
     - state: tip
-      color: gray
+      color: darkgray
     - state: solution1
       map: ["enum.SolutionContainerLayers.Fill"]
       visible: false
@@ -32,11 +32,11 @@
   - type: Sprite
     layers:
     - state: tail
-      color: crimson
+      color: red
     - state: rod
-      color: brown
+      color: darkgray
     - state: tip
-      color: silver
+      color: white
     - state: solution1
       map: ["enum.SolutionContainerLayers.Fill"]
       visible: false

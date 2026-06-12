@@ -11,7 +11,6 @@
   materials:
     Wood: 750
     Cloth: 400
-    Bone: 200
 
 - type: latheRecipe
   id: N14RecurveBow
@@ -24,7 +23,6 @@
   materials:
     Wood: 400
     Cloth: 200
-    Bone: 100
 
 - type: latheRecipe
   id: N14ArrowTribal
@@ -37,7 +35,6 @@
   materials:
     Steel: 25
     Cloth: 10
-    Bone: 10
 
 - type: latheRecipe
   id: N14ArrowBroadHead

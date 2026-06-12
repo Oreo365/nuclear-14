@@ -16,7 +16,7 @@
       - material: Cloth
         amount: 8
         doAfter: 4
-      - material: Bone
+      - material: Bones
         amount: 4
         doAfter: 4
 
@@ -37,7 +37,7 @@
       - material: Cloth
         amount: 4
         doAfter: 3
-      - material: Bone
+      - material: Bones
         amount: 2
         doAfter: 2
 
