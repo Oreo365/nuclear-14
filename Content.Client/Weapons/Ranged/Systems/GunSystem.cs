@@ -9,6 +9,7 @@ using Content.Client.Weapons.Ranged.Components;
 using Content.Shared.Camera;
 using Content.Shared.CombatMode;
 using Content.Shared.Damage.Components;
+using Content.Shared.Effects;
 using Content.Shared.Mech.Components; // Goobstation
 using Content.Shared.Projectiles;
 using Content.Shared._Misfits.Weapons;
@@ -45,6 +46,7 @@ public sealed partial class GunSystem : SharedGunSystem
     [Dependency] private readonly IStateManager _state = default!;
     [Dependency] private readonly AnimationPlayerSystem _animPlayer = default!;
     [Dependency] private readonly InputSystem _inputSystem = default!;
+    [Dependency] private readonly SharedColorFlashEffectSystem _color = default!;
     [Dependency] private readonly SharedCameraRecoilSystem _recoil = default!;
     [Dependency] private readonly SharedMapSystem _maps = default!;
     [Dependency] private readonly PhysicsSystem _physics = default!;
@@ -518,6 +520,9 @@ public sealed partial class GunSystem : SharedGunSystem
         EntityUid? target,
         EntityUid? user)
     {
+        if (!Timing.IsFirstTimePredicted)
+            return;
+
         if (!IsLocalShooter(user) || !TryGetGunHitscan(gunUid, out var hitscan))
             return;
 
@@ -532,6 +537,7 @@ public sealed partial class GunSystem : SharedGunSystem
         var rayCastResults = Physics.IntersectRay(fromMap.MapId, ray, hitscan.MaxLength, source, false).ToList();
 
         var distance = hitscan.MaxLength;
+        EntityUid? hitEntity = null;
         var firedFromContainer = Containers.IsEntityOrParentInContainer(source);
         foreach (var result in rayCastResults)
         {
@@ -543,6 +549,7 @@ public sealed partial class GunSystem : SharedGunSystem
             }
 
             distance = result.Distance;
+            hitEntity = result.HitEntity;
             break;
         }
 
@@ -566,6 +573,9 @@ public sealed partial class GunSystem : SharedGunSystem
             var coords = fromCoordinates.Offset(normalizedDirection * distance);
             SpawnHitscanEffect(coords, worldAngle.FlipPositive(), hitscan.ImpactFlash, 1f, hitscan.TintColor, hitscan.BeamWidth, hitscan.BeamDuration);
         }
+
+        if (hitEntity != null && HasComp<DamageableComponent>(hitEntity.Value))
+            _color.RaiseEffect(Color.Red, new List<EntityUid> { hitEntity.Value }, Filter.Local());
     }
 
     private bool IsLocalShooter(EntityUid? user)
@@ -583,13 +593,32 @@ public sealed partial class GunSystem : SharedGunSystem
     {
         hitscan = default!;
 
-        if (!TryComp<HitscanBatteryAmmoProviderComponent>(gunUid, out var provider) ||
-            !ProtoManager.TryIndex(provider.Prototype, out HitscanPrototype? baseHitscan))
+        var providerUid = gunUid;
+        if (!TryComp<HitscanBatteryAmmoProviderComponent>(providerUid, out var provider))
+        {
+            var magEnt = GetMagazineEntity(gunUid);
+            if (magEnt == null || !TryComp<HitscanBatteryAmmoProviderComponent>(magEnt.Value, out provider))
+                return false;
+
+            providerUid = magEnt.Value;
+        }
+
+        if (!ProtoManager.TryIndex(provider.Prototype, out HitscanPrototype? baseHitscan))
         {
             return false;
         }
 
-        hitscan = baseHitscan;
+        if (providerUid != gunUid &&
+            TryComp<GunDamageBonusComponent>(providerUid, out var providerOverride) &&
+            providerOverride.HitscanProtoOverride != null &&
+            ProtoManager.TryIndex(providerOverride.HitscanProtoOverride, out HitscanPrototype? providerOverrideHitscan))
+        {
+            hitscan = providerOverrideHitscan;
+        }
+        else
+        {
+            hitscan = baseHitscan;
+        }
 
         if (TryComp<GunDamageBonusComponent>(gunUid, out var gunOverride) &&
             gunOverride.HitscanProtoOverride != null &&
