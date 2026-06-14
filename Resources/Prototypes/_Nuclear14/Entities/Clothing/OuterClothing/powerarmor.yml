@@ -726,8 +726,6 @@
         Heat: 0.70
         Caustic: 0.75
         Radiation: 0.6
-  - type: ExplosionResistance
-    damageCoefficient: 0.12 # #Misfits Tweak: Washington BoS T-51 blast resistance — ~14 HP at ground zero
   - type: UserInterface
     interfaces:
       enum.ToggleClothingUiKey.Key:

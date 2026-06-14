@@ -120,3 +120,38 @@
       min: 180000 # 50 hours as Head Paladin
   items:
     - N14ClothingOuterPowerArmorMidwestCommander
+
+
+## MISFITS RAAAAAAAAAA
+
+
+
+- type: loadout
+  id: LoadoutBoSMidwest
+  category: Roles
+  cost: 12
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - BoSPaladin
+    - !type:CharacterPlaytimeRequirement
+      tracker: BoSPaladin
+      min: 72000 # 20 hours as  Paladin
+  items:
+    - N14ClothingOuterPowerArmorMidwest
+
+- type: loadout
+  id: LoadoutBoSMidwestSilver
+  category: Roles
+  cost: 12
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - BoSMidPaladin
+    - !type:CharacterPlaytimeRequirement
+      tracker: BoSMidCommander
+      min: 72000 # 20 hours as SENIOR Paladin
+  items:
+    - N14ClothingOuterPowerArmorMidwestSilver
