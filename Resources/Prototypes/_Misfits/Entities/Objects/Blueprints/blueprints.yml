@@ -1059,11 +1059,8 @@
   components:
   - type: Blueprint
     recipes:
-    - N14BPTribeArmorTribalArmor
-    - N14BPTribeArmorDrylanderSimple
-    # #Misfits Add - paired tribal head wraps and drylander goggles
-    - N14BPTribeArmorHelmetTribalHeadWraps
-    - N14BPTribeArmorHelmetDrylanderGoggles
+    - N14BPTribeArmorHelmetRadstagSkull
+    - N14BPTribeArmorHelmetTribalShamanHat
 
 - type: entity
   parent: N14BlueprintBase
@@ -1073,14 +1070,21 @@
   components:
   - type: Blueprint
     recipes:
-    - TribalHelmetofPeace
+    - N14BPTribeArmorTribalArmor
+    - N14BPTribeArmorDrylanderSimple
     - N14BPTribeArmorBandito
     - N14BPTribeArmorForager
     - N14BPTribeArmorHunter
     - N14BPTribeArmorPoncho
-    # #Misfits Add - paired warrior shemagh and hunter hood
+    - N14BPTribeArmorHeadtaker
+    - N14BPTribeArmorShaman
     - N14BPTribeArmorHelmetTribalShemagh
     - N14BPTribeArmorHelmetTribalHunterHood
+    - N14BPTribeArmorHelmetTribalHeadWraps
+    - N14BPTribeArmorHelmetDrylanderGoggles
+    - N14BPTribeArmorHelmetTribalShamanHeadband
+    - N14BPTribeArmorHelmetHeadtakerwraps
+    - MisfitsBPTribeArmorHelmetHelmetOfPeace
 
 - type: entity
   parent: N14BlueprintBase
@@ -1091,13 +1095,8 @@
   - type: Blueprint
     recipes:
     - N14BPTribeArmorTribalArmorHeavy
-    - N14BPTribeArmorHeadtaker
-    - N14BPTribeArmorShaman
     - N14BPTribeArmorCombatTribal
-    # #Misfits Add - paired shaman / champion headgear
-    - N14BPTribeArmorHelmetTribalShamanHat
-    - N14BPTribeArmorHelmetTribalShamanHeadband
-    - N14BPTribeArmorHelmetHeadtakerwraps
+    - MisfitsBPTribeArmorHelmetRadstagSkull
 
 - type: entity
   parent: N14BlueprintBase
@@ -1109,8 +1108,6 @@
     recipes:
     - N14BPTribeArmorRadArmor
     - N14BPTribeArmorInsectArmor
-    # #Misfits Add - paired sacred elder skull headgear
-    - N14BPTribeArmorHelmetRadstagSkull
     - N14BPTribeArmorHelmetEdlerSkullhelm
 
 # --- Tribe Ammo ---

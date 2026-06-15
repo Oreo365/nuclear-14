@@ -726,18 +726,6 @@
 
 # --- Tribe Tier 2 Armor ---
 - type: latheRecipe
-  id: TribalHelmetofPeace
-  result: TribalHelmetofPeace
-  category: N14BlueprintTribeArmorT2
-  completetime: 20
-  requiresBlueprint: true
-  availableFaction:
-  - Tribe
-  materials:
-    Leather: 1000
-    Cloth: 500
-
-- type: latheRecipe
   id: N14BPTribeArmorBandito
   result: N14ClothingOuterBandito
   category: N14BlueprintTribeArmorT2
@@ -789,6 +777,33 @@
     Thread: 125
     Leather: 50
 
+- type: latheRecipe
+  id: N14BPTribeArmorHeadtaker
+  result: N14ClothingOuterheadtaker
+  category: N14BlueprintTribeArmorT2
+  completetime: 11
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Leather: 275
+    N14Iron: 100
+    Cloth: 1750
+    Thread: 750
+
+- type: latheRecipe
+  id: N14BPTribeArmorShaman
+  result: N14ClothingOutershaman
+  category: N14BlueprintTribeArmorT2
+  completetime: 10
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Cloth: 2000
+    Thread: 1750
+    Leather: 1500
+
 # --- Tribe Tier 3 Armor ---
 - type: latheRecipe
   id: N14BPTribeArmorTribalArmorHeavy
@@ -803,33 +818,6 @@
     N14Iron: 1200
     Cloth: 200
     Thread: 150
-
-- type: latheRecipe
-  id: N14BPTribeArmorHeadtaker
-  result: N14ClothingOuterheadtaker
-  category: N14BlueprintTribeArmorT3
-  completetime: 11
-  requiresBlueprint: true
-  availableFaction:
-  - Tribe
-  materials:
-    Leather: 275
-    N14Iron: 100
-    Cloth: 1750
-    Thread: 750
-
-- type: latheRecipe
-  id: N14BPTribeArmorShaman
-  result: N14ClothingOutershaman
-  category: N14BlueprintTribeArmorT3
-  completetime: 10
-  requiresBlueprint: true
-  availableFaction:
-  - Tribe
-  materials:
-    Cloth: 2000
-    Thread: 1750
-    Leather: 1500
 
 - type: latheRecipe
   id: N14BPTribeArmorCombatTribal
@@ -1149,6 +1137,32 @@
 
 # --- Tribe Tier 1 Helmets (head wraps / drylander) ---
 - type: latheRecipe
+  id: N14BPTribeArmorHelmetRadstagSkull
+  result: N14ClothingTribalRadstagSkull
+  category: N14BlueprintTribeArmorT1
+  completetime: 8
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Leather: 25
+    Thread: 8
+
+- type: latheRecipe
+  id: N14BPTribeArmorHelmetTribalShamanHeadband
+  result: N14ClothingTribalShamanHeadband
+  category: N14BlueprintTribeArmorT1
+  completetime: 5
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials:
+    Cloth: 12
+    Thread: 8
+    Leather: 5
+
+# --- Tribe Tier 2 Helmets (warrior wraps / hunter hood) ---
+- type: latheRecipe
   id: N14BPTribeArmorHelmetTribalHeadWraps
   result: N14ClothingTribalHeadWraps
   category: N14BlueprintTribeArmorT1
@@ -1163,7 +1177,7 @@
 - type: latheRecipe
   id: N14BPTribeArmorHelmetDrylanderGoggles
   result: N14ClothingDrylanderGoggles
-  category: N14BlueprintTribeArmorT1
+  category: N14BlueprintTribeArmorT2
   completetime: 4
   requiresBlueprint: true
   availableFaction:
@@ -1173,7 +1187,6 @@
     Cloth: 4
     Glass: 100
 
-# --- Tribe Tier 2 Helmets (warrior wraps / hunter hood) ---
 - type: latheRecipe
   id: N14BPTribeArmorHelmetTribalShemagh
   result: N14ClothingTribalShemagh
@@ -1199,11 +1212,10 @@
     Thread: 8
     Leather: 5
 
-# --- Tribe Tier 3 Helmets (champion / shaman) ---
 - type: latheRecipe
   id: N14BPTribeArmorHelmetTribalShamanHat
   result: N14ClothingTribalShamanHat
-  category: N14BlueprintTribeArmorT3
+  category: N14BlueprintTribeArmorT2
   completetime: 6
   requiresBlueprint: true
   availableFaction:
@@ -1214,22 +1226,9 @@
     Leather: 11
 
 - type: latheRecipe
-  id: N14BPTribeArmorHelmetTribalShamanHeadband
-  result: N14ClothingTribalShamanHeadband
-  category: N14BlueprintTribeArmorT3
-  completetime: 5
-  requiresBlueprint: true
-  availableFaction:
-  - Tribe
-  materials:
-    Cloth: 12
-    Thread: 8
-    Leather: 5
-
-- type: latheRecipe
   id: N14BPTribeArmorHelmetHeadtakerwraps
   result: N14ClothingHeadTakerwraps
-  category: N14BlueprintTribeArmorT3
+  category: N14BlueprintTribeArmorT2
   completetime: 6
   requiresBlueprint: true
   availableFaction:
@@ -1239,19 +1238,34 @@
     Thread: 10
     Leather: 8
 
-# --- Tribe Tier 4 Helmets (sacred / elder) ---
 - type: latheRecipe
-  id: N14BPTribeArmorHelmetRadstagSkull
-  result: N14ClothingTribalRadstagSkull
-  category: N14BlueprintTribeArmorT4
+  id: MisfitsBPTribeArmorHelmetHelmetOfPeace
+  result: TribalHelmetofPeace
+  category: N14BlueprintTribeArmorT2
+  completetime: 10
+  requiresBlueprint: true
+  availableFaction:
+  - Tribe
+  materials: # TODO: use Broc and Xander in the actual construction, when Tribe gets its BP adjustments
+    Cloth: 15
+    Thread: 10
+    Leather: 11
+
+# --- Tribe Tier 3 Helmets (champion / shaman) ---
+- type: latheRecipe
+  id: MisfitsBPTribeArmorHelmetRadstagSkull
+  result: MisfitsClothingHeadRadstagHelmet
+  category: N14BlueprintTribeArmorT3
   completetime: 8
   requiresBlueprint: true
   availableFaction:
   - Tribe
   materials:
-    Leather: 25
-    Thread: 8
+    Leather: 20
+    Steel: 500
+    Thread: 10
 
+# --- Tribe Tier 4 Helmets (sacred / elder) ---
 - type: latheRecipe
   id: N14BPTribeArmorHelmetEdlerSkullhelm
   result: N14ClothingHeadHatEdlerSkullhelm
@@ -1264,4 +1278,3 @@
     Leather: 32
     Steel: 1500
     Thread: 10
-

@@ -88,6 +88,7 @@
     damage:
       groups:
         Brute: 15
+      types:
         Slash: 20
   - type: DamageStateVisuals
     rotate: true
@@ -191,6 +192,7 @@
     damage:
       groups:
         Brute: 15
+      types:
         Slash: 20
 
 - type: entity
@@ -222,6 +224,7 @@
     damage:
       groups:
         Brute: 20
+      types:
         Slash: 15
   - type: MovementSpeedModifier
     baseSprintSpeed: 4
@@ -262,6 +265,7 @@
     damage:
      groups:
        Brute: 10
+    types:
        Slash: 75
   - type: Fixtures
     fixtures:
@@ -308,6 +312,7 @@
     damage:
      groups:
        Brute: 20
+     types:
        Slash: 25
   - type: Fixtures
     fixtures:
@@ -339,6 +344,7 @@
     damage:
      groups:
        Brute: 15
+    types:
        Slash: 10
   - type: Fixtures
     fixtures:
