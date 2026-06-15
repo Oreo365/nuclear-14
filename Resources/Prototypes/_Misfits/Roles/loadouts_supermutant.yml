@@ -327,3 +327,83 @@
         - SuperMutantFollowerDoctor
   items:
     - ClothingSuperMutantNeckCapeTribal
+
+- type: loadout
+  id: MisfitsLoadoutSuperMutantScavengedGloves
+  category: Hands
+  cost: 1
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - SuperMutant
+        - Nightkin
+        - SuperMutantGladiator
+        - SuperMutantRanger
+        - SuperMutantTrooper
+        - SuperMutantNCRRanger
+        - SuperMutantNCRTrooper
+        - SuperMutantTribal
+        - SuperMutantFollowerDoctor
+  items:
+    - ClothingSuperMutantScavengedGloves
+
+- type: loadout
+  id: MisfitsLoadoutSuperMutantScavengedArmor
+  category: Outer
+  cost: 1
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - SuperMutant
+        - Nightkin
+        - SuperMutantGladiator
+        - SuperMutantRanger
+        - SuperMutantTrooper
+        - SuperMutantNCRRanger
+        - SuperMutantNCRTrooper
+        - SuperMutantTribal
+        - SuperMutantFollowerDoctor
+  items:
+    - ClothingSuperMutantScavengedArmor
+
+- type: loadout
+  id: MisfitsLoadoutSuperMutantScavengedHelmet
+  category: Head
+  cost: 1
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - SuperMutant
+        - Nightkin
+        - SuperMutantGladiator
+        - SuperMutantRanger
+        - SuperMutantTrooper
+        - SuperMutantNCRRanger
+        - SuperMutantNCRTrooper
+        - SuperMutantTribal
+        - SuperMutantFollowerDoctor
+  items:
+    - ClothingSuperMutantScavengedHelmet
+
+- type: loadout
+  id: MisfitsLoadoutSuperMutantScavengedBoots
+  category: Shoes
+  cost: 1
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - SuperMutant
+        - Nightkin
+        - SuperMutantGladiator
+        - SuperMutantRanger
+        - SuperMutantTrooper
+        - SuperMutantNCRRanger
+        - SuperMutantNCRTrooper
+        - SuperMutantTribal
+        - SuperMutantFollowerDoctor
+  items:
+    - ClothingSuperMutantScavengedBoots
