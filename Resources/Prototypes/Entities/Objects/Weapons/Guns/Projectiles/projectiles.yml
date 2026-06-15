@@ -25,7 +25,6 @@
   abstract: true
   components:
   - type: Reflective
-  - type: FlyBySound
   - type: Clickable
   - type: Sprite
     noRot: false
@@ -47,15 +46,6 @@
         mask:
         - Impassable
         - BulletImpassable
-      fly-by: &flybyfixture
-        shape: !type:PhysShapeCircle
-          radius: 1.5
-        layer:
-        - Impassable
-        - MidImpassable
-        - HighImpassable
-        - LowImpassable
-        hard: False
   - type: Projectile
     impactEffect: BulletImpactEffect
     damage:
@@ -65,6 +55,7 @@
       path: /Audio/Weapons/Guns/Hits/bullet_hit.ogg
   - type: TimedDespawn
     lifetime: 10
+  - type: LagCompensation
 
 - type: entity
   id: BaseBulletTrigger # Trigger-on-collide bullets
@@ -87,8 +78,6 @@
         mask:
         - Impassable
         - BulletImpassable
-      fly-by: *flybyfixture
-
 - type: entity
   id: BaseBulletPractice
   name: base bullet practice
@@ -182,11 +171,6 @@
   parent: BaseBullet
   categories: [ HideSpawnMenu ]
   components:
-  - type: FlyBySound
-    sound:
-      collection: EnergyMiss
-      params:
-        volume: 5
   - type: Sprite
     noRot: true
     sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
@@ -205,7 +189,6 @@
         mask:
           - Impassable
           - BulletImpassable
-      fly-by: *flybyfixture
   - type: Ammo
   - type: Projectile
     damage:
@@ -227,11 +210,6 @@
   - type: Reflective
     reflective:
     - Energy
-  - type: FlyBySound
-    sound:
-      collection: EnergyMiss
-      params:
-        volume: 5
   - type: Sprite
     sprite: Objects/Weapons/Guns/Projectiles/projectiles_tg.rsi
     layers:
@@ -247,7 +225,6 @@
         hard: false
         mask:
         - Opaque # WWDP allow shooting through windows
-      fly-by: *flybyfixture
   - type: Ammo
   - type: StaminaDamageOnCollide
     damage: 30
@@ -266,11 +243,6 @@
   parent: BaseBullet
   categories: [ HideSpawnMenu ]
   components:
-  - type: FlyBySound
-    sound:
-      collection: EnergyMiss
-      params:
-        volume: 5
   - type: Sprite
     sprite: Objects/Weapons/Guns/Projectiles/projectiles_tg.rsi
     layers:
@@ -286,7 +258,6 @@
         hard: false
         mask:
         - Opaque # WWDP allow shooting through windows
-      fly-by: *flybyfixture
   - type: Ammo
   - type: StaminaDamageOnCollide
     damage: 1
@@ -322,7 +293,6 @@
         hard: false
         mask:
         - Opaque
-      fly-by: *flybyfixture
   - type: Projectile
 #   soundHit:  Waiting on serv3
     damage:
@@ -342,11 +312,6 @@
   parent: BaseBullet
   categories: [ HideSpawnMenu ]
   components:
-  - type: FlyBySound
-    sound:
-      collection: EnergyMiss
-      params:
-        volume: 5
   - type: Sprite
     sprite: Objects/Weapons/Guns/Projectiles/projectiles_tg.rsi
     layers:
@@ -364,7 +329,6 @@
         hard: false
         mask:
         - Opaque
-      fly-by: *flybyfixture
   - type: StaminaDamageOnCollide
     damage: 40
   - type: Projectile
@@ -512,7 +476,6 @@
         hard: false
         mask:
         - Opaque
-      fly-by: *flybyfixture
   - type: Projectile
     damage:
       types:
@@ -932,11 +895,6 @@
   - type: Reflective
     reflective:
     - Energy
-  - type: FlyBySound
-    sound:
-      collection: EnergyMiss
-      params:
-        volume: 5
   - type: Sprite
     sprite: Objects/Weapons/Guns/Projectiles/projectiles_tg.rsi
     layers:
@@ -952,7 +910,6 @@
         hard: false
         mask:
         - Opaque # WWDP allow shooting through windows
-      fly-by: *flybyfixture
   - type: Ammo
   - type: StaminaDamageOnCollide
     damage: 15
@@ -1011,11 +968,6 @@
   - type: Reflective
     reflective:
     - Energy
-  - type: FlyBySound
-    sound:
-      collection: EnergyMiss
-      params:
-        volume: 5
   - type: Sprite
     sprite: Objects/Weapons/Guns/Projectiles/projectiles_tg.rsi
     layers:
@@ -1033,7 +985,6 @@
         hard: false
         mask:
         - Opaque
-      fly-by: *flybyfixture
   - type: Projectile
     impactEffect: BulletImpactEffectRedDisabler
     damage:
@@ -1147,11 +1098,6 @@
   - type: Reflective
     reflective:
     - Energy
-  - type: FlyBySound
-    sound:
-      collection: EnergyMiss
-      params:
-        volume: 5
   - type: Sprite
     sprite: Objects/Weapons/Guns/Projectiles/projectiles_tg.rsi
     layers:
