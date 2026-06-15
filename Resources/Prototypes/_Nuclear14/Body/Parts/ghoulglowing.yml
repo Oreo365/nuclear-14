@@ -5,8 +5,8 @@
   abstract: true
   components:
   - type: Damageable
-    damageContainer: Biological
-    damageModifierSet: FullRadiationProtection # Forge-Change
+    damageContainer: OrganicPart    # Misfits Change - no more poison/rad/malnutrition limb damage
+    damageModifierSet: GhoulGlowing # Misfits Change - ghoul limbs should have ghoul resistances
   - type: BodyPart
   - type: ContainerContainer
     containers:
