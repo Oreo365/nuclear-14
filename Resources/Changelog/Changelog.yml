@@ -7142,3 +7142,14 @@ Entries:
   id: 6078
   time: '2026-06-15T22:29:50.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/814
+- author: Bradysgaming
+  changes:
+    - type: Tweak
+      message: Nerfed loadout options, no more basically free 30% dmg reduc
+    - type: Tweak
+      message: >-
+        Made some loadout option make sense, a legionaire isnt gonna just start
+        with a full pristine laser rifle now are they
+  id: 6079
+  time: '2026-06-15T23:35:51.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/815
