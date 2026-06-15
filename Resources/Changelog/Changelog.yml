@@ -7068,3 +7068,50 @@ Entries:
   id: 6074
   time: '2026-06-15T02:17:35.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/808
+- author: Cythisiax
+  changes:
+    - type: Add
+      message: Securitron player species (5 color variants)
+    - type: Add
+      message: Zetan species
+    - type: Add
+      message: >-
+        Brotherhood Eyebot job (So it tracks time. Ghostroll hooks this shitcode
+        method.
+    - type: Add
+      message: Crit crawl -- drag yourself while downed, take damage over time
+    - type: Add
+      message: CannotRide tag on Super Mutants
+    - type: Add
+      message: PowerArmorWorn blacklist on mounts
+    - type: Add
+      message: EmbeddedProjectileDrop system (projectiles drop on entity death)
+    - type: Add
+      message: GhostRoleJob system (playtime tracking for ghost roles)
+    - type: Add
+      message: NCR backpack, shotgunner belt, goggles, mysterious trenchcoat
+    - type: Add
+      message: Borg chassis markings and flag decorations
+    - type: Add
+      message: >-
+        Deathclaw gauntlet, bighorner + brahmin skull drops, radstag skull
+        wearable
+    - type: Add
+      message: Securitron rusted variants and ghoul NCR sprites
+    - type: Add
+      message: Brahmin and bighorner skulls added to butcherable drops (75% chance)
+    - type: Add
+      message: 80s biker jacket, black tracksuit, bighorn/brahmin skull items
+    - type: Fix
+      message: Lathe material whitelist now rebuilds on blueprint insert/remove
+    - type: Fix
+      message: Food slicing takes priority over construction graphs
+    - type: Fix
+      message: Traits now actually apply (inverted null check)
+    - type: Fix
+      message: Legendary creatures no longer spawn inside sealed rooms
+    - type: Tweak
+      message: Updated NCR armor, ghoul, power armor, and revolver sprites
+  id: 6075
+  time: '2026-06-15T02:24:44.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/807
