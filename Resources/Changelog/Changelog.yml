@@ -7207,3 +7207,10 @@ Entries:
   id: 6084
   time: '2026-06-16T02:33:10.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/821
+- author: Vixting
+  changes:
+    - type: Fix
+      message: 'Fixed revolvers '
+  id: 6085
+  time: '2026-06-16T21:53:02.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/826
