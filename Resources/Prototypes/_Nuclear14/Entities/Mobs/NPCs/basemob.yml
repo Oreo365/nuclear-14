@@ -217,7 +217,7 @@
   parent: N14MobBaseHostile
   components:
   - type: Damageable
-    damageContainer: Biological
+    damageContainer: MisfitsNPCBiological # Misfits Change
   - type: NoSlip
   - type: NpcFactionMember
     factions:
@@ -247,7 +247,7 @@
   description: A mean looking ghoul.
   components:
   - type: Damageable
-    damageContainer: Biological
+    damageContainer: MisfitsNPCBiological  # Misfits Change - no hunger/thirst damage for feral ghouls
     damageModifierSet: GhoulNPC
   # - type: NoSlip
   - type: NpcFactionMember
@@ -314,7 +314,7 @@
   description: A hulking post-human mutation, product of the FEV virus. Radiation resistant and brutally strong.
   components:
   - type: Damageable
-    damageContainer: Biological
+    damageContainer: MisfitsNPCBiological  # Misfits Change
     damageModifierSet: N14SuperMutant
   - type: NpcFactionMember
     factions:

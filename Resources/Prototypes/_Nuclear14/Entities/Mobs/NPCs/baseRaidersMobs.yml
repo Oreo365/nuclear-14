@@ -4,6 +4,8 @@
   abstract: true
   suffix: AI
   components:
+    - type: Damageable    # Misfits Add - Override from BaseMobSpeciesOrganic to prevent hunger/thirst damage
+      damageContainer: MisfitsNPCBiological
     - type: NpcFactionMember
       factions:
       - Raider
@@ -56,7 +58,7 @@
     - type: Carriable
     - type: Perishable
       rotAfter: 1800 # Rots after half of an in-game day
-    - type: RotInto 
+    - type: RotInto
       entity: N14FoodMeatRadRaw # and becomes a single chunk of meat.
     - type: Butcherable
       butcheringType: Spike

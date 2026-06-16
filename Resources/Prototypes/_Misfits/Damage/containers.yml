@@ -1,0 +1,8 @@
+- type: damageContainer
+  id: MisfitsNPCBiological
+  supportedGroups:
+  - Brute
+  - Burn
+  - Toxin
+  - Airloss
+  - Genetic

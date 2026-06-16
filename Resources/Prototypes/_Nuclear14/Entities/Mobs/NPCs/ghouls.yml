@@ -127,7 +127,7 @@
   description: A special looking ghoul towering over most everything.
   components:
   - type: Damageable
-    damageContainer: Biological
+    damageContainer: MisfitsNPCBiological  # Misfits Change - no starvation for feral ghouls
     damageModifierSet: N14ToughAnimal
   - type: MeleeWeapon
     hidden: true
