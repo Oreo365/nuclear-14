@@ -315,6 +315,7 @@ loadout-name-LoadoutNCRUniformNCRShorts = NCR shorts uniform
 loadout-name-LoadoutNCRUniformNCRFatigueShirt = NCR fatigue shirt
 loadout-name-LoadoutNCRUniformNCRFatiguePants = NCR fatigue pants
 loadout-name-LoadoutNCRStetson = NCR cavalry stetson
+loadout-name-LoadoutNCRGoggles = NCR goggles
 loadout-name-LoadoutNCRuniformHelmetDesert = NCR desert helmet
 loadout-name-LoadoutNCRuniformMaskDesert = NCR desert mask
 loadout-name-LoadoutNCRmaskDesert = NCR desert face mask
