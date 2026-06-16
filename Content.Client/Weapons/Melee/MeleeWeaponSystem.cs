@@ -19,6 +19,7 @@ using Robust.Client.State;
 using Robust.Shared.Input;
 using Robust.Shared.Map;
 using Robust.Shared.Player;
+using Robust.Shared.Timing;
 
 namespace Content.Client.Weapons.Melee;
 
@@ -186,7 +187,7 @@ public sealed partial class MeleeWeaponSystem : SharedMeleeWeaponSystem
         }
     }
 
-    protected override bool InRange(EntityUid user, EntityUid target, float range, ICommonSession? session)
+    protected override bool InRange(EntityUid user, EntityUid target, float range, ICommonSession? session, GameTick? lastRealTick = null)
     {
         var xform = Transform(target);
         var targetCoordinates = xform.Coordinates;

@@ -25,6 +25,7 @@ using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
+using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 using System.Linq;
 using System.Numerics;
@@ -84,7 +85,7 @@ public sealed class MeleeWeaponSystem : SharedMeleeWeaponSystem
     }
 
     protected override bool ArcRaySuccessful(EntityUid targetUid, Vector2 position, Angle angle, Angle arcWidth, float range, MapId mapId,
-        EntityUid ignore, ICommonSession? session)
+        EntityUid ignore, ICommonSession? session, GameTick? lastRealTick = null)
     {
         // Originally the client didn't predict damage effects so you'd intuit some level of how far
         // in the future you'd need to predict, but then there was a lot of complaining like "why would you add artifical delay" as if ping is a choice.
@@ -101,7 +102,9 @@ public sealed class MeleeWeaponSystem : SharedMeleeWeaponSystem
 
         if (session != null)
         {
-            (targetCoords, targetLocalAngle) = _lag.GetCoordinatesAngle(targetUid, session);
+            (targetCoords, targetLocalAngle) = lastRealTick is { } tick
+                ? _lag.GetCoordinatesAngle(targetUid, tick - 1)
+                : _lag.GetCoordinatesAngle(targetUid, session);
             if (!Interaction.InRangeUnobstructed(ignore, targetUid, targetCoords, targetLocalAngle, range + 0.1f))
                 return false;
         }
@@ -153,7 +156,7 @@ public sealed class MeleeWeaponSystem : SharedMeleeWeaponSystem
                 return false;
         }
 
-        if (!InRange(user, target, component.Range, session))
+        if (!InRange(user, target, component.Range, session, ev.LastRealTick))
         {
             return false;
         }
@@ -210,14 +213,16 @@ public sealed class MeleeWeaponSystem : SharedMeleeWeaponSystem
         return true;
     }
 
-    protected override bool InRange(EntityUid user, EntityUid target, float range, ICommonSession? session)
+    protected override bool InRange(EntityUid user, EntityUid target, float range, ICommonSession? session, GameTick? lastRealTick = null)
     {
         EntityCoordinates targetCoordinates;
         Angle targetLocalAngle;
 
         if (session is { } pSession)
         {
-            (targetCoordinates, targetLocalAngle) = _lag.GetCoordinatesAngle(target, pSession);
+            (targetCoordinates, targetLocalAngle) = lastRealTick is { } tick
+                ? _lag.GetCoordinatesAngle(target, tick - 1)
+                : _lag.GetCoordinatesAngle(target, pSession);
             return Interaction.InRangeUnobstructed(user, target, targetCoordinates, targetLocalAngle, range);
         }
 
