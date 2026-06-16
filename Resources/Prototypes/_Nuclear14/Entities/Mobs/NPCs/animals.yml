@@ -403,7 +403,7 @@
      task: RuminantHostileCompound
     blackboard:
      NavSmash: !type:Bool
-       true
+       false
   - type: MeleeWeapon
     range: 2
     altDisarm: false
@@ -712,7 +712,7 @@
      task: RuminantHostileCompound
     blackboard:
      NavSmash: !type:Bool
-       true
+       false
  #- type: Reproductive
    #breedChance: 0.05
    #birthPopup: reproductive-birth-popup

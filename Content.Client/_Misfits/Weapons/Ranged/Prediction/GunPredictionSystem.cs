@@ -1,0 +1,193 @@
+using System.Linq;
+using Content.Client.Projectiles;
+using Content.Shared._Misfits.Weapons.Ranged.Prediction;
+using Content.Shared.Projectiles;
+using Content.Shared.Weapons.Ranged.Events;
+using Content.Shared.Weapons.Ranged.Systems;
+using Robust.Client.GameObjects;
+using Robust.Client.Physics;
+using Robust.Client.Player;
+using Robust.Shared;
+using Robust.Shared.Configuration;
+using Robust.Shared.Map;
+using Robust.Shared.Physics.Components;
+using Robust.Shared.Physics.Events;
+using Robust.Shared.Physics.Systems;
+using Robust.Shared.Timing;
+
+namespace Content.Client._Misfits.Weapons.Ranged.Prediction;
+
+public sealed class GunPredictionSystem : SharedGunPredictionSystem
+{
+    [Dependency] private readonly IConfigurationManager _config = default!;
+    [Dependency] private readonly SharedGunSystem _gun = default!;
+    [Dependency] private readonly PhysicsSystem _physics = default!;
+    [Dependency] private readonly IPlayerManager _player = default!;
+    [Dependency] private readonly ProjectileSystem _projectile = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly SharedTransformSystem _transform = default!;
+
+    private readonly HashSet<EntityUid> _pendingProjectileDeletes = new();
+
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        SubscribeLocalEvent<PhysicsUpdateBeforeSolveEvent>(OnBeforeSolve);
+        SubscribeLocalEvent<PhysicsUpdateAfterSolveEvent>(OnAfterSolve);
+        SubscribeLocalEvent<RequestShootEvent>(OnShootRequest);
+        SubscribeNetworkEvent<MaxLinearVelocityMsg>(OnLinearVelocityMsg);
+
+        SubscribeLocalEvent<PredictedProjectileClientComponent, UpdateIsPredictedEvent>(OnClientProjectileUpdateIsPredicted);
+        SubscribeLocalEvent<PredictedProjectileClientComponent, PreventCollideEvent>(OnClientProjectilePreventCollide);
+        SubscribeLocalEvent<PredictedProjectileClientComponent, StartCollideEvent>(OnClientProjectileStartCollide);
+        SubscribeLocalEvent<PredictedProjectileServerComponent, ComponentStartup>(OnServerProjectileStartup);
+
+        UpdatesBefore.Add(typeof(TransformSystem));
+    }
+
+    private void OnBeforeSolve(ref PhysicsUpdateBeforeSolveEvent ev)
+    {
+        var query = EntityQueryEnumerator<PredictedProjectileClientComponent>();
+        while (query.MoveNext(out var uid, out var predicted))
+        {
+            predicted.Coordinates = Transform(uid).Coordinates;
+        }
+    }
+
+    private void OnAfterSolve(ref PhysicsUpdateAfterSolveEvent ev)
+    {
+        var query = EntityQueryEnumerator<PredictedProjectileClientComponent>();
+        while (query.MoveNext(out var uid, out var predicted))
+        {
+            if (_timing.IsFirstTimePredicted)
+                continue;
+
+            if (predicted.Coordinates is { } coordinates)
+                _transform.SetCoordinates(uid, coordinates);
+
+            predicted.Coordinates = null;
+        }
+    }
+
+    private void OnShootRequest(RequestShootEvent ev, EntitySessionEventArgs args)
+    {
+        if (_timing.IsFirstTimePredicted)
+            return;
+
+        _gun.ShootRequested(ev.Gun, ev.Coordinates, ev.Target, null, args.SenderSession);
+    }
+
+    private void OnLinearVelocityMsg(MaxLinearVelocityMsg ev)
+    {
+        _config.SetCVar(CVars.MaxLinVelocity, ev.Velocity);
+    }
+
+    private void OnClientProjectileUpdateIsPredicted(Entity<PredictedProjectileClientComponent> ent, ref UpdateIsPredictedEvent args)
+    {
+        args.IsPredicted = true;
+    }
+
+    private void OnClientProjectilePreventCollide(Entity<PredictedProjectileClientComponent> _, ref PreventCollideEvent args)
+    {
+        if (HasComp<PredictedPhysicsComponent>(args.OtherEntity))
+            args.Cancelled = true;
+    }
+
+    private void OnClientProjectileStartCollide(Entity<PredictedProjectileClientComponent> ent, ref StartCollideEvent args)
+    {
+        if (ent.Comp.Hit ||
+            args.OurFixtureId != SharedProjectileSystem.ProjectileFixture ||
+            !args.OtherFixture.Hard)
+        {
+            return;
+        }
+
+        if (!TryComp(ent, out ProjectileComponent? projectile) ||
+            !TryComp(ent, out PhysicsComponent? physics))
+        {
+            return;
+        }
+
+        var netEnt = GetNetEntity(args.OtherEntity);
+        var pos = _transform.GetMapCoordinates(args.OtherEntity);
+        var hit = new HashSet<(NetEntity, MapCoordinates)> { (netEnt, pos) };
+        RaiseNetworkEvent(new PredictedProjectileHitEvent(ent.Owner.Id, hit));
+
+        ent.Comp.Hit = true;
+
+        _projectile.ProjectileCollide((ent, projectile, physics), args.OtherEntity, predicted: true);
+        if (projectile.DeleteOnCollide)
+            _pendingProjectileDeletes.Add(ent.Owner);
+    }
+
+    private void OnServerProjectileStartup(Entity<PredictedProjectileServerComponent> ent, ref ComponentStartup _)
+    {
+        if (!GunPrediction)
+            return;
+
+        if (ent.Comp.ClientEnt == _player.LocalEntity && TryComp(ent, out SpriteComponent? sprite))
+            sprite.Visible = false;
+    }
+
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        if (!_timing.IsFirstTimePredicted)
+            return;
+
+        foreach (var uid in _pendingProjectileDeletes)
+        {
+            if (Exists(uid))
+                QueueDel(uid);
+        }
+        _pendingProjectileDeletes.Clear();
+
+        var projectiles = EntityQueryEnumerator<PredictedProjectileClientComponent, ProjectileComponent, PhysicsComponent>();
+        while (projectiles.MoveNext(out var uid, out var predicted, out var projectile, out var physics))
+        {
+            if (predicted.Hit)
+                continue;
+
+            var contacts = _physics.GetContactingEntities(uid, physics, true);
+            if (contacts.Count == 0)
+                continue;
+
+            var hit = new HashSet<(NetEntity, MapCoordinates)>();
+            foreach (var contact in contacts)
+            {
+                var netEnt = GetNetEntity(contact);
+                var pos = _transform.GetMapCoordinates(contact);
+                hit.Add((netEnt, pos));
+            }
+
+            RaiseNetworkEvent(new PredictedProjectileHitEvent(uid.Id, hit));
+            predicted.Hit = true;
+            _projectile.ProjectileCollide((uid, projectile, physics), contacts.First());
+        }
+
+        var predictedQuery = EntityQueryEnumerator<PredictedProjectileHitComponent, SpriteComponent, TransformComponent>();
+        while (predictedQuery.MoveNext(out _, out var hit, out var sprite, out var xform))
+        {
+            var origin = hit.Origin;
+            var coordinates = xform.Coordinates;
+            if (!origin.TryDistance(EntityManager, _transform, coordinates, out var distance) ||
+                distance >= hit.Distance)
+            {
+                sprite.Visible = false;
+            }
+        }
+    }
+
+    public override void FrameUpdate(float frameTime)
+    {
+        base.FrameUpdate(frameTime);
+
+        var projectiles = EntityQueryEnumerator<PredictedProjectileClientComponent, TransformComponent>();
+        while (projectiles.MoveNext(out _, out var xform))
+        {
+            xform.ActivelyLerping = false;
+        }
+    }
+}

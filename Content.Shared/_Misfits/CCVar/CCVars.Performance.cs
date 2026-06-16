@@ -11,6 +11,7 @@ public sealed class PerformanceCVars : CVars
 {
     /// <summary>
     /// Maximum lag compensation window in milliseconds.
+    /// Also controls how much historical movement data the authoritative rewind buffer retains.
     /// Actions and shots from clients this many ms behind the server are still accepted,
     /// with <see cref="LagCompensationMarginTiles"/> added to their range checks.
     /// </summary>
@@ -23,6 +24,51 @@ public sealed class PerformanceCVars : CVars
     /// </summary>
     public static readonly CVarDef<float> LagCompensationMarginTiles =
         CVarDef.Create("misfits.lag_compensation_margin_tiles", 0.35f, CVar.REPLICATED | CVar.SERVER);
+
+    /// <summary>
+    /// Enables client side gun projectile prediction and the matching server side validation path.
+    /// </summary>
+    public static readonly CVarDef<bool> GunPrediction =
+        CVarDef.Create("misfits.gun_prediction", true, CVar.REPLICATED | CVar.SERVER);
+
+    /// <summary>
+    /// Rejects authoritative projectile collisions that are implausible against a target's lag compensated history.
+    /// </summary>
+    public static readonly CVarDef<bool> GunPredictionPreventCollision =
+        CVarDef.Create("misfits.gun_prediction_prevent_collision", true, CVar.REPLICATED | CVar.SERVER);
+
+    /// <summary>
+    /// Logs whether predicted projectile hit claims were accepted or rejected by the server validator.
+    /// </summary>
+    public static readonly CVarDef<bool> GunPredictionLogHits =
+        CVarDef.Create("misfits.gun_prediction_log_hits", false, CVar.SERVERONLY);
+
+    /// <summary>
+    /// How far a client reported target coordinate may deviate from the rewound server coordinate
+    /// and still be trusted for projectile hit validation.
+    /// </summary>
+    public static readonly CVarDef<float> GunPredictionCoordinateDeviation =
+        CVarDef.Create("misfits.gun_prediction_coordinate_deviation", 0.75f, CVar.SERVERONLY);
+
+    /// <summary>
+    /// Alternate lower bound deviation used when the validator falls back to the oldest plausible
+    /// rewound target coordinate inside the ping window.
+    /// </summary>
+    public static readonly CVarDef<float> GunPredictionLowestCoordinateDeviation =
+        CVarDef.Create("misfits.gun_prediction_lowest_coordinate_deviation", 0.5f, CVar.SERVERONLY);
+
+    /// <summary>
+    /// Extra AABB inflation applied when validating lag compensated projectile and hitscan collisions.
+    /// </summary>
+    public static readonly CVarDef<float> GunPredictionAabbEnlargement =
+        CVarDef.Create("misfits.gun_prediction_aabb_enlargement", 0.3f, CVar.REPLICATED | CVar.SERVER);
+
+    /// <summary>
+    /// Extra search padding for server side hitscan rewind validation so nearby lag compensated targets
+    /// are still considered even when the current state lookup box is slightly stale.
+    /// </summary>
+    public static readonly CVarDef<float> GunPredictionHitscanSearchPadding =
+        CVarDef.Create("misfits.gun_prediction_hitscan_search_padding", 1.5f, CVar.REPLICATED | CVar.SERVER);
 
     /// <summary>
     /// How often (seconds) the proximity NPC system scans for nearby players.

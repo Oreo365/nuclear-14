@@ -394,3 +394,158 @@
      min: 108000
   items:
    - N14ClothingOuterRangerElite
+
+- type: loadout
+  id: LoadoutNCRRangerRedwood
+  category: Roles
+  cost: 0
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRFieldRanger # slightly weaker than the duster, but stronger than the combat armor, so giving it to field
+  items:
+    - N14ClothingOuterRangerRedwood
+
+- type: loadout
+  id: LoadoutNCRRangerCombat
+  category: Roles
+  cost: 0
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRPatrolRanger # Statistically identical to NCR combat armor mk1 which they spawn with by default
+  items:
+    - N14ClothingOuterRangerArmorOld 
+
+- type: loadout
+  id: LoadoutNCRN14ClothingHeadHatRangerHelmetFox2
+  category: Roles
+  cost: 0
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRVeteranRanger
+    - !type:CharacterPlaytimeRequirement
+      tracker: NCRVeteranRanger
+      min: 72000 # 1200 minutes
+  items:
+    - N14ClothingHeadHatRangerHelmetFox
+
+- type: loadout
+  id: LoadoutNCRN14ClothingHeadHatRangerHelmetPrice2
+  category: Roles
+  cost: 0
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRVeteranRanger
+    - !type:CharacterPlaytimeRequirement
+      tracker: NCRVeteranRanger
+      min: 72000 # 1200 minutes
+  items:
+    - N14ClothingHeadHatRangerHelmetPrice
+
+- type: loadout
+  id: LoadoutNCRN14ClothingOuterRangerWeathered
+  category: Roles
+  cost: 0
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRVeteranRanger
+    - !type:CharacterPlaytimeRequirement
+      tracker: NCRVeteranRanger
+      min: 72000 # 1200 minutes
+  items:
+    - N14ClothingOuterRangerWeathered
+
+- type: loadout
+  id: LoadoutNCRN14ClothingOuterRangerPrice
+  category: Roles
+  cost: 0
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRVeteranRanger
+    - !type:CharacterPlaytimeRequirement
+      tracker: NCRVeteranRanger
+      min: 72000 # 1200 minutes
+  items:
+    - N14ClothingOuterRangerPrice
+
+- type: loadout
+  id: LoadoutN14ClothingNeckRangerDuster
+  category: Roles
+  cost: 0
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRVeteranRanger
+  items:
+    - N14ClothingNeckRangerDuster
+
+- type: loadout
+  id: LoadoutN14ClothingOuterVetRangerRiotArmor
+  category: Roles
+  cost: 0
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRVeteranRanger
+  items:
+    - N14ClothingOuterVetRangerRiotArmor
+
+- type: loadout
+  id: LoadoutN14ClothingNeckSaltRunnerDuster
+  category: Roles
+  cost: 0
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRVeteranRanger
+        - NCRFieldRanger # Purely cosmetic, goes over armor
+    - !type:CharacterPlaytimeRequirement
+      tracker: NCRVeteranRanger
+      min: 72000 # 1200 minutes
+  items:
+    - N14ClothingNeckSaltRunnerDuster
+
+- type: loadout
+  id: LoadoutN14ClothingHatSaltRunnerHelmet
+  category: Roles
+  cost: 0
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRVeteranRanger
+    - !type:CharacterPlaytimeRequirement
+      tracker: NCRVeteranRanger
+      min: 72000 # 1200 minutes
+  items:
+    - N14ClothingHatSaltRunnerHelmet
+
+- type: loadout
+  id: LoadoutN14ClothingHatSaltRunnerMask
+  category: Roles
+  cost: 0
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRVeteranRanger
+        - NCRFieldRanger # Purely cosmetic, identical to field ranger mask
+    - !type:CharacterPlaytimeRequirement
+      tracker: NCRVeteranRanger
+      min: 72000 # 1200 minutes
+  items:
+    - N14ClothingHatSaltRunnerMask

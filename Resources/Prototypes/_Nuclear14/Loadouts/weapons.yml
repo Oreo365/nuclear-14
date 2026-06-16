@@ -86,11 +86,11 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutGuns
-    - !type:CharacterDepartmentRequirement 
+    - !type:CharacterDepartmentRequirement
       inverted: true
       departments:
       - Vault
-    - !type:CharacterJobRequirement 
+    - !type:CharacterJobRequirement
       inverted: true
       jobs:
       - BoSMidSerf
@@ -106,11 +106,11 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutGuns
-    - !type:CharacterDepartmentRequirement 
+    - !type:CharacterDepartmentRequirement
       inverted: true
       departments:
       - Vault
-    - !type:CharacterJobRequirement 
+    - !type:CharacterJobRequirement
       inverted: true
       jobs:
       - BoSMidSerf
@@ -127,11 +127,11 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutGuns
-    - !type:CharacterDepartmentRequirement 
+    - !type:CharacterDepartmentRequirement
       inverted: true
       departments:
       - Vault
-    - !type:CharacterJobRequirement 
+    - !type:CharacterJobRequirement
       inverted: true
       jobs:
       - BoSMidSerf
@@ -149,7 +149,7 @@
     - !type:CharacterTraitRequirement
       traits:
       - LanguageChinese
-      - LanguageNerd 
+      - LanguageNerd
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutGuns
     - !type:CharacterJobRequirement
@@ -172,7 +172,7 @@
       inverted: true
       departments:
       - Vault
-    - !type:CharacterJobRequirement 
+    - !type:CharacterJobRequirement
       inverted: true
       jobs:
       - BoSMidSerf
@@ -195,7 +195,7 @@
       inverted: true
       departments:
       - Vault
-    - !type:CharacterJobRequirement 
+    - !type:CharacterJobRequirement
       inverted: true
       jobs:
       - BoSMidSerf
@@ -255,11 +255,11 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutGunsBig
-    - !type:CharacterDepartmentRequirement 
+    - !type:CharacterDepartmentRequirement
       inverted: true
       departments:
       - Vault
-    - !type:CharacterJobRequirement 
+    - !type:CharacterJobRequirement
       inverted: true
       jobs:
       - BoSMidSerf
@@ -268,7 +268,7 @@
   items:
     - N14WeaponShotgun
 
-    
+
 ## SMGs
 
 - type: loadout
@@ -278,11 +278,11 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutGunsBig
-    - !type:CharacterDepartmentRequirement 
+    - !type:CharacterDepartmentRequirement
       inverted: true
       departments:
       - Vault
-    - !type:CharacterJobRequirement 
+    - !type:CharacterJobRequirement
       inverted: true
       jobs:
       - BoSMidSerf
@@ -298,11 +298,11 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutGunsBig
-    - !type:CharacterDepartmentRequirement 
+    - !type:CharacterDepartmentRequirement
       inverted: true
       departments:
       - Vault
-    - !type:CharacterJobRequirement 
+    - !type:CharacterJobRequirement
       inverted: true
       jobs:
       - BoSMidSerf
@@ -318,11 +318,11 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutGunsBig
-    - !type:CharacterDepartmentRequirement 
+    - !type:CharacterDepartmentRequirement
       inverted: true
       departments:
       - Vault
-    - !type:CharacterJobRequirement 
+    - !type:CharacterJobRequirement
       inverted: true
       jobs:
       - BoSMidSerf
@@ -339,14 +339,14 @@
     - !type:CharacterTraitRequirement
       traits:
       - LanguageChinese
-      - LanguageNerd 
+      - LanguageNerd
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutGunsBig
-    - !type:CharacterDepartmentRequirement 
+    - !type:CharacterDepartmentRequirement
       inverted: true
       departments:
       - Vault
-    - !type:CharacterJobRequirement 
+    - !type:CharacterJobRequirement
       inverted: true
       jobs:
       - BoSMidSerf
@@ -364,11 +364,10 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutGunsBig
-    - !type:CharacterDepartmentRequirement 
-      inverted: true
+    - !type:CharacterDepartmentRequirement
       departments:
-      - Vault
-    - !type:CharacterJobRequirement 
+      - NCR
+    - !type:CharacterJobRequirement
       inverted: true
       jobs:
       - BoSMidSerf
@@ -384,11 +383,11 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutGunsBig
-    - !type:CharacterDepartmentRequirement 
+    - !type:CharacterDepartmentRequirement
       inverted: true
       departments:
       - Vault
-    - !type:CharacterJobRequirement 
+    - !type:CharacterJobRequirement
       inverted: true
       jobs:
       - BoSMidSerf
@@ -404,11 +403,11 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutGunsBig
-    - !type:CharacterDepartmentRequirement 
+    - !type:CharacterDepartmentRequirement
       inverted: true
       departments:
       - Vault
-    - !type:CharacterJobRequirement 
+    - !type:CharacterJobRequirement
       inverted: true
       jobs:
       - BoSMidSerf
@@ -424,11 +423,11 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutGunsBig
-    - !type:CharacterDepartmentRequirement 
+    - !type:CharacterDepartmentRequirement
       inverted: true
       departments:
       - Vault
-    - !type:CharacterJobRequirement 
+    - !type:CharacterJobRequirement
       inverted: true
       jobs:
       - BoSMidSerf
@@ -438,42 +437,21 @@
     - N14WeaponRifle762M14
 
 - type: loadout
-  id: N14WeaponRifle762Fal
-  category: Weapons
-  cost: 15
-  requirements:
-    - !type:CharacterItemGroupRequirement
-      group: N14LoadoutGunsBig
-    - !type:CharacterDepartmentRequirement 
-      inverted: true
-      departments:
-      - Vault
-    - !type:CharacterJobRequirement 
-      inverted: true
-      jobs:
-      - BoSMidSerf
-      - CaesarLegionSlave
-      - NCRPrisoner
-  items:
-    - N14WeaponRifle762Fal
-
-    
-- type: loadout
   id: N14WeaponRifle762SKS
   category: Weapons
-  cost: 11
+  cost: 22
   requirements:
     - !type:CharacterTraitRequirement
       traits:
       - LanguageChinese
-      - LanguageNerd 
+      - LanguageNerd
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutGunsBig
-    - !type:CharacterDepartmentRequirement 
+    - !type:CharacterDepartmentRequirement
       inverted: true
       departments:
       - Vault
-    - !type:CharacterJobRequirement 
+    - !type:CharacterJobRequirement
       inverted: true
       jobs:
       - BoSMidSerf
@@ -489,11 +467,11 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutGunsBig
-    - !type:CharacterDepartmentRequirement 
+    - !type:CharacterDepartmentRequirement
       inverted: true
       departments:
       - Vault
-    - !type:CharacterJobRequirement 
+    - !type:CharacterJobRequirement
       inverted: true
       jobs:
       - BoSMidSerf
@@ -513,11 +491,11 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutGunsBig
-    - !type:CharacterDepartmentRequirement 
+    - !type:CharacterDepartmentRequirement
       inverted: true
       departments:
       - Vault
-    - !type:CharacterJobRequirement 
+    - !type:CharacterJobRequirement
       inverted: true
       jobs:
       - BoSMidSerf
@@ -533,11 +511,11 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutGunsBig
-    - !type:CharacterDepartmentRequirement 
+    - !type:CharacterDepartmentRequirement
       inverted: true
       departments:
       - Vault
-    - !type:CharacterJobRequirement 
+    - !type:CharacterJobRequirement
       inverted: true
       jobs:
       - BoSMidSerf
@@ -555,11 +533,11 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutGunsBig
-    - !type:CharacterDepartmentRequirement 
+    - !type:CharacterDepartmentRequirement
       inverted: true
       departments:
       - Vault
-    - !type:CharacterJobRequirement 
+    - !type:CharacterJobRequirement
       inverted: true
       jobs:
       - BoSMidSerf
@@ -576,11 +554,11 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutGunsBig
-    - !type:CharacterDepartmentRequirement 
+    - !type:CharacterDepartmentRequirement
       inverted: true
       departments:
       - Vault
-    - !type:CharacterJobRequirement 
+    - !type:CharacterJobRequirement
       inverted: true
       jobs:
       - BoSMidSerf
@@ -599,12 +577,9 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutGuns
-    - !type:CharacterJobRequirement 
-      inverted: true
-      jobs:
-      - BoSMidSerf
-      - CaesarLegionSlave
-      - NCRPrisoner
+    - !type:CharacterDepartmentRequirement
+      departments:
+      - BrotherhoodOfSteel
   items:
     - N14WeaponLaserPistol
 
@@ -616,22 +591,15 @@
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutGuns
     - !type:CharacterDepartmentRequirement
-      inverted: true
       departments:
-      - Vault
-    - !type:CharacterJobRequirement 
-      inverted: true
-      jobs:
-      - BoSMidSerf
-      - CaesarLegionSlave
-      - NCRPrisoner
+      - BrotherhoodOfSteel
   items:
     - N14WeaponLaserRevolver
 
 - type: loadout
   id: N14WeaponLaserRifleMakeshift
   category: Weapons
-  cost: 7
+  cost: 16
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutGunsBig
@@ -639,7 +607,7 @@
       inverted: true
       departments:
       - Vault
-    - !type:CharacterJobRequirement 
+    - !type:CharacterJobRequirement
       inverted: true
       jobs:
       - BoSMidSerf
@@ -681,7 +649,7 @@
       inverted: true
       departments:
       - Vault
-    - !type:CharacterJobRequirement 
+    - !type:CharacterJobRequirement
       inverted: true
       jobs:
       - BoSMidSerf
@@ -719,11 +687,11 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutAmmo
-    - !type:CharacterDepartmentRequirement 
+    - !type:CharacterDepartmentRequirement
       inverted: true
       departments:
       - Vault
-    - !type:CharacterJobRequirement 
+    - !type:CharacterJobRequirement
       inverted: true
       jobs:
       - BoSMidSerf
@@ -740,7 +708,7 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutAmmo
-    - !type:CharacterDepartmentRequirement 
+    - !type:CharacterDepartmentRequirement
       inverted: true
       departments:
       - Vault
@@ -762,7 +730,7 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutAmmo
-    - !type:CharacterDepartmentRequirement 
+    - !type:CharacterDepartmentRequirement
       inverted: true
       departments:
       - Vault
@@ -783,7 +751,7 @@
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutAmmo
-    - !type:CharacterDepartmentRequirement 
+    - !type:CharacterDepartmentRequirement
       inverted: true
       departments:
       - Vault
@@ -884,7 +852,7 @@
     - Magazine556Rifle
 
 
-## Boxes of Ammo 
+## Boxes of Ammo
 
 
 - type: loadout
@@ -1035,7 +1003,7 @@
 - type: loadout
   id: MagazineBox762
   category: Weapons
-  cost: 5
+  cost: 18
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutAmmoBox
@@ -1051,7 +1019,7 @@
 - type: loadout
   id: MagazineBox308
   category: Weapons
-  cost: 5
+  cost: 18
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutAmmoBox
@@ -1187,7 +1155,7 @@
   items:
     - N14TribalSword
 
-    
+
 - type: loadout
   id: N14LongSwordBoS
   category: Weapons
@@ -1225,7 +1193,7 @@
     - !type:CharacterDepartmentRequirement
       inverted: true
       departments:
-        - BrotherhoodOfSteel 
+        - BrotherhoodOfSteel
   items:
     - N14LongSword
 
@@ -1235,7 +1203,7 @@
   cost: 5
   requirements:
     - !type:CharacterItemGroupRequirement
-      group: N14LoadoutMelee    
+      group: N14LoadoutMelee
     - !type:CharacterDepartmentRequirement
       inverted: true
       departments:
@@ -1251,7 +1219,7 @@
     - !type:CharacterTraitRequirement
       traits:
       - LanguageChinese
-      - LanguageNerd 
+      - LanguageNerd
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutMelee
   items:

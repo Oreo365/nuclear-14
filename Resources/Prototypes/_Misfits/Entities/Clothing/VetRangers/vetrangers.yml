@@ -1,0 +1,72 @@
+# #Misfits Add - Additional vet ranger customisation options to allow for further player expression
+
+
+# --- Salt Runner Duster ---
+- type: entity
+  parent: ClothingNeckBase
+  id: N14ClothingNeckSaltRunnerDuster
+  name: salt runner ranger duster
+  description: An NCR Ranger duster, customized with various tribal implements and hunting trophies. Worn often by Rangers with tribal origins or ties. Worn over armor.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/VeteranRangers/Neck/NCRvetrangerdusterroe.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/VeteranRangers/Neck/NCRvetrangerdusterroe.rsi
+
+# --- riot armor ---
+- type: entity
+  parent: N14ClothingOuterBase
+  id: N14ClothingOuterVetRangerRiotArmor
+  name: ranger riot armor
+  description: A refurbished suit of L.A.P.D. Riot armor used most notably by the NCR Rangers. It has tactical pouches to store assorted items in, ranging from magazines to medicine.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/VeteranRangers/OuterClothing/Armor/ncrriotvest.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/VeteranRangers/OuterClothing/Armor/ncrriotvest.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.65
+        Slash: 0.65
+        Piercing: 0.6
+        Heat: 0.6
+    priceMultiplier: 0.6
+  - type: ExplosionResistance
+    damageCoefficient: 0.7
+
+# --- Salt Runner Helmet ---
+- type: entity
+  parent: N14ClothingHeadHatRangerHelmetModif
+  id: N14ClothingHatSaltRunnerHelmet
+  name: salt runner ranger helmet
+  description: A decorated ranger helmet. It's crown is adorned with mutated insect stingers.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/VeteranRangers/Head/FalloutHelmets/rangerhelmetroe.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/VeteranRangers/Head/FalloutHelmets/rangerhelmetroe.rsi
+
+# --- Salt Runner Mask ---
+- type: entity
+  parent: ClothingMaskGasRiot
+  id: N14ClothingHatSaltRunnerMask
+  name: salt coven riot gas mask
+  description: A modified gas mask from the divide. It has a red stripe across the bridge and a symbol of venus on the cheek.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/VeteranRangers/Mask/rangervetgasmaskroe.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/VeteranRangers/Mask/rangervetgasmaskroe.rsi
+
+# --- Ranger Duster ---
+- type: entity
+  parent: ClothingNeckBase
+  id: N14ClothingNeckRangerDuster
+  name: veteran ranger duster
+  description: An elite ranger duster without the riot gear underneath, allowing for the user to fit in their own armor plating of their choosing. Goes over armor.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/VeteranRangers/Neck/NCRvetrangerduster.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/VeteranRangers/Neck/NCRvetrangerduster.rsi

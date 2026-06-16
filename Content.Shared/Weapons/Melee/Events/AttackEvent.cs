@@ -1,6 +1,7 @@
 using Content.Shared.Damage;
 using Robust.Shared.Map;
 using Robust.Shared.Serialization;
+using Robust.Shared.Timing;
 
 namespace Content.Shared.Weapons.Melee.Events
 {
@@ -11,6 +12,12 @@ namespace Content.Shared.Weapons.Melee.Events
         /// Coordinates being attacked.
         /// </summary>
         public readonly NetCoordinates Coordinates;
+
+        /// <summary>
+        /// Last fully confirmed client tick when the attack input was issued.
+        /// Used for server side lag compensation during melee validation.
+        /// </summary>
+        public GameTick? LastRealTick;
 
         protected AttackEvent(NetCoordinates coordinates)
         {

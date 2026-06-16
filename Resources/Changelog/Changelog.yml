@@ -7135,3 +7135,68 @@ Entries:
   id: 6077
   time: '2026-06-15T20:55:14.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/809
+- author: Vixting
+  changes:
+    - type: Add
+      message: Added predicton / lag compensation from RMC
+  id: 6078
+  time: '2026-06-15T22:29:50.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/814
+- author: Bradysgaming
+  changes:
+    - type: Tweak
+      message: Nerfed loadout options, no more basically free 30% dmg reduc
+    - type: Tweak
+      message: >-
+        Made some loadout option make sense, a legionaire isnt gonna just start
+        with a full pristine laser rifle now are they
+  id: 6079
+  time: '2026-06-15T23:35:51.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/815
+- author: trashalice
+  changes:
+    - type: Add
+      message: Salt Runner vet ranger set
+    - type: Tweak
+      message: Commented back in prestige ranger armors both for field and vet
+  id: 6080
+  time: '2026-06-15T23:38:23.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/812
+- author: paige404
+  changes:
+    - type: Fix
+      message: Restored the radstag skull hat (we never meant to take it away).
+    - type: Add
+      message: Added the radstag ritual skull helmet, a new T3 tribal helmet
+    - type: Tweak
+      message: >-
+        Reshuffled Tribal Armor BPs to reflect mechanical advantages. T1 gear is
+        now cosmetic. T2 is equivalent to basic starting gear options. T3 and T4
+        are increasingly stronger. Armor values were unchanged, except...
+    - type: Fix
+      message: >-
+        Nerfed the Helmet of Peace, why was it the same strength as a Deathclaw
+        Hood???
+    - type: Fix
+      message: Fixed some wonky admeme animal damages.
+    - type: Fix
+      message: Livestock will no longer smash their way out of their enclosures.
+  id: 6081
+  time: '2026-06-16T00:52:52.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/818
+- author: HungryCuban
+  changes:
+    - type: Add
+      message: >-
+        Some sprites, lets not spoil them they will be announced when added as
+        items.
+  id: 6082
+  time: '2026-06-16T00:53:16.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/819
+- author: Oli
+  changes:
+    - type: Add
+      message: Old + Marching Satchel and Bandana to the loadout menu.
+  id: 6083
+  time: '2026-06-16T01:29:32.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/820

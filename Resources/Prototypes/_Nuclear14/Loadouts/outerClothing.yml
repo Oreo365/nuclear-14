@@ -123,11 +123,12 @@
       departments:
       - Vault
     - !type:CharacterJobRequirement # Forge-Change
-      inverted: true
       jobs:
-      - BoSMidSerf
-      - CaesarLegionSlave
-      - NCRPrisoner
+      - FollowerHead
+      - FollowerDoctor
+      - FollowerGuard
+      - FollowerVolunteer
+
   items:
     -  N14ClothingOuterCoatFollowerLab
 
@@ -358,36 +359,15 @@
       inverted: true
       departments:
       - Vault
-    - !type:CharacterJobRequirement # Forge-Change
-      inverted: true
+    - !type:CharacterJobRequirement # Misfits Change
       jobs:
-      - BoSMidSerf
-      - CaesarLegionSlave
-      - NCRPrisoner
+      - Tribal
+      - TribalElder
+      - TribalFarmer
+      - TribalShaman
+
   items:
     - N14ClothingOuterTribalArmor
-
-
-- type: loadout
-  id: N14LoadoutOuterTribalArmorHeavy
-  category: Outer
-  cost: 3
-  requirements:
-    - !type:CharacterItemGroupRequirement
-      group: N14LoadoutOuter
-    - !type:CharacterDepartmentRequirement # Forge-Change
-      inverted: true
-      departments:
-      - Vault
-    - !type:CharacterJobRequirement # Forge-Change
-      inverted: true
-      jobs:
-      - BoSMidSerf
-      - CaesarLegionSlave
-      - NCRPrisoner
-  items:
-    - N14ClothingOuterTribalArmorHeavy
-
 
 - type: loadout
   id: N14LoadoutOuterRaiderBadlands
@@ -453,7 +433,7 @@
 - type: loadout
   id: N14LoadoutOuterScavengerHeavyArmor
   category: Outer
-  cost: 6
+  cost: 16
   requirements:
     - !type:CharacterPlaytimeRequirement
       tracker: Wastelander
@@ -519,7 +499,7 @@
 - type: loadout
   id: N14LoadoutOuterCoatFollowersArmored
   category: Outer
-  cost: 7
+  cost: 8
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutOuter
@@ -527,12 +507,11 @@
       inverted: true
       departments:
       - Vault
-    - !type:CharacterJobRequirement
-      inverted: true
+    - !type:CharacterJobRequirement # Misfits Change
       jobs:
-      - BoSMidSerf
-      - CaesarLegionSlave
-      - NCRPrisoner
+      - FollowerHead
+      - FollowerDoctor
+      - FollowerGuard
   items:
     - N14ClothingOuterCoatFollowersArmored
 
@@ -560,7 +539,7 @@
 - type: loadout
   id: N14LoadoutOuterPoliceCombat
   category: Outer
-  cost: 6
+  cost: 16
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutOuter
@@ -637,51 +616,6 @@
       - NCRPrisoner
   items:
     - N14ClothingOuterCombatPainspike
-
-
-- type: loadout
-  id: N14LoadoutOuterRaiderCombat1
-  category: Outer
-  cost: 10
-  requirements:
-    - !type:CharacterItemGroupRequirement
-      group: N14LoadoutOuter
-    - !type:CharacterDepartmentRequirement
-      inverted: true
-      departments:
-      - Vault
-    - !type:CharacterJobRequirement
-      inverted: true
-      jobs:
-      - BoSMidSerf
-      - CaesarLegionSlave
-      - NCRPrisoner
-  items:
-    - N14ClothingOuterRaiderCombat1
-
-- type: loadout
-  id: N14LoadoutOuterCombatArmorChinese
-  category: Outer
-  cost: 10
-  requirements:
-    - !type:CharacterTraitRequirement
-      traits:
-      - LanguageChinese
-      - LanguageNerd
-    - !type:CharacterItemGroupRequirement
-      group: N14LoadoutOuter
-    - !type:CharacterDepartmentRequirement
-      inverted: true
-      departments:
-      - Vault
-    - !type:CharacterJobRequirement
-      inverted: true
-      jobs:
-      - BoSMidSerf
-      - CaesarLegionSlave
-      - NCRPrisoner
-  items:
-    - N14ClothingOuterCombatArmorChinese
 
 - type: loadout
   id: N14LoadoutOuterVestChinese
