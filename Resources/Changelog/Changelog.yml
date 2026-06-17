@@ -7240,3 +7240,10 @@ Entries:
   id: 6089
   time: '2026-06-17T00:18:10.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/823
+- author: Vixting
+  changes:
+    - type: Fix
+      message: Fixed plasma
+  id: 6090
+  time: '2026-06-17T01:32:38.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/831
