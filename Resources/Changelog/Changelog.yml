@@ -7319,3 +7319,12 @@ Entries:
   id: 6093
   time: '2026-06-17T02:28:30.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/832
+- author: Bradysgaming
+  changes:
+    - type: Tweak
+      message: Made riding brahdo NEED one open hand slot.
+    - type: Tweak
+      message: Made C27's heal caustic + able to heal it from cable coils.
+  id: 6094
+  time: '2026-06-17T21:25:35.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/837

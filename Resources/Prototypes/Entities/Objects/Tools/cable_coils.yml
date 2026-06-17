@@ -40,6 +40,7 @@
       types: # these are all split across multiple types
         Heat: -1.66
         Shock: -1.66
+        Caustic: -1.66
 
 - type: entity
   id: CableHVStack

@@ -4,6 +4,7 @@
   name: brahdo
   description: "Neigh? That thing has too many legs... Think it bites? Might ride it. Might eat it."
   components:
+  - type: Vehicle # for some reason this is the only comp that forces it to take just one hand.
   - type: Sprite
     drawdepth: Mobs
     layers:
