@@ -591,6 +591,27 @@
     - N14WeaponRifle762SKS
 
 
+- type: loadout
+  id: N14WeaponRifle762Fal
+  category: Weapons
+  cost: 19
+  requirements:
+    - !type:CharacterItemGroupRequirement
+      group: N14LoadoutGunsBig
+    - !type:CharacterDepartmentRequirement 
+      inverted: true
+      departments:
+      - Vault
+    - !type:CharacterJobRequirement 
+      inverted: true
+      jobs:
+      - BoSMidSerf
+      - CaesarLegionSlave
+      - NCRPrisoner
+  items:
+    - N14WeaponRifle762Fal
+
+
 
 
 - type: loadout
