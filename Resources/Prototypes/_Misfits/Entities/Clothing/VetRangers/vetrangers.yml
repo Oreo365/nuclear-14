@@ -70,3 +70,63 @@
     sprite: _Misfits/Clothing/VeteranRangers/Neck/NCRvetrangerduster.rsi
   - type: Clothing
     sprite: _Misfits/Clothing/VeteranRangers/Neck/NCRvetrangerduster.rsi
+
+# --- California Girl Duster ---
+- type: entity
+  parent: ClothingNeckBase
+  id: N14ClothingNeckCaliforniaGirlDuster
+  name: california girl duster
+  description: A modified ranger duster with additional straps and the NCR flag stitched onto it's forearms. Goes over armor.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/VeteranRangers/Neck/NCRvetrangerdusterlee.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/VeteranRangers/Neck/NCRvetrangerdusterlee.rsi
+
+# --- Four Leaf Ranger Duster ---
+- type: entity
+  parent: ClothingNeckBase
+  id: N14ClothingNeckFourLeafDuster
+  name: four leaf ranger duster
+  description: A duster for rangers with luck, grit and determination, it has a crude wolf patch stitched on the inside. Goes over armor.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/VeteranRangers/Neck/NCRvetrangerdusterwolfe.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/VeteranRangers/Neck/NCRvetrangerdusterwolfe.rsi
+
+# --- Highland Ranger Duster ---
+- type: entity
+  parent: ClothingNeckBase
+  id: N14ClothingNeckHighlandRangerDuster
+  name: highland ranger duster
+  description: A ranger duster adorned with salvaged armor and hunting trophies. Smells faintly of mountain air. Goes over armor.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/VeteranRangers/Neck/NCRvetrangerdusterjuke.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/VeteranRangers/Neck/NCRvetrangerdusterjuke.rsi
+
+# --- Highland Ranger helmet  ---
+- type: entity
+  parent: N14ClothingHeadHatRangerHelmetModif
+  id: N14ClothingNeckHighlandRangerHelmet
+  name: highland ranger helmet
+  description: An old ranger helmet with various tribal markings. The straps are worn, but well kept.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/VeteranRangers/Head/FalloutHelmets/rangerhelmetjuke.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/VeteranRangers/Head/FalloutHelmets/rangerhelmetjuke.rsi
+
+# --- Four Leaf Ranger Helmet  ---
+- type: entity
+  parent: N14ClothingHeadHatRangerHelmetModif
+  id: N14ClothingHeadFourLeafRangerHelmet
+  name: four leaf ranger helmet
+  description: A ranger helmet with one too many dents across it's exterior. Whoever's worn this is clearly lucky enough to shrug off a few bullets.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/VeteranRangers/Head/FalloutHelmets/rangerhelmetwolfe.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/VeteranRangers/Head/FalloutHelmets/rangerhelmetwolfe.rsi

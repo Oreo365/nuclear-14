@@ -814,3 +814,81 @@
       min: 72000 # 1200 minutes
   items:
     - N14ClothingHatSaltRunnerMask
+
+- type: loadout
+  id: LoadoutN14ClothingHeadFourLeafRangerHelmet
+  category: Roles
+  cost: 0
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRVeteranRanger
+    - !type:CharacterPlaytimeRequirement
+      tracker: NCRVeteranRanger
+      min: 72000 # 1200 minutes
+  items:
+    - N14ClothingHeadFourLeafRangerHelmet
+
+- type: loadout
+  id: LoadoutN14ClothingNeckHighlandRangerHelmet
+  category: Roles
+  cost: 0
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRVeteranRanger
+    - !type:CharacterPlaytimeRequirement
+      tracker: NCRVeteranRanger
+      min: 72000 # 1200 minutes
+  items:
+    - N14ClothingNeckHighlandRangerHelmet
+
+- type: loadout
+  id: LoadoutN14ClothingNeckHighlandRangerDuster
+  category: Roles
+  cost: 0
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRVeteranRanger
+        - NCRFieldRanger
+    - !type:CharacterPlaytimeRequirement
+      tracker: NCRVeteranRanger
+      min: 72000 # 1200 minutes
+  items:
+    - N14ClothingNeckHighlandRangerDuster
+
+- type: loadout
+  id: LoadoutN14ClothingNeckFourLeafDuster
+  category: Roles
+  cost: 0
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRVeteranRanger
+        - NCRFieldRanger
+    - !type:CharacterPlaytimeRequirement
+      tracker: NCRVeteranRanger
+      min: 72000 # 1200 minutes
+  items:
+    - N14ClothingNeckFourLeafDuster
+
+- type: loadout
+  id: LoadoutN14ClothingNeckCaliforniaGirlDuster
+  category: Roles
+  cost: 0
+  exclusive: true
+  requirements:
+    - !type:CharacterJobRequirement
+      jobs:
+        - NCRVeteranRanger
+        - NCRFieldRanger
+    - !type:CharacterPlaytimeRequirement
+      tracker: NCRVeteranRanger
+      min: 72000 # 1200 minutes
+  items:
+    - N14ClothingNeckCaliforniaGirlDuster
