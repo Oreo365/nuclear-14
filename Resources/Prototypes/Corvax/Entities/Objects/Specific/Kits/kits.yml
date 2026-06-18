@@ -185,7 +185,7 @@
       - id: ClothingBeltRope
       # #Misfits Change - AMR magazines removed; bolt-action uses single cartridges from ammo boxes
       - id: MagazineOver308RifleSniper
-        amount: 2
+        amount: 4
       - id: ClothingEyesNightVisionGoggles
       - id: N14HealingPoultice #Misfits Change /Tweak/: replaces dirty stimpak, Legion uses tribal medicine
         amount: 2
@@ -275,7 +275,7 @@
       - id: N14LegionnaireShield
       - id: ClothingBeltRope
       - id: N14PilumSpear
-        amount: 2
+        amount: 3
       - id: Bola
       - id: N14HealingPoultice #Misfits Change /Tweak/: replaces dirty stimpak, Legion uses tribal medicine
       - id: N14HealingPowder
@@ -298,8 +298,9 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: N14WeaponSniperHunting # #Misfits Change: hunting rifle as Legion baseline primary
-      - id: N14AmmoBox308
+      - id: N14WeaponRifleSKS # #Misfits Change: hunting rifle as Legion baseline primary
+      - id: SKSEnbloc308
+        amount: 3
       - id: ClothingBeltRope
       - id: N14WeaponPistol45Colt # existing .45 sidearm kept
       - id: N14MagazinePistol45
@@ -329,8 +330,9 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: N14WeaponSniperHunting # #Misfits Change: hunting rifle as Legion baseline primary (replaces SMG)
-      - id: N14AmmoBox308
+      - id: N14WeaponSMG10mm # #Misfits Change: hunting rifle as Legion baseline primary (replaces SMG)
+      - id: N14MagazineSMG10mm
+        amount: 3
       - id: ClothingBeltRope
       - id: N14WeaponPistol45Colt # #Misfits Change: .45 revolver Legion sidearm
       - id: N14MagazinePistol45
@@ -514,7 +516,6 @@
         amount: 2
       - id: N14HealingPoultice
         amount: 2
-      - id: N14Hydra
       - id: N14HealingPowder
         amount: 2
       - id: N14TribalMachete
@@ -538,10 +539,9 @@
   - type: SpawnItemsOnUse
     items:
       - id: N14LegionnaireShield
-      - id: N14WeaponShotgunRiot 
-      - id: N14MagazineShotgun20 
-        amount: 2
-      - id: MagazineBox20gauge
+      - id: N14WeaponBlowback
+      - id: MagazineBox12gauge
+        amount: 3
       - id: ClothingBeltRope
       - id: N14WeaponPistol45Colt # #Misfits Change: .45 revolver Legion sidearm
       - id: N14MagazinePistol45
@@ -699,8 +699,8 @@
   - type: SpawnItemsOnUse
     items:
       - id: N14ClothingHandsPowerFistGoliath
-      - id: N14WeaponRifleSKS # #Misfits Change by BILL CLINTON!: Small number role made to be paired with the NCR sarge or basic ranger kits.
-      - id: SKSEnbloc308 # #Misfits Change - replaced GarandEnbloc308
+      - id: N14WeaponSMG12mm # #Misfits Change by BILL CLINTON!: Small number role made to be paired with the NCR sarge or basic ranger kits.
+      - id: N14MagazineSMG12mm #Misfits Change - replaced GarandEnbloc308
         amount: 4
       - id: N14WeaponPistol45Colt # #Misfits Change: .45 revolver Legion sidearm
       - id: N14MagazinePistol45
@@ -762,14 +762,10 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: N14WeaponRifleSKS # #Misfits Change by BILL CLINTON!: Small number role made to be paired with the NCR sarge or basic ranger kits.
-      - id: SKSEnbloc308
+      - id: N14WeaponSMGGreaseGun # #Misfits Change by BILL CLINTON!: Small number role made to be paired with the NCR sarge or basic ranger kits.
+      - id: Magazine45SubMachineGun
         amount: 4
       - id: ClothingBeltRope
-      - id: N14WeaponPistol45Colt # #Misfits Change: .45 revolver Legion sidearm
-      - id: N14MagazinePistol45
-        amount: 2
-      - id: N14Gladius
       - id: N14FireAxe
       - id: ThrowingKnife
         amount: 3
@@ -827,8 +823,8 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: N14WeaponRifleSKS # #Misfits Change by BILL CLINTON!: Small number role made to be paired with the NCR sarge or basic ranger kits.
-      - id: SKSEnbloc308
+      - id: N14WeaponSMGGreaseGun # #Misfits Change by BILL CLINTON!: Small number role made to be paired with the NCR sarge or basic ranger kits.
+      - id: Magazine45SubMachineGun
         amount: 4
       - id: ClothingBeltRope
       - id: N14WeaponPistol45Colt # #Misfits Change: .45 revolver Legion sidearm
@@ -856,12 +852,10 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: N14WeaponSniperHunting # #Misfits Change: hunting rifle as Legion baseline primary
-      - id: N14AmmoBox308
       - id: ClothingBeltRope
       - id: N14WeaponPistol45Colt # #Misfits Change: .45 revolver Legion sidearm
       - id: N14MagazinePistol45
-        amount: 2
+        amount: 4
       - id: N14Gladius
       - id: N14LegionnaireBuckler
       - id: N14HealingPowder #Misfits Change /Tweak/: replaces dirty stimpak, Legion uses tribal medicine
@@ -889,8 +883,7 @@
       - id: N14WeaponSniperHunting # #Misfits Change: hunting rifle as Legion baseline primary
       - id: N14AmmoBox308
       - id: ClothingBeltRope
-      - id: N14WeaponPistol45Colt # #Misfits Change: .45 revolver Legion sidearm
-      - id: N14MagazinePistol45
+      - id: SmokeGrenade
         amount: 2
       - id: N14Whip
       - id: Stunprod
@@ -916,11 +909,8 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: N14WeaponSniperHunting # #Misfits Change: hunting rifle as Legion baseline primary
-      - id: N14AmmoBox308
-      - id: ClothingBeltRope
-      - id: N14WeaponPistol45Colt # #Misfits Change: .45 revolver Legion sidearm
-      - id: N14MagazinePistol45
+      - id: N14WeaponSMGGreaseGun # #Misfits Change: .45 revolver Legion sidearm
+      - id: Magazine45SubMachineGun
         amount: 2
       - id: N14TribalMachete
       #- id: N14ClothingBeltMedicalFilled #Misfits Change /Remove/: Legion does not use stimpak medical belts
@@ -931,8 +921,6 @@
       - id: N14Bandage
         amount: 2
       - id: Ointment
-      - id: N14WeaponPistol45Colt
-      - id: N14MagazinePistol45
       - id: MagazineBox45
       - id: N14FoodTinK
         amount: 2
@@ -981,14 +969,11 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: N14WeaponSniperHunting # #Misfits Change: hunting rifle as Legion baseline primary
-      - id: N14AmmoBox308
       - id: ClothingBeltRope
       - id: N14WeaponPistol45Colt # #Misfits Change: .45 revolver Legion sidearm
       - id: N14MagazinePistol45
-        amount: 2
-      - id: N14TrenchClub
-      - id: N14LegionnaireShield
+        amount: 4
+      - id: N14TribalBigClub
       - id: N14HealingPowder
       - id: N14HealingPoultice #Misfits Change /Tweak/: replaces dirty stimpak, Legion uses tribal medicine
       - id: N14FoodTinK
@@ -1011,9 +996,8 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: ClothingBeltQuiverSpear
-      - id: N14WeaponSMGGreaseGun
-      - id: Magazine45SubMachineGun
+      - id: N14WeaponSMG9mm
+      - id: N14MagazineSMG9mm
         amount: 2
       - id: N14TribalMachete
       - id: N14LegionnaireBuckler

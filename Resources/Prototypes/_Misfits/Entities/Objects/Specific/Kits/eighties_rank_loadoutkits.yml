@@ -232,7 +232,7 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-    - id: N14ripper
+    - id: N14rippersword
     - id: N14WeaponSMG12mm
     - id: N14MagazineSMG12mm
       amount: 2

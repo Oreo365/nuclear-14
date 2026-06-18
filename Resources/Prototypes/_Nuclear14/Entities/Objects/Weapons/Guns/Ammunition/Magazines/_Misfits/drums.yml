@@ -41,7 +41,7 @@
     whitelist:
       tags:
         - N14CartridgePistol22
-    capacity: 35
+    capacity: 177
     proto: N14CartridgePistol22
   - type: ContainerContainer
     containers:

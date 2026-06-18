@@ -1,0 +1,49 @@
+- type: entity
+  name: Ripper Sword
+  parent: N14Machete
+  id: N14rippersword
+  description: A moderately rare model of ripper, dating to pre-war shocktroops. Significantly longer and heavier, it rends horrible, gaping wounds while tearing metal and flesh alike. A horrible weapon of the deranged and brutal.
+  components:
+  - type: Clothing
+    sprite: _Misfits/Objects/Weapons/Melee/rippersword.rsi
+    quickEquip: false
+    slots:
+    - Belt
+    - suitStorage
+  - type: Sprite
+    sprite: _Misfits/Objects/Weapons/Melee/rippersword.rsi
+    state: icon
+  - type: MeleeWeapon
+    autoAttack: true
+    angle: 0
+    wideAnimationRotation: -135
+    attackRate: 0.85
+    damage:
+      types:
+        Slash: 40
+        Piercing: 15
+        Structural: 40
+        Shock: 10
+    soundHit:
+      path: /Audio/_Nuclear14/Weapons/Melee/Swing/ripper.ogg
+  - type: Item
+    size: Large
+    sprite: _Misfits/Objects/Weapons/Melee/rippersword.rsi
+  - type: DisarmMalus
+  - type: RefillableSolution
+    solution: Welder
+  - type: SolutionContainerManager
+    solutions:
+      Welder:
+        reagents:
+        - ReagentId: WeldingFuel
+          Quantity: 350
+        maxVol: 350
+  - type: UseDelay
+    delay: 1
+  - type: Tool
+    qualities:
+      - Sawing
+    speedModifier: 3.0
+  - type: StaticPrice
+    price: 350
