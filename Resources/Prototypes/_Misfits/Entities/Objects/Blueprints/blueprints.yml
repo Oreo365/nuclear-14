@@ -294,7 +294,6 @@
     recipes:
     - N14BPLegionWeaponCeremonialSword
     - N14BPLegionWeaponRevolver44TribalExtra
-    - N14BPLegionWeaponLauncherGrenade
     - N14BPLegionWeaponRifle762SKS     # #Misfits Add - 7.62mm semi-auto rifle
     - N14BPLegionWeaponHandcannonUpgraded
     - N14BPLegionWeaponRipper
@@ -313,6 +312,7 @@
     recipes:
     - N14BPLegionWeaponSuperSledgeHammer
     - N14BPLegionWeaponTribalBigClubDecorated
+    - N14BPLegionWeaponLauncherGrenade
     - N14BPLegionWeaponPolearm
     - N14BPLegionWeaponLauncherMissile
     - N14BPLegionWeaponBren           # #Misfits Add - Bren LMG (.308 FullAuto)
