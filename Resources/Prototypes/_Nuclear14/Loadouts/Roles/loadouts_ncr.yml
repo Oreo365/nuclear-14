@@ -753,6 +753,10 @@
     - !type:CharacterJobRequirement
       jobs:
         - NCRVeteranRanger
+        - NCRCitizen
+    - !type:CharacterPlaytimeRequirement
+      tracker: NCRVeteranRanger
+      min: 144000 # 2400 minutes
   items:
     - N14ClothingNeckRangerDuster
 
@@ -778,6 +782,7 @@
       jobs:
         - NCRVeteranRanger
         - NCRFieldRanger # Purely cosmetic, goes over armor
+        - NCRCitizen
     - !type:CharacterPlaytimeRequirement
       tracker: NCRVeteranRanger
       min: 72000 # 1200 minutes
@@ -855,6 +860,7 @@
       jobs:
         - NCRVeteranRanger
         - NCRFieldRanger
+        - NCRCitizen
     - !type:CharacterPlaytimeRequirement
       tracker: NCRVeteranRanger
       min: 72000 # 1200 minutes
@@ -871,6 +877,7 @@
       jobs:
         - NCRVeteranRanger
         - NCRFieldRanger
+        - NCRCitizen
     - !type:CharacterPlaytimeRequirement
       tracker: NCRVeteranRanger
       min: 72000 # 1200 minutes
@@ -887,6 +894,7 @@
       jobs:
         - NCRVeteranRanger
         - NCRFieldRanger
+        - NCRCitizen
     - !type:CharacterPlaytimeRequirement
       tracker: NCRVeteranRanger
       min: 72000 # 1200 minutes
