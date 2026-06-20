@@ -550,29 +550,6 @@
     - N14WeaponSMG12mm
 
 
-- type: loadout
-  id: N14WeaponSMGPPSh41
-  category: Weapons
-  cost: 17
-  requirements:
-    - !type:CharacterItemGroupRequirement
-      group: N14LoadoutGunsBig
-    - !type:CharacterDepartmentRequirement
-      inverted: true
-      departments:
-      - Vault
-    - !type:CharacterJobRequirement
-      inverted: true
-      jobs:
-      - BoSMidSerf
-      - CaesarLegionSlave
-      - NCRPrisoner
-  items:
-    - N14WeaponSMGPPSh41
-
-
-
-
 
 
 ## Rifles
@@ -1282,24 +1259,6 @@
       - NCRPrisoner
   items:
     - Magazine45SubMachineGun
-
-- type: loadout
-  id: N14MagazineSMG9mmDrum
-  category: Weapons
-  cost: 3
-  requirements:
-    - !type:CharacterItemGroupRequirement
-      group: N14LoadoutAmmoBig
-    - !type:CharacterJobRequirement
-      inverted: true
-      jobs:
-      - BoSMidSerf
-      - CaesarLegionSlave
-      - NCRPrisoner
-  items:
-    - N14MagazineSMG9mmDrum
-    
-
 
 - type: loadout
   id: Magazine762AmmoShort
