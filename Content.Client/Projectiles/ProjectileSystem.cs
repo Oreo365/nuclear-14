@@ -11,6 +11,7 @@ namespace Content.Client.Projectiles;
 public sealed class ProjectileSystem : SharedProjectileSystem
 {
     [Dependency] private readonly AnimationPlayerSystem _player = default!;
+    [Dependency] private readonly SharedTransformSystem _transform = default!;
 
     public override void Initialize()
     {
@@ -20,7 +21,7 @@ public sealed class ProjectileSystem : SharedProjectileSystem
 
     private void OnProjectileImpact(ImpactEffectEvent ev)
     {
-        var coords = GetCoordinates(ev.Coordinates);
+        var coords = _transform.ToCoordinates(_transform.ToMapCoordinates(GetCoordinates(ev.Coordinates)));
 
         if (Deleted(coords.EntityId))
             return;

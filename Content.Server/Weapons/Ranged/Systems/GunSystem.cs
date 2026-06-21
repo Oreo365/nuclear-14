@@ -42,6 +42,9 @@ public sealed partial class GunSystem : SharedGunSystem
     [Dependency] private readonly ContestsSystem _contests = default!;
 
     private const float DamagePitchVariation = 0.05f;
+    private const float MountedHitscanVisualMaxLeadSeconds = 0.45f;
+    private const float MountedHitscanVisualMaxLeadTiles = 3.5f;
+    private const float MountedHitscanVisualHitPaddingTiles = 0.25f;
 
     public override void Initialize()
     {
@@ -95,7 +98,7 @@ public sealed partial class GunSystem : SharedGunSystem
         // Update shot based on the recoil
         toMap = fromMap.Position + angle.ToVec() * mapDirection.Length();
         mapDirection = toMap - fromMap.Position;
-        var gunVelocity = Physics.GetMapLinearVelocity(fromEnt);
+        var gunVelocity = GetShooterMapLinearVelocity(user, fromEnt);
 
         // I must be high because this was getting tripped even when true.
         // DebugTools.Assert(direction != Vector2.Zero);
@@ -165,6 +168,7 @@ public sealed partial class GunSystem : SharedGunSystem
                     // can't use map coords above because funny FireEffects
                     var fromEffect = fromCoordinates;
                     var dir = mapDirection.Normalized();
+                    var visualOriginLead = GetMountedHitscanVisualLead(user);
 
                     //in the situation when user == null, means that the cannon fires on its own (via signals). And we need the gun to not fire by itself in this case
                     var lastUser = user ?? gunUid;
@@ -208,7 +212,8 @@ public sealed partial class GunSystem : SharedGunSystem
                             var hit = result.HitEntity;
                             lastHit = hit;
 
-                            FireEffects(fromEffect, result.Distance, dir.Normalized().ToAngle(), hitscan, hit);
+                            FireEffects(fromEffect, result.Distance, dir.Normalized().ToAngle(), hitscan, hit, visualOriginLead);
+                            visualOriginLead = default;
 
                             var ev = new HitScanReflectAttemptEvent(user, gunUid, hitscan.Reflective, dir, false);
                             RaiseLocalEvent(hit, ref ev);
@@ -277,7 +282,7 @@ public sealed partial class GunSystem : SharedGunSystem
                     }
                     else
                     {
-                        FireEffects(fromEffect, hitscan.MaxLength, dir.ToAngle(), hitscan);
+                        FireEffects(fromEffect, hitscan.MaxLength, dir.ToAngle(), hitscan, visualOriginLead: visualOriginLead);
                     }
 
                     if (lastHit != null && user != null)
@@ -386,6 +391,13 @@ public sealed partial class GunSystem : SharedGunSystem
 
     protected override void Popup(string message, EntityUid? uid, EntityUid? user) { }
 
+    protected override float GetMountedShotOriginLeadSeconds(RequestShootEvent msg, EntitySessionEventArgs args)
+    {
+        var pingSeconds = Math.Max(0f, args.SenderSession.Ping / 1000f);
+        var leadSeconds = pingSeconds + MountedShotOriginLeadCushionSeconds;
+        return Math.Clamp(leadSeconds, 0f, MountedShotOriginMaxLeadSeconds);
+    }
+
     protected override void CreateEffect(EntityUid gunUid, MuzzleFlashEvent message, EntityUid? user = null)
     {
         var filter = Filter.Pvs(gunUid, entityManager: EntityManager);
@@ -431,35 +443,76 @@ public sealed partial class GunSystem : SharedGunSystem
     // TODO: Pseudo RNG so the client can predict these.
     #region Hitscan effects
 
-    private void FireEffects(EntityCoordinates fromCoordinates, float distance, Angle mapDirection, HitscanPrototype hitscan, EntityUid? hitEntity = null)
+    private Vector2 GetMountedHitscanVisualLead(EntityUid? user)
+    {
+        if (user is not { } shooter)
+            return Vector2.Zero;
+
+        if (!TryGetMovingBuckledParent(shooter, out var parent) ||
+            !TryComp<ActorComponent>(shooter, out var actor))
+        {
+            return Vector2.Zero;
+        }
+
+        var velocity = Physics.GetMapLinearVelocity(parent.Value);
+        if (velocity.LengthSquared() == 0f)
+            return Vector2.Zero;
+
+        // Visual-only latency cover for mounted hitscans. The authoritative ray origin
+        // remains capped in SharedGunSystem; this only moves the beam effect toward the
+        // rider's current client-visible bike position at high ping.
+        var leadSeconds = Math.Clamp(
+            actor.PlayerSession.Ping / 1000f + MountedShotOriginLeadCushionSeconds,
+            0f,
+            MountedHitscanVisualMaxLeadSeconds);
+
+        var lead = velocity * leadSeconds;
+        var leadLength = lead.Length();
+
+        if (leadLength > MountedHitscanVisualMaxLeadTiles)
+            lead = lead / leadLength * MountedHitscanVisualMaxLeadTiles;
+
+        return lead;
+    }
+
+    private void FireEffects(EntityCoordinates fromCoordinates, float distance, Angle mapDirection, HitscanPrototype hitscan, EntityUid? hitEntity = null, Vector2 visualOriginLead = default)
     {
         // Lord
         // Forgive me for the shitcode I am about to do
         // Effects tempt me not
         var sprites = new List<(NetCoordinates coordinates, Angle angle, SpriteSpecifier sprite, float scale)>();
-        var gridUid = fromCoordinates.GetGridUid(EntityManager);
-        var angle = mapDirection;
-
-        // We'll get the effects relative to the grid / map of the firer
-        // Look you could probably optimise this a bit with redundant transforms at this point.
-        var xformQuery = GetEntityQuery<TransformComponent>();
-
-        if (xformQuery.TryGetComponent(gridUid, out var gridXform))
+        var fromMap = fromCoordinates.ToMap(EntityManager, TransformSystem);
+        var direction = mapDirection.ToVec().Normalized();
+        var visualLead = visualOriginLead;
+        if (hitEntity != null)
         {
-            var (_, gridRot, gridInvMatrix) = TransformSystem.GetWorldPositionRotationInvMatrix(gridXform, xformQuery);
+            var maxHitLead = Math.Max(0f, distance - MountedHitscanVisualHitPaddingTiles);
+            var hitLeadLength = visualLead.Length();
 
-            fromCoordinates = new EntityCoordinates(gridUid.Value,
-                Vector2.Transform(fromCoordinates.ToMapPos(EntityManager, TransformSystem), gridInvMatrix));
-
-            // Use the fallback angle I guess?
-            angle -= gridRot;
+            if (hitLeadLength > maxHitLead)
+                visualLead = hitLeadLength > 0f ? visualLead / hitLeadLength * maxHitLead : Vector2.Zero;
         }
 
-        if (distance >= 1f)
+        var visualStart = fromMap.Position + visualLead;
+        var visualEnd = fromMap.Position + direction * distance;
+
+        if (hitEntity == null)
+            visualEnd += visualLead;
+
+        var visualDirection = visualEnd - visualStart;
+        var visualDistance = visualDirection.Length();
+
+        if (visualDistance <= 0f)
+            return;
+
+        var angle = visualDirection.ToAngle();
+        var effectCoordinates = TransformSystem.ToCoordinates(new MapCoordinates(visualStart, fromMap.MapId));
+
+        if (visualDistance >= 1f)
         {
             if (hitscan.MuzzleFlash != null)
             {
-                var coords = fromCoordinates.Offset(angle.ToVec().Normalized() / 2);
+                var coords = effectCoordinates.Offset(angle.ToVec().Normalized() / 2);
                 var netCoords = GetNetCoordinates(coords);
 
                 sprites.Add((netCoords, angle, hitscan.MuzzleFlash, 1f));
@@ -467,16 +520,16 @@ public sealed partial class GunSystem : SharedGunSystem
 
             if (hitscan.TravelFlash != null)
             {
-                var coords = fromCoordinates.Offset(angle.ToVec() * (distance + 0.5f) / 2);
+                var coords = effectCoordinates.Offset(angle.ToVec() * (visualDistance + 0.5f) / 2);
                 var netCoords = GetNetCoordinates(coords);
 
-                sprites.Add((netCoords, angle, hitscan.TravelFlash, distance - 1.5f));
+                sprites.Add((netCoords, angle, hitscan.TravelFlash, visualDistance - 1.5f));
             }
         }
 
         if (hitscan.ImpactFlash != null)
         {
-            var coords = fromCoordinates.Offset(angle.ToVec() * distance);
+            var coords = effectCoordinates.Offset(angle.ToVec() * visualDistance);
             var netCoords = GetNetCoordinates(coords);
 
             sprites.Add((netCoords, angle.FlipPositive(), hitscan.ImpactFlash, 1f));
@@ -490,7 +543,7 @@ public sealed partial class GunSystem : SharedGunSystem
                 TintColor = hitscan.TintColor, // #Misfits Add: forward beam customisation
                 BeamWidth = hitscan.BeamWidth,
                 BeamDuration = hitscan.BeamDuration,
-            }, Filter.Pvs(fromCoordinates, entityMan: EntityManager));
+            }, Filter.Pvs(effectCoordinates, entityMan: EntityManager));
         }
     }
 

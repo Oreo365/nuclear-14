@@ -20,6 +20,7 @@ public sealed class ProjectileSystem : SharedProjectileSystem
     [Dependency] private readonly DamageableSystem _damageableSystem = default!;
     [Dependency] private readonly GunSystem _guns = default!;
     [Dependency] private readonly SharedCameraRecoilSystem _sharedCameraRecoil = default!;
+    [Dependency] private readonly SharedTransformSystem _transform = default!;
 
     public override void Initialize()
     {
@@ -80,7 +81,10 @@ public sealed class ProjectileSystem : SharedProjectileSystem
             QueueDel(uid);
 
         if (component.ImpactEffect != null && TryComp(uid, out TransformComponent? xform))
-            RaiseNetworkEvent(new ImpactEffectEvent(component.ImpactEffect, GetNetCoordinates(xform.Coordinates)), Filter.Pvs(xform.Coordinates, entityMan: EntityManager));
+        {
+            var coords = _transform.ToCoordinates(_transform.GetMapCoordinates(xform));
+            RaiseNetworkEvent(new ImpactEffectEvent(component.ImpactEffect, GetNetCoordinates(coords)), Filter.Pvs(coords, entityMan: EntityManager));
+        }
     }
 
     private void OnDamageExamine(EntityUid uid, EmbeddableProjectileComponent component, ref DamageExamineEvent args)

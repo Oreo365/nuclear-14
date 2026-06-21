@@ -16,10 +16,10 @@ using Robust.Shared.Serialization;
 
 namespace Content.Shared.Vehicles;
 
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class VehicleComponent : Component
 {
-    [ViewVariables]
+    [ViewVariables, AutoNetworkedField]
     public EntityUid? Driver;
 
     [ViewVariables]

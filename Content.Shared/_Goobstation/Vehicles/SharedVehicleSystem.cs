@@ -187,6 +187,7 @@ public abstract partial class SharedVehicleSystem : EntitySystem
             return;
 
         ent.Comp.Driver = driver;
+        Dirty(ent.Owner, ent.Comp);
         _appearance.SetData(ent, VehicleState.DrawOver, true);
 
         SetupOverlay(ent);
@@ -261,8 +262,6 @@ public abstract partial class SharedVehicleSystem : EntitySystem
         if (!TryComp<VehicleComponent>(vehicle, out var vehicleComp) || vehicleComp.Driver != driver)
             return;
 
-        vehicleComp.Driver = null;
-
         if (vehicleComp.ActiveOverlay.HasValue)
         {
             EntityManager.QueueDeleteEntity(vehicleComp.ActiveOverlay.Value);
@@ -271,6 +270,7 @@ public abstract partial class SharedVehicleSystem : EntitySystem
         RemComp<RelayInputMoverComponent>(driver);
 
         vehicleComp.Driver = null;
+        Dirty(vehicle, vehicleComp);
 
         if (vehicleComp.HornAction != null)
             _actions.RemoveAction(driver, vehicleComp.HornAction);

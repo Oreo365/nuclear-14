@@ -110,15 +110,14 @@ public sealed partial class GunSystem : SharedGunSystem
             if (a.Sprite is not SpriteSpecifier.Rsi rsi)
                 continue;
 
-            var coords = GetCoordinates(a.coordinates);
+            var coords = TransformSystem.ToCoordinates(TransformSystem.ToMapCoordinates(GetCoordinates(a.coordinates)));
 
             if (Deleted(coords.EntityId))
                 continue;
 
             var ent = Spawn(HitscanProto, coords);
             var sprite = Comp<SpriteComponent>(ent);
-            var xform = Transform(ent);
-            xform.LocalRotation = a.angle;
+            TransformSystem.SetWorldRotationNoLerp(ent, a.angle);
             sprite[EffectLayers.Unshaded].AutoAnimated = false;
             sprite.LayerSetSprite(EffectLayers.Unshaded, rsi);
             sprite.LayerSetState(EffectLayers.Unshaded, rsi.RsiState);
@@ -199,8 +198,10 @@ public sealed partial class GunSystem : SharedGunSystem
             return;
         }
 
-        // Define target coordinates relative to gun entity, so that network latency on moving grids doesn't fuck up the target location.
-        var coordinates = TransformSystem.ToCoordinates(entity, mousePos);
+        // #Misfits Fix: keep target coordinates independent from mounted rider parents.
+        // Buckled riders are transform children of bikes/mounts, so using the rider as
+        // the coordinate parent lets later vehicle rotation/movement skew the shot.
+        var coordinates = TransformSystem.ToCoordinates(mousePos);
 
         NetEntity? target = null;
         if (_state.CurrentState is GameplayStateBase screen)

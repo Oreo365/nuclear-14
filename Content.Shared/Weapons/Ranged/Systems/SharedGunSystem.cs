@@ -4,6 +4,8 @@ using Content.Shared.ActionBlocker;
 using Content.Shared.Actions;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Audio;
+using Content.Shared._NC.Mountable.Components;
+using Content.Shared.Buckle.Components;
 using Content.Shared.CombatMode;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Damage;
@@ -24,6 +26,7 @@ using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Weapons.Ranged.Events;
 using Content.Shared.Whitelist;
+using Content.Shared.Vehicles;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
@@ -73,6 +76,9 @@ public abstract partial class SharedGunSystem : EntitySystem
     private const float InteractNextFire = 0.3f;
     private const double SafetyNextFire = 0.5;
     private const float EjectOffset = 0.4f;
+    protected const float MountedShotOriginLeadCushionSeconds = 0.08f;
+    protected const float MountedShotOriginMaxLeadSeconds = 0.35f;
+    protected const float MountedShotOriginMaxLeadTiles = 2.5f;
     protected const string AmmoExamineColor = "yellow";
     protected const string FireRateExamineColor = "yellow";
     public const string ModeExamineColor = "cyan";
@@ -147,9 +153,9 @@ public abstract partial class SharedGunSystem : EntitySystem
         if (ent != GetEntity(msg.Gun))
             return;
 
-        gun.ShootCoordinates = GetCoordinates(msg.Coordinates);
+        gun.ShootCoordinates = NormalizeShootCoordinates(GetCoordinates(msg.Coordinates));
         gun.Target = GetEntity(msg.Target);
-        AttemptShoot(user.Value, ent, gun);
+        AttemptShoot(user.Value, ent, gun, GetMountedShotOriginLeadSeconds(msg, args));
     }
 
     private void OnStopShootRequest(RequestStopShootEvent ev, EntitySessionEventArgs args)
@@ -249,7 +255,7 @@ public abstract partial class SharedGunSystem : EntitySystem
         gun.ShotCounter = 0;
     }
 
-    private void AttemptShoot(EntityUid user, EntityUid gunUid, GunComponent gun)
+    private void AttemptShoot(EntityUid user, EntityUid gunUid, GunComponent gun, float mountedOriginLeadSeconds = 0f)
     {
         if (gun.FireRateModified <= 0f ||
             !_actionBlockerSystem.CanAttack(user))
@@ -338,12 +344,17 @@ public abstract partial class SharedGunSystem : EntitySystem
             return;
         }
 
-        var fromCoordinates = Transform(user).Coordinates;
+        var fromCoordinates = GetShootOriginCoordinates(user, mountedOriginLeadSeconds);
         var ignoredEntity = GetShotIgnoreEntity(user);
 
         // #Misfits Add: apply per-gun origin offset (e.g. Assaultron head beam)
         if (gun.ShootOffset != Vector2.Zero)
             fromCoordinates = fromCoordinates.Offset(gun.ShootOffset);
+
+        // #Misfits Fix: riders buckled to bikes/mounts have vehicle-local coordinates.
+        // Normalize before ammo providers spawn projectiles so bullets do not inherit
+        // vehicle transform or angular velocity before ShootProjectile detaches them.
+        fromCoordinates = NormalizeShootCoordinates(fromCoordinates);
 
         // Remove ammo
         var ev = new TakeAmmoEvent(shots, new List<(EntityUid? Entity, IShootable Shootable)>(), fromCoordinates, user);
@@ -475,6 +486,83 @@ public abstract partial class SharedGunSystem : EntitySystem
         projectile.ExtraIgnoredEntity = GetShotIgnoreEntity(user);
 
         TransformSystem.SetWorldRotation(uid, direction.ToWorldAngle() + projectile.Angle);
+    }
+
+    protected EntityCoordinates NormalizeShootCoordinates(EntityCoordinates coordinates)
+    {
+        var mapCoordinates = TransformSystem.ToMapCoordinates(coordinates);
+        return TransformSystem.ToCoordinates(mapCoordinates);
+    }
+
+    protected EntityCoordinates GetShootOriginCoordinates(EntityUid user, float mountedOriginLeadSeconds = 0f)
+    {
+        var coordinates = Transform(user).Coordinates;
+
+        if (mountedOriginLeadSeconds <= 0f ||
+            !TryGetMovingBuckledParent(user, out var parent))
+        {
+            return coordinates;
+        }
+
+        var velocity = Physics.GetMapLinearVelocity(parent.Value);
+        if (velocity.LengthSquared() == 0f)
+            return coordinates;
+
+        var leadSeconds = Math.Clamp(mountedOriginLeadSeconds, 0f, MountedShotOriginMaxLeadSeconds);
+        var lead = velocity * leadSeconds;
+        var leadLength = lead.Length();
+
+        if (leadLength > MountedShotOriginMaxLeadTiles)
+            lead = lead / leadLength * MountedShotOriginMaxLeadTiles;
+
+        var mapCoordinates = TransformSystem.ToMapCoordinates(coordinates);
+        return TransformSystem.ToCoordinates(new MapCoordinates(mapCoordinates.Position + lead, mapCoordinates.MapId));
+    }
+
+    protected Vector2 GetShooterMapLinearVelocity(EntityUid? user, EntityCoordinates fallbackCoordinates)
+    {
+        if (user != null &&
+            TryGetMovingBuckledParent(user.Value, out var parent))
+        {
+            return Physics.GetMapLinearVelocity(parent.Value);
+        }
+
+        return Physics.GetMapLinearVelocity(fallbackCoordinates);
+    }
+
+    protected virtual float GetMountedShotOriginLeadSeconds(RequestShootEvent msg, EntitySessionEventArgs args)
+    {
+        return GetMountedShotOriginLeadSeconds(msg.LastRealTick);
+    }
+
+    protected float GetMountedShotOriginLeadSeconds(GameTick? lastRealTick)
+    {
+        if (lastRealTick is not { } tick)
+            return 0f;
+
+        var tickDelta = Math.Max(0, (long) Timing.CurTick.Value - (long) tick.Value);
+        var leadSeconds = tickDelta / (float) Timing.TickRate + MountedShotOriginLeadCushionSeconds;
+        return Math.Clamp(leadSeconds, 0f, MountedShotOriginMaxLeadSeconds);
+    }
+
+    protected bool TryGetMovingBuckledParent(EntityUid user, [NotNullWhen(true)] out EntityUid? parent)
+    {
+        parent = null;
+
+        if (!TryComp<BuckleComponent>(user, out var buckle) ||
+            buckle.BuckledTo is not { } buckledTo)
+        {
+            return false;
+        }
+
+        if (!HasComp<VehicleComponent>(buckledTo) &&
+            !HasComp<MountableComponent>(buckledTo))
+        {
+            return false;
+        }
+
+        parent = buckledTo;
+        return true;
     }
 
     protected EntityUid? GetShotIgnoreEntity(EntityUid? user)
