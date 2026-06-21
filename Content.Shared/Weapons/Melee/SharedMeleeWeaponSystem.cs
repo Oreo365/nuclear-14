@@ -455,16 +455,16 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         return true;
     }
 
-    protected abstract bool InRange(EntityUid user, EntityUid target, float range, ICommonSession? session);
+    protected abstract bool InRange(EntityUid user, EntityUid target, float range, ICommonSession? session, GameTick? lastRealTick = null);
 
-    protected bool CanDoLightAttack(EntityUid user, [NotNullWhen(true)] EntityUid? target, MeleeWeaponComponent component, [NotNullWhen(true)] out TransformComponent? targetXform, ICommonSession? session = null)
+    protected bool CanDoLightAttack(EntityUid user, [NotNullWhen(true)] EntityUid? target, MeleeWeaponComponent component, [NotNullWhen(true)] out TransformComponent? targetXform, ICommonSession? session = null, GameTick? lastRealTick = null)
     {
         targetXform = null;
         return !Deleted(target) &&
             HasComp<DamageableComponent>(target) &&
             TryComp<TransformComponent>(target, out targetXform) &&
             // Not in LOS.
-            InRange(user, target.Value, component.Range, session);
+            InRange(user, target.Value, component.Range, session, lastRealTick);
     }
 
     protected virtual void DoLightAttack(EntityUid user, LightAttackEvent ev, EntityUid meleeUid, MeleeWeaponComponent component, ICommonSession? session)
@@ -475,7 +475,7 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         var resistanceBypass = GetResistanceBypass(meleeUid, user, component);
 
         // For consistency with wide attacks stuff needs damageable.
-        if (!CanDoLightAttack(user, target, component, out var targetXform, session))
+        if (!CanDoLightAttack(user, target, component, out var targetXform, session, ev.LastRealTick))
         {
             // Leave IsHit set to true, because the only time it's set to false
             // is when a melee weapon is examined. Misses are inferred from an
@@ -630,7 +630,8 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
                     distance,
                     userXform.MapID,
                     user,
-                    session))
+                    session,
+                    ev.LastRealTick))
             {
                 continue;
             }
@@ -772,7 +773,8 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         float range,
         MapId mapId,
         EntityUid ignore,
-        ICommonSession? session)
+        ICommonSession? session,
+        GameTick? lastRealTick = null)
     {
         // Only matters for server.
         return true;

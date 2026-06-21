@@ -13,6 +13,7 @@ public sealed class RequestShootEvent : EntityEventArgs
     public NetEntity Gun;
     public NetCoordinates Coordinates;
     public NetEntity? Target;
+    public List<int>? Shot;
 
     // #Misfits Add — last confirmed client tick at the time of the shot; used by
     // ServerMisfitsLagCompensationSystem to apply a range-tolerance margin on the server.
