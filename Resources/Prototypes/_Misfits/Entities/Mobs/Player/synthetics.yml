@@ -566,6 +566,7 @@
       borg_module: # tribal modifications: mostly agricultural tools
       - MisfitsBorgModuleTribalSpirit  # The spirit-tender "module"
       - MisfitsBorgModuleTribalHarvest # Harvest module
+      - MisfitsBorgModuleTribalConstruction # Tribal settlement construction module
       id: # pre-load the nav module into the id inventory slot
       - MisfitsRobotNavCardRobCo # RobCo Industries Navigation? TODO maybe an alternative
       ears: # wasteland radio?

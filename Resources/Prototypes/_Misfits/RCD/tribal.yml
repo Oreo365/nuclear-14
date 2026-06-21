@@ -1,0 +1,265 @@
+# Spirit-Tender settlement construction operations.
+
+- type: rcd
+  id: MisfitsRCDTribalLogWall
+  category: TribalShelter
+  sprite: { sprite: _Nuclear14/Structures/Walls/nc14/woodlognew.rsi, state: full }
+  mode: ConstructObject
+  prototype: N14WallWoodLog
+  cost: 4
+  delay: 2
+  collisionMask: FullTileMask
+  rotation: Fixed
+  fx: EffectRCDConstruct2
+
+- type: rcd
+  id: MisfitsRCDTribalWoodWall
+  category: TribalShelter
+  sprite: { sprite: _Nuclear14/Structures/Walls/ms13/slanted/wood.rsi, state: full }
+  mode: ConstructObject
+  prototype: N14WallWoodSlanted
+  cost: 4
+  delay: 2
+  collisionMask: FullTileMask
+  rotation: User
+  fx: EffectRCDConstruct2
+
+- type: rcd
+  id: MisfitsRCDTribalTallWoodWall
+  category: TribalShelter
+  sprite: { sprite: _Nuclear14/Structures/Walls/ms13/tall/wood.rsi, state: full }
+  mode: ConstructObject
+  prototype: N14WallWoodTall
+  cost: 4
+  delay: 2
+  collisionMask: FullTileMask
+  rotation: Fixed
+  fx: EffectRCDConstruct2
+
+- type: rcd
+  id: MisfitsRCDTribalHalfWoodWall
+  category: TribalShelter
+  sprite: { sprite: _Nuclear14/Structures/Walls/ms13/half/wood.rsi, state: full }
+  mode: ConstructObject
+  prototype: N14WallWoodHalf
+  cost: 2
+  delay: 1
+  collisionMask: FullTileMask
+  rotation: Fixed
+  fx: EffectRCDConstruct1
+
+- type: rcd
+  id: MisfitsRCDTribalAdobeWall
+  category: TribalShelter
+  sprite: { sprite: _Nuclear14/Structures/Walls/ms13/slanted/adobe.rsi, state: full }
+  mode: ConstructObject
+  prototype: N14WallAdobeSlanted
+  cost: 4
+  delay: 2
+  collisionMask: FullTileMask
+  rotation: User
+  fx: EffectRCDConstruct2
+
+- type: rcd
+  id: MisfitsRCDTribalMakeshiftDoor
+  category: TribalShelter
+  sprite: /Textures/Interface/Radial/RCD/airlock.png
+  mode: ConstructObject
+  prototype: N14DoorMakeshift
+  cost: 4
+  delay: 3
+  collisionMask: FullTileMask
+  rotation: User
+  fx: EffectRCDConstruct3
+
+- type: rcd
+  id: MisfitsRCDTribalWoodDoor
+  category: TribalShelter
+  sprite: /Textures/Interface/Radial/RCD/airlock.png
+  mode: ConstructObject
+  prototype: N14DoorWoodSlanted
+  cost: 4
+  delay: 3
+  collisionMask: FullTileMask
+  rotation: User
+  fx: EffectRCDConstruct3
+
+- type: rcd
+  id: MisfitsRCDTribalLeatherTentWall
+  category: TribalShelter
+  sprite: { sprite: _Nuclear14/Structures/Walls/nc14/tents.rsi, state: leather_edge }
+  mode: ConstructObject
+  prototype: N14TentLeatherWall
+  cost: 3
+  delay: 2
+  collisionMask: FullTileMask
+  rotation: User
+  fx: EffectRCDConstruct2
+
+- type: rcd
+  id: MisfitsRCDTribalLeatherTentCorner
+  category: TribalShelter
+  sprite: { sprite: _Nuclear14/Structures/Walls/nc14/tents.rsi, state: leather_corner }
+  mode: ConstructObject
+  prototype: N14TentLeatherCorner
+  cost: 2
+  delay: 1
+  collisionMask: FullTileMask
+  rotation: User
+  fx: EffectRCDConstruct1
+
+- type: rcd
+  id: MisfitsRCDTribalClothTentWall
+  category: TribalShelter
+  sprite: { sprite: _Nuclear14/Structures/Walls/nc14/tents.rsi, state: cloth_edge }
+  mode: ConstructObject
+  prototype: N14TentClothWall
+  cost: 3
+  delay: 2
+  collisionMask: FullTileMask
+  rotation: User
+  fx: EffectRCDConstruct2
+
+- type: rcd
+  id: MisfitsRCDTribalClothTentCorner
+  category: TribalShelter
+  sprite: { sprite: _Nuclear14/Structures/Walls/nc14/tents.rsi, state: cloth_corner }
+  mode: ConstructObject
+  prototype: N14TentClothCorner
+  cost: 2
+  delay: 1
+  collisionMask: FullTileMask
+  rotation: User
+  fx: EffectRCDConstruct1
+
+- type: rcd
+  id: MisfitsRCDTribalLeatherTentFlap
+  category: TribalShelter
+  sprite: { sprite: _Nuclear14/Structures/Doors/FalloutDoors/tentleather.rsi, state: closed }
+  mode: ConstructObject
+  prototype: N14DoorTentLeatherflap
+  cost: 3
+  delay: 2
+  collisionMask: FullTileMask
+  rotation: User
+  fx: EffectRCDConstruct2
+
+- type: rcd
+  id: MisfitsRCDTribalClothTentFlap
+  category: TribalShelter
+  sprite: { sprite: _Nuclear14/Structures/Doors/FalloutDoors/tentcloth.rsi, state: closed }
+  mode: ConstructObject
+  prototype: N14DoorTentClothflap
+  cost: 3
+  delay: 2
+  collisionMask: FullTileMask
+  rotation: User
+  fx: EffectRCDConstruct2
+
+- type: rcd
+  id: MisfitsRCDTribalWoodWindow
+  category: TribalShelter
+  sprite: { sprite: _Nuclear14/Structures/Windows/window_ruins.rsi, state: woodwindow }
+  mode: ConstructObject
+  prototype: N14WindowHouseWood
+  cost: 3
+  delay: 2
+  collisionMask: FullTileMask
+  rotation: User
+  fx: EffectRCDConstruct2
+
+- type: rcd
+  id: MisfitsRCDTribalBedroll
+  category: TribalFurnishings
+  sprite: { sprite: _Nuclear14/Structures/Furniture/bedsandchairs.rsi, state: bedroll_unrolled }
+  mode: ConstructObject
+  prototype: N14Bedroll
+  cost: 2
+  delay: 1
+  collisionMask: InteractImpassable
+  rotation: User
+  fx: EffectRCDConstruct1
+
+- type: rcd
+  id: MisfitsRCDTribalSettlerChair
+  category: TribalFurnishings
+  sprite: { sprite: _Nuclear14/Structures/Furniture/bedsandchairs.rsi, state: wooden_chair_settler }
+  mode: ConstructObject
+  prototype: N14ChairWoodSettler
+  cost: 2
+  delay: 1
+  collisionMask: InteractImpassable
+  rotation: User
+  fx: EffectRCDConstruct1
+
+- type: rcd
+  id: MisfitsRCDTribalSettlerTable
+  category: TribalFurnishings
+  sprite: { sprite: _Nuclear14/Structures/Furniture/Tables/table_settler.rsi, state: full }
+  mode: ConstructObject
+  prototype: N14TableWoodSettler
+  cost: 3
+  delay: 2
+  collisionMask: InteractImpassable
+  rotation: User
+  fx: EffectRCDConstruct2
+
+- type: rcd
+  id: MisfitsRCDTribalBanner
+  category: TribalFurnishings
+  sprite: { sprite: _Misfits/Structures/Decoration/tribal_banner.rsi, state: banner1 }
+  mode: ConstructObject
+  prototype: MisfitsDecorationFlagTribe
+  cost: 4
+  delay: 3
+  collisionMask: InteractImpassable
+  rotation: User
+  fx: EffectRCDConstruct3
+
+- type: rcd
+  id: MisfitsRCDTribalSoil
+  category: TribalAgriculture
+  sprite: { sprite: Structures/Hydroponics/misc.rsi, state: soil }
+  mode: ConstructObject
+  prototype: N14Soil
+  cost: 1
+  delay: 1
+  collisionMask: InteractImpassable
+  rotation: Fixed
+  fx: EffectRCDConstruct1
+
+- type: rcd
+  id: MisfitsRCDTribalPlanter
+  category: TribalAgriculture
+  sprite: { sprite: _Nuclear14/Structures/Hydroponics/planterbox.rsi, state: icon }
+  mode: ConstructObject
+  prototype: N14HydroponicsPlanter
+  cost: 3
+  delay: 2
+  collisionMask: InteractImpassable
+  rotation: Fixed
+  fx: EffectRCDConstruct2
+
+- type: rcd
+  id: MisfitsRCDTribalFloorTorch
+  category: TribalLighting
+  sprite: { sprite: Corvax/Structures/Decoration/torches.rsi, state: torch_lit }
+  mode: ConstructObject
+  prototype: N14Torch
+  cost: 1
+  delay: 1
+  collisionMask: InteractImpassable
+  rotation: Fixed
+  fx: EffectRCDConstruct1
+
+- type: rcd
+  id: MisfitsRCDTribalWallTorch
+  category: TribalLighting
+  sprite: { sprite: _Nuclear14/Structures/Decoration/torches.rsi, state: wall_torch_unlit }
+  mode: ConstructObject
+  prototype: N14TorchWall
+  cost: 1
+  delay: 1
+  collisionMask: InteractImpassable
+  rotation: User
+  fx: EffectRCDConstruct1

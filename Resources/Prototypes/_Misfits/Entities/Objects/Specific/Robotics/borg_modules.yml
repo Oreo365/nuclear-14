@@ -239,6 +239,48 @@
 
 # Tribal Spirit-Tender modules
 - type: entity
+  id: MisfitsTribalRCD
+  parent: RCDRecharging
+  name: tribal construction RCD
+  description: A battered construction device programmed with plans for tribal settlements.
+  components:
+  - type: RCD
+    availablePrototypes:
+    - MisfitsRCDTribalLogWall
+    - MisfitsRCDTribalWoodWall
+    - MisfitsRCDTribalTallWoodWall
+    - MisfitsRCDTribalHalfWoodWall
+    - MisfitsRCDTribalAdobeWall
+    - MisfitsRCDTribalMakeshiftDoor
+    - MisfitsRCDTribalWoodDoor
+    - MisfitsRCDTribalLeatherTentWall
+    - MisfitsRCDTribalLeatherTentCorner
+    - MisfitsRCDTribalClothTentWall
+    - MisfitsRCDTribalClothTentCorner
+    - MisfitsRCDTribalLeatherTentFlap
+    - MisfitsRCDTribalClothTentFlap
+    - MisfitsRCDTribalWoodWindow
+    - MisfitsRCDTribalBedroll
+    - MisfitsRCDTribalSettlerChair
+    - MisfitsRCDTribalSettlerTable
+    - MisfitsRCDTribalBanner
+    - MisfitsRCDTribalSoil
+    - MisfitsRCDTribalPlanter
+    - MisfitsRCDTribalFloorTorch
+    - MisfitsRCDTribalWallTorch
+    - Deconstruct
+
+- type: entity
+  id: MisfitsBorgModuleTribalConstruction
+  parent: BorgModuleConstruction
+  name: tribal construction module
+  description: A settlement-building module assembled from a damaged Protectron construction system.
+  components:
+  - type: ItemBorgModule
+    items:
+    - MisfitsTribalRCD
+
+- type: entity
   id: MisfitsBorgModuleTribalSpirit
   parent: [ BaseBorgModule, BaseProviderBorgModule ]
   name: spirit-tender module
