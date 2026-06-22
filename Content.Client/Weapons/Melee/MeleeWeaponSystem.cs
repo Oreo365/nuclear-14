@@ -251,7 +251,9 @@ public sealed partial class MeleeWeaponSystem : SharedMeleeWeaponSystem
 
         var userPos = TransformSystem.GetWorldPosition(userXform);
         var direction = targetMap.Position - userPos;
-        var distance = MathF.Min(component.Range * component.HeavyRangeModifier, direction.Length());
+        // [Changed by MisfitsCrew/Operator] Wide swings use cursor angle with full heavy reach;
+        // clamping to cursor distance made hits require hovering the target.
+        var distance = component.Range * component.HeavyRangeModifier;
 
         // This should really be improved. GetEntitiesInArc uses pos instead of bounding boxes.
         // Server will validate it with InRangeUnobstructed.

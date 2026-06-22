@@ -6,6 +6,7 @@ using Content.Shared.Actions.Events;
 using Content.Shared.Administration.Components;
 using Content.Shared.CombatMode;
 using Content.Shared.Contests;
+using Content.Shared.Damage;
 using Content.Shared.Damage.Events;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Database;
@@ -13,6 +14,7 @@ using Content.Shared.Effects;
 using Content.Shared.Hands.Components;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Mobs.Systems;
+using Content.Shared.Physics;
 using Content.Shared.Speech.Components;
 using Content.Shared.StatusEffect;
 using Content.Shared.Weapons.Melee;
@@ -20,6 +22,7 @@ using Content.Shared.Weapons.Melee.Events;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
+using Robust.Shared.GameObjects;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
@@ -46,8 +49,11 @@ public sealed class MeleeWeaponSystem : SharedMeleeWeaponSystem
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly SharedColorFlashEffectSystem _color = default!;
     [Dependency] private readonly ContestsSystem _contests = default!;
+    [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
+
+    private readonly HashSet<EntityUid> _heavyAttackCandidates = [];
 
     public override void Initialize()
     {
@@ -105,7 +111,7 @@ public sealed class MeleeWeaponSystem : SharedMeleeWeaponSystem
             (targetCoords, targetLocalAngle) = lastRealTick is { } tick
                 ? _lag.GetCoordinatesAngle(targetUid, tick - 1)
                 : _lag.GetCoordinatesAngle(targetUid, session);
-            if (!Interaction.InRangeUnobstructed(ignore, targetUid, targetCoords, targetLocalAngle, range + 0.1f))
+            if (!Interaction.InRangeUnobstructed(ignore, targetUid, targetCoords, targetLocalAngle, range + WideArcTolerance))
                 return false;
         }
         else
@@ -113,7 +119,7 @@ public sealed class MeleeWeaponSystem : SharedMeleeWeaponSystem
             var xform = Transform(targetUid);
             targetCoords = xform.Coordinates;
             targetLocalAngle = xform.LocalRotation;
-            if (!Interaction.InRangeUnobstructed(ignore, targetUid, range + 0.1f))
+            if (!Interaction.InRangeUnobstructed(ignore, targetUid, range + WideArcTolerance))
                 return false;
         }
 
@@ -124,12 +130,169 @@ public sealed class MeleeWeaponSystem : SharedMeleeWeaponSystem
             if (toTarget.LengthSquared() > 0.001f)
             {
                 var diff = Angle.ShortestDistance(angle, toTarget.ToWorldAngle());
-                if (Math.Abs((double) diff) > (double) arcWidth / 2.0 + 0.1)
+                if (Math.Abs((double) diff) > (double) arcWidth / 2.0 + WideArcTolerance &&
+                    !TargetBoundsOverlapArc(targetUid, targetCoords, targetLocalAngle, position, angle, arcWidth, range + WideArcTolerance))
+                {
                     return false;
+                }
             }
         }
 
         return true;
+    }
+
+    private bool TargetBoundsOverlapArc(
+        EntityUid targetUid,
+        EntityCoordinates targetCoords,
+        Angle targetLocalAngle,
+        Vector2 origin,
+        Angle angle,
+        Angle arcWidth,
+        float range)
+    {
+        if (!TryComp<FixturesComponent>(targetUid, out var fixtures))
+            return false;
+
+        var targetMap = _transform.ToMapCoordinates(targetCoords);
+        if (targetMap.MapId == MapId.Nullspace)
+            return false;
+
+        var worldAngle = _transform.GetWorldRotation(targetCoords.EntityId) + targetLocalAngle;
+        var transform = new Transform(targetMap.Position, worldAngle);
+        var initialized = false;
+        var bounds = new Box2(targetMap.Position, targetMap.Position);
+
+        foreach (var fixture in fixtures.Fixtures.Values)
+        {
+            if (!fixture.Hard ||
+                (fixture.CollisionLayer & (int) (CollisionGroup.MobMask | CollisionGroup.Opaque)) == 0)
+            {
+                continue;
+            }
+
+            for (var i = 0; i < fixture.Shape.ChildCount; i++)
+            {
+                var aabb = fixture.Shape.ComputeAABB(transform, i);
+                bounds = initialized ? bounds.Union(aabb) : aabb;
+                initialized = true;
+            }
+        }
+
+        if (!initialized)
+            return false;
+
+        // [Changed by MisfitsCrew/Operator] Center-point arc checks reject edge hits on wide
+        // swings; accept when the target's physical bounds overlap the validated swing sector.
+        var halfArc = arcWidth / 2.0 + WideArcTolerance;
+        foreach (var point in GetBoxTestPoints(bounds, origin))
+        {
+            if (PointInArc(point, origin, angle, halfArc, range))
+                return true;
+        }
+
+        var centerEnd = origin + angle.ToWorldVec() * range;
+        var leftEnd = origin + new Angle(angle - arcWidth / 2.0).ToWorldVec() * range;
+        var rightEnd = origin + new Angle(angle + arcWidth / 2.0).ToWorldVec() * range;
+        return SegmentIntersectsBox(origin, centerEnd, bounds) ||
+               SegmentIntersectsBox(origin, leftEnd, bounds) ||
+               SegmentIntersectsBox(origin, rightEnd, bounds);
+    }
+
+    private static IEnumerable<Vector2> GetBoxTestPoints(Box2 bounds, Vector2 origin)
+    {
+        yield return bounds.BottomLeft;
+        yield return bounds.BottomRight;
+        yield return bounds.TopLeft;
+        yield return bounds.TopRight;
+        yield return new Vector2(
+            Math.Clamp(origin.X, bounds.Left, bounds.Right),
+            Math.Clamp(origin.Y, bounds.Bottom, bounds.Top));
+    }
+
+    private static bool PointInArc(Vector2 point, Vector2 origin, Angle angle, Angle halfArc, float range)
+    {
+        var delta = point - origin;
+        if (delta.LengthSquared() > range * range || delta.LengthSquared() <= 0.001f)
+            return false;
+
+        return Math.Abs((double) Angle.ShortestDistance(angle, delta.ToWorldAngle())) <= (double) halfArc;
+    }
+
+    private static bool SegmentIntersectsBox(Vector2 start, Vector2 end, Box2 box)
+    {
+        if (box.Contains(start))
+            return true;
+
+        var direction = end - start;
+        var min = 0f;
+        var max = 1f;
+
+        if (!ClipAxis(start.X, direction.X, box.Left, box.Right, ref min, ref max) ||
+            !ClipAxis(start.Y, direction.Y, box.Bottom, box.Top, ref min, ref max))
+        {
+            return false;
+        }
+
+        return max >= min;
+    }
+
+    private static bool ClipAxis(float start, float direction, float minBound, float maxBound, ref float min, ref float max)
+    {
+        if (Math.Abs(direction) < 0.0001f)
+            return start >= minBound && start <= maxBound;
+
+        var inv = 1f / direction;
+        var enter = (minBound - start) * inv;
+        var exit = (maxBound - start) * inv;
+
+        if (enter > exit)
+            (enter, exit) = (exit, enter);
+
+        min = Math.Max(min, enter);
+        max = Math.Min(max, exit);
+        return max >= min;
+    }
+
+    protected override void AddHeavyAttackCandidates(
+        List<EntityUid> entities,
+        EntityUid user,
+        EntityUid meleeUid,
+        MeleeWeaponComponent component,
+        Vector2 position,
+        Angle angle,
+        float range,
+        MapId mapId,
+        ICommonSession? session,
+        GameTick? lastRealTick)
+    {
+        if (session == null || entities.Count >= component.MaxTargets)
+            return;
+
+        // [Changed by MisfitsCrew/Operator] Recover server-authoritative wide-swing targets
+        // from lag-compensated positions when client prediction missed the entity list.
+        // [Changed by MisfitsCrew/Operator] Include the configured lag-compensation margin in
+        // the candidate lookup; final acceptance still goes through ArcRaySuccessful below.
+        var lookupRange = range + _lag.MarginTiles;
+        var bounds = Box2.CenteredAround(position, new Vector2(lookupRange * 2f, lookupRange * 2f));
+        _heavyAttackCandidates.Clear();
+        _lookup.GetEntitiesIntersecting(mapId, bounds, _heavyAttackCandidates, LookupFlags.Dynamic);
+
+        foreach (var candidate in _heavyAttackCandidates)
+        {
+            if (entities.Contains(candidate) ||
+                IsUserRelatedAttackEntity(user, candidate) ||
+                !HasComp<DamageableComponent>(candidate))
+            {
+                continue;
+            }
+
+            if (!ArcRaySuccessful(candidate, position, angle, component.Angle, range, mapId, user, session, lastRealTick))
+                continue;
+
+            entities.Add(candidate);
+            if (entities.Count >= component.MaxTargets)
+                break;
+        }
     }
 
     protected override bool DoDisarm(EntityUid user, DisarmAttackEvent ev, EntityUid meleeUid, MeleeWeaponComponent component, ICommonSession? session)

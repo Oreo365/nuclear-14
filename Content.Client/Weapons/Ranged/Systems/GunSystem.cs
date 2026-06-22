@@ -546,9 +546,13 @@ public sealed partial class GunSystem : SharedGunSystem
 
         var normalizedDirection = direction.Normalized();
         var from = fromMap;
-        var fromEffect = fromCoordinates;
-        var ignoredEntity = GetShotIgnoreEntity(user);
-        var source = ignoredEntity ?? user ?? gunUid;
+        // [Changed by MisfitsCrew/Operator] Use grid/map effect coordinates so predicted beam
+        // sprites are not parented to bikes or other ridden entities.
+        var fromEffect = GetShotEffectCoordinates(fromMap);
+        // [Changed by MisfitsCrew/Operator] Keep the rider as the shot source and ignore the
+        // mounted vehicle separately so predicted lasers do not collide with either one.
+        var ignoredEntity = GetShotExtraIgnoredEntity(user);
+        var source = user ?? gunUid;
         var historicalTick = GetPredictedHitscanTick();
         var reflectAttempts = hitscan.Reflective != ReflectType.None ? 3 : 1;
         EntityUid? hitEntity = null;
@@ -584,7 +588,7 @@ public sealed partial class GunSystem : SharedGunSystem
             if (!reflectEv.Reflected || reflectEv.Direction.LengthSquared() <= 0.0001f)
                 break;
 
-            fromEffect = Transform(hit).Coordinates;
+            fromEffect = GetShotEffectCoordinates(Transform(hit).Coordinates.ToMap(EntityManager, TransformSystem));
             from = fromEffect.ToMap(EntityManager, TransformSystem);
             normalizedDirection = reflectEv.Direction.Normalized();
             worldAngle = normalizedDirection.ToAngle();
@@ -615,7 +619,13 @@ public sealed partial class GunSystem : SharedGunSystem
         distance = hitscan.MaxLength;
 
         var ray = new CollisionRay(from.Position, direction, hitscan.CollisionMask);
-        var rayCastResults = Physics.IntersectRay(from.MapId, ray, hitscan.MaxLength, ignoredEntity ?? source, false).ToList();
+        var rayCastResults = Physics.IntersectRayWithPredicate(
+            from.MapId,
+            ray,
+            (Source: source, Extra: ignoredEntity),
+            static (hit, ignored) => hit == ignored.Source || hit == ignored.Extra,
+            hitscan.MaxLength,
+            false).ToList();
         var firedFromContainer = Containers.IsEntityOrParentInContainer(source);
 
         EntityUid? staticHit = null;
@@ -625,7 +635,9 @@ public sealed partial class GunSystem : SharedGunSystem
 
         foreach (var result in rayCastResults)
         {
-            if (!IsValidHitscanTarget(result.HitEntity, target, firedFromContainer))
+            if (result.HitEntity == source ||
+                result.HitEntity == ignoredEntity ||
+                !IsValidHitscanTarget(result.HitEntity, target, firedFromContainer))
                 continue;
 
             if (TryComp<PhysicsComponent>(result.HitEntity, out var resultPhysics) &&
@@ -647,6 +659,7 @@ public sealed partial class GunSystem : SharedGunSystem
                 hitscan.MaxLength,
                 hitscan.CollisionMask,
                 source,
+                ignoredEntity,
                 target,
                 firedFromContainer,
                 historicalTick,
@@ -682,6 +695,7 @@ public sealed partial class GunSystem : SharedGunSystem
         float maxLength,
         int collisionMask,
         EntityUid source,
+        EntityUid? ignoredEntity,
         EntityUid? target,
         bool firedFromContainer,
         GameTick historicalTick,
@@ -700,6 +714,7 @@ public sealed partial class GunSystem : SharedGunSystem
         foreach (var candidate in _lagCompCandidates)
         {
             if (candidate == source ||
+                candidate == ignoredEntity ||
                 !TryComp(candidate, out FixturesComponent? fixtures) ||
                 !TryComp(candidate, out TransformComponent? xform))
             {

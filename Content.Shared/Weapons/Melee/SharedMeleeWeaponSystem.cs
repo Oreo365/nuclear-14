@@ -3,6 +3,8 @@ using System.Linq;
 using System.Numerics;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Administration.Logs;
+using Content.Shared._NC.Mountable.Components;
+using Content.Shared.Buckle.Components;
 using Content.Shared.CombatMode;
 using Content.Shared.Contests;
 using Content.Shared.Damage;
@@ -16,8 +18,10 @@ using Content.Shared.Interaction;
 using Content.Shared.Inventory;
 using Content.Shared.Inventory.VirtualItem;
 using Content.Shared.Item.ItemToggle.Components;
+using Content.Shared.Mech.Components;
 using Content.Shared.Physics;
 using Content.Shared.Popups;
+using Content.Shared.Vehicles;
 using Content.Shared.Weapons.Melee.Components;
 using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Weapons.Ranged.Components;
@@ -48,6 +52,7 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
     [Dependency] protected readonly IGameTiming              Timing          = default!;
     [Dependency] protected readonly SharedTransformSystem    TransformSystem = default!;
     [Dependency] private   readonly InventorySystem         _inventory       = default!;
+    [Dependency] private   readonly EntityLookupSystem      _lookup          = default!;
     [Dependency] private   readonly MeleeSoundSystem        _meleeSound      = default!;
     [Dependency] private   readonly SharedPhysicsSystem     _physics         = default!;
     [Dependency] private   readonly IPrototypeManager       _protoManager    = default!;
@@ -57,6 +62,7 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
     [Dependency] private   readonly GrabIntentSystem          _grabIntent      = default!;
 
     private const int AttackMask = (int) (CollisionGroup.MobMask | CollisionGroup.Opaque);
+    protected const float WideArcTolerance = 0.05f;
 
     public override void Initialize()
     {
@@ -586,33 +592,12 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
 
         var userPos = TransformSystem.GetWorldPosition(userXform);
         var direction = targetMap.Position - userPos;
-        var distance = Math.Min(component.Range, direction.Length());
+        // [Changed by MisfitsCrew/Operator] Wide swings use the cursor for direction, not reach;
+        // otherwise the swing only hits when the cursor is placed over the target.
+        var distance = component.Range * component.HeavyRangeModifier;
 
         var damage = GetDamage(meleeUid, user, component);
         var entities = GetEntityList(ev.Entities);
-
-        if (entities.Count == 0)
-        {
-            if (meleeUid == user)
-            {
-                AdminLogger.Add(LogType.MeleeHit,
-                    LogImpact.Low,
-                    $"{ToPrettyString(user):actor} melee attacked (heavy) using their hands and missed");
-            }
-            else
-            {
-                AdminLogger.Add(LogType.MeleeHit,
-                    LogImpact.Low,
-                    $"{ToPrettyString(user):actor} melee attacked (heavy) using {ToPrettyString(meleeUid):tool} and missed");
-            }
-            var missEvent = new MeleeHitEvent(new List<EntityUid>(), user, meleeUid, damage, direction);
-            RaiseLocalEvent(meleeUid, missEvent);
-
-            // immediate audio feedback
-            _meleeSound.PlaySwingSound(user, meleeUid, component);
-
-            return true;
-        }
 
         // Naughty input
         if (entities.Count > component.MaxTargets)
@@ -640,12 +625,48 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
             entities.RemoveAt(i);
         }
 
+        // [Changed by MisfitsCrew/Operator] Recover server-side candidates only after bogus
+        // client entries have been removed, so stale or malicious max-target lists cannot block prediction correction.
+        AddHeavyAttackCandidates(entities,
+            user,
+            meleeUid,
+            component,
+            userPos,
+            direction.ToWorldAngle(),
+            distance,
+            userXform.MapID,
+            session,
+            ev.LastRealTick);
+
+        if (entities.Count == 0)
+        {
+            if (meleeUid == user)
+            {
+                AdminLogger.Add(LogType.MeleeHit,
+                    LogImpact.Low,
+                    $"{ToPrettyString(user):actor} melee attacked (heavy) using their hands and missed");
+            }
+            else
+            {
+                AdminLogger.Add(LogType.MeleeHit,
+                    LogImpact.Low,
+                    $"{ToPrettyString(user):actor} melee attacked (heavy) using {ToPrettyString(meleeUid):tool} and missed");
+            }
+            var missEvent = new MeleeHitEvent(new List<EntityUid>(), user, meleeUid, damage, direction);
+            RaiseLocalEvent(meleeUid, missEvent);
+
+            // immediate audio feedback
+            _meleeSound.PlaySwingSound(user, meleeUid, component);
+
+            return true;
+        }
+
         var targets = new List<EntityUid>();
         var damageQuery = GetEntityQuery<DamageableComponent>();
 
         foreach (var entity in entities)
         {
-            if (entity == user ||
+            if (IsUserRelatedAttackEntity(user, entity) ||
                 !damageQuery.HasComponent(entity))
                 continue;
 
@@ -721,9 +742,11 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
             }
         }
 
-        if (entities.Count != 0)
+        // [Changed by MisfitsCrew/Operator] Use filtered damageable targets for feedback so a
+        // rider's own bike cannot produce hit sounds after being excluded from damage.
+        if (targets.Count != 0)
         {
-            var target = entities.First();
+            var target = targets.First();
             _meleeSound.PlayHitSound(target, user, GetHighestDamageSound(appliedDamage, _protoManager), hitEvent.HitSoundOverride, component.SoundHit, component.SoundNoDamage);
         }
 
@@ -742,18 +765,22 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         var increments = 1 + 35 * (int) Math.Ceiling(widthRad / (2 * Math.PI));
         var increment = widthRad / increments;
         var baseAngle = angle - widthRad / 2;
+        var extraIgnored = GetUserExtraIgnoredEntity(ignore);
 
         var resSet = new HashSet<EntityUid>();
 
         for (var i = 0; i < increments; i++)
         {
             var castAngle = new Angle(baseAngle + increment * i);
-            var res = _physics.IntersectRay(mapId,
+            // [Changed by MisfitsCrew/Operator] Ignore both the attacker and their mounted vehicle
+            // so rider wide swings do not select the bike as the first arc hit.
+            var res = _physics.IntersectRayWithPredicate(mapId,
                 new CollisionRay(position,
                     castAngle.ToWorldVec(),
                     AttackMask),
+                (User: ignore, Extra: extraIgnored),
+                static (hit, ignored) => hit == ignored.User || hit == ignored.Extra,
                 range,
-                ignore,
                 false)
                 .ToList();
 
@@ -763,7 +790,185 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
             }
         }
 
+        AddArcBoundsCandidates(resSet, position, angle, arcWidth, range, mapId, ignore, extraIgnored);
+
         return resSet;
+    }
+
+    private void AddArcBoundsCandidates(
+        HashSet<EntityUid> result,
+        Vector2 position,
+        Angle angle,
+        Angle arcWidth,
+        float range,
+        MapId mapId,
+        EntityUid ignore,
+        EntityUid? extraIgnored)
+    {
+        // [Changed by MisfitsCrew/Operator] Add physical edge-overlap candidates during
+        // client prediction too, so edge wide swings do not damage without local feedback.
+        var bounds = Box2.CenteredAround(position, new Vector2(range * 2f, range * 2f));
+        var candidates = _lookup.GetEntitiesIntersecting(mapId, bounds, LookupFlags.Dynamic);
+
+        foreach (var candidate in candidates)
+        {
+            if (result.Contains(candidate) ||
+                candidate == ignore ||
+                candidate == extraIgnored ||
+                !HasComp<DamageableComponent>(candidate) ||
+                !TryComp(candidate, out TransformComponent? xform) ||
+                !TryComp(candidate, out FixturesComponent? fixtures))
+            {
+                continue;
+            }
+
+            if (TargetBoundsOverlapArc(xform.Coordinates, xform.LocalRotation, fixtures, position, angle, arcWidth, range))
+                result.Add(candidate);
+        }
+    }
+
+    private bool TargetBoundsOverlapArc(
+        EntityCoordinates targetCoords,
+        Angle targetLocalAngle,
+        FixturesComponent fixtures,
+        Vector2 origin,
+        Angle angle,
+        Angle arcWidth,
+        float range)
+    {
+        var targetMap = TransformSystem.ToMapCoordinates(targetCoords);
+        if (targetMap.MapId == MapId.Nullspace)
+            return false;
+
+        var worldAngle = TransformSystem.GetWorldRotation(targetCoords.EntityId) + targetLocalAngle;
+        var transform = new Transform(targetMap.Position, worldAngle);
+        var initialized = false;
+        var bounds = new Box2(targetMap.Position, targetMap.Position);
+
+        foreach (var fixture in fixtures.Fixtures.Values)
+        {
+            if (!fixture.Hard ||
+                (fixture.CollisionLayer & AttackMask) == 0)
+            {
+                continue;
+            }
+
+            for (var i = 0; i < fixture.Shape.ChildCount; i++)
+            {
+                var aabb = fixture.Shape.ComputeAABB(transform, i);
+                bounds = initialized ? bounds.Union(aabb) : aabb;
+                initialized = true;
+            }
+        }
+
+        if (!initialized)
+            return false;
+
+        var halfArc = arcWidth / 2.0 + WideArcTolerance;
+        foreach (var point in GetBoxTestPoints(bounds, origin))
+        {
+            if (PointInArc(point, origin, angle, halfArc, range))
+                return true;
+        }
+
+        var centerEnd = origin + angle.ToWorldVec() * range;
+        var leftEnd = origin + new Angle(angle - arcWidth / 2.0).ToWorldVec() * range;
+        var rightEnd = origin + new Angle(angle + arcWidth / 2.0).ToWorldVec() * range;
+        return SegmentIntersectsBox(origin, centerEnd, bounds) ||
+               SegmentIntersectsBox(origin, leftEnd, bounds) ||
+               SegmentIntersectsBox(origin, rightEnd, bounds);
+    }
+
+    protected static IEnumerable<Vector2> GetBoxTestPoints(Box2 bounds, Vector2 origin)
+    {
+        yield return bounds.BottomLeft;
+        yield return bounds.BottomRight;
+        yield return bounds.TopLeft;
+        yield return bounds.TopRight;
+        yield return new Vector2(
+            Math.Clamp(origin.X, bounds.Left, bounds.Right),
+            Math.Clamp(origin.Y, bounds.Bottom, bounds.Top));
+    }
+
+    protected static bool PointInArc(Vector2 point, Vector2 origin, Angle angle, Angle halfArc, float range)
+    {
+        var delta = point - origin;
+        if (delta.LengthSquared() > range * range || delta.LengthSquared() <= 0.001f)
+            return false;
+
+        return Math.Abs((double) Angle.ShortestDistance(angle, delta.ToWorldAngle())) <= (double) halfArc;
+    }
+
+    protected static bool SegmentIntersectsBox(Vector2 start, Vector2 end, Box2 box)
+    {
+        if (box.Contains(start))
+            return true;
+
+        var direction = end - start;
+        var min = 0f;
+        var max = 1f;
+
+        if (!ClipAxis(start.X, direction.X, box.Left, box.Right, ref min, ref max) ||
+            !ClipAxis(start.Y, direction.Y, box.Bottom, box.Top, ref min, ref max))
+        {
+            return false;
+        }
+
+        return max >= min;
+    }
+
+    private static bool ClipAxis(float start, float direction, float minBound, float maxBound, ref float min, ref float max)
+    {
+        if (Math.Abs(direction) < 0.0001f)
+            return start >= minBound && start <= maxBound;
+
+        var inv = 1f / direction;
+        var enter = (minBound - start) * inv;
+        var exit = (maxBound - start) * inv;
+
+        if (enter > exit)
+            (enter, exit) = (exit, enter);
+
+        min = Math.Max(min, enter);
+        max = Math.Min(max, exit);
+        return max >= min;
+    }
+
+    protected virtual void AddHeavyAttackCandidates(
+        List<EntityUid> entities,
+        EntityUid user,
+        EntityUid meleeUid,
+        MeleeWeaponComponent component,
+        Vector2 position,
+        Angle angle,
+        float range,
+        MapId mapId,
+        ICommonSession? session,
+        GameTick? lastRealTick)
+    {
+    }
+
+    protected bool IsUserRelatedAttackEntity(EntityUid user, EntityUid entity)
+    {
+        if (entity == user)
+            return true;
+
+        return GetUserExtraIgnoredEntity(user) == entity;
+    }
+
+    private EntityUid? GetUserExtraIgnoredEntity(EntityUid user)
+    {
+        if (TryComp<BuckleComponent>(user, out var buckle) &&
+            buckle.BuckledTo is { } buckledTo &&
+            (HasComp<VehicleComponent>(buckledTo) || HasComp<MountableComponent>(buckledTo)))
+        {
+            return buckledTo;
+        }
+
+        if (TryComp<MechPilotComponent>(user, out var mechPilot))
+            return mechPilot.Mech;
+
+        return null;
     }
 
     protected virtual bool ArcRaySuccessful(EntityUid targetUid,

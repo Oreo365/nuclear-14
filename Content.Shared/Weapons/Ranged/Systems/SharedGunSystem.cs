@@ -644,6 +644,15 @@ public abstract partial class SharedGunSystem : EntitySystem
         return null;
     }
 
+    protected EntityCoordinates GetShotEffectCoordinates(MapCoordinates mapCoordinates)
+    {
+        // [Changed by MisfitsCrew/Operator] Hitscan beam effects must be anchored to the grid or map,
+        // not to a ridden vehicle that happens to be the shooter's coordinate parent.
+        return MapManager.TryFindGridAt(mapCoordinates, out var gridUid, out _)
+            ? EntityCoordinates.FromMap(gridUid, mapCoordinates, TransformSystem, EntityManager)
+            : EntityCoordinates.FromMap(MapManager.GetMapEntityId(mapCoordinates.MapId), mapCoordinates, TransformSystem, EntityManager);
+    }
+
     protected bool TryResolveGunHitscan(EntityUid gunUid, out HitscanPrototype hitscan)
     {
         hitscan = default!;

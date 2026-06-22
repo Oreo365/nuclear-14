@@ -194,12 +194,15 @@ public sealed partial class GunSystem : SharedGunSystem
                     EntityUid? lastHit = null;
 
                     var from = fromMap;
-                    // can't use map coords above because funny FireEffects
-                    var fromEffect = fromCoordinates;
+                    // [Changed by MisfitsCrew/Operator] Use grid/map effect coordinates so beam
+                    // sprites are not parented to bikes or other ridden entities.
+                    var fromEffect = GetShotEffectCoordinates(fromMap);
                     var dir = mapDirection.Normalized();
 
                     //in the situation when user == null, means that the cannon fires on its own (via signals). And we need the gun to not fire by itself in this case
                     var lastUser = user ?? gunUid;
+                    // [Changed by MisfitsCrew/Operator] Rider-fired hitscan must ignore both
+                    // the rider and their mounted vehicle; one ignored entity is not enough.
                     var rayExtraIgnore = GetShotExtraIgnoredEntity(user);
 
                     if (hitscan.Reflective != ReflectType.None)
@@ -230,7 +233,7 @@ public sealed partial class GunSystem : SharedGunSystem
                             if (!ev.Reflected)
                                 break;
 
-                            fromEffect = Transform(hit).Coordinates;
+                            fromEffect = GetShotEffectCoordinates(Transform(hit).Coordinates.ToMap(EntityManager, _transform));
                             from = fromEffect.ToMap(EntityManager, _transform);
                             dir = ev.Direction;
                             lastUser = hit;
@@ -392,7 +395,9 @@ public sealed partial class GunSystem : SharedGunSystem
 
         foreach (var result in raycastEvent.RayCastResults)
         {
-            if (!IsValidHitscanTarget(result.HitEntity, target, firedFromContainer))
+            if (result.HitEntity == source ||
+                result.HitEntity == extraIgnoredEntity ||
+                !IsValidHitscanTarget(result.HitEntity, target, firedFromContainer))
                 continue;
 
             if (HasComp<LagCompensationComponent>(result.HitEntity))
@@ -413,6 +418,7 @@ public sealed partial class GunSystem : SharedGunSystem
                 hitscan.MaxLength,
                 hitscan.CollisionMask,
                 source,
+                extraIgnoredEntity,
                 target,
                 firedFromContainer,
                 session,
@@ -448,6 +454,7 @@ public sealed partial class GunSystem : SharedGunSystem
         float maxLength,
         int collisionMask,
         EntityUid source,
+        EntityUid? extraIgnoredEntity,
         EntityUid? target,
         bool firedFromContainer,
         ICommonSession session,
@@ -466,6 +473,7 @@ public sealed partial class GunSystem : SharedGunSystem
         foreach (var candidate in _lagCompCandidates)
         {
             if (candidate == source ||
+                candidate == extraIgnoredEntity ||
                 !TryComp(candidate, out LagCompensationComponent? _) ||
                 !TryComp(candidate, out FixturesComponent? fixtures) ||
                 !TryComp(candidate, out TransformComponent? xform))

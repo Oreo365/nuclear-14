@@ -242,6 +242,7 @@ public sealed class GunPredictionSystem : SharedGunPredictionSystem
         foreach (var (netEnt, clientPos) in ev.Hit)
         {
             if (GetEntity(netEnt) is not { Valid: true } hit ||
+                IsIgnoredPredictedProjectileHit(hit, projectileComp) ||
                 !_lagCompensationQuery.TryComp(hit, out var otherLagComp) ||
                 !_fixturesQuery.TryComp(hit, out var otherFixtures) ||
                 !_physicsQuery.TryComp(hit, out var otherPhysics) ||
@@ -265,6 +266,15 @@ public sealed class GunPredictionSystem : SharedGunPredictionSystem
 
             _projectile.ProjectileCollide((projectile, projectileComp, projectilePhysics), hit, true);
         }
+    }
+
+    private static bool IsIgnoredPredictedProjectileHit(EntityUid hit, ProjectileComponent projectile)
+    {
+        // [Changed by MisfitsCrew/Operator] Predicted hit confirmation bypasses normal physics
+        // PreventCollideEvent handling, so reject shooter, weapon, and mounted-vehicle ignores here too.
+        return hit == projectile.Shooter ||
+               hit == projectile.Weapon ||
+               hit == projectile.ExtraIgnoredEntity;
     }
 
     public override void Update(float frameTime)
