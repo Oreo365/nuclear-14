@@ -1842,7 +1842,7 @@
   - type: SpawnItemsOnUse
     items:
       - id: N14WeaponRifle762Fal
-      - id: N14Magazine762AmmoShort
+      - id: Magazine762AmmoShort
         amount: 3
       - id: N14WeaponPistol45Colt # #Misfits Change: .45 pistol Legion sidearm
       - id: N14MagazinePistol45
