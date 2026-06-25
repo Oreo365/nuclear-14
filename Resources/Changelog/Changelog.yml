@@ -7770,3 +7770,48 @@ Entries:
   id: 6135
   time: '2026-06-24T03:25:16.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/889
+- author: luckyshotpictures
+  changes:
+    - type: Add
+      message: '[Legion] The colloseum is now roofed.'
+    - type: Tweak
+      message: '[Legion] The grave area has been moved.'
+    - type: Add
+      message: >-
+        [Legion] A houndmaster area has been added near the graveyard with three
+        legion mutts.
+    - type: Tweak
+      message: >-
+        [Legion] Surgery has been moved into a seperate room, and a surgery
+        crate has been added.
+    - type: Tweak
+      message: >-
+        [Legion] Medical storage area has been expanded a bit, as well as access
+        locked.
+    - type: Add
+      message: '[Legion] Slaves have gained access to a botany equipment crate.'
+    - type: Add
+      message: '[Legion] A rundown house has been added infront of Legio. Fixer Upper.'
+    - type: Tweak
+      message: '[Legion] The mine has been slightly expanded and changed.'
+    - type: Tweak
+      message: '[80s] Mapped the 80s Blueprint crate and removed the mapped blueprint.'
+    - type: Tweak
+      message: '[80s] Ants in the mines have been replaced with cazadors and bloatflys.'
+    - type: Add
+      message: '[NCR] A rundown bar has been added to the front. Fixer Upper.'
+    - type: Add
+      message: FotA, NCR and BOS have received a reduced chem dispenser.
+    - type: Add
+      message: A new mine has been added.
+    - type: Tweak
+      message: Several dungeon areas have been expanded and/or changed.
+    - type: Add
+      message: Prototype for a wastelander wolf dog.
+    - type: Add
+      message: Legion Dog Spawners
+    - type: Fix
+      message: Timmy, Jimmy and Dr. Thumper spawners.
+  id: 6136
+  time: '2026-06-25T01:03:20.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/892
