@@ -30,10 +30,8 @@ public sealed partial class NPCSteeringSystem
         {
             var angle = i * InterestRadians;
             var dot = MathF.Cos(directionAngle - angle);
-            /// Misfit Change:
-            /// dot = (dot + 1f) * 0.5f;
+            dot = (dot + 1f) * 0.5f;
             interest[i] = Math.Clamp(interest[i] + dot * weight, 0f, 1f);
-            /// end change
         }
     }
 
