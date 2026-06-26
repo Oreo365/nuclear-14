@@ -12,7 +12,6 @@ sealed class TileReplaceCommand : IConsoleCommand
 {
     [Dependency] private readonly IEntityManager _entManager = default!;
     [Dependency] private readonly ITileDefinitionManager _tileDef = default!;
-    [Dependency] private readonly SharedMapSystem _mapSystem = default!;
 
     // ReSharper disable once StringLiteralTypo
     public string Command => "tilereplace";
@@ -21,6 +20,7 @@ sealed class TileReplaceCommand : IConsoleCommand
 
     public void Execute(IConsoleShell shell, string argStr, string[] args)
     {
+        var mapSystem = _entManager.System<SharedMapSystem>();
         var player = shell.Player;
         EntityUid? gridId;
         string tileIdA;
@@ -72,12 +72,12 @@ sealed class TileReplaceCommand : IConsoleCommand
         }
 
         var changed = 0;
-        foreach (var tile in _mapSystem.GetAllTiles(gridId.Value, grid))
+        foreach (var tile in mapSystem.GetAllTiles(gridId.Value, grid))
         {
             var tileContent = tile.Tile;
             if (tileContent.TypeId == tileA.TileId)
             {
-                _mapSystem.SetTile(gridId.Value, grid, tile.GridIndices, new Tile(tileB.TileId));
+                mapSystem.SetTile(gridId.Value, grid, tile.GridIndices, new Tile(tileB.TileId));
                 changed++;
             }
         }
