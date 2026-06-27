@@ -72,3 +72,11 @@
     steps: 2
     zeroVisible: false
   - type: Appearance
+
+- type: entity
+  id: N14Magazine2mmECPistol
+  name: 2mmEC 12 capacity magazine
+  parent: N14BaseMagazine2mmECPistol
+  components:
+  - type: BallisticAmmoProvider
+    proto: N14Cartridge2mmEC
