@@ -218,7 +218,7 @@
         - CaesarLegionPrimeDecanus
     - !type:CharacterPlaytimeRequirement
       tracker: CaesarLegionPrimeDecanus
-      min: 72000 # unrobust primes should be filtered by the 20 hour mark
+      min: 180000 # unrobust primes should be filtered by the 50 hour mark
   items:
     - N14ClothingOuterPowerArmorLegion
 
@@ -233,7 +233,7 @@
         - CaesarLegionExplorer
     - !type:CharacterPlaytimeRequirement
       tracker: CaesarLegionExplorer
-      min: 30000
+      min: 180000
   items:
     - MisfitsExplorerAssasin
 
