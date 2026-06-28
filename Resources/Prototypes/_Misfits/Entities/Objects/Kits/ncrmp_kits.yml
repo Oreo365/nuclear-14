@@ -1,7 +1,7 @@
 - type: UndecidedLoadoutBackpackSet
   id: MPStandardKit
   name: Standard Military Police Kit
-  description: This kit contains standard-issue NCRMP equipment. This includes - a blowback shotgun, beanbag rounds, a baton, flashbang grenades and smoke grenades. Use with caution.
+  description: This kit contains standard-issue NCRMP equipment. This includes - a blowback shotgun, beanbag rounds, a police baton, processing tools, flashbang grenades and smoke grenades. Use with caution.
   sprite:
     sprite: _Nuclear14/Objects/Misc/kits.rsi
     state: rifleman
@@ -21,7 +21,7 @@
 - type: UndecidedLoadoutBackpackSet
   id: MPEnforcerKit
   name: Enforcer Military Police Kit
-  description: This kit contains anti-riot equipment. This includes - riot shotgun, 20 gauge ammo box, 2 frag grenades, baton, handcuffs, MP vest & helmet.
+  description: This kit contains anti-riot equipment. This includes - riot shotgun, 20 gauge ammo box, 2 frag grenades, shock baton, riot shield, handcuffs and MP helmet.
   sprite:
     sprite: _Nuclear14/Objects/Misc/kits.rsi
     state: rifleman
@@ -43,8 +43,10 @@
     items:
       - id: N14WeaponBlowback
       - id: MisfitsMagazineBox12GaugeBeanbag
-      - id: Handcuffs
+      - id: BoxHandcuff
       - id: N14PoliceBaton
+      - id: ForensicScanner
+      - id: BoxTapeRecorder
       - id: N14CleanGauze10
       - id: GrenadeFlashBang
       - id: SmokeGrenade
@@ -89,11 +91,11 @@
      - id: N14WeaponShotgunRiot
      - id: MagazineBox20gauge
      - id: FalloutNCRmilitarypoliceHelmet
-     - id: falloutNCRmilitarypolicevest
      - id: ExGrenade
      - id: ExGrenade
      - id: Handcuffs
-     - id: N14PoliceBaton
+     - id: MisfitsNCRMPShockBaton
+     - id: RiotShield
 
 - type: entity
   id: NCRMPKit_Set

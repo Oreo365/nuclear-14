@@ -35,6 +35,7 @@
         factions:
           - Wastelander
           - NCR
+      - type: GrantRangerCombat
 
 - type: startingGear
   id: NCRMPinvestigatorGear
@@ -43,7 +44,7 @@
     back: N14ClothingBackpackMilitary
     shoes: N14ClothingBootsCombatFilled
     head:  N14ClothingHeadHatNCRMPCap
-    outerClothing: N14ClothingOuterNCRMPArmorWest
+    outerClothing: MisfitsNCRMPCombatArmor
     pocket1: NCRMPinvestigatorKits
     hands: N14ClothingHandsGlovesCombat
     id: N14IDNCRDogtagMPInvestigator
