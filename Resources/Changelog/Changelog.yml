@@ -8106,3 +8106,10 @@ Entries:
   id: 6159
   time: '2026-06-29T00:48:01.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/922
+- author: Bradysgaming
+  changes:
+    - type: Fix
+      message: Fixed C-27 Aggro with a pipboy.
+  id: 6160
+  time: '2026-06-29T02:22:13.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/924
