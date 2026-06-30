@@ -1,0 +1,15 @@
+- type: entity
+  id: MisfitsZaxMachineFoundryCircuitboard
+  parent: BaseMachineCircuitboard
+  name: Z.A.X Machine Foundry machine board
+  components:
+  - type: Sprite
+    state: science
+  - type: MachineBoard
+    prototype: MisfitsZaxMachineFoundry
+    requirements:
+      MatterBin: 1
+      Manipulator: 3
+    materialRequirements:
+      Glass: 5
+

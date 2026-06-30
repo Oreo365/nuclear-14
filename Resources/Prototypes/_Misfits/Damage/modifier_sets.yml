@@ -11,3 +11,9 @@
   # #Misfits Tweak - stripped physical coefficients and flat reductions; physical DR now
   # comes entirely from armor tier (Armor component on clothing). Bare chassis = 400 eHP
   # (raw HP only). Keeps flavor: Shock weakness, Radiation immunity.
+
+- type: damageModifierSet
+  id: MisfitsC27ZAXSilicon
+  coefficients:
+    Shock: 1.45
+    Radiation: 0.0

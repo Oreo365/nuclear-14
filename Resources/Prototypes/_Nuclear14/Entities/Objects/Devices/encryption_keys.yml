@@ -183,3 +183,19 @@
     layers:
     - state: crypt_gray
     - state: com_label
+
+# #Misfits Add - Z.A.X binary encryption key for future Z.A.X equipment and comms devices.
+- type: entity
+  parent: EncryptionKey
+  id: EncryptionKeyZAX
+  name: Z.A.X binary encryption key
+  description: An encryption key used by Z.A.X-linked silicon units.
+  components:
+  - type: EncryptionKey
+    channels:
+    - ZAXBinary
+    defaultChannel: ZAXBinary
+  - type: Sprite
+    layers:
+    - state: crypt_silver
+    - state: rd_label

@@ -106,6 +106,7 @@
     priority: -22
     itemIconStyle: BigAction
     icon: Interface/VerbIcons/open.svg.192dpi.png
+    repeat: true
     checkCanInteract: false
     checkConsciousness: false
     checkCanAccess: false

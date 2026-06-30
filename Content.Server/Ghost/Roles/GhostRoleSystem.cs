@@ -803,6 +803,9 @@ namespace Content.Server.Ghost.Roles
 
         private void OnSpawnerTakeRole(EntityUid uid, GhostRoleMobSpawnerComponent component, ref TakeGhostRoleEvent args)
         {
+            if (args.Cancelled)
+                return;
+
             if (!TryComp(uid, out GhostRoleComponent? ghostRole) ||
                 !CanTakeGhost(uid, ghostRole))
             {
@@ -853,6 +856,9 @@ namespace Content.Server.Ghost.Roles
 
         private void OnTakeoverTakeRole(EntityUid uid, GhostTakeoverAvailableComponent component, ref TakeGhostRoleEvent args)
         {
+            if (args.Cancelled)
+                return;
+
             if (!TryComp(uid, out GhostRoleComponent? ghostRole) ||
                 !CanTakeGhost(uid, ghostRole))
             {

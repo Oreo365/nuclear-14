@@ -1,0 +1,310 @@
+- type: latheRecipe
+  id: MisfitsZaxFoundrySecuritron
+  result: N14MobZaxSecuritron
+  category: Robotics
+  completetime: 30
+  materials:
+    N14Copper: 1500
+    N14Iron: 3000
+    N14Gold: 100
+    Circuitry: 1000
+    Steel: 6000
+    Plastic: 1500
+
+- type: latheRecipe
+  id: MisfitsZaxFoundryC27
+  result: N14MobZaxC27
+  category: Robotics
+  completetime: 25
+  materials:
+    N14Copper: 6000
+    N14Gold: 1500
+    N14Iron: 6000
+    Circuitry: 3000
+    Steel: 12000
+    Plastic: 3000
+    N14Silver: 1000
+
+- type: latheRecipe
+  id: MisfitsZaxFoundryProtectronPolice
+  result: N14MobZaxProtectronPolice
+  category: Robotics
+  completetime: 20
+  materials:
+    N14Copper: 2000
+    N14Gold: 200
+    N14Iron: 4000
+    Circuitry: 1500
+    Steel: 8000
+    Plastic: 2500
+
+- type: latheRecipe
+  id: MisfitsZaxFoundryProtectronBuilder
+  result: N14MobZaxProtectronBuilder
+  category: Robotics
+  completetime: 20
+  materials:
+    N14Copper: 1500
+    N14Iron: 3000
+    N14Gold: 100
+    Circuitry: 500
+    Steel: 8000
+    Plastic: 2500
+
+- type: latheRecipe
+  id: MisfitsZaxFoundryMrGutsy
+  result: N14MobZaxMrGutsy
+  category: Robotics
+  completetime: 22
+  materials:
+    N14Copper: 3000
+    N14Gold: 300
+    N14Iron: 4000
+    Circuitry: 1500
+    Steel: 6000
+    Plastic: 2000
+    N14Silver: 500
+
+- type: latheRecipe
+  id: MisfitsZaxFoundryMrHandy
+  result: N14MobZaxMrHandy
+  category: Robotics
+  completetime: 18
+  materials:
+    N14Copper: 1000
+    N14Silver: 500
+    N14Gold: 100
+    N14Iron: 2000
+    Circuitry: 1000
+    Steel: 6000
+    Plastic: 1500
+
+# Z.A.X foundry-accessible copies of blueprint-gated ammunition.
+# Material costs match the source workbench recipes; blueprint/faction gates are intentionally not copied.
+- type: latheRecipe
+  id: MisfitsZaxFoundryMicrofusionCell
+  result: N14MicrofusionCell
+  category: N14AmmoMagazine
+  completetime: 4
+  materials:
+    Glass: 300
+    Circuitry: 100
+    ScrapElectronic: 300
+    N14Gold: 200
+    N14Silver: 300
+    Lead: 500
+
+- type: latheRecipe
+  id: MisfitsZaxFoundryElectronChargePack
+  result: N14ElectronChargePack
+  category: N14AmmoMagazine
+  completetime: 4
+  materials:
+    Glass: 100
+    Circuitry: 100
+    ScrapElectronic: 100
+    Lead: 100
+
+- type: latheRecipe
+  id: MisfitsZaxFoundryPlasmaCartridge
+  result: N14PlasmaCartridge
+  category: N14AmmoMagazine
+  completetime: 10
+  materials:
+    Glass: 600
+    Circuitry: 150
+    ScrapElectronic: 100
+    Lead: 600
+
+- type: latheRecipe
+  id: MisfitsZaxFoundryPlasmaShell
+  result: N14PlasmaShell
+  category: N14AmmoMagazine
+  completetime: 10
+  materials:
+    Glass: 400
+    Circuitry: 100
+    ScrapElectronic: 100
+    Lead: 400
+
+- type: latheRecipe
+  id: MisfitsZaxFoundryPlasmaCartridgeMultiplas
+  result: N14PlasmaCartridgeMultiplas
+  category: N14AmmoMagazine
+  completetime: 10
+  materials:
+    Glass: 400
+    Circuitry: 100
+    ScrapElectronic: 100
+    Lead: 400
+
+- type: latheRecipe
+  id: MisfitsZaxFoundryFusionCore
+  result: N14FusionCore
+  category: N14AmmoMagazine
+  completetime: 15
+  materials:
+    Glass: 1000
+    Circuitry: 300
+    ScrapElectronic: 500
+    N14Gold: 500
+    Lead: 1000
+
+- type: latheRecipe
+  id: MisfitsZaxFoundryMagazine556Rifle30
+  result: Magazine556Rifle30
+  category: N14AmmoMagazine
+  completetime: 5
+  materials:
+    Lead: 90
+    Steel: 190
+    N14Gunpowder: 60
+
+- type: latheRecipe
+  id: MisfitsZaxFoundryMagazineLMG308
+  result: N14MagazineLMG308
+  category: N14AmmoMagazine
+  completetime: 10
+  materials:
+    Steel: 1000
+    Lead: 650
+    N14Gunpowder: 450
+
+- type: latheRecipe
+  id: MisfitsZaxFoundryMagazineOver308Sniper
+  result: MagazineOver308RifleSniper
+  category: N14AmmoMagazine
+  completetime: 8
+  materials:
+    Steel: 1000
+    Lead: 500
+    N14Gunpowder: 750
+
+- type: latheRecipe
+  id: MisfitsZaxFoundrySKSEnbloc308
+  result: SKSEnbloc308
+  category: N14AmmoMagazine
+  completetime: 5
+  materials:
+    Steel: 200
+    Lead: 50
+    N14Gunpowder: 50
+
+- type: latheRecipe
+  id: MisfitsZaxFoundryGrenade40mm
+  result: N14CartridgeGrenade40mm
+  category: N14Ammo
+  completetime: 8
+  materials:
+    Steel: 800
+    N14Gunpowder: 1000
+    N14Iron: 500
+
+- type: latheRecipe
+  id: MisfitsZaxFoundryDynamite
+  result: N14Dynamite
+  category: N14Ammo
+  completetime: 10
+  materials:
+    N14Gunpowder: 100
+    Cloth: 100
+    N14Iron: 100
+
+- type: latheRecipe
+  id: MisfitsZaxFoundryMissile
+  result: N14CartridgeMissile
+  category: N14Ammo
+  completetime: 15
+  materials:
+    Steel: 1000
+    N14Gunpowder: 4000
+    N14Iron: 200
+    Circuitry: 100
+
+- type: latheRecipe
+  id: MisfitsZaxFoundryGrenadeIncendiary40mm
+  result: N14CartridgeGrenadeIncendiary40mm
+  category: N14Ammo
+  completetime: 10
+  materials:
+    Steel: 1000
+    N14Gunpowder: 1000
+    N14Iron: 300
+    Plastic: 150
+
+- type: latheRecipe
+  id: MisfitsZaxFoundryMagazine308M60Box
+  result: Magazine308M60Box
+  category: N14AmmoMagazine
+  completetime: 8
+  materials:
+    Steel: 1300
+    Lead: 1000
+    N14Gunpowder: 900
+
+# Z.A.X foundry-accessible copies of requested workbench weapons.
+- type: latheRecipe
+  id: MisfitsZaxFoundryAER9
+  result: N14WeaponLaserRifle
+  category: N14WeaponRifles
+  completetime: 12
+  materials:
+    Steel: 4500
+    Glass: 600
+    Circuitry: 300
+    Plastic: 500
+
+- type: latheRecipe
+  id: MisfitsZaxFoundryAER12
+  result: N14WeaponLaserRifleAER12
+  category: N14WeaponRifles
+  completetime: 20
+  materials:
+    Steel: 8000
+    Glass: 1600
+    Circuitry: 1000
+    ScrapElectronic: 1300
+    N14Gold: 400
+
+- type: latheRecipe
+  id: MisfitsZaxFoundryServiceRifle
+  result: N14WeaponRifle556Service
+  category: N14WeaponRifles
+  completetime: 10
+  materials:
+    Steel: 3500
+    Wood: 1500
+    N14Iron: 500
+
+- type: latheRecipe
+  id: MisfitsZaxFoundryServiceRifleScoped
+  result: N14WeaponRifle556ServiceScoped
+  category: N14WeaponRifles
+  completetime: 12
+  materials:
+    Steel: 4000
+    Wood: 1500
+    Glass: 500
+    N14Iron: 500
+
+- type: latheRecipe
+  id: MisfitsZaxFoundryWattz2000
+  result: N14WeaponLaserRifleWattz2000
+  category: N14WeaponRifles
+  completetime: 18
+  materials:
+    Steel: 6000
+    Glass: 400
+    Circuitry: 750
+    ScrapElectronic: 450
+
+- type: latheRecipe
+  id: MisfitsZaxFoundryPulseRifle
+  result: N14WeaponZAXPulseRifle
+  category: N14WeaponRifles
+  completetime: 14
+  materials:
+    Steel: 5000
+    Glass: 575
+    Circuitry: 400
+    Plastic: 750

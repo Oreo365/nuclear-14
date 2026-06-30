@@ -254,6 +254,50 @@
   - type: HumanoidAppearance
     species: C27BoS
 
+- type: entity
+  save: true
+  name: c-27 humanoid robot (z.a.x)
+  id: N14MobC27ZAX
+  parent: N14BaseMobC27
+  description: A C-27 humanoid robot rebuilt as a Z.A.X-linked rapid-response chassis.
+  components:
+  - type: HumanoidAppearance
+    species: C27ZAX
+  - type: IntrinsicRadioReceiver
+  - type: IntrinsicRadioTransmitter
+    channels:
+    - ZAXBinary
+  - type: ActiveRadio
+    channels:
+    - ZAXBinary
+  - type: Damageable
+    damageContainer: Silicon
+    damageModifierSet: MisfitsC27ZAXSilicon
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      150: Critical
+      300: Dead
+    allowRevives: true
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 5.0
+    baseSprintSpeed: 5.0
+  - type: MisfitsC27
+    empShockDamage: 200
+    empDamagePerKiloJoule: 0
+    siliconRepairDelayMultiplier: 2
+  - type: PassiveDamage
+    allowedStates:
+    - Alive
+    - Critical
+    damage:
+      groups:
+        Brute: -5
+      types:
+        Heat: -5
+        Caustic: -5
+        Shock: -1
+
 # #Misfits Add - Dummies for the character editor preview. Same sprite layout as the base
 # C-27 dummy; only the species reference changes so the preview picks up the matching Model paint.
 - type: entity
@@ -273,3 +317,12 @@
   components:
   - type: HumanoidAppearance
     species: C27BoS
+
+- type: entity
+  save: false
+  parent: N14MobC27Dummy
+  id: N14MobC27ZAXDummy
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HumanoidAppearance
+    species: C27ZAX

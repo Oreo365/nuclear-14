@@ -7,6 +7,7 @@ using Content.Shared.Damage;
 using Content.Shared.Interaction;
 using Content.Shared.Popups;
 using Content.Shared.Tools;
+using Content.Shared._Misfits.C27;
 using Content.Shared._Shitmed.Targeting;
 using Content.Shared.Body.Systems;
 using Content.Shared.Tools.Components;
@@ -81,6 +82,9 @@ public sealed class WeldingHealableSystem : SharedWeldingHealableSystem
         float delay = args.User == args.Target
             ? component.DoAfterDelay * component.SelfHealPenalty
             : component.DoAfterDelay;
+
+        if (TryComp<MisfitsC27Component>(args.Target, out var c27))
+            delay *= c27.SiliconRepairDelayMultiplier;
 
         args.Handled = _toolSystem.UseTool(
             args.Used,

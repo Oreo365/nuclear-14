@@ -1,6 +1,9 @@
+using Content.Client.UserInterface.Systems.Actions;
+using Content.Shared._Misfits.Silicon;
 using Content.Shared.Silicons.StationAi;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
+using Robust.Client.UserInterface;
 using Robust.Shared.Player;
 
 namespace Content.Client.Silicons.StationAi;
@@ -9,6 +12,7 @@ public sealed partial class StationAiSystem : SharedStationAiSystem
 {
     [Dependency] private readonly IOverlayManager _overlayMgr = default!;
     [Dependency] private readonly IPlayerManager _player = default!;
+    [Dependency] private readonly IUserInterfaceManager _ui = default!;
 
     private StationAiOverlay? _overlay;
 
@@ -22,6 +26,13 @@ public sealed partial class StationAiSystem : SharedStationAiSystem
         SubscribeLocalEvent<StationAiOverlayComponent, LocalPlayerDetachedEvent>(OnAiDetached);
         SubscribeLocalEvent<StationAiOverlayComponent, ComponentInit>(OnAiOverlayInit);
         SubscribeLocalEvent<StationAiOverlayComponent, ComponentRemove>(OnAiOverlayRemove);
+        SubscribeNetworkEvent<StationAiNpcMoveTargetingFinishedEvent>(OnMoveTargetingFinished);
+    }
+
+    private void OnMoveTargetingFinished(StationAiNpcMoveTargetingFinishedEvent ev)
+    {
+        _ui.GetUIController<ActionUIController>()
+            .StopTargetingIfEvent<StationAiMoveSelectedNpcsActionEvent>();
     }
 
     private void OnAiOverlayInit(Entity<StationAiOverlayComponent> ent, ref ComponentInit args)

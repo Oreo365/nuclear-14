@@ -1,4 +1,5 @@
 using Robust.Shared.GameStates;
+using Robust.Shared.Map;
 
 namespace Content.Shared._Misfits.Silicon;
 
@@ -10,6 +11,12 @@ public sealed partial class StationAiNpcCommanderComponent : Component
 {
     [DataField, AutoNetworkedField]
     public HashSet<EntityUid> SelectedNpcs = new();
+
+    [DataField, AutoNetworkedField]
+    public List<NetCoordinates> PendingMoveTargets = new();
+
+    [DataField, AutoNetworkedField]
+    public List<NetCoordinates> MoveTargetPreviews = new();
 
     [DataField]
     public int MaxSelected = 12;

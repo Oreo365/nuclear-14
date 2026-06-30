@@ -132,6 +132,15 @@
   color: "#019a64"
   longRange: true
 
+# #Misfits Add - innate Z.A.X binary command network.
+- type: radioChannel
+  id: ZAXBinary
+  name: chat-radio-zax-binary
+  keycode: 'z'
+  frequency: 1007
+  color: "#48d7ff"
+  longRange: true
+
 # Zetan
 
 # - type: radioChannel

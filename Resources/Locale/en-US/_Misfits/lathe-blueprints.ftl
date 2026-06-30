@@ -92,6 +92,7 @@ lathe-category-blueprint-c27-armor-generic = C-27 Armor (Generic)
 lathe-category-blueprint-c27-armor-ncr = C-27 Armor (NCR)
 lathe-category-blueprint-c27-armor-bos = C-27 Armor (Brotherhood)
 lathe-category-blueprint-c27-combat = C-27 Combat Armor
+lathe-category-blueprint-zax-equipment = Z.A.X Equipment
 
 lathe-category-blueprint-eighties-motorbikes = Eighties Motorbike Flatpacks
 

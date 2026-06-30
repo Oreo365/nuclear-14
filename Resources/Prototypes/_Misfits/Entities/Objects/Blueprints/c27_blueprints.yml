@@ -1,9 +1,12 @@
 # #Misfits Add - C-27 Armor Blueprint items.
 #
-# Three faction-keyed blueprints. When a blueprint is dropped into an armor
+# Three faction-keyed C-27 armor blueprints. When a blueprint is dropped into an armor
 # workbench's storage, the workbench's lathe UI exposes four new crafting
 # recipes: Medium armor, Medium helmet, Heavy armor, Heavy helmet, all for the
 # matching faction variant (Generic / NCR / BoS).
+#
+# Z.A.X equipment uses its own blueprint so future Z.A.X-specific weapons and armor
+# can be added without appearing under the regular C-27 armor blueprint.
 #
 # Light-tier plating is still delivered at spawn via C27NCRLoadoutKit /
 # C27BoSLoadoutKit. The Generic variant now spawns with no armor at all, so
@@ -16,6 +19,8 @@
 #   ClothingC27ArmorHeavyNCR      / ClothingC27HelmetHeavyNCR
 #   ClothingC27ArmorMediumBoS     / ClothingC27HelmetMediumBoS
 #   ClothingC27ArmorHeavyBoS      / ClothingC27HelmetHeavyBoS
+#   ClothingC27ArmorMediumZAX     / ClothingC27HelmetMediumZAX
+#   N14WeaponZAXPulseRifle
 
 - type: entity
   parent: N14BlueprintBase
@@ -57,3 +62,15 @@
     - N14BPC27HelmetMediumBoS
     - N14BPC27ArmorHeavyBoS
     - N14BPC27HelmetHeavyBoS
+
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintZAXEquipment
+  name: Z.A.X Equipment Blueprint
+  description: Z.A.X-linked manufacturing schematics for specialized equipment. Covers Z.A.X-specific chassis armor now, with room for future Z.A.X weapons and tools.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPC27ArmorMediumZAX
+    - N14BPC27HelmetMediumZAX
+    - N14BPWeaponZAXPulseRifle

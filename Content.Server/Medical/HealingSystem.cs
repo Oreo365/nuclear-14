@@ -5,6 +5,7 @@ using Content.Server.Chemistry.Containers.EntitySystems;
 using Content.Server.Medical.Components;
 using Content.Server.Popups;
 using Content.Server.Stack;
+using Content.Shared._Misfits.C27;
 using Content.Shared._Misfits.Special;
 using Content.Shared.Audio;
 using Content.Shared.Damage;
@@ -218,6 +219,9 @@ public sealed class HealingSystem : EntitySystem
         var delay = isNotSelf
             ? component.Delay
             : component.Delay * GetScaledHealingPenalty(user, component);
+
+        if (TryComp<MisfitsC27Component>(target, out var c27))
+            delay *= c27.SiliconRepairDelayMultiplier;
 
         var doAfterEventArgs =
             new DoAfterArgs(EntityManager, user, _special.GetIntelligenceMedicalActionDelay(user, TimeSpan.FromSeconds(delay)), new HealingDoAfterEvent(), target, target: target, used: uid)

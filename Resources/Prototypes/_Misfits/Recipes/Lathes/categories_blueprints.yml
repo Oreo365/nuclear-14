@@ -339,6 +339,11 @@
   id: N14BlueprintC27CombatGeneric
   name: lathe-category-blueprint-c27-combat
 
+# === Z.A.X EQUIPMENT === # #Misfits Add - shared category for future Z.A.X armor and weapons.
+- type: latheCategory
+  id: N14BlueprintZAXEquipment
+  name: lathe-category-blueprint-zax-equipment
+
 # === EIGHTIES MOTORBIKES ===
 - type: latheCategory
   id: MisfitsBlueprintEightiesMotorbikes

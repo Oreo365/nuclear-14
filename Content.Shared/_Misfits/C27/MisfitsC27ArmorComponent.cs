@@ -16,4 +16,11 @@ public sealed partial class MisfitsC27ArmorComponent : Component
     /// </summary>
     [DataField]
     public bool RequiresC27Species = true;
+
+    /// <summary>
+    ///     Optional species whitelist for chassis equipment. If unset, any C-27 chassis
+    ///     variant may equip the item.
+    /// </summary>
+    [DataField]
+    public List<string>? AllowedSpecies;
 }

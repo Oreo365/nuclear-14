@@ -22,6 +22,7 @@
   - C27       # #Misfits Change - was the only role; now joined by C27NCR / C27BoS below.
   - C27NCR    # #Misfits Add - NCR variant role
   - C27BoS    # #Misfits Add - Brotherhood variant role
+  - C27ZAX    # #Misfits Add - Z.A.X chassis variant role
 
 # --- Generic / Unassigned variant ----------------------------------------------------
 - type: job
@@ -115,6 +116,34 @@
           - BrotherhoodOfSteel
           - Wastelander
 
+# --- Z.A.X variant -------------------------------------------------------------------
+- type: job
+  id: C27ZAX
+  name: job-name-c27-zax
+  description: job-description-c27-zax
+  playTimeTracker: C27ZAX
+  icon: JobIconBorg
+  supervisors: job-supervisors-c27
+  canBeAntag: false
+  setPreference: true
+  overrideConsoleVisibility: true
+  whitelisted: true
+  hideWithoutWhitelist: true
+  jobWhitelistBypassesRoleTimers: true
+  spawnLoadout: true
+  applyTraits: false
+  startingGear: C27GearZAX
+  requirements:
+  - !type:CharacterSpeciesRequirement
+    species:
+    - C27ZAX
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - Wastelander
+
 # Starting gear, one per job. Faction kits open an UndecidedLoadoutBackpack UI that
 # now offers Light only — Medium / Heavy variants are obtained by crafting at an armor
 # workbench using the C-27 Armor Blueprint (NCR / BoS / Generic).
@@ -176,6 +205,17 @@
     ears: N14ClothingHeadsetBrotherhoodOfSteel
     id: N14IDBrotherhoodOfSteelHolotagInitiate
 
+# Z.A.X: rapid-response chassis with light generic plating only.
+- type: startingGear
+  id: C27GearZAX
+  equipment:
+    head: ClothingC27HelmetLightGeneric
+    jumpsuit: ClothingC27Chassis
+    pocket1: N14Welder
+    ears: MisfitsClothingHeadsetWastelandScrap
+    id: N14ClothingNeckDogtags
+    outerClothing: ClothingC27ArmorLightGeneric
+
 - type: playTimeTracker
   id: C27
 
@@ -185,3 +225,6 @@
 
 - type: playTimeTracker
   id: C27BoS
+
+- type: playTimeTracker
+  id: C27ZAX

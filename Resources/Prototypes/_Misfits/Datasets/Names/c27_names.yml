@@ -94,3 +94,33 @@
   - Knight-Xray
   - Knight-Yankee
   - Knight-Zulu
+
+- type: dataset
+  id: C27FirstZAX
+  values:
+  - ZAX-Alpha
+  - ZAX-Bravo
+  - ZAX-Charlie
+  - ZAX-Delta
+  - ZAX-Echo
+  - ZAX-Foxtrot
+  - ZAX-Golf
+  - ZAX-Hotel
+  - ZAX-India
+  - ZAX-Juliet
+  - ZAX-Kilo
+  - ZAX-Lima
+  - ZAX-Mike
+  - ZAX-November
+  - ZAX-Oscar
+  - ZAX-Papa
+  - ZAX-Quebec
+  - ZAX-Romeo
+  - ZAX-Sierra
+  - ZAX-Tango
+  - ZAX-Uniform
+  - ZAX-Victor
+  - ZAX-Whiskey
+  - ZAX-Xray
+  - ZAX-Yankee
+  - ZAX-Zulu

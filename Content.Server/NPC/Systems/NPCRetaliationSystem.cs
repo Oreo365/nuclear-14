@@ -1,5 +1,7 @@
+using Content.Server._Misfits.Silicon;
 using Content.Server.NPC.Components;
 using Content.Server.NPC.HTN; // #Misfits Add
+using Content.Shared._Misfits.C27;
 using Content.Shared._Misfits.Silicon;
 using Content.Shared.CombatMode;
 using Content.Shared.Damage;
@@ -7,6 +9,7 @@ using Content.Shared.Mobs.Components;
 using Content.Shared.NPC.Components;
 using Content.Shared.NPC.Systems;
 using Robust.Shared.Collections;
+using Robust.Shared.Player;
 using Robust.Shared.Timing;
 
 namespace Content.Server.NPC.Systems;
@@ -89,6 +92,19 @@ public sealed class NPCRetaliationSystem : EntitySystem
         if (HasComp<ZaxUnitComponent>(ent.Owner) && HasComp<ZaxUnitComponent>(target))
             return false;
 
+        // #Misfits Change - Hold order is absolute for ZAX NPCs.
+        if (HasComp<ZaxUnitComponent>(ent.Owner) &&
+            TryComp<StationAiCommandedNpcComponent>(ent.Owner, out var commanded) &&
+            commanded.HoldingCommand)
+        {
+            return false;
+        }
+
+        // #Misfits Change - ZAX NPCs only retaliate against genuinely hostile NPC factions.
+        // Player-controlled attackers are valid only when they directly damage the ZAX unit.
+        if (HasComp<ZaxUnitComponent>(ent.Owner) && !CanZaxRetaliateAgainst(ent.Owner, target))
+            return false;
+
         if (!ent.Comp.RetaliateFriendlies
             && _npcFaction.IsEntityFriendly(ent.Owner, target))
             return false;
@@ -110,6 +126,20 @@ public sealed class NPCRetaliationSystem : EntitySystem
         }
 
         return true;
+    }
+
+    private bool CanZaxRetaliateAgainst(EntityUid uid, EntityUid target)
+    {
+        if (HasComp<ActorComponent>(target))
+            return true;
+
+        if (HasComp<MisfitsC27Component>(target) ||
+            !HasComp<NpcFactionMemberComponent>(target))
+        {
+            return false;
+        }
+
+        return _npcFaction.IsEntityHostile(uid, target);
     }
 
     public override void Update(float frameTime)

@@ -47,6 +47,11 @@
   parent: BaseC27Helmet
   id: BaseC27HelmetHeavy
   components:
+  - type: MisfitsC27Armor
+    allowedSpecies:
+    - C27
+    - C27NCR
+    - C27BoS
   - type: Armor
     modifiers:
       coefficients:
@@ -146,6 +151,17 @@
     sprite: _Misfits/Clothing/Head/Helmets/c27_medium_bos.rsi
   - type: Clothing
     sprite: _Misfits/Clothing/Head/Helmets/c27_medium_bos.rsi
+
+- type: entity
+  parent: BaseC27HelmetMedium
+  id: ClothingC27HelmetMediumZAX
+  name: c-27 z.a.x augmented medium helmet
+  description: A reinforced C-27 medium helmet refit for Z.A.X-linked chassis units. It carries the same protection profile as the standard medium helmet.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/Head/Helmets/c27_medium_zax.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/Head/Helmets/c27_medium_zax.rsi
 
 # === Concrete: Heavy tier ===
 

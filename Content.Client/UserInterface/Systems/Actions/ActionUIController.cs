@@ -1047,6 +1047,22 @@ public sealed class ActionUIController : UIController, IOnStateChanged<GameplayS
     /// <summary>
     /// Switch out of targeting mode if currently selecting target for an action
     /// </summary>
+    public void StopTargetingIfEvent<TEvent>() where TEvent : BaseActionEvent
+    {
+        if (SelectingTargetFor is not { } actionId ||
+            _actionsSystem == null ||
+            !_actionsSystem.TryGetActionData(actionId, out var action) ||
+            action.BaseEvent is not TEvent)
+        {
+            return;
+        }
+
+        StopTargeting();
+    }
+
+    /// <summary>
+    /// Switch out of targeting mode if currently selecting target for an action
+    /// </summary>
     private void StopTargeting()
     {
         if (SelectingTargetFor == null)

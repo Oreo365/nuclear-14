@@ -144,6 +144,7 @@ namespace Content.Client.Lobby.UI
                 ("C27", "humanoid-profile-editor-robot-model-c27-generic"),
                 ("C27NCR", "humanoid-profile-editor-robot-model-c27-ncr"),
                 ("C27BoS", "humanoid-profile-editor-robot-model-c27-bos"),
+                ("C27ZAX", "humanoid-profile-editor-robot-model-c27-zax"),
             },
         };
 
@@ -1840,6 +1841,7 @@ namespace Content.Client.Lobby.UI
                 || speciesId == "RobotRobobrainLaser"
                 || speciesId == "C27NCR" // #Misfits Add - C-27 NCR variant picked via Robot Model dropdown
                 || speciesId == "C27BoS" // #Misfits Add - C-27 Brotherhood variant picked via Robot Model dropdown
+                || speciesId == "C27ZAX" // #Misfits Add - C-27 Z.A.X variant picked via Robot Model dropdown
                 || speciesId == "RobotProtectronTribal"; // Misfits Add - Protectron Spirit-Tender
         }
 

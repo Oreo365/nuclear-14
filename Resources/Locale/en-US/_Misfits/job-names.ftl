@@ -105,6 +105,9 @@ job-description-c27-ncr = You are a C-27 humanoid robot conscripted into the New
 job-name-c27-bos = C-27 Brotherhood Humanoid Robot
 job-description-c27-bos = You are a C-27 humanoid robot reclaimed by the Brotherhood of Steel — repainted in Brotherhood livery and issued a Brotherhood headset, Initiate holotag, and a light Brotherhood-pattern armor kit. Slow but durable, immune to flash and broken glass, and self-repairing. Serve the Codex.
 
+job-name-c27-zax = C-27 Z.A.X Humanoid Robot
+job-description-c27-zax = You are a C-27 humanoid robot rebuilt as a Z.A.X-linked chassis. Fast, fragile, and aggressively self-maintaining, you regenerate most damage rapidly but remain highly vulnerable to electrical disruption and EMP shock.
+
 # #Misfits Add - Followers of the Apocalypse ranked job locale.
 job-name-follower-head = Followers Head
 job-description-follower-head = You lead this chapter of the Followers. The sick, the curious, and the desperate look to you for direction. Set the example, protect your people, and keep the mission alive.

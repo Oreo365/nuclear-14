@@ -162,6 +162,9 @@ public sealed class PersistentPlayerDataSystem : EntitySystem
         if (!TryComp<PersistentPlayerDataComponent>(entity.Value, out var comp))
             return;
 
+        if (HasComp<ZaxNeutralSpecialComponent>(entity.Value))
+            return;
+
         if (comp.StatsConfirmed)
             return; // already locked — ignore replay
 

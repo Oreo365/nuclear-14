@@ -1,0 +1,52 @@
+- type: entity
+  name: Z.A.X pulse rifle
+  parent: N14BaseWeaponPowerCell
+  id: N14WeaponZAXPulseRifle
+  description: A C-27-only pulse rifle tuned for Z.A.X-linked chassis targeting arrays. Its blue emitter pulse punches through armor, fries circuits, and bites into structures.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Objects/Weapons/Guns/Battery/zax_pulse_rifle.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+  - type: Clothing
+    sprite: _Misfits/Objects/Weapons/Guns/Battery/zax_pulse_rifle.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Electron Charge Pack
+        startingItem: N14ElectronChargePack
+        insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
+        whitelist:
+          tags:
+          - N14ElectronChargePack
+  - type: Item
+    size: Large
+    shape:
+    - 0,0,2,1
+    - 0,2,0,2
+  - type: Wieldable
+  - type: GunWieldBonus
+    minAngle: -18
+    maxAngle: -55
+  - type: Gun
+    fireRate: 2.5
+    minAngle: 18
+    maxAngle: 55
+    angleIncrease: 2
+    angleDecay: 14
+    soundGunshot:
+      collection: N14LaserAutoRifleGunshot
+  - type: GunDamageBonus
+    hitscanProtoOverride: N14ZAXPulseBlue
+    fireCostMultiplier: 0.8
+  - type: MisfitsC27Weapon
+  - type: FollowDistance
+    backStrength: 5
+  - type: StaticPrice
+    price: 500

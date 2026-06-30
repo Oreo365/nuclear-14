@@ -1,0 +1,116 @@
+- type: entity
+  id: MisfitsZaxMachineFoundry
+  parent: [BaseLatheLube, BaseMaterialSiloUtilizer]
+  name: Z.A.X Machine Foundry
+  description: A Z.A.X-linked robotics foundry configured to assemble command-ready chassis.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Structures/Machines/zax_machine_foundry.rsi
+    layers:
+    - state: fab-idle
+      map: ["enum.LatheVisualLayers.IsRunning"]
+    - state: fab-load
+      map: ["enum.MaterialStorageVisualLayers.Inserting"]
+    - state: fab-o
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: Machine
+    board: MisfitsZaxMachineFoundryCircuitboard
+  - type: Lathe
+    idleState: fab-idle
+    runningState: fab-active
+    staticRecipes:
+    - MisfitsZaxFoundrySecuritron
+    - MisfitsZaxFoundryC27
+    - MisfitsZaxFoundryProtectronPolice
+    - MisfitsZaxFoundryProtectronBuilder
+    - MisfitsZaxFoundryMrGutsy
+    - MisfitsZaxFoundryMrHandy
+    # Standard ammunition recipes reused directly so material costs stay inherited.
+    - N14Cartridge556Rifle
+    - Magazine556Rifle
+    - LongMagazine556Rifle
+    - LMGMagazine556Rifle
+    - MagazineBox556
+    - N14CartridgePistol5
+    - N14MagazineMinigun5mm
+    - N14Cartridge762Rifle
+    - Magazine762AmmoShort
+    - Magazine762Rifle
+    - Magazine762AmmoBelt
+    - MagazineBox762
+    - N14CartridgePistol9
+    - N14MagazinePistol9mm
+    - N14MagazineSMG9mm
+    - SpeedLoader9
+    - MagazineBox9mm
+    - N14CartridgePistol10
+    - N14MagazinePistol10mm
+    - N14MagazineSMG10mm
+    - SpeedLoader10
+    - MagazineBox10mm
+    - N14CartridgePistol127
+    - N14MagazinePistol12mm
+    - N14MagazineSMG12mm
+    - N14TopMagazineSMG12mm
+    - MagazineBox12
+    - N14ShellShotgun12
+    - N14MagazineShotgun12
+    - MagazineBox12gauge
+    - N14ShellShotgun20
+    - N14MagazineShotgun20
+    - MagazineBox20gauge
+    - N14CartridgePistol22
+    - N14MagazinePistol22lr
+    - MagazineBox22
+    - N14Cartridge44Magnum
+    - SpeedLoader44
+    - MagazineBox44
+    - N14MagazinePistol44
+    - N14CartridgePistol45
+    - N14MagazinePistol45
+    - Magazine45SubMachineGun
+    - MagazineBox45
+    - N14Cartridge308Rifle
+    - Magazine308Rifle
+    - Magazine308RifleLong
+    - ClipMagazine308Rifle
+    - MagazineBox308
+    - Magazine308RifleSniper
+    - SpeedLoader45-70
+    - SpeedLoader45-70Tube
+    - MagazineBox45-70
+    - N14Magazine50AMR
+    - MagazineBox50
+    # Z.A.X foundry copies of blueprint-gated ammo and weapons. Costs match their source recipes.
+    - MisfitsZaxFoundryMicrofusionCell
+    - MisfitsZaxFoundryElectronChargePack
+    - MisfitsZaxFoundryPlasmaCartridge
+    - MisfitsZaxFoundryPlasmaShell
+    - MisfitsZaxFoundryPlasmaCartridgeMultiplas
+    - MisfitsZaxFoundryFusionCore
+    - MisfitsZaxFoundryMagazine556Rifle30
+    - MisfitsZaxFoundryMagazineLMG308
+    - MisfitsZaxFoundryMagazineOver308Sniper
+    - MisfitsZaxFoundrySKSEnbloc308
+    - MisfitsZaxFoundryGrenade40mm
+    - MisfitsZaxFoundryDynamite
+    - MisfitsZaxFoundryMissile
+    - MisfitsZaxFoundryGrenadeIncendiary40mm
+    - MisfitsZaxFoundryMagazine308M60Box
+    - MisfitsZaxFoundryAER9
+    - MisfitsZaxFoundryAER12
+    - MisfitsZaxFoundryServiceRifle
+    - MisfitsZaxFoundryServiceRifleScoped
+    - MisfitsZaxFoundryWattz2000
+    - MisfitsZaxFoundryPulseRifle
+  - type: MaterialStorage
+    whitelist:
+      tags:
+      - Sheet
+      - RawMaterial
+      - Ingot
+      - Wooden
+      - ClothMade
+      - Gauze
+      - Metal
+      - Scrap

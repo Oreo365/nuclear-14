@@ -264,7 +264,7 @@ public sealed class WieldableSystem : EntitySystem
         if (!CanWield(used, component, user))
             return false;
 
-        var ev = new BeforeWieldEvent();
+        var ev = new BeforeWieldEvent(user);
         RaiseLocalEvent(used, ev);
 
         if (ev.Cancelled)

@@ -44,6 +44,42 @@
     Plastic: 40
 
 - type: latheRecipe
+  id: N14BPC27ArmorMediumZAX
+  result: ClothingC27ArmorMediumZAX
+  category: N14BlueprintZAXEquipment
+  completetime: 10
+  requiresBlueprint: true
+  materials:
+    Steel: 1500
+    Cloth: 200
+    Thread: 150
+    Plastic: 750
+
+- type: latheRecipe
+  id: N14BPC27HelmetMediumZAX
+  result: ClothingC27HelmetMediumZAX
+  category: N14BlueprintZAXEquipment
+  completetime: 6
+  requiresBlueprint: true
+  materials:
+    Steel: 150
+    Cloth: 75
+    Thread: 50
+    Plastic: 40
+
+- type: latheRecipe
+  id: N14BPWeaponZAXPulseRifle
+  result: N14WeaponZAXPulseRifle
+  category: N14BlueprintZAXEquipment
+  completetime: 14
+  requiresBlueprint: true
+  materials:
+    Steel: 5000
+    Glass: 575
+    Circuitry: 400
+    Plastic: 750
+
+- type: latheRecipe
   id: N14BPC27ArmorHeavyGeneric
   result: ClothingC27ArmorHeavyGeneric
   category: N14BlueprintC27ArmorGeneric

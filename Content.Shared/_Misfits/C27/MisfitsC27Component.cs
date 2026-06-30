@@ -23,6 +23,13 @@ public sealed partial class MisfitsC27Component : Component
     public float EmpDamagePerKiloJoule = 5f;
 
     /// <summary>
+    ///     Multiplier applied to external silicon repair do-afters, such as welder repairs
+    ///     and cable-coil wire repairs.
+    /// </summary>
+    [DataField]
+    public float SiliconRepairDelayMultiplier = 1f;
+
+    /// <summary>
     ///     If true, the mob is also added to the EmpDisabled stun pool (forced to drop, can't
     ///     interact for the pulse duration). Spec calls for "possible PA-style stun" — opt-in
     ///     via this flag in case it proves too punishing in playtest.

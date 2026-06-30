@@ -1,6 +1,11 @@
 using Content.Shared.Humanoid;
 using Content.Shared.IdentityManagement;
+using Content.Shared.Interaction.Events;
 using Content.Shared.Inventory.Events;
+using Content.Shared.Popups;
+using Content.Shared.Weapons.Ranged.Systems;
+using Content.Shared.Wieldable;
+using Content.Shared.Wieldable.Components;
 
 namespace Content.Shared._Misfits.C27;
 
@@ -10,11 +15,16 @@ namespace Content.Shared._Misfits.C27;
 // client side.
 public sealed class MisfitsC27ArmorSystem : EntitySystem
 {
+    [Dependency] private readonly SharedPopupSystem _popup = default!;
+
     public override void Initialize()
     {
         base.Initialize();
 
         SubscribeLocalEvent<MisfitsC27ArmorComponent, BeingEquippedAttemptEvent>(OnEquipAttempt);
+        SubscribeLocalEvent<MisfitsC27WeaponComponent, UseInHandEvent>(OnWeaponUseInHand, before: [typeof(WieldableSystem)]);
+        SubscribeLocalEvent<MisfitsC27WeaponComponent, BeforeWieldEvent>(OnWeaponBeforeWield);
+        SubscribeLocalEvent<MisfitsC27WeaponComponent, AttemptShootEvent>(OnWeaponAttemptShoot);
         // #Misfits Add - Present C-27 chassis as synthetic for identity purposes. Mirrors
         // SharedBorgSystem.OnTryGetIdentityShortInfo: when a C-27 is seen without ID, use the
         // entity name (e.g. "c-27 humanoid robot") instead of the default "old person" fallback.
@@ -29,7 +39,7 @@ public sealed class MisfitsC27ArmorSystem : EntitySystem
         if (!TryComp<HumanoidAppearanceComponent>(args.ForActor, out var humanoid))
             return;
 
-        if (humanoid.Species != "C27" && humanoid.Species != "C27NCR" && humanoid.Species != "C27BoS")
+        if (!IsC27Species(humanoid.Species))
             return;
 
         args.Title = Name(args.ForActor).Trim();
@@ -51,13 +61,59 @@ public sealed class MisfitsC27ArmorSystem : EntitySystem
         }
 
         // Species ProtoId compares case-sensitively as a string.
-        // #Misfits Tweak - accept all three C-27 chassis variants (Generic / NCR / BoS).
-        // Previously only the Generic 'C27' species was permitted, which blocked NCR and
-        // BoS C-27 jobs from equipping their own faction armor kits.
-        if (humanoid.Species == "C27" || humanoid.Species == "C27NCR" || humanoid.Species == "C27BoS")
+        if (IsC27Species(humanoid.Species) &&
+            (item.Comp.AllowedSpecies == null || item.Comp.AllowedSpecies.Contains(humanoid.Species)))
             return;
 
         args.Reason = "c27-armor-species-required";
         args.Cancel();
+    }
+
+    private void OnWeaponUseInHand(Entity<MisfitsC27WeaponComponent> item, ref UseInHandEvent args)
+    {
+        // Let already-wielded weapons be unwielded even if a non-C-27 somehow gets one.
+        if (TryComp<WieldableComponent>(item, out var wieldable) && wieldable.Wielded)
+            return;
+
+        if (CanUseC27Weapon(args.User, item.Comp))
+            return;
+
+        _popup.PopupClient(Loc.GetString("c27-weapon-species-required"), item, args.User);
+        args.Handled = true;
+    }
+
+    private void OnWeaponBeforeWield(Entity<MisfitsC27WeaponComponent> item, ref BeforeWieldEvent args)
+    {
+        if (CanUseC27Weapon(args.User, item.Comp))
+            return;
+
+        _popup.PopupClient(Loc.GetString("c27-weapon-species-required"), item, args.User);
+        args.Cancel();
+    }
+
+    private void OnWeaponAttemptShoot(Entity<MisfitsC27WeaponComponent> item, ref AttemptShootEvent args)
+    {
+        if (CanUseC27Weapon(args.User, item.Comp))
+            return;
+
+        args.Message = Loc.GetString("c27-weapon-species-required");
+        args.Cancelled = true;
+    }
+
+    private bool CanUseC27Weapon(EntityUid user, MisfitsC27WeaponComponent weapon)
+    {
+        if (!TryComp<HumanoidAppearanceComponent>(user, out var humanoid))
+            return false;
+
+        return IsC27Species(humanoid.Species) &&
+               (weapon.AllowedSpecies == null || weapon.AllowedSpecies.Contains(humanoid.Species));
+    }
+
+    private static bool IsC27Species(string species)
+    {
+        return species == "C27"
+            || species == "C27NCR"
+            || species == "C27BoS"
+            || species == "C27ZAX";
     }
 }

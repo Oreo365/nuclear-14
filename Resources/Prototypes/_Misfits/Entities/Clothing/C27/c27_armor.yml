@@ -66,6 +66,11 @@
   parent: BaseC27Armor
   id: BaseC27ArmorHeavy
   components:
+  - type: MisfitsC27Armor
+    allowedSpecies:
+    - C27
+    - C27NCR
+    - C27BoS
   # #Misfits Tweak - 50% DR → 800 effective HP. No integrity system; pure coefficient.
   - type: Armor
     modifiers:
@@ -185,6 +190,17 @@
     sprite: _Misfits/Clothing/OuterClothing/Armor/c27_medium_bos.rsi
   - type: Clothing
     sprite: _Misfits/Clothing/OuterClothing/Armor/c27_medium_bos.rsi
+
+- type: entity
+  parent: BaseC27ArmorMedium
+  id: ClothingC27ArmorMediumZAX
+  name: c-27 z.a.x augmented medium armor plating
+  description: Reinforced C-27 medium armor plating refit for Z.A.X-linked chassis units. It carries the same protection profile as standard medium plating.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/OuterClothing/Armor/c27_medium_zax.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/OuterClothing/Armor/c27_medium_zax.rsi
 
 # === Concrete: Heavy tier (PA-marker) ===
 

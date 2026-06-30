@@ -47,3 +47,18 @@
   sprites:
   - sprite: _Misfits/Mobs/Species/C27/parts.rsi
     state: torso_m
+
+- type: marking
+  id: C27ModelZAX
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [C27]
+  forcedColoring: true
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#7fb6bf"
+  sprites:
+  - sprite: _Misfits/Mobs/Species/C27/parts.rsi
+    state: torso_m

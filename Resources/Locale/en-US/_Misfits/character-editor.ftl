@@ -63,6 +63,7 @@ humanoid-profile-editor-robot-model-robobrain-laser = Laser
 humanoid-profile-editor-robot-model-c27-generic = Generic Chassis
 humanoid-profile-editor-robot-model-c27-ncr = NCR Issue
 humanoid-profile-editor-robot-model-c27-bos = Brotherhood Issue
+humanoid-profile-editor-robot-model-c27-zax = Z.A.X Chassis
 
 # #Misfits Add - Job selection tab labels (Late Join + Profile Editor).
 job-tab-wasteland = Wasteland
