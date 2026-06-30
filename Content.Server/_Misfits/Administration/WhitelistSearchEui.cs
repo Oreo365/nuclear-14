@@ -9,6 +9,7 @@ using Content.Server.Database;
 using Content.Server.EUI;
 using Content.Server.MoMMI;
 using Content.Server.Players.JobWhitelist;
+using Content.Server._Misfits.Administration.WhitelistLogs;
 using Content.Shared._Misfits.Administration;
 using Content.Shared.Administration;
 using Content.Shared.Database;
@@ -153,6 +154,11 @@ public sealed class WhitelistSearchEui : BaseEui
             _jobWhitelist.RemoveWhitelist(_selectedPlayerId.Value, job);
             _whitelists.Remove(job);
             _sawmill.Info($"{Player.Name} ({Player.UserId}) removed whitelist for {job} from player {_selectedPlayerName} ({_selectedPlayerId.Value.UserId})");
+            _entManager.System<WhitelistLogSystem>().AddEntry(
+                "Removed",
+                Player.Name,
+                _selectedPlayerName ?? _selectedPlayerId.Value.ToString(),
+                job.ToString());
         }
 
         StateDirty();
@@ -218,6 +224,14 @@ public sealed class WhitelistSearchEui : BaseEui
 
         _chat.SendAdminAnnouncement(adminNotice);
         _mommi.SendAdminChatMessage(Player.Name, adminNotice);
+        _entManager.System<WhitelistLogSystem>().AddEntry(
+            "Granted",
+            Player.Name,
+            _selectedPlayerName,
+            job.ToString(),
+            reason,
+            discordUsername,
+            applicationText);
 
         StateDirty();
     }
