@@ -240,6 +240,7 @@ namespace Content.Client.Construction
                         var guideEntry = condition.GenerateGuideEntry();
                         if (guideEntry?.Localization != null)
                         {
+                            // Show the reason to the user:
                             var message = guideEntry.Arguments != null
                                 ? Loc.GetString(guideEntry.Localization, guideEntry.Arguments)
                                 : Loc.GetString(guideEntry.Localization);
