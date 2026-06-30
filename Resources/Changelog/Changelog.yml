@@ -8247,3 +8247,15 @@ Entries:
   id: 6168
   time: '2026-06-30T12:32:08.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/882
+- author: Bradysgaming
+  changes:
+    - type: Add
+      message: Elders can now do a war cry. (Admin Thing)
+    - type: Tweak
+      message: >-
+        Changed the recipe for PlantGrowthMixture to be 5 fertillizer and 2.5
+        dung. This means 1 poop is one plant instead of 5 like when it was
+        bugged.
+  id: 6169
+  time: '2026-06-30T12:45:28.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/938
