@@ -432,9 +432,6 @@ namespace Content.Server.NPC.Systems
             if (followerCount >= followerCapacity)
                 return false;
 
-            if (_npcFaction.IsEntityFriendly((target, targetFaction), (user, userFaction)))
-                return false;
-
             if (_npcFaction.IsEntityHostile((target, null), (user, userFaction)) ||
                 _npcFaction.IsEntityHostile((user, null), (target, targetFaction)))
             {

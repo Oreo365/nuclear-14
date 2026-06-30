@@ -26,14 +26,11 @@
     radius: 5
   - type: SlimPoweredLight
     enabled: false
-  # [Changed by MisfitsCrew/Operator] Lets Station AI camera-light actions toggle
-  # surveillance camera lights while keeping normal player use/activation disabled.
   - type: ItemToggle
     onUse: false
     onActivate: false
     predictable: false
   - type: ItemTogglePointLight
-  - type: StationAiVision
   - type: Clickable
   - type: InteractionOutline
   - type: Construction
@@ -103,7 +100,14 @@
       - Wallmount
 
 - type: entity
+  abstract: true
   parent: SurveillanceCameraBase
+  id: SurveillanceCameraStationAiBase
+  components:
+  - type: StationAiVision
+
+- type: entity
+  parent: SurveillanceCameraStationAiBase
   id: SurveillanceCameraConstructed
   name: camera
   suffix: Constructed
@@ -123,7 +127,7 @@
         - SurveillanceCameraCommand
 
 - type: entity
-  parent: SurveillanceCameraBase
+  parent: SurveillanceCameraStationAiBase
   id: SurveillanceCameraEngineering
   name: camera
   suffix: Engineering
@@ -136,7 +140,7 @@
     networkSet: true
 
 - type: entity
-  parent: SurveillanceCameraBase
+  parent: SurveillanceCameraStationAiBase
   id: SurveillanceCameraSecurity
   name: camera
   suffix: Security
@@ -149,7 +153,7 @@
     networkSet: true
 
 - type: entity
-  parent: SurveillanceCameraBase
+  parent: SurveillanceCameraStationAiBase
   id: SurveillanceCameraScience
   name: camera
   suffix: Epistemics # DeltaV - Epistemics Department replacing Science
@@ -162,7 +166,7 @@
     networkSet: true
 
 - type: entity
-  parent: SurveillanceCameraBase
+  parent: SurveillanceCameraStationAiBase
   id: SurveillanceCameraSupply
   name: camera
   suffix: Supply
@@ -175,7 +179,7 @@
     networkSet: true
 
 - type: entity
-  parent: SurveillanceCameraBase
+  parent: SurveillanceCameraStationAiBase
   id: SurveillanceCameraCommand
   name: camera
   suffix: Command
@@ -188,7 +192,7 @@
     networkSet: true
 
 - type: entity
-  parent: SurveillanceCameraBase
+  parent: SurveillanceCameraStationAiBase
   id: SurveillanceCameraService
   name: camera
   suffix: Service
@@ -201,7 +205,7 @@
     networkSet: true
 
 - type: entity
-  parent: SurveillanceCameraBase
+  parent: SurveillanceCameraStationAiBase
   id: SurveillanceCameraMedical
   name: camera
   suffix: Medical
@@ -214,7 +218,7 @@
     networkSet: true
 
 - type: entity
-  parent: SurveillanceCameraBase
+  parent: SurveillanceCameraStationAiBase
   id: SurveillanceCameraGeneral
   name: camera
   suffix: General

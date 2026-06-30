@@ -386,6 +386,14 @@
     - type: SurveillanceCameraRouter
       subnetFrequency: SurveillanceCameraVault
 
+- type: entity
+  parent: N14MachineRackCameraRouterBase
+  id: N14MachineRackCameraRouterZAX
+  suffix: ZAX
+  components:
+    - type: SurveillanceCameraRouter
+      subnetFrequency: SurveillanceCameraZAX
+
 ## Telecoms
 - type: entity
   parent: N14BaseMachinePowered

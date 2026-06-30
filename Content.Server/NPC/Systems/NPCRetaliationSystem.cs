@@ -1,5 +1,6 @@
 using Content.Server.NPC.Components;
 using Content.Server.NPC.HTN; // #Misfits Add
+using Content.Shared._Misfits.Silicon;
 using Content.Shared.CombatMode;
 using Content.Shared.Damage;
 using Content.Shared.Mobs.Components;
@@ -81,6 +82,11 @@ public sealed class NPCRetaliationSystem : EntitySystem
     {
         // don't retaliate against inanimate objects.
         if (!HasComp<MobStateComponent>(target))
+            return false;
+
+        // #Misfits Change - ZAX units can clip each other during commanded combat movement.
+        // Accidental friendly fire should not seed forced hostility or pack-assist aggro.
+        if (HasComp<ZaxUnitComponent>(ent.Owner) && HasComp<ZaxUnitComponent>(target))
             return false;
 
         if (!ent.Comp.RetaliateFriendlies

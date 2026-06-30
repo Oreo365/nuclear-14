@@ -1,10 +1,58 @@
 # [Changed by MisfitsCrew/Operator] HTN command roots used by Station AI orders for ZAX move, engage, and hold behavior.
 - type: htnCompound
+  id: StationAiOrderedFollowCompound
+  branches:
+    - tasks:
+        - !type:HTNPrimitiveTask
+          preconditions:
+            - !type:CoordinatesNotInRangePrecondition
+              targetKey: FollowTarget
+              rangeKey: FollowCloseRange
+          operator: !type:MoveToOperator
+            pathfindInPlanning: true
+            targetKey: FollowTarget
+            rangeKey: FollowCloseRange
+            removeKeyOnFinish: false
+
+    - tasks:
+        - !type:HTNPrimitiveTask
+          operator: !type:RandomOperator
+            targetKey: IdleTime
+            minKey: FollowWaitMin
+            maxKey: FollowWaitMax
+
+        - !type:HTNPrimitiveTask
+          preconditions:
+            - !type:KeyExistsPrecondition
+              key: IdleTime
+            - !type:CoordinatesInRangePrecondition
+              targetKey: FollowTarget
+              rangeKey: FollowCloseRange
+          operator: !type:WaitOperator
+            key: IdleTime
+
+- type: htnCompound
   id: StationAiOrderedMoveCompound
   branches:
     - tasks:
         - !type:HTNCompoundTask
-          task: OrderedFollowCompound
+          task: StationAiOrderedFollowCompound
+    - tasks:
+        - !type:HTNCompoundTask
+          task: HoldPositionCompound
+
+- type: htnCompound
+  id: StationAiOrderedMoveAndAttackCompound
+  branches:
+    - tasks:
+        - !type:HTNCompoundTask
+          task: InnateRangedCombatCompound
+    - tasks:
+        - !type:HTNCompoundTask
+          task: MeleeCombatCompound
+    - tasks:
+        - !type:HTNCompoundTask
+          task: StationAiOrderedFollowCompound
     - tasks:
         - !type:HTNCompoundTask
           task: HoldPositionCompound

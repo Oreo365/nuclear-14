@@ -26,7 +26,7 @@
         - /Maps/Misfits/Vault.yml
       - type: StationJobs
         overflowJobs:
-        - Wastelander
+        - Townsperson # #Misfits Change - Townsperson is now the default starter overflow role
         availableJobs:
           SuperMutantEnclave : [ 0, 1 ] # #Misfits Add - Enclave-aligned supermutant latejoin slot.
           SuperMutantFollowerDoctor: [ 1, 1 ] # #Misfits Add: FOTA-aligned supermutant.
@@ -57,7 +57,7 @@
           TownMechanic: [ 2, 2 ]
           TownShopkeeper: [ 1, 1 ]
           TownShopkeeperHelper: [ 1, 1 ] # Forge-Town
-          Townsperson: [ 5, 5 ]
+          Townsperson: [ -1, -1 ] # #Misfits Change - uncapped, now default starter role
           NCRMajor: [ 1, 0 ] # whitelist-only command role; 0 active late-join slots
           NCRCommander: [ 1, 1 ]
           NCRExecutiveOfficer: [ 1, 1 ]
@@ -97,6 +97,7 @@
           BoSScribe: [ 3, 3 ]  #Misfits Change /Add/
           BoSMidSquire: [ 3, 3 ]
           BoSInitiate: [ 3, 3 ]  #Misfits Change /Add/
+          BoSOffDuty: [4, 4] # Misfits Change - new off-duty BoS role for non-combatants and latejoiners
           Overseer: [ 1, 1 ]
           VaultDoctor: [ 2, 3 ]
           VaultDweller: [ 8, 10 ]

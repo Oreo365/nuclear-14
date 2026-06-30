@@ -128,12 +128,27 @@
     event: !type:StationAiFormationMoveSelectedNpcsActionEvent
 
 - type: entity
+  id: ActionStationAiMoveAndAttackNpcs
+  name: Move and attack
+  description: Orders selected NPCs to move to a location while engaging hostiles they encounter.
+  components:
+  - type: WorldTargetAction
+    priority: -24
+    itemIconStyle: BigAction
+    icon: Interface/VerbIcons/point.svg.192dpi.png
+    checkCanInteract: false
+    checkConsciousness: false
+    checkCanAccess: false
+    range: 0
+    event: !type:StationAiMoveAndAttackSelectedNpcsActionEvent
+
+- type: entity
   id: ActionStationAiEngageNpcs
   name: Engage target
   description: Orders selected NPCs to engage a target.
   components:
   - type: EntityTargetAction
-    priority: -24
+    priority: -25
     itemIconStyle: BigAction
     icon: Interface/VerbIcons/point.svg.192dpi.png
     checkCanInteract: false
@@ -148,7 +163,7 @@
   description: Orders selected NPCs to hold position and not engage targets.
   components:
   - type: InstantAction
-    priority: -25
+    priority: -26
     itemIconStyle: BigAction
     icon: Interface/VerbIcons/anchor.svg.192dpi.png
     checkConsciousness: false

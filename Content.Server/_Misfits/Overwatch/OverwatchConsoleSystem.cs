@@ -203,6 +203,14 @@ public sealed class OverwatchConsoleSystem : EntitySystem
             return;
         }
 
+        // #Misfits Add - If the resolved player changed while we had a valid watch,
+        // the pipboy was picked up by someone else. Stop watching.
+        if (ent.Comp.WatchedEntity != null && ent.Comp.WatchedEntity != watchedEntity)
+        {
+            StopWatching(ent);
+            return;
+        }
+
         if (ent.Comp.WatchedEntity != watchedEntity)
         {
             RemoveWatchViewSubscription(ent.Comp.WatchingActor, ent.Comp.WatchedEntity);

@@ -5,6 +5,8 @@
   id: MisfitsZaxUnitBase
   components:
   - type: ZaxUnit
+  - type: StationAiVision
+  - type: StationAiWhitelist
   - type: NpcFactionMember
     factions:
     - Wastelander
@@ -14,6 +16,16 @@
     blackboard:
       NavSmash: !type:Bool
         true
+      AggroVisionRadius: !type:Single
+        12
+      FollowCloseRange: !type:Single
+        0.75
+      FollowRange: !type:Single
+        0.75
+      FollowWaitMin: !type:Single
+        0.25
+      FollowWaitMax: !type:Single
+        0.6
 
 - type: entity
   parent: [N14MobRobotMrHandyClaw, MisfitsZaxUnitBase]

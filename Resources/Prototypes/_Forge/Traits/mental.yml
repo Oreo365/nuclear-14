@@ -9,12 +9,6 @@
         - CaesarLegionCenturion
         - CaesarLegionHoundmaster
   functions:
-    - !type:TraitAddComponent
-      components:
-        - type: GhostRole
-          name: ghost-role-information-n14pet-dog-legion-name
-          description: ghost-role-information-n14pet-generic-description
-          rules: ghost-role-component-default-rules
-        - type: GhostRoleMobSpawner
-          prototype: N14MobPetDogLegion
-          availableTakeovers: 5
+    - !type:TraitSpawnEntity
+      prototypes:
+        - MisfitsPetSpawnerDogLegion

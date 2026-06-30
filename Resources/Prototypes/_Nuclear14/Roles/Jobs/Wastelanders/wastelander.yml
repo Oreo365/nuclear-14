@@ -1,6 +1,7 @@
 - type: job
   id: Wastelander
   setPreference: true
+  weight: 20 # #Misfits Change - no longer default starter, pushed down
   overrideConsoleVisibility: false
   canBeAntag: false
   name: job-name-wastelander
@@ -9,12 +10,14 @@
   startingGear: WastelanderGear
   icon: "JobIconWastelander" # Corvax-Change
   supervisors: job-supervisors-wastelander
-  requirements: # Misfits Change: block non-human species
+  requirements: # #Misfits Change: 8h playtime lock, block non-human species
     - !type:CharacterSpeciesRequirement
       species:
       - Human
       - Ghoul
       - GhoulGlowing
+    - !type:CharacterOverallTimeRequirement
+      min: 28800 # #Misfits Add - 8 hours total playtime
   special:
   - !type:AddComponentSpecial
     components:

@@ -1,7 +1,7 @@
 - type: job
   id: Townsperson
   setPreference: true
-  weight: 10
+  weight: 0 # #Misfits Change - default starter role (was 10)
   overrideConsoleVisibility: false
   canBeAntag: false
   name: job-name-townsperson

@@ -53,6 +53,7 @@
   - EnclaveJuniorScientist
   - EnclaveNCO
   - EnclaveEnlisted
+  - EnclaveRecruit       # #Misfits Add - hidden job for per-round recruitment playtime tracking
   - SuperMutantEnclave
 
 # #Misfits Add — Caesar's Legion department. Groups all Legion roles for the

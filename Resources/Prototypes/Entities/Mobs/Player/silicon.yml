@@ -36,6 +36,7 @@
     - ActionStationAiClearNpcSelection
     - ActionStationAiMoveNpcs
     - ActionStationAiFormationMoveNpcs
+    - ActionStationAiMoveAndAttackNpcs
     - ActionStationAiEngageNpcs
     - ActionStationAiHoldNpcs
   - type: UserInterface

@@ -8171,3 +8171,68 @@ Entries:
   id: 6162
   time: '2026-06-29T13:01:53.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/928
+- author: cythisiax
+  changes:
+    - type: Add
+      message: >-
+        force pipboy validate through cardcomponent to be visible via overwatch.
+        If no pipboy, they no show up in roster list.
+  id: 6163
+  time: '2026-06-29T18:50:47.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/929
+- author: Vixting
+  changes:
+    - type: Tweak
+      message: You can now recruit friednly mobs
+    - type: Fix
+      message: Fixed Legion charlie dog not being recruitable
+    - type: Fix
+      message: Fixed legion pet dog perk not spawning it with 8+ charisma
+  id: 6164
+  time: '2026-06-29T21:23:41.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/927
+- author: Operator
+  changes:
+    - type: Add
+      message: Move&Attack command for the ZAX
+    - type: Tweak
+      message: ZAX commands are more reliable
+    - type: Fix
+      message: Move in formation actually moves in formation
+    - type: Fix
+      message: ZAX units no longer attack each other
+    - type: Tweak
+      message: ZAX units carry vision&connection where they go now.
+    - type: Tweak
+      message: Faction cameras dont carry ZAX vision. ZAX has its own camera type now.
+  id: 6165
+  time: '2026-06-29T21:32:08.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/925
+- author: cythjisiax
+  changes:
+    - type: Fix
+      message: suppress Entity Spawn/Tile Placement systems in chat
+    - type: Tweak
+      message: used microsoft paint on map .png to remove eye annoyances on render
+    - type: Add
+      message: >-
+        enclave recruit verb, stealth adds to EnclaveRecruit job for dept time
+        in Enclave
+    - type: Tweak
+      message: >-
+        Wastelander now 8H timelock requirement (server pTime), Townsperson new
+        default, unlimited slots
+  id: 6166
+  time: '2026-06-30T02:41:11.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/932
+- author: Bradysgaming
+  changes:
+    - type: Add
+      message: Added Off duty bos role, parity of citizens
+    - type: Fix
+      message: >-
+        fixed Fertilizer, Now part of a new chem that has the same 1u effect.
+        (25 fert + 5 dung makes it)
+  id: 6167
+  time: '2026-06-30T02:52:32.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/933

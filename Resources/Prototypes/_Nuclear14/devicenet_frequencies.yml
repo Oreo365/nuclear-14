@@ -23,3 +23,8 @@
   id: SurveillanceCameraVault
   name: device-frequency-prototype-name-surveillance-camera
   frequency: 4500
+
+- type: deviceFrequency
+  id: SurveillanceCameraZAX
+  name: device-frequency-prototype-name-surveillance-camera
+  frequency: 4600

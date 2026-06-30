@@ -32,6 +32,16 @@
     MentatsBerry: 1
 
 - type: reaction
+  id: PlantGrowthMixture
+  reactants:
+    Dung:
+      amount: 5
+    Fertilizer:
+      amount: 25
+  products:
+    PlantGrowthMixture: 1
+
+- type: reaction
   id: MentatsGrape
   reactants:
     Mentats:

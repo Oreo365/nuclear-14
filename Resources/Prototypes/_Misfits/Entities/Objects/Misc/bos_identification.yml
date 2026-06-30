@@ -107,6 +107,16 @@
 
 - type: entity
   parent: N14IDBrotherhoodHolotag
+  id: MisfitsIDBOSOffDuty
+  name: off-duty holotags
+  description: holotags worn by off-duty members of the Brotherhood of Steel.
+  suffix: Off-Duty
+  components:
+  - type: PresetIdCard
+    job: BoSOffDuty
+
+- type: entity
+  parent: N14IDBrotherhoodHolotag
   id: N14IDBrotherhoodHolotagKnight
   name: senior knight's holotags
   description: An ID holotag worn by the Brotherhood of Steel.

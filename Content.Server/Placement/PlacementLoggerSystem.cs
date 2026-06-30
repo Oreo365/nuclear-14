@@ -21,13 +21,15 @@ public sealed class PlacementLoggerSystem : EntitySystem
 
     private void OnEntityPlacement(PlacementEntityEvent ev)
     {
+        if (ev.PlacementEventAction == PlacementEventAction.Erase)
+            return;
+
         _player.TryGetSessionById(ev.PlacerNetUserId, out var actor);
         var actorEntity = actor?.AttachedEntity;
 
         var logType = ev.PlacementEventAction switch
         {
             PlacementEventAction.Create => LogType.EntitySpawn,
-            PlacementEventAction.Erase => LogType.EntityDelete,
             _ => LogType.Action
         };
 

@@ -32,10 +32,10 @@ namespace Content.Server._Misfits.Silicon;
 public sealed class StationAiNpcCommandSystem : EntitySystem
 {
     private const string MoveRoot = "StationAiOrderedMoveCompound";
+    private const string MoveAndAttackRoot = "StationAiOrderedMoveAndAttackCompound";
     private const string EngageRoot = "StationAiOrderedEngageCompound";
     private const string HoldRoot = "StationAiOrderedHoldCompound";
     private const float MoveRange = 0.75f;
-    private const float FormationSpacing = 1.25f;
 
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly NPCSystem _npc = default!;
@@ -64,6 +64,7 @@ public sealed class StationAiNpcCommandSystem : EntitySystem
         SubscribeLocalEvent<StationAiNpcCommanderComponent, StationAiClearNpcSelectionActionEvent>(OnClearSelection);
         SubscribeLocalEvent<StationAiNpcCommanderComponent, StationAiMoveSelectedNpcsActionEvent>(OnMoveSelected);
         SubscribeLocalEvent<StationAiNpcCommanderComponent, StationAiFormationMoveSelectedNpcsActionEvent>(OnFormationMoveSelected);
+        SubscribeLocalEvent<StationAiNpcCommanderComponent, StationAiMoveAndAttackSelectedNpcsActionEvent>(OnMoveAndAttackSelected);
         SubscribeLocalEvent<StationAiNpcCommanderComponent, StationAiEngageSelectedNpcsActionEvent>(OnEngageSelected);
         SubscribeLocalEvent<StationAiNpcCommanderComponent, StationAiHoldSelectedNpcsActionEvent>(OnHoldSelected);
         SubscribeLocalEvent<StationAiNpcCommanderComponent, ComponentShutdown>(OnCommanderShutdown);
@@ -130,6 +131,15 @@ public sealed class StationAiNpcCommandSystem : EntitySystem
         ApplyMove(ent, args.Target, formation: true);
     }
 
+    private void OnMoveAndAttackSelected(Entity<StationAiNpcCommanderComponent> ent, ref StationAiMoveAndAttackSelectedNpcsActionEvent args)
+    {
+        if (args.Handled || !ValidateAi(ent.Owner) || !CanSee(ent.Owner, args.Target))
+            return;
+
+        args.Handled = true;
+        ApplyMove(ent, args.Target, formation: false, MoveAndAttackRoot);
+    }
+
     private void OnEngageSelected(Entity<StationAiNpcCommanderComponent> ent, ref StationAiEngageSelectedNpcsActionEvent args)
     {
         if (args.Handled ||
@@ -183,6 +193,12 @@ public sealed class StationAiNpcCommandSystem : EntitySystem
             return;
         }
 
+        if (IsZaxFriendlyFire(ent.Owner, attacker))
+        {
+            ClearMutualZaxAggro(ent.Owner, attacker);
+            return;
+        }
+
         // [Changed by MisfitsCrew/Operator] Lets ZAX units retaliate when attacked unless the Station AI has ordered hold.
         if (TryComp(ent.Owner, out StationAiCommandedNpcComponent? commanded) && commanded.HoldingCommand)
         {
@@ -230,21 +246,28 @@ public sealed class StationAiNpcCommandSystem : EntitySystem
         ReleaseDeadOrDeletedNpc(ent.Owner);
     }
 
-    private void ApplyMove(Entity<StationAiNpcCommanderComponent> ent, EntityCoordinates target, bool formation)
+    private void ApplyMove(
+        Entity<StationAiNpcCommanderComponent> ent,
+        EntityCoordinates target,
+        bool formation,
+        string rootTask = MoveRoot)
     {
         var index = 0;
         var selected = GetValidSelectedNpcs(ent);
-        var count = selected.Count;
+        var formationOffsets = formation
+            ? GetCurrentFormationOffsets(selected, target)
+            : null;
 
         foreach (var (npc, htn) in selected)
         {
             var moveTarget = formation
-                ? target.Offset(GetFormationOffset(index++, count))
+                ? OffsetTargetInMap(target, formationOffsets![index++])
                 : target;
 
-            // [Changed by MisfitsCrew/Operator] Applies either direct or formation offsets as HTN follow targets for selected ZAX units.
-            PrepareOrder(npc, ent.Owner, htn, MoveRoot);
+            // [Changed by MisfitsCrew/Operator] Applies direct or preserved formation offsets as HTN follow targets for selected ZAX units.
+            PrepareOrder(npc, ent.Owner, htn, rootTask);
             ClearOrderBlackboard(htn);
+            ClearForcedHostiles(npc, all: true);
             _npc.SetBlackboard(npc, NPCBlackboard.FollowTarget, moveTarget, htn);
             _npc.SetBlackboard(npc, "FollowCloseRange", MoveRange, htn);
             _npc.SetBlackboard(npc, "FollowRange", MoveRange, htn);
@@ -305,6 +328,51 @@ public sealed class StationAiNpcCommandSystem : EntitySystem
         }
 
         return !TryComp(uid, out StationAiCommandedNpcComponent? commanded) || IsSameCommander(commander, commanded);
+    }
+
+    private List<Vector2> GetCurrentFormationOffsets(
+        List<(EntityUid Uid, HTNComponent Htn)> selected,
+        EntityCoordinates target)
+    {
+        var offsets = new List<Vector2>(selected.Count);
+        if (selected.Count <= 1)
+        {
+            if (selected.Count == 1)
+                offsets.Add(Vector2.Zero);
+
+            return offsets;
+        }
+
+        var targetMap = target.ToMap(EntityManager, _transform);
+        var positions = new List<Vector2>(selected.Count);
+        var center = Vector2.Zero;
+
+        foreach (var (uid, _) in selected)
+        {
+            var mapCoordinates = _transform.GetMapCoordinates(uid);
+            if (mapCoordinates.MapId != targetMap.MapId)
+            {
+                positions.Add(targetMap.Position);
+                center += targetMap.Position;
+                continue;
+            }
+
+            positions.Add(mapCoordinates.Position);
+            center += mapCoordinates.Position;
+        }
+
+        center /= selected.Count;
+
+        foreach (var position in positions)
+            offsets.Add(position - center);
+
+        return offsets;
+    }
+
+    private EntityCoordinates OffsetTargetInMap(EntityCoordinates target, Vector2 offset)
+    {
+        var mapTarget = target.ToMap(EntityManager, _transform);
+        return EntityCoordinates.FromMap(_mapManager, new MapCoordinates(mapTarget.Position + offset, mapTarget.MapId));
     }
 
     private bool ValidateAi(EntityUid uid)
@@ -504,6 +572,28 @@ public sealed class StationAiNpcCommandSystem : EntitySystem
         commanded.ForcedHostile = null;
     }
 
+    private bool IsZaxFriendlyFire(EntityUid uid, EntityUid attacker)
+    {
+        return HasComp<ZaxUnitComponent>(uid) && HasComp<ZaxUnitComponent>(attacker);
+    }
+
+    private void ClearMutualZaxAggro(EntityUid uid, EntityUid other)
+    {
+        ClearSpecificHostile(uid, other);
+        ClearSpecificHostile(other, uid);
+    }
+
+    private void ClearSpecificHostile(EntityUid uid, EntityUid target)
+    {
+        if (!TryComp(uid, out FactionExceptionComponent? factionException))
+            return;
+
+        _npcFaction.DeAggroEntity((uid, factionException), target);
+
+        if (TryComp(uid, out StationAiCommandedNpcComponent? commanded) && commanded.ForcedHostile == target)
+            commanded.ForcedHostile = null;
+    }
+
     private void ReleaseDeadOrDeletedNpc(EntityUid npc)
     {
         // [Changed by MisfitsCrew/Operator] Removes stale NPC references from every AI commander selection during death/deletion cleanup.
@@ -526,17 +616,4 @@ public sealed class StationAiNpcCommandSystem : EntitySystem
         _npc.WakeNPC(uid, htn);
     }
 
-    private static Vector2 GetFormationOffset(int index, int count)
-    {
-        if (count <= 1)
-            return Vector2.Zero;
-
-        var width = (int) MathF.Ceiling(MathF.Sqrt(count));
-        var row = index / width;
-        var column = index % width;
-        var usedInRow = Math.Min(width, count - row * width);
-        var x = (column - (usedInRow - 1) / 2f) * FormationSpacing;
-        var y = -row * FormationSpacing;
-        return new Vector2(x, y);
-    }
 }

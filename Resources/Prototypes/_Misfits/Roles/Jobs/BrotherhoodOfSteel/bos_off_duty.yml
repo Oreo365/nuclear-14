@@ -1,0 +1,41 @@
+- type: job
+  id: BoSOffDuty
+  setPreference: true
+  hideIfPlaytimeRequirementsNotMet: false # #Misfits Tweak - all jobs visible in selection
+  jobWhitelistBypassesRoleTimers: true
+  weight: 10
+  overrideConsoleVisibility: true
+  canBeAntag: false
+  name: job-name-bos-off-duty
+  description: job-description-bos-off-duty
+  playTimeTracker: BoSOffDuty
+  requirements:
+    - !type:CharacterSpeciesRequirement # BoS does not accept Ghouls or Glowing Ghouls
+      species:
+      - Human
+  startingGear: BoSOffDutyGear
+  alwaysUseSpawner: true
+  icon: "JobIconRabMBos"
+  supervisors: job-supervisors-bos-west
+  accessGroups:
+  - BOSOffDuty
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: NpcFactionMember
+        factions:
+          - BrotherhoodOfSteel
+          - Wastelander
+
+- type: startingGear
+  id: BoSOffDutyGear
+  equipment:
+    jumpsuit: N14ClothingUniformJumpsuitBOSBlack
+    shoes: N14ClothingBootsLeatherFilled
+    head: N14ClothingHeadHatBrotherhoodFieldCap
+    ears: MisfitsClothingHeadsetWastelandScrap # Turned in your headset to avoid easy loss of comms.
+    belt: ClothingBeltMilitary
+    id: MisfitsIDBOSOffDuty
+
+- type: playTimeTracker
+  id: BoSOffDuty

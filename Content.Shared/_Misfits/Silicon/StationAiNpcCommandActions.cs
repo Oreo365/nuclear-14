@@ -11,6 +11,8 @@ public sealed partial class StationAiMoveSelectedNpcsActionEvent : WorldTargetAc
 
 public sealed partial class StationAiFormationMoveSelectedNpcsActionEvent : WorldTargetActionEvent;
 
+public sealed partial class StationAiMoveAndAttackSelectedNpcsActionEvent : WorldTargetActionEvent;
+
 public sealed partial class StationAiEngageSelectedNpcsActionEvent : EntityTargetActionEvent;
 
 public sealed partial class StationAiHoldSelectedNpcsActionEvent : InstantActionEvent;

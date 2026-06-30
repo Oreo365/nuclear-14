@@ -51,6 +51,7 @@
   - BoSScribe                    # Scribe         | _Misfits/Roles/Jobs/BrotherhoodOfSteel/bos_scribe.yml  #Misfits Change /Add/
   # Recruits
   - BoSMidSquire                 # Squire         | _Misfits/Roles/Jobs/BrotherhoodOfSteel/bos_squire.yml
+  - BoSOffDuty                   # Off-duty       | _Misfits/Roles/Jobs/BrotherhoodOfSteel/bos_off_duty.yml
   #- BoSWashingtonInitiate        # Initiate (old Washington)
   - BoSInitiate                  # Initiate       | _Misfits/Roles/Jobs/BrotherhoodOfSteel/bos_initiate.yml  #Misfits Change /Add/
 
