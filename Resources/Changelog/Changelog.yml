@@ -8259,3 +8259,32 @@ Entries:
   id: 6169
   time: '2026-06-30T12:45:28.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/938
+- author: Operator
+  changes:
+    - type: Add
+      message: Z.A.X C-27 Chassis/Sub-Chassis
+    - type: Add
+      message: >-
+        Z.A.X Player-Silicons [Gutsy, Handy, Protectron, etc] No sprite changes
+        yet.
+    - type: Add
+      message: Z.A.X Machine Foundry
+    - type: Add
+      message: Z.A.X Pulse Rifle [Sprites by Taro_Varne]
+    - type: Add
+      message: Z.A.X Augmented Medium Armor [Sprites by Taro_Varne]
+    - type: Tweak
+      message: Z.A.X NPC aggression has been toned down/fixed
+    - type: Tweak
+      message: >-
+        Z.A.X Core Move commands work slightly differently and highlight the
+        tiles you select.
+    - type: Add
+      message: Binary Radio, linked all Z.A.X related units into it. binds to z
+    - type: Tweak
+      message: Z.A.X Securitrons are now also ghostroles
+    - type: Add
+      message: Z.A.X C-27 Ghost Role form [its still locked to the whitelist]
+  id: 6170
+  time: '2026-06-30T13:39:50.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/937
