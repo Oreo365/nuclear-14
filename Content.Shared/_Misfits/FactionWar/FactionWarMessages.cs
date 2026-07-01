@@ -369,3 +369,26 @@ public sealed class FactionWarSurrenderResultEvent : EntityEventArgs
     public bool   Success = false;
     public string Message = string.Empty;
 }
+
+// ── /forceobservewar admin network messages ──────────────────────────────
+
+/// <summary>
+/// #Misfits Add - Client → server. Admin requests to observe a war from a participant's perspective.
+/// Observer sees overlay tags but does not get one rendered on them.
+/// </summary>
+[Serializable, NetSerializable]
+public sealed class PlayerWarForceObserveRequestEvent : EntityEventArgs
+{
+    public NetUserId Observer;
+    public NetUserId Participant;
+}
+
+/// <summary>
+/// #Misfits Add - Server → the requesting admin client. Result feedback for the forceobservewar GUI.
+/// </summary>
+[Serializable, NetSerializable]
+public sealed class FactionWarForceObserveResultEvent : EntityEventArgs
+{
+    public bool   Success = false;
+    public string Message = string.Empty;
+}

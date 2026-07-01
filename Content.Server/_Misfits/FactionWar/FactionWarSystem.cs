@@ -225,6 +225,7 @@ public sealed class FactionWarSystem : EntitySystem
         // Admin force-war GUI.
         SubscribeNetworkEvent<PlayerWarForceRequestEvent>(OnForceWarRequest);
         SubscribeNetworkEvent<PlayerWarForceCeasefireRequestEvent>(OnForceCeasefireRequest);
+        SubscribeNetworkEvent<PlayerWarForceObserveRequestEvent>(OnForceObserveRequest); // #Misfits Add
 
         SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundRestart);
         SubscribeLocalEvent<MindContainerComponent, MindAddedMessage>(OnMindAdded);
@@ -1492,6 +1493,76 @@ public sealed class FactionWarSystem : EntitySystem
 
         RemoveWar(fcWar);
         RaiseNetworkEvent(new FactionWarForceResultEvent { Success = true, Message = "War ended.", IsCeasefire = true }, player);
+    }
+
+    // #Misfits Add - Admin GUI observe-war handler. Adds a player as an observer of a war.
+    private void OnForceObserveRequest(PlayerWarForceObserveRequestEvent msg, EntitySessionEventArgs args)
+    {
+        var player = args.SenderSession;
+
+        if (!_adminManager.IsAdmin(player))
+        {
+            RaiseNetworkEvent(new FactionWarForceObserveResultEvent { Success = false, Message = "Admin only." }, player);
+            return;
+        }
+
+        if (!TryGetSessionForPlayer(msg.Observer, out var obsSess) || obsSess.AttachedEntity is not { } obsEntity)
+        {
+            RaiseNetworkEvent(new FactionWarForceObserveResultEvent { Success = false, Message = "Observer player is not in-game." }, player);
+            return;
+        }
+
+        if (!TryGetSessionForPlayer(msg.Participant, out var partSess) || partSess.AttachedEntity is not { } partEntity)
+        {
+            RaiseNetworkEvent(new FactionWarForceObserveResultEvent { Success = false, Message = "Participant player is not in-game." }, player);
+            return;
+        }
+
+        var partNetEntity = GetNetEntity(partEntity);
+        if (!_warParticipants.TryGetValue(partNetEntity, out var partEntry) ||
+            !_activeWars.TryGetValue(partEntry.WarKey, out var war))
+        {
+            RaiseNetworkEvent(new FactionWarForceObserveResultEvent { Success = false, Message = "Participant is not in an active war." }, player);
+            return;
+        }
+
+        var obsNetEntity = GetNetEntity(obsEntity);
+
+        // Remove observer from any existing war first.
+        if (_warParticipants.TryGetValue(obsNetEntity, out var oldEntry) &&
+            _activeWars.TryGetValue(oldEntry.WarKey, out var oldWar))
+        {
+            oldWar.Participants.Remove(obsNetEntity);
+        }
+
+        var side = partEntry.Side;
+        war.Participants[obsNetEntity] = side;
+        _warParticipants[obsNetEntity] = (war.WarKey, side);
+        _observerParticipants.Add(obsNetEntity);
+        _surrenderedParticipants.Remove(obsNetEntity);
+
+        war.History.Add(new WarHistoryEvent
+        {
+            EventType = WarHistoryEventType.PlayerJoined,
+            OccurredAtUtc = DateTime.UtcNow,
+            ActorUserId = obsSess.UserId,
+            ActorUserName = obsSess.Name,
+            ActorCharacterName = Name(obsEntity),
+            Details = $"Admin-forced observer on side {side}"
+        });
+
+        BroadcastParticipants();
+        BroadcastWarState();
+        SendPanelDataToAll();
+
+        var sideName = side == 1 ? war.SideName1 : war.SideName2;
+        _chat.DispatchServerMessage(obsSess,
+            $"You are now observing the war from {sideName}'s perspective. You can see overlay tags but others cannot see yours.");
+        RaiseNetworkEvent(new FactionWarForceObserveResultEvent
+        {
+            Success = true,
+            Message = $"{Name(obsEntity)} is now observing the war from {sideName}'s side.",
+        }, player);
     }
 
     // ── Round lifecycle ────────────────────────────────────────────────────
