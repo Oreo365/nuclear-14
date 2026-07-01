@@ -165,7 +165,7 @@
   name: Morale Trooper Squad Lead kit
   parent: KitBase
   id: KitNCR_SGTMSL
-  description: A crate containing an NCR squad leader's MSL package: custom mantle, trench shotgun, close-range ammunition, and a combat-stim field dose.
+  description: "A crate containing an NCR squad leader's MSL package: custom mantle, trench shotgun, close-range ammunition, and a combat-stim field dose."
   components:
   - type: Sprite
     state: pointman
