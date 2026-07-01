@@ -8371,3 +8371,22 @@ Entries:
   id: 6175
   time: '2026-07-01T20:20:30.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/944
+- author: Operator
+  changes:
+    - type: Add
+      message: Back&Side ZAX Monitor sprites by Beepbop
+    - type: Add
+      message: >-
+        Z.A.X Camera Hacking. Takes 30 seconds. Plays spark sounds. Has a
+        visible doafter.
+    - type: Tweak
+      message: >-
+        Z.A.X can use terminals that are powered and within its vision range. It
+        has access to VAULT-TEC databases.
+    - type: Add
+      message: >-
+        Z.A.X can use terminals as a form of non-projecting holopad. You can
+        emote through them non-physically now too.
+  id: 6176
+  time: '2026-07-01T20:22:12.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/946
