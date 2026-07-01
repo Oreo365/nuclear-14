@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Numerics;
 using Content.Server._Misfits.Movement;
+using Content.Server._Misfits.Weapons.Ranged.Flamer;
 using Content.Server.Cargo.Systems;
 using Content.Server.Movement.Components;
 using Content.Server.Power.EntitySystems;
@@ -21,6 +22,7 @@ using Content.Shared.Weapons.Reflect;
 using Content.Shared.Damage.Components;
 using Content.Shared._Misfits.Weapons; // #Misfits Add - GunDamageBonusComponent support
 using Content.Server._Misfits.Weapons.Ranged.Prediction;
+using Content.Shared._Misfits.Weapons.Ranged.Flamer;
 using Content.Shared._Misfits.Weapons.Ranged.Prediction;
 using Content.Server.Weapons.Ranged.Events;
 using Robust.Shared.Audio;
@@ -50,6 +52,7 @@ public sealed partial class GunSystem : SharedGunSystem
     [Dependency] private readonly StaminaSystem _stamina = default!;
     [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly GunPredictionSystem _gunPrediction = default!;
+    [Dependency] private readonly FlamerLineSystem _flamerLine = default!;
 
     private readonly HashSet<EntityUid> _lagCompCandidates = [];
     private float _lagCompAabbEnlargement;
@@ -307,6 +310,17 @@ public sealed partial class GunSystem : SharedGunSystem
                         RaiseLocalEvent(user.Value, ref hitEv);
                     }
 
+                    Audio.PlayPredicted(gun.SoundGunshotModified, gunUid, user);
+                    break;
+                case FlamerShot flamerShot:
+                    if (flamerShot.ProjectileProto is { } projectileProto)
+                    {
+                        var projectile = Spawn(projectileProto, fromEnt);
+                        base.ShootOrThrow(projectile, mapDirection, gunVelocity, gun, gunUid, user);
+                        MarkPredicted(projectile);
+                        shotProjectiles.Add(projectile);
+                    }
+                    _flamerLine.ShootLine(user ?? gunUid, gunUid, flamerShot, fromEnt, gun.ShootCoordinates);
                     Audio.PlayPredicted(gun.SoundGunshotModified, gunUid, user);
                     break;
                 default:

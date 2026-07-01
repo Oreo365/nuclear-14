@@ -218,7 +218,7 @@
         - CaesarLegionPrimeDecanus
     - !type:CharacterPlaytimeRequirement
       tracker: CaesarLegionPrimeDecanus
-      min: 180000 # unrobust primes should be filtered by the 50 hour mark
+      min: 72000 # 20 hours
   items:
     - N14ClothingOuterPowerArmorLegion
 

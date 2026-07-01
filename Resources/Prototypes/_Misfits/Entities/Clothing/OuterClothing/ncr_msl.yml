@@ -1,0 +1,11 @@
+# #Misfits Add - MSL mantle sprites credited to Pinky109.
+- type: entity
+  parent: MisfitsNCRHeavyCombatArmor
+  id: MisfitsNCRMSLArmor
+  name: NCR MSL mantle
+  description: A reinforced NCR mantle reserved for squad leaders who favor trench-clearing work and close-range pushes.
+  components:
+  - type: Sprite
+    sprite: _Misfits/Clothing/OuterClothing/Armor/ncr_msl.rsi
+  - type: Clothing
+    sprite: _Misfits/Clothing/OuterClothing/Armor/ncr_msl.rsi
