@@ -2,9 +2,11 @@
 - type: entity
   parent: N14FalloutArmorBase
   id: MisfitsLegionPrincepsArmor
-  name: Principes Pattern Armor
+  name: Principes Armor
   description: Captured heavy plate reworked into veteran Princeps armor. It trades speed for brutal staying power and keeps incoming small and medium rounds glancing away like T-60 plate.
   components:
+  - type: Item
+    size: Ginormous
   - type: Damageable
   - type: PowerArmorIntegrity
     maxIntegrity: 375
@@ -17,6 +19,8 @@
     sprite: _Misfits/Clothing/CaesarLegion/Princeps/princeps_armor.rsi
   - type: Clothing
     sprite: _Misfits/Clothing/CaesarLegion/Princeps/princeps_armor.rsi
+    equipDelay: 0.5
+    unequipDelay: 0.5
   - type: ClothingSpeedModifier
     walkModifier: 0.75
     sprintModifier: 0.75
