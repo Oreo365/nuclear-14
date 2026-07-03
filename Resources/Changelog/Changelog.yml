@@ -8408,3 +8408,34 @@ Entries:
   id: 6178
   time: '2026-07-01T22:03:32.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/949
+- author: Bradysgaming
+  changes:
+    - type: Remove
+      message: Removed Deogratory spray decal
+  id: 6179
+  time: '2026-07-03T00:28:43.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/955
+- author: Jerryaqua
+  changes:
+    - type: Remove
+      message: The AER-9A is dead, Long live the AER-9A
+    - type: Tweak
+      message: >-
+        The RCW has been reworked to fill a similar role, as well as electron
+        charge pack size buff. 
+    - type: Tweak
+      message: The AER-9 is no longer useless
+    - type: Tweak
+      message: The AER-12 now is viable T4
+    - type: Tweak
+      message: 'The AER-14 has lost DPS for potential damage '
+  id: 6180
+  time: '2026-07-03T03:54:05.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/943
+- author: cythisisax
+  changes:
+    - type: Fix
+      message: Principes and MSL use proper sprites.
+  id: 6181
+  time: '2026-07-03T04:13:34.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/952
