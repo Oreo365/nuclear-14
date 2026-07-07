@@ -385,20 +385,21 @@
           Occupied: { state: ai }
   - type: LanguageKnowledge
     speaks:
-    - TauCetiBasic
-    - SolCommon
-    - Tradeband
-    - Freespeak
-    - Elyran
-    - RobotTalk
+    - English
+    - N14Robot
+    - N14BrotherBeep
+    - Latin
+    - Chinese
+    - Tribal
+    - Sign
     understands:
-    - TauCetiBasic
-    - SolCommon
-    - Tradeband
-    - Freespeak
-    - Elyran
-    - RobotTalk
-    - Sign # It's intentional that they don't "Speak" sign language.
+    - English
+    - N14Robot
+    - N14BrotherBeep
+    - Latin
+    - Chinese
+    - Tribal
+    - Sign
   - type: Telephone
     compatibleRanges:
     - Grid
@@ -473,20 +474,21 @@
     - NoConsoleSound
   - type: LanguageKnowledge
     speaks:
-    - TauCetiBasic
-    - SolCommon
-    - Tradeband
-    - Freespeak
-    - Elyran
-    - RobotTalk
+    - English
+    - N14Robot
+    - N14BrotherBeep
+    - Latin
+    - Chinese
+    - Tribal
+    - Sign
     understands:
-    - TauCetiBasic
-    - SolCommon
-    - Tradeband
-    - Freespeak
-    - Elyran
-    - RobotTalk
-    - Sign # It's intentional that they don't "Speak" sign language.
+    - English
+    - N14Robot
+    - N14BrotherBeep
+    - Latin
+    - Chinese
+    - Tribal
+    - Sign
 
 # Hologram projection that the AI's eye tracks.
 - type: entity
@@ -517,20 +519,21 @@
       map: ["base"]
   - type: LanguageKnowledge
     speaks:
-    - TauCetiBasic
-    - SolCommon
-    - Tradeband
-    - Freespeak
-    - Elyran
-    - RobotTalk
+    - English
+    - N14Robot
+    - N14BrotherBeep
+    - Latin
+    - Chinese
+    - Tribal
+    - Sign
     understands:
-    - TauCetiBasic
-    - SolCommon
-    - Tradeband
-    - Freespeak
-    - Elyran
-    - RobotTalk
-    - Sign # It's intentional that they don't "Speak" sign language.
+    - English
+    - N14Robot
+    - N14BrotherBeep
+    - Latin
+    - Chinese
+    - Tribal
+    - Sign
 
 # The holographic representation of the AI that is projected from a holopad.
 - type: entity

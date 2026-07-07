@@ -206,7 +206,7 @@
   id: N14AssaultronHeadLaser
   damage:
     types:
-      Heat: 30
+      Heat: 75
       Structural: 10
   tintColor: "#FF6A00"
   beamWidth: 3

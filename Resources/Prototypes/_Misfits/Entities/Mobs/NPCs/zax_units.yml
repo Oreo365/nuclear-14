@@ -15,6 +15,23 @@
   - type: ActiveRadio
     channels:
     - ZAXBinary
+  - type: LanguageKnowledge
+    speaks:
+    - English
+    - N14Robot
+    - N14BrotherBeep
+    - Latin
+    - Chinese
+    - Tribal
+    - Sign
+    understands:
+    - English
+    - N14Robot
+    - N14BrotherBeep
+    - Latin
+    - Chinese
+    - Tribal
+    - Sign
   - type: NpcFactionMember
     factions:
     - Wastelander
@@ -49,6 +66,23 @@
   - type: ActiveRadio
     channels:
     - ZAXBinary
+  - type: LanguageKnowledge
+    speaks:
+    - English
+    - N14Robot
+    - N14BrotherBeep
+    - Latin
+    - Chinese
+    - Tribal
+    - Sign
+    understands:
+    - English
+    - N14Robot
+    - N14BrotherBeep
+    - Latin
+    - Chinese
+    - Tribal
+    - Sign
 
 - type: entity
   parent: [N14MobRobotMrHandyClaw, MisfitsZaxUnitBase]

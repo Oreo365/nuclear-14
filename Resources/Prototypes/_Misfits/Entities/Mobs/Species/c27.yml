@@ -21,6 +21,16 @@
   - type: Inventory
     templateId: c27
     speciesId: c27
+  - type: SiliconInternalRadio
+  - type: EncryptionKeyHolder
+    keySlots: 4
+  - type: IntrinsicRadioReceiver
+  - type: IntrinsicRadioTransmitter
+  - type: ActiveRadio
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyWastelandGlobal
   - type: Body
     prototype: C27
     requiredLegs: 2
@@ -242,6 +252,11 @@
   components:
   - type: HumanoidAppearance
     species: C27NCR
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyWastelandGlobal
+      - EncryptionKeyNCR
 
 - type: entity
   save: true
@@ -253,6 +268,11 @@
   components:
   - type: HumanoidAppearance
     species: C27BoS
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyWastelandGlobal
+      - EncryptionKeyBrotherhoodOfSteel
 
 - type: entity
   save: true
@@ -263,13 +283,28 @@
   components:
   - type: HumanoidAppearance
     species: C27ZAX
-  - type: IntrinsicRadioReceiver
-  - type: IntrinsicRadioTransmitter
-    channels:
-    - ZAXBinary
-  - type: ActiveRadio
-    channels:
-    - ZAXBinary
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyWastelandGlobal
+      - EncryptionKeyZAX
+  - type: LanguageKnowledge
+    speaks:
+    - English
+    - N14Robot
+    - N14BrotherBeep
+    - Latin
+    - Chinese
+    - Tribal
+    - Sign
+    understands:
+    - English
+    - N14Robot
+    - N14BrotherBeep
+    - Latin
+    - Chinese
+    - Tribal
+    - Sign
   - type: Damageable
     damageContainer: Silicon
     damageModifierSet: MisfitsC27ZAXSilicon

@@ -1,4 +1,5 @@
 using Content.Shared.Administration.Logs;
+using Content.Shared._Misfits.Silicon;
 using Content.Shared.Charges.Components;
 using Content.Shared.Charges.Systems;
 using Content.Shared.Construction;
@@ -114,12 +115,7 @@ public class RCDSystem : EntitySystem
 
         if (component.CachedPrototype.Mode == RcdMode.ConstructTile || component.CachedPrototype.Mode == RcdMode.ConstructObject)
         {
-            var name = Loc.GetString(component.CachedPrototype.SetName);
-
-            if (component.CachedPrototype.Prototype != null &&
-                _protoManager.TryIndex(component.CachedPrototype.Prototype, out var proto))
-                name = proto.Name;
-
+            var name = GetBuildDisplayName(component.CachedPrototype);
             msg = Loc.GetString("rcd-component-examine-build-details", ("name", name));
         }
 
@@ -407,9 +403,13 @@ public class RCDSystem : EntitySystem
 
         _intersectingEntities.Clear();
         _lookup.GetLocalEntitiesIntersecting(mapGridData.GridUid, mapGridData.Position, _intersectingEntities, -0.05f, LookupFlags.Uncontained);
+        var ignoreCableCollision = HasComp<RCDIgnoreCableCollisionComponent>(uid);
 
         foreach (var ent in _intersectingEntities)
         {
+            if (ignoreCableCollision && _tags.HasTag(ent, "Cable"))
+                continue;
+
             if (isWindow && HasComp<SharedCanBuildWindowOnTopComponent>(ent))
                 continue;
 
@@ -594,8 +594,24 @@ public class RCDSystem : EntitySystem
 
     public void UpdateCachedPrototype(EntityUid uid, RCDComponent component)
     {
-        if (component.ProtoId.Id != component.CachedPrototype?.Prototype)
+        if (component.ProtoId.Id != component.CachedPrototype?.ID)
             component.CachedPrototype = _protoManager.Index(component.ProtoId);
+    }
+
+    private string GetBuildDisplayName(RCDPrototype proto)
+    {
+        if (proto.Prototype != null)
+        {
+            if (proto.Mode == RcdMode.ConstructObject &&
+                _protoManager.TryIndex<EntityPrototype>(proto.Prototype, out var entProto, logError: false))
+                return entProto.Name;
+
+            if (proto.Mode == RcdMode.ConstructTile &&
+                _tileDefMan.TryGetDefinition(proto.Prototype, out var tileDef))
+                return Loc.GetString(tileDef.Name);
+        }
+
+        return Loc.GetString(proto.SetName);
     }
 
     #endregion
