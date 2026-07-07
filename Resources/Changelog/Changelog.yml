@@ -8590,3 +8590,26 @@ Entries:
   id: 6192
   time: '2026-07-07T03:44:43.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/975
+- author: silasadam
+  changes:
+    - type: Tweak
+      message: Protectron RCDs now have wasteland structures/tiles
+    - type: Tweak
+      message: >-
+        Assaultrons have been buffed and fixed. Their beam/tesla is now an
+        ability, they deal 25 pierce and 25 slash unarmed, can no longer wield
+        weapons, can now wideswing properly, and have the same infinite cell as
+        their brethren, they also have 10% reflect chance on small and medium
+        calibers. Go forth my children. Kill.
+    - type: Tweak
+      message: Z.A.X Cores understand and speak all languages.
+    - type: Tweak
+      message: >-
+        All silicons no longer need headsets and instead utilize inbuilt radios.
+        Keys can be removed from them if dead or crit. And they can insert keys
+        themselves.
+    - type: Fix
+      message: You can no longer remove a silicons cell unless you are that silicon.
+  id: 6193
+  time: '2026-07-07T04:24:31.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/977
