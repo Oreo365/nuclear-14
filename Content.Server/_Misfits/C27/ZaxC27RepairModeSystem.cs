@@ -2,6 +2,8 @@ using Content.Shared._Misfits.C27;
 using Content.Shared.Actions;
 using Content.Shared.Damage.Components;
 using Content.Shared.DoAfter;
+using Content.Shared.Mobs;
+using Content.Shared.Mobs.Components;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Popups;
 
@@ -19,6 +21,7 @@ public sealed class ZaxC27RepairModeSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<ZaxC27RepairModeComponent, MapInitEvent>(OnMapInit);
+        SubscribeLocalEvent<ZaxC27RepairModeComponent, MobStateChangedEvent>(OnMobStateChanged);
         SubscribeLocalEvent<ZaxC27RepairModeComponent, ToggleZaxC27RepairModeEvent>(OnToggle);
         SubscribeLocalEvent<ZaxC27RepairModeComponent, ZaxC27RepairModeDoAfterEvent>(OnDoAfter);
         SubscribeLocalEvent<ZaxC27RepairModeActiveComponent, ComponentShutdown>(OnActiveShutdown);
@@ -30,10 +33,23 @@ public sealed class ZaxC27RepairModeSystem : EntitySystem
         ApplyRepairRate(uid, component, HasComp<ZaxC27RepairModeActiveComponent>(uid));
     }
 
+    private void OnMobStateChanged(EntityUid uid, ZaxC27RepairModeComponent component, MobStateChangedEvent args)
+    {
+        if (args.NewMobState is not (MobState.Critical or MobState.Dead))
+            return;
+
+        ExitRepairMode(uid, component);
+    }
+
     private void OnToggle(EntityUid uid, ZaxC27RepairModeComponent component, ToggleZaxC27RepairModeEvent args)
     {
-        if (args.Handled || args.Performer != uid || HasComp<ZaxC27RepairModeTransitionComponent>(uid))
+        if (args.Handled ||
+            args.Performer != uid ||
+            HasComp<ZaxC27RepairModeTransitionComponent>(uid) ||
+            !CanUseRepairMode(uid))
+        {
             return;
+        }
 
         var activate = !HasComp<ZaxC27RepairModeActiveComponent>(uid);
         component.ActionEntity = args.Action.Owner;
@@ -77,12 +93,25 @@ public sealed class ZaxC27RepairModeSystem : EntitySystem
         if (args.User != uid)
             return;
 
+        if (!HasComp<ZaxC27RepairModeTransitionComponent>(uid))
+        {
+            args.Handled = true;
+            return;
+        }
+
         RemComp<ZaxC27RepairModeTransitionComponent>(uid);
 
         if (args.Cancelled)
         {
             _movement.RefreshMovementSpeedModifiers(uid);
             _actions.SetToggled(component.ActionEntity, HasComp<ZaxC27RepairModeActiveComponent>(uid));
+            return;
+        }
+
+        if (!CanUseRepairMode(uid))
+        {
+            ExitRepairMode(uid, component);
+            args.Handled = true;
             return;
         }
 
@@ -123,6 +152,21 @@ public sealed class ZaxC27RepairModeSystem : EntitySystem
     {
         if (!TerminatingOrDeleted(uid))
             _movement.RefreshMovementSpeedModifiers(uid);
+    }
+
+    private bool CanUseRepairMode(EntityUid uid)
+    {
+        return !TryComp<MobStateComponent>(uid, out var mobState) ||
+               mobState.CurrentState == MobState.Alive;
+    }
+
+    private void ExitRepairMode(EntityUid uid, ZaxC27RepairModeComponent component)
+    {
+        RemComp<ZaxC27RepairModeTransitionComponent>(uid);
+        RemComp<ZaxC27RepairModeActiveComponent>(uid);
+        ApplyRepairRate(uid, component, false);
+        _movement.RefreshMovementSpeedModifiers(uid);
+        _actions.SetToggled(component.ActionEntity, false);
     }
 
     private void ApplyRepairRate(EntityUid uid, ZaxC27RepairModeComponent component, bool active)
