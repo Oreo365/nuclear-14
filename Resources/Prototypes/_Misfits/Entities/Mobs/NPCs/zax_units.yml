@@ -5,6 +5,7 @@
   id: MisfitsZaxUnitBase
   components:
   - type: ZaxUnit
+  - type: ZaxLinkedUnit
   - type: ZaxNeutralSpecial
   - type: StationAiVision
   - type: StationAiWhitelist
@@ -88,6 +89,7 @@
   abstract: true
   id: MisfitsZaxPlayerUnitBase
   components:
+  - type: ZaxLinkedUnit
   - type: ZaxPlayerSpecial
   - type: StationAiVision
   - type: StationAiWhitelist

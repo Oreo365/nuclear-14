@@ -42,8 +42,18 @@
     - ActionStationAiEngageNpcs
     - ActionStationAiHoldNpcs
     - ActionStationAiHackCamera
+    - ActionStationAiOpenWendoverMap
+    - ActionStationAiOpenLinkedUnits
+  - type: WastelandMap
+    mapTexturePath: _Misfits/Maps/wendover_map.png
+    mapTitle: Wendover Area Map
+    worldBounds: "-517,-308,484,311"
   - type: UserInterface
     interfaces:
+      enum.WastelandMapUiKey.Key:
+        type: WastelandMapBoundUserInterface
+      enum.ZaxLinkedUnitsUiKey.Key:
+        type: ZaxLinkedUnitsBoundUserInterface
       enum.RadarConsoleUiKey.Key:
         type: RadarConsoleBoundUserInterface
       enum.CrewMonitoringUIKey.Key:

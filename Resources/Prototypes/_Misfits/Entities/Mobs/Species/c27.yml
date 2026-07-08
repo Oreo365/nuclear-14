@@ -281,6 +281,7 @@
   parent: N14BaseMobC27
   description: A C-27 humanoid robot rebuilt as a Z.A.X-linked rapid-response chassis.
   components:
+  - type: ZaxLinkedUnit
   - type: HumanoidAppearance
     species: C27ZAX
   - type: ContainerFill

@@ -1,4 +1,6 @@
 using Content.Shared.Actions;
+using Content.Shared.UserInterface;
+using Robust.Shared.Map;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared._Misfits.Silicon;
@@ -20,3 +22,50 @@ public sealed partial class StationAiHoldSelectedNpcsActionEvent : InstantAction
 
 [Serializable, NetSerializable]
 public sealed class StationAiNpcMoveTargetingFinishedEvent : EntityEventArgs;
+
+[Serializable, NetSerializable]
+public enum ZaxLinkedUnitsUiKey : byte
+{
+    Key,
+}
+
+[Serializable, NetSerializable]
+public enum ZaxLinkedUnitKind : byte
+{
+    Npc,
+    Player,
+    GhostRole,
+}
+
+[Serializable, NetSerializable]
+public readonly record struct ZaxLinkedUnitEntry(
+    NetEntity Entity,
+    string Name,
+    ZaxLinkedUnitKind Kind,
+    string Location,
+    NetCoordinates Coordinates);
+
+[Serializable, NetSerializable]
+public sealed class ZaxLinkedUnitsBoundUserInterfaceState : BoundUserInterfaceState
+{
+    public readonly ZaxLinkedUnitEntry[] Units;
+
+    public ZaxLinkedUnitsBoundUserInterfaceState(ZaxLinkedUnitEntry[] units)
+    {
+        Units = units;
+    }
+}
+
+[Serializable, NetSerializable]
+public sealed class ZaxLinkedUnitsRefreshMessage : BoundUserInterfaceMessage;
+
+[Serializable, NetSerializable]
+public sealed class ZaxLinkedUnitsWarpMessage : BoundUserInterfaceMessage
+{
+    public readonly NetEntity Target;
+
+    public ZaxLinkedUnitsWarpMessage(NetEntity target)
+    {
+        Target = target;
+    }
+}
