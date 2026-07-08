@@ -8637,3 +8637,14 @@ Entries:
   id: 6195
   time: '2026-07-08T03:21:45.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/985
+- author: Operator
+  changes:
+    - type: Add
+      message: >-
+        Added Z.A.X Chassis to lobby selection. You cant spawn in as them, but
+        admins can spawn you in now.
+    - type: Fix
+      message: Fixed securitron sprite attributions.
+  id: 6196
+  time: '2026-07-08T03:22:24.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/984
