@@ -341,7 +341,7 @@
       - !type:GenericStatusEffect
         key: Drowsiness
         component: Drowsiness
-        time: 4
+        time: 2
         type: Add
         refresh: false
 
