@@ -8613,3 +8613,20 @@ Entries:
   id: 6193
   time: '2026-07-07T04:24:31.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/977
+- author: Operator
+  changes:
+    - type: Add
+      message: aitakeover command
+    - type: Tweak
+      message: ZAX Units get wasteland&binary keys on spawn
+    - type: Tweak
+      message: ZAX NPC units properly function as ghostroles
+    - type: Tweak
+      message: >-
+        ZAX Units inherit SPECIAL properly, and if they dont, they get 5/5/5/5/5
+        across the board
+    - type: Fix
+      message: Securitron front-facing error sprite. [Again.]
+  id: 6194
+  time: '2026-07-08T02:20:36.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/983
