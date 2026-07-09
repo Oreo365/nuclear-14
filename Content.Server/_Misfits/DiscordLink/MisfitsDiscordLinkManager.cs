@@ -152,13 +152,26 @@ public sealed class MisfitsDiscordLinkManager
 
     private async void OnPlayerStatusChanged(object? sender, SessionStatusEventArgs args)
     {
-        if (args.NewStatus != SessionStatus.Connected)
+        if (args.NewStatus is not (SessionStatus.Connected or SessionStatus.InGame))
             return;
 
-        if (!await IsLocallyLinked(args.Session.UserId))
+        try
+        {
+            await SyncSupporterFromDiscordRolesIfLinked(args.Session.UserId, args.Session.Name);
+        }
+        catch (Exception ex)
+        {
+            _sawmill.Error($"Failed to sync Discord supporter roles for {args.Session.Name} ({args.Session.UserId}): {ex}");
+        }
+    }
+
+    private async Task SyncSupporterFromDiscordRolesIfLinked(NetUserId userId, string? username = null)
+    {
+        if (!await IsLocallyLinked(userId))
             return;
 
-        await SyncSupporterFromDiscordRoles(args.Session.UserId, args.Session.Name);
+        _sawmill.Debug($"Checking Discord supporter roles for {username ?? userId.ToString()} ({userId}).");
+        await SyncSupporterFromDiscordRoles(userId, username);
     }
 
     private async Task<string?> GenerateLink(NetUserId userId)
