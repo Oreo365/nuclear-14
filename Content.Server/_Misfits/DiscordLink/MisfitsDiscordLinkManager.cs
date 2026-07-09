@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -16,9 +17,11 @@ using Content.Shared.CCVar;
 using Content.Shared._Misfits.DiscordLink;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
+using Robust.Shared.ContentPack;
 using Robust.Shared.Enums;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
+using Robust.Shared.Utility;
 
 namespace Content.Server._Misfits.DiscordLink;
 
@@ -29,7 +32,9 @@ public sealed class MisfitsDiscordLinkManager
     [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!;
     [Dependency] private readonly ISupporterManager _supporters = default!;
+    [Dependency] private readonly IResourceManager _res = default!;
 
+    private static readonly ResPath SupporterRoleMappingsPath = new("/_Misfits/Supporter/discord_role_mappings.json");
     private readonly HttpClient _http = new();
     private ISawmill _sawmill = default!;
     private string _apiUrl = string.Empty;
@@ -54,7 +59,8 @@ public sealed class MisfitsDiscordLinkManager
             _legacyApiKey = value.Trim();
             UpdateAuthorizationHeader();
         }, true);
-        _cfg.OnValueChanged(CCVars.MisfitsSupporterDiscordRoleMappings, OnRoleMappingsChanged, true);
+        if (!TryLoadRoleMappingsFromFile())
+            _cfg.OnValueChanged(CCVars.MisfitsSupporterDiscordRoleMappings, OnRoleMappingsChanged, true);
 
         _net.RegisterNetMessage<MsgMisfitsDiscordLinkStatusRequest>(OnStatusRequest);
         _net.RegisterNetMessage<MsgMisfitsDiscordLinkBegin>(OnBegin);
@@ -321,6 +327,21 @@ public sealed class MisfitsDiscordLinkManager
 
     private void OnRoleMappingsChanged(string value)
     {
+        LoadRoleMappings(value, CCVars.MisfitsSupporterDiscordRoleMappings.Name);
+    }
+
+    private bool TryLoadRoleMappingsFromFile()
+    {
+        if (!_res.TryContentFileRead(SupporterRoleMappingsPath, out var file))
+            return false;
+
+        using var reader = new StreamReader(file);
+        LoadRoleMappings(reader.ReadToEnd(), SupporterRoleMappingsPath.ToString());
+        return true;
+    }
+
+    private void LoadRoleMappings(string value, string source)
+    {
         try
         {
             var mappings = JsonSerializer.Deserialize<List<DiscordSupporterRoleMapping>>(value,
@@ -336,12 +357,12 @@ public sealed class MisfitsDiscordLinkManager
                 })
                 .ToList();
 
-            _sawmill.Info($"Loaded {_roleMappings.Count} Discord supporter role mapping(s).");
+            _sawmill.Info($"Loaded {_roleMappings.Count} Discord supporter role mapping(s) from {source}.");
         }
         catch (Exception ex)
         {
             _roleMappings = [];
-            _sawmill.Error($"Failed to parse {CCVars.MisfitsSupporterDiscordRoleMappings.Name}: {ex.Message}");
+            _sawmill.Error($"Failed to parse Discord supporter role mappings from {source}: {ex.Message}");
         }
     }
 
