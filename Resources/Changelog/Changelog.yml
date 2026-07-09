@@ -8684,3 +8684,10 @@ Entries:
   id: 6200
   time: '2026-07-09T03:58:34.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/992
+- author: Dpellowski
+  changes:
+    - type: Add
+      message: Supporter & Admin role integration
+  id: 6201
+  time: '2026-07-09T17:38:43.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/993
