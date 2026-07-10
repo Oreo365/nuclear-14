@@ -8698,3 +8698,10 @@ Entries:
   id: 6202
   time: '2026-07-09T19:28:58.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/996
+- author: Dpellowski
+  changes:
+    - type: Add
+      message: Chonk Super
+  id: 6203
+  time: '2026-07-10T03:37:26.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/999
