@@ -19,7 +19,7 @@
       - N14WallRockAndesiteMining
       - N14WallRockBasaltMining
       - N14WallRockDroughtSlantedMining
-    chance: 0.95
+    chance: 0.99
     rarePrototypes:
       - Barricade
       - RandomWoodenStructure
@@ -42,7 +42,7 @@
       - N14SpawnMobCazador
       - N14SpawnMobBloatfly
       - N14BarricadeWoodTall
-    rareChance: 0.10
+    rareChance: 0.20
 
 - type: entity
   name: Crystal Spawner
