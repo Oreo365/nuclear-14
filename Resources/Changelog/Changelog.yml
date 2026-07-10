@@ -8705,3 +8705,33 @@ Entries:
   id: 6203
   time: '2026-07-10T03:37:26.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/999
+- author: sssaaagggeee
+  changes:
+    - type: Add
+      message: >-
+        Added NCR Command Sergeant Major & Warrant Officer pins for admin use,
+        for Senior Enlisted Advisor and Vertibird Pilot respectively among other
+        things
+    - type: Add
+      message: >-
+        We seemed to have forgotten the RO's commission paperwork, they should
+        now properly get promotions going from O1->O2->O3
+    - type: Tweak
+      message: >-
+        We've deemed C-27s problematic enough to reduce their rank, starting at
+        Private First Class and ending at Sergeant
+    - type: Tweak
+      message: >-
+        After months of complaints from regular Heavy Troopers, we're increasing
+        their pay grade cap to Corporal
+    - type: Tweak
+      message: >-
+        The Republic has deemed that Squad Leaders have an increased cap in pay
+        grade, alongside intermediary ranks being adjusted
+    - type: Tweak
+      message: >-
+        There was a mistake with Military Police Sergeant's paperwork, they
+        shouldn't cap out at SEA ranks anymore but instead 1st Sergeant
+  id: 6204
+  time: '2026-07-10T21:01:12.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/982
