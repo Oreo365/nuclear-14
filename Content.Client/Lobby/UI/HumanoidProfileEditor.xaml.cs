@@ -406,8 +406,6 @@ namespace Content.Client.Lobby.UI
 
             #region Height and Width
 
-            var prototype = _species.Find(x => x.ID == Profile?.Species) ?? _species.First();
-
             UpdateHeightWidthSliders();
 
             HeightSlider.OnValueChanged += _ => UpdateDimensions(SliderUpdate.Height);
@@ -415,13 +413,15 @@ namespace Content.Client.Lobby.UI
 
             HeightReset.OnPressed += _ =>
             {
-                HeightSlider.Value = prototype.DefaultHeight;
+                var species = _species.Find(x => x.ID == Profile?.Species) ?? _species.First();
+                HeightSlider.Value = species.DefaultHeight;
                 UpdateDimensions(SliderUpdate.Height);
             };
 
             WidthReset.OnPressed += _ =>
             {
-                WidthSlider.Value = prototype.DefaultWidth;
+                var species = _species.Find(x => x.ID == Profile?.Species) ?? _species.First();
+                WidthSlider.Value = species.DefaultWidth;
                 UpdateDimensions(SliderUpdate.Width);
             };
 
