@@ -8735,3 +8735,18 @@ Entries:
   id: 6204
   time: '2026-07-10T21:01:12.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/982
+- author: Billius clintus
+  changes:
+    - type: Add
+      message: Added berserker mix, a tribal combat cocktail.
+    - type: Tweak
+      message: increased some loadout prices for things like PA
+    - type: Tweak
+      message: 'gutted the loadout prices for literally everything else '
+    - type: Tweak
+      message: every major is blacklisted from loadout weapons and armor
+    - type: Fix
+      message: Fixed Principes pattern armor, it is now in its intended form
+  id: 6205
+  time: '2026-07-10T21:10:45.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/994
