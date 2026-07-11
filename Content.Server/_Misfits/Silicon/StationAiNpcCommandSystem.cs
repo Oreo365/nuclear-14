@@ -1,10 +1,12 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Numerics;
+using Content.Server.Ghost.Roles.Components;
 using Content.Server.NPC;
 using Content.Server.NPC.HTN;
 using Content.Server.NPC.Pathfinding;
 using Content.Server.NPC.Systems;
+using Content.Server.Silicons.StationAi;
 using Content.Shared._Misfits.C27;
 using Content.Shared._Misfits.Silicon;
 using Content.Shared.Containers.ItemSlots;
@@ -20,11 +22,13 @@ using Content.Shared.Power.Components;
 using Content.Shared.Power.EntitySystems;
 using Content.Shared.Silicons.StationAi;
 using Content.Shared.StationAi;
+using Content.Shared.UserInterface;
 using Robust.Shared.Containers;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics;
 using Robust.Shared.Player;
+using Robust.Server.GameObjects;
 
 namespace Content.Server._Misfits.Silicon;
 
@@ -49,7 +53,9 @@ public sealed class StationAiNpcCommandSystem : EntitySystem
     [Dependency] private readonly IMapManager _mapManager = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedPowerReceiverSystem _power = default!;
+    [Dependency] private readonly StationAiSystem _stationAi = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private readonly UserInterfaceSystem _ui = default!;
     [Dependency] private readonly StationAiVisionSystem _vision = default!;
 
     private EntityQuery<BroadphaseComponent> _broadphaseQuery;
@@ -76,6 +82,13 @@ public sealed class StationAiNpcCommandSystem : EntitySystem
         SubscribeLocalEvent<StationAiCommandedNpcComponent, MobStateChangedEvent>(OnCommandedNpcMobStateChanged);
         SubscribeLocalEvent<StationAiCommandedNpcComponent, EntityTerminatingEvent>(OnCommandedNpcTerminating);
         SubscribeLocalEvent<StationAiCommandedNpcComponent, ComponentShutdown>(OnCommandedNpcShutdown);
+
+        Subs.BuiEvents<StationAiNpcCommanderComponent>(ZaxLinkedUnitsUiKey.Key, subs =>
+        {
+            subs.Event<BoundUIOpenedEvent>(OnLinkedUnitsOpened);
+            subs.Event<ZaxLinkedUnitsRefreshMessage>(OnLinkedUnitsRefresh);
+            subs.Event<ZaxLinkedUnitsWarpMessage>(OnLinkedUnitsWarp);
+        });
     }
 
     public override void Update(float frameTime)
@@ -245,7 +258,7 @@ public sealed class StationAiNpcCommandSystem : EntitySystem
     private void OnZaxDamaged(Entity<ZaxUnitComponent> ent, ref DamageChangedEvent args)
     {
         if (!args.DamageIncreased ||
-            args.Origin is not {} attacker ||
+            args.Origin is not { } attacker ||
             attacker == ent.Owner ||
             Deleted(attacker) ||
             !HasComp<MobStateComponent>(attacker) ||
@@ -314,6 +327,52 @@ public sealed class StationAiNpcCommandSystem : EntitySystem
     private void OnCommandedNpcShutdown(Entity<StationAiCommandedNpcComponent> ent, ref ComponentShutdown args)
     {
         ReleaseDeadOrDeletedNpc(ent.Owner);
+    }
+
+    private void OnLinkedUnitsOpened(Entity<StationAiNpcCommanderComponent> ent, ref BoundUIOpenedEvent args)
+    {
+        if (!ValidateAi(ent.Owner))
+            return;
+
+        UpdateLinkedUnitsUi(ent.Owner);
+    }
+
+    private void OnLinkedUnitsRefresh(Entity<StationAiNpcCommanderComponent> ent, ref ZaxLinkedUnitsRefreshMessage args)
+    {
+        if (args.Actor != ent.Owner || !ValidateAi(ent.Owner))
+            return;
+
+        UpdateLinkedUnitsUi(ent.Owner);
+    }
+
+    private void OnLinkedUnitsWarp(Entity<StationAiNpcCommanderComponent> ent, ref ZaxLinkedUnitsWarpMessage args)
+    {
+        if (args.Actor != ent.Owner ||
+            !ValidateAi(ent.Owner) ||
+            !TryGetEntity(args.Target, out var target) ||
+            !TryGetLinkedUnit(target.Value, out _))
+        {
+            return;
+        }
+
+        if (!TryComp(ent.Owner, out StationAiHeldComponent? held) ||
+            !TryGetCore((ent.Owner, held), out var core))
+        {
+            _popup.PopupEntity(Loc.GetString("zax-linked-units-warp-failed"), ent.Owner, ent.Owner, PopupType.SmallCaution);
+            return;
+        }
+
+        _stationAi.SwitchRemoteEntityMode(core.Value, true);
+
+        if (core.Value.Comp.RemoteEntity == null)
+        {
+            _popup.PopupEntity(Loc.GetString("zax-linked-units-warp-failed"), ent.Owner, ent.Owner, PopupType.SmallCaution);
+            return;
+        }
+
+        _transform.SetCoordinates(core.Value.Comp.RemoteEntity.Value, Transform(target.Value).Coordinates);
+        _popup.PopupEntity(Loc.GetString("zax-linked-units-warped", ("unit", Name(target.Value))), ent.Owner, ent.Owner);
+        UpdateLinkedUnitsUi(ent.Owner);
     }
 
     private void ApplyMove(
@@ -609,6 +668,70 @@ public sealed class StationAiNpcCommandSystem : EntitySystem
         return _power.IsPowered((core.Value.Owner, receiver));
     }
 
+    private void UpdateLinkedUnitsUi(EntityUid commander)
+    {
+        _ui.SetUiState(commander, ZaxLinkedUnitsUiKey.Key, BuildLinkedUnitsState());
+    }
+
+    private ZaxLinkedUnitsBoundUserInterfaceState BuildLinkedUnitsState()
+    {
+        var units = new List<ZaxLinkedUnitEntry>();
+        var query = EntityQueryEnumerator<ZaxLinkedUnitComponent, TransformComponent, MetaDataComponent>();
+
+        while (query.MoveNext(out var uid, out _, out var xform, out var meta))
+        {
+            if (!TryGetLinkedUnit(uid, out var kind))
+                continue;
+
+            var mapCoords = _transform.GetMapCoordinates(uid, xform);
+            var location = $"{MathF.Round(mapCoords.Position.X)}, {MathF.Round(mapCoords.Position.Y)}";
+            units.Add(new ZaxLinkedUnitEntry(
+                GetNetEntity(uid),
+                meta.EntityName,
+                kind,
+                location,
+                GetNetCoordinates(xform.Coordinates)));
+        }
+
+        return new ZaxLinkedUnitsBoundUserInterfaceState(units
+            .OrderBy(unit => unit.Kind)
+            .ThenBy(unit => unit.Name)
+            .ToArray());
+    }
+
+    private bool TryGetLinkedUnit(EntityUid uid, out ZaxLinkedUnitKind kind)
+    {
+        kind = ZaxLinkedUnitKind.Npc;
+
+        if (Deleted(uid) ||
+            !HasComp<ZaxLinkedUnitComponent>(uid) ||
+            (TryComp(uid, out MobStateComponent? mobState) && _mobState.IsDead(uid, mobState)))
+        {
+            return false;
+        }
+
+        if (HasComp<ActorComponent>(uid))
+        {
+            kind = ZaxLinkedUnitKind.Player;
+            return true;
+        }
+
+        if (HasComp<ZaxUnitComponent>(uid))
+        {
+            kind = ZaxLinkedUnitKind.Npc;
+            return true;
+        }
+
+        if (HasComp<GhostRoleComponent>(uid) || HasComp<GhostTakeoverAvailableComponent>(uid))
+        {
+            kind = ZaxLinkedUnitKind.GhostRole;
+            return true;
+        }
+
+        kind = ZaxLinkedUnitKind.Npc;
+        return true;
+    }
+
     private bool TryGetCore(
         Entity<StationAiHeldComponent> ai,
         [NotNullWhen(true)] out Entity<StationAiCoreComponent>? core)
@@ -678,7 +801,7 @@ public sealed class StationAiNpcCommandSystem : EntitySystem
         // [Changed by MisfitsCrew/Operator] Mirrors the existing NPC follower lifecycle so HTN orders restart movement reliably.
         var commanded = EnsureCommandedNpc(uid, commander, htn);
         commanded.HoldingCommand = rootTask == HoldRoot;
-        _npc.SleepNPC(uid, htn);
+        _npc.SleepNPC(uid, htn, removeSound: false);
         htn.RootTask.Task = rootTask;
     }
 
@@ -788,7 +911,7 @@ public sealed class StationAiNpcCommandSystem : EntitySystem
         }
 
         if (!TryComp(uid, out StationAiCommandedNpcComponent? commanded) ||
-            commanded.ForcedHostile is not {} hostile)
+            commanded.ForcedHostile is not { } hostile)
         {
             return;
         }

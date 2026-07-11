@@ -92,3 +92,7 @@ drug-ambience-hydra-3 = A coppery rush blooms behind your eyes and refuses to fu
 
 drug-ambience-mourning-poultice-1 = Cold poison crawls through your veins, and the world starts to breathe around you.
 drug-ambience-mourning-poultice-2 = The sting turns holy and wrong, dragging bright visions behind the pain.
+
+drug-ambience-Berserker-mixture-1 = Your mind sharpens to a razors edge as your blood screams throughout your body.
+drug-ambience-Berserker-mixture-2 = Blood fills your heart as the rest of your body is inhumanly propelled forward.
+# inhumanly is not a mistake.

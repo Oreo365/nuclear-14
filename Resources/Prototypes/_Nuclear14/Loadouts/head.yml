@@ -1,7 +1,7 @@
 - type: loadout
   id: N14LoadoutHeadHatBaseball
   category: Head
-  cost: 2
+  cost: 0
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutHead
@@ -103,6 +103,9 @@
        inverted: true
        departments:
        - Vault
+       - BrotherhoodOfSteel
+       - NCR
+       - Rangers
   items:
     - N14ClothingHeadHatTribalOutcastHood
 
@@ -188,6 +191,10 @@
        inverted: true
        departments:
        - Vault
+       - BrotherhoodOfSteel
+       - NCR
+       - CaesarLegion
+       - Rangers
   items:
     - N14ClothingTribalMuffaloskull
 
@@ -209,6 +216,10 @@
        inverted: true
        departments:
        - Vault
+       - BrotherhoodOfSteel
+       - NCR
+       - CaesarLegion
+       - Rangers
   items:
     - N14ClothingTribalRadstagSkull
 
@@ -216,7 +227,7 @@
 - type: loadout
   id: N14ClothingHeadHatCombatHelmet
   category: Head
-  cost: 3 # Its 10% literally nothing (agreed)
+  cost: 2 # Its 10% literally nothing (agreed)
   exclusive: true
   requirements:
     - !type:CharacterItemGroupRequirement
@@ -231,13 +242,17 @@
        inverted: true
        departments:
        - Vault
+       - BrotherhoodOfSteel
+       - NCR
+       - CaesarLegion
+       - Rangers
   items:
     - N14ClothingHeadHatCombatHelmet
 
 - type: loadout
   id: N14ClothingHeadHatPressHelmet
   category: Head
-  cost: 3
+  cost: 2
   exclusive: true
   requirements:
     - !type:CharacterItemGroupRequirement
@@ -252,13 +267,17 @@
        inverted: true
        departments:
        - Vault
+       - BrotherhoodOfSteel
+       - NCR
+       - CaesarLegion
+       - Rangers
   items:
     - N14ClothingHeadHatPressHelmet
 
 - type: loadout
   id: N14ClothingHeadHatLightBaseballHelmet
   category: Head
-  cost: 3
+  cost: 2
   exclusive: true
   requirements:
     - !type:CharacterItemGroupRequirement
@@ -273,13 +292,17 @@
        inverted: true
        departments:
        - Vault
+       - BrotherhoodOfSteel
+       - NCR
+       - CaesarLegion
+       - Rangers
   items:
     - N14ClothingHeadHatLightBaseballHelmet
 
 - type: loadout
   id: N14ClothingHeadHatChineseHelmet
   category: Head
-  cost: 3
+  cost: 2
   exclusive: true
   requirements:
     - !type:CharacterTraitRequirement
@@ -301,13 +324,14 @@
        - BrotherhoodOfSteel
        - NCR
        - CaesarLegion
+       - Rangers
   items:
     - N14ClothingHeadHatChineseHelmet
 
 - type: loadout
   id: N14ClothingHeadHatPrewarMilitaryHelmet
   category: Head
-  cost: 3
+  cost: 2
   exclusive: true
   requirements:
     - !type:CharacterItemGroupRequirement
@@ -322,6 +346,10 @@
        inverted: true
        departments:
        - Vault
+       - BrotherhoodOfSteel
+       - NCR
+       - CaesarLegion
+       - Rangers
   items:
     - N14ClothingHeadHatPrewarMilitaryHelmet
 
@@ -329,7 +357,7 @@
 - type: loadout
   id: N14ClothingHeadHatChineseHelmetMk2
   category: Head
-  cost: 4 # Its actually not better than the normal helmet for some reason, but make it 4 since drip expensive I guess
+  cost: 3 # Its actually not better than the normal helmet for some reason, but make it 3 since drip expensive I guess
   exclusive: true
   requirements:
     - !type:CharacterTraitRequirement
@@ -351,5 +379,6 @@
        - BrotherhoodOfSteel
        - NCR
        - CaesarLegion
+       - Rangers
   items:
     - N14ClothingHeadHatChineseHelmetMk2

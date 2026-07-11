@@ -486,7 +486,6 @@
     - N14BPBoSWeaponPlasmaRifleUrban
     - N14BPBoSWeaponPlasmaMultiplas
     - N14BPBoSWeaponLaserRCW # #Misfits Change - moved from T5 to T3; RCW is now red-beam mid-tier
-    - N14BPBoSWeaponRipperSword
 
 - type: entity
   parent: N14BlueprintBase

@@ -1182,7 +1182,7 @@
 # MBoS Paladin Kits
 #Misfits Change /Tweak/: Replaced auto laser rifle with auto shotgun + laser pistol sidearm.
 - type: entity
-  name: BoS Paladin Ripper Kit
+  name: BoS Paladin Enclave Slayer Kit
   parent: KitBase
   id: KitMBoS_PalLas
   description: A crate containing everything a member of the Brotherhood might need.
@@ -1193,7 +1193,7 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: N14rippersword
+      - id: MisfitsPlasmaCutter
       - id: N14WeaponLaserPistol
       - id: N14PowerCellSmall
         amount: 4

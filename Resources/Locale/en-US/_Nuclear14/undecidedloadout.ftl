@@ -305,10 +305,10 @@ undecided-loadout-category-mbos-scribe-engineer-description =
 
 # Misfits Change /Tweak/: Paladin laser kit replaced with auto shotgun + laser pistol sidearm.
 # Misfits Tweak: Removed rank prefix so the kit name is role-neutral.
-undecided-loadout-category-mbos-pal-las-name = Ripper Kit
+undecided-loadout-category-mbos-pal-las-name = Enclave Slayer Kit
 undecided-loadout-category-mbos-pal-las-description =
     A cache containing belongings of a Brotherhood chapter member.
-    Includes a Ripper sword, 1 AEP-7,
+    Includes a Plasma Cutter, 1 AEP-7,
     4 energy cells, 1 roll of gauze, 2 stimpaks,
     and 1 K ration MRE.
 
