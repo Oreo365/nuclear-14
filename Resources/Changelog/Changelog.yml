@@ -8807,3 +8807,33 @@ Entries:
   id: 6208
   time: '2026-07-10T22:43:10.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1002
+- author: Bradysgaming
+  changes:
+    - type: Add
+      message: Added the Plasma Cutter, New anti PA weapon to HP kit
+    - type: Remove
+      message: 'Removed Slippery mutation '
+    - type: Tweak
+      message: Made the Ripper sword 80's only
+    - type: Tweak
+      message: >-
+        Nerfed Aer-12 to 4 rof 25 dmg and added recoil to it so its not
+        pinpoint.
+  id: 6209
+  time: '2026-07-11T01:04:40.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1003
+- author: Jerryaqua
+  changes:
+    - type: Add
+      message: New kits for senior knights! Rejoice for Recon armor
+    - type: Remove
+      message: 'Mk3 armor is gone from senior knights '
+    - type: Remove
+      message: 'Caustic resistance from brotherhood armors '
+    - type: Tweak
+      message: >-
+        Fixed armor values for a lot of brotherhood sets, head knight armor is
+        better
+  id: 6210
+  time: '2026-07-11T23:12:44.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1005
