@@ -8862,3 +8862,12 @@ Entries:
   id: 6212
   time: '2026-07-12T01:14:51.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/976
+- author: Dpellowski
+  changes:
+    - type: Add
+      message: >-
+        Colored phrases and bolded for specific words (Must go to options and
+        auto assigned)
+  id: 6213
+  time: '2026-07-12T01:15:43.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1007
