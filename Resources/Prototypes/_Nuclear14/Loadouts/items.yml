@@ -335,22 +335,7 @@
   items:
     - N14HealingPoultice
 
-- type: loadout
-  id: LoadoutStimpakDirty
-  category: Items
-  cost: 1
-  items:
-    - N14StimpakDirty
-
-- type: loadout
-  id: LoadoutStimpak
-  category: Items
-  cost: 4
-  items:
-    - N14Stimpak
-
-
-# Paints
+# Spray Paint
 
 - type: loadout
   id: LoadoutSprayPaintBlue
@@ -400,4 +385,3 @@
   cost: 0
   items:
     - SprayPaintGreen
-

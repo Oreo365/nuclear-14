@@ -187,7 +187,7 @@
         - drug-ambience-antidote-mixture-2
       - !type:HealthChange
         damage:
-          groups:
+          types:
             Poison: -1 # Misfits Change - the basic Antidote Mix heals poison only now.
       - !type:ChemVomit
         probability: 0.01
@@ -341,7 +341,7 @@
       - !type:GenericStatusEffect
         key: Drowsiness
         component: Drowsiness
-        time: 4
+        time: 2
         type: Add
         refresh: false
 

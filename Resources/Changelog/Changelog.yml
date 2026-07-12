@@ -8822,3 +8822,75 @@ Entries:
   id: 6209
   time: '2026-07-11T01:04:40.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1003
+- author: Jerryaqua
+  changes:
+    - type: Add
+      message: New kits for senior knights! Rejoice for Recon armor
+    - type: Remove
+      message: 'Mk3 armor is gone from senior knights '
+    - type: Remove
+      message: 'Caustic resistance from brotherhood armors '
+    - type: Tweak
+      message: >-
+        Fixed armor values for a lot of brotherhood sets, head knight armor is
+        better
+  id: 6210
+  time: '2026-07-11T23:12:44.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1005
+- author: Bradysgaming
+  changes:
+    - type: Remove
+      message: Removed All guns besides the 9mm from loadouts. Same for ammo.
+    - type: Tweak
+      message: >-
+        Anything that you can buy in the shop now cannot be gotten from
+        loadouts.
+  id: 6211
+  time: '2026-07-12T00:15:01.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1006
+- author: Vixting
+  changes:
+    - type: Add
+      message: >-
+        Added a control panel to outside of vault, can be accessed if you have a
+        pip boy & are in a active raid with the vault. Play minigame to hack
+        open vault door, bolting it open for 20m. 
+    - type: Fix
+      message: 'Fixed case of dissapearing chemvend & the box of unopenning '
+    - type: Fix
+      message: Fixed disposal unit
+  id: 6212
+  time: '2026-07-12T01:14:51.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/976
+- author: Dpellowski
+  changes:
+    - type: Add
+      message: >-
+        Colored phrases and bolded for specific words (Must go to options and
+        auto assigned)
+  id: 6213
+  time: '2026-07-12T01:15:43.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1007
+- author: RedBookcase
+  changes:
+    - type: Tweak
+      message: (Hopefully) fixed issues with Brahmin Milk generation
+    - type: Tweak
+      message: >-
+        Cleansing powder now causes less drowsiness. Drowsiness can be reduced
+        as well by drinking Nuka Cola, Coffee, and other caffeinated beverages.
+    - type: Tweak
+      message: >-
+        Made tacmaps, indestructible at admin request, buff to the HP of Legion
+        & Yuma trees, and the Codex Altar to make accidental/grief destruction
+        less likely.
+  id: 6214
+  time: '2026-07-12T01:42:31.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/990
+- author: Bradysgaming
+  changes:
+    - type: Add
+      message: Added back spray paint to loadouts.
+  id: 6215
+  time: '2026-07-12T05:40:57.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1008
