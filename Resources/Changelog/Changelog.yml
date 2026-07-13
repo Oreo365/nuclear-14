@@ -8913,3 +8913,12 @@ Entries:
   id: 6216
   time: '2026-07-12T20:17:27.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1004
+- author: Tytos
+  changes:
+    - type: Tweak
+      message: fixed ncr prison door access
+    - type: Tweak
+      message: no more nevada
+  id: 6217
+  time: '2026-07-12T23:38:18.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1010
