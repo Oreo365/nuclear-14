@@ -163,3 +163,7 @@ trait-description-N14GhoulRaspAccent =
 trait-name-N14OldTimerAccent = Old-Timer
 trait-description-N14OldTimerAccent =
     Consarn it, you've been wanderin' this wasteland since before these whippersnappers were born, and you talk like it.
+
+trait-name-N14MisterHandyAccent = Mister Handy Etiquette
+trait-description-N14MisterHandyAccent =
+    Your etiquette protocols survived the apocalypse fully intact. Ever so polite, impeccably British, and always ready with a spot of tea, mum.

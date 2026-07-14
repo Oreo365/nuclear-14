@@ -284,3 +284,31 @@
     accent-n14-oldtimer-words-24: accent-n14-oldtimer-words-replace-24
     accent-n14-oldtimer-words-25: accent-n14-oldtimer-words-replace-25
     accent-n14-oldtimer-words-26: accent-n14-oldtimer-words-replace-26
+
+- type: accent
+  id: n14MisterHandy
+  wordReplacements:
+    accent-n14-handy-words-1: accent-n14-handy-words-replace-1
+    accent-n14-handy-words-2: accent-n14-handy-words-replace-2
+    accent-n14-handy-words-3: accent-n14-handy-words-replace-3
+    accent-n14-handy-words-4: accent-n14-handy-words-replace-4
+    accent-n14-handy-words-5: accent-n14-handy-words-replace-5
+    accent-n14-handy-words-6: accent-n14-handy-words-replace-6
+    accent-n14-handy-words-7: accent-n14-handy-words-replace-7
+    accent-n14-handy-words-8: accent-n14-handy-words-replace-8
+    accent-n14-handy-words-9: accent-n14-handy-words-replace-9
+    accent-n14-handy-words-10: accent-n14-handy-words-replace-10
+    accent-n14-handy-words-11: accent-n14-handy-words-replace-11
+    accent-n14-handy-words-12: accent-n14-handy-words-replace-12
+    accent-n14-handy-words-13: accent-n14-handy-words-replace-13
+    accent-n14-handy-words-14: accent-n14-handy-words-replace-14
+    accent-n14-handy-words-15: accent-n14-handy-words-replace-15
+    accent-n14-handy-words-16: accent-n14-handy-words-replace-16
+    accent-n14-handy-words-17: accent-n14-handy-words-replace-17
+    accent-n14-handy-words-18: accent-n14-handy-words-replace-18
+    accent-n14-handy-words-19: accent-n14-handy-words-replace-19
+    accent-n14-handy-words-20: accent-n14-handy-words-replace-20
+    accent-n14-handy-words-21: accent-n14-handy-words-replace-21
+    accent-n14-handy-words-22: accent-n14-handy-words-replace-22
+    accent-n14-handy-words-23: accent-n14-handy-words-replace-23
+    accent-n14-handy-words-24: accent-n14-handy-words-replace-24

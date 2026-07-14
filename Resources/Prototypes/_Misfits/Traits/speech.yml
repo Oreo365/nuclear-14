@@ -177,3 +177,18 @@
     components:
     - type: ReplacementAccent
       accent: n14OldTimer
+
+- type: trait
+  id: N14MisterHandyAccent
+  category: Speech
+  points: 1
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14SpeechAccents
+  - !type:CharacterDepartmentRequirement
+    departments:
+    - Robots
+  functions:
+  - !type:TraitAddComponent
+    components:
+    - type: MisterHandyAccent
