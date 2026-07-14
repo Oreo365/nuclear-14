@@ -438,6 +438,9 @@
         - ReagentId: N14MilkBrahmin
           Quantity: 30
   - type: Bloodstream
+    BloodRefreshAmount: 10
+    BloodRegenerationHunger: .8 # high nutrient efficient low metabolism livestock animal
+    BloodRegenerationThirst: .8 # high nutrient efficient low metabolism livestock animal
     bloodMaxVolume: 1800 # lore accurate
     bloodReagent: WastelandBlood
   - type: Udder
