@@ -439,6 +439,9 @@
         reagents:
         - ReagentId: N14MilkBrahmin
           Quantity: 30
+  - type: Bloodstream
+    bloodMaxVolume: 1800 # lore accurate
+    bloodReagent: WastelandBlood
   - type: Udder
     reagentId: N14MilkBrahmin
     quantityPerUpdate: 25
