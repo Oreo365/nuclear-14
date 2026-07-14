@@ -12,13 +12,8 @@
     - !type:CharacterDepartmentRequirement
       departments:
       - Tribe
-  - !type:CharacterTraitRequirement
-    inverted: true
-    traits:
-    - N14FrontalLisp
-    - N14Liar
-    - N14ScottishAccent
-    - N14FrenchieAccent
+  - !type:CharacterItemGroupRequirement # Misfits Change - one-accent-max group replaces exclusion lists
+    group: N14SpeechAccents
   functions:
   - !type:TraitAddComponent
     components:

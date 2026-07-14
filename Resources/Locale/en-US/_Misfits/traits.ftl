@@ -121,3 +121,5 @@ trait-description-LanguageTribalGeneral = You can understand and speak the local
 
 trait-name-N14TribalAccent = Tribal Accent
 trait-description-N14TribalAccent = Ya be, or musta been membaa de tribe. Bird tribe be not gawnta ondastan ya tong.
+
+character-item-group-N14SpeechAccents = Accents

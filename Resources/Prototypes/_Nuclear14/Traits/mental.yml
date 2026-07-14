@@ -157,12 +157,8 @@
   category: Mental
   points: 1
   requirements:
-    - !type:CharacterTraitRequirement
-      inverted: true
-      traits:
-        - N14FrontalLisp
-        - N14ScottishAccent
-        - N14Stutter
+    - !type:CharacterItemGroupRequirement # Misfits Change - one-accent-max group replaces exclusion lists
+      group: N14SpeechAccents
   functions:
     - !type:TraitAddComponent
       components:
