@@ -123,3 +123,23 @@ trait-name-N14TribalAccent = Tribal Accent
 trait-description-N14TribalAccent = Ya be, or musta been membaa de tribe. Bird tribe be not gawnta ondastan ya tong.
 
 character-item-group-N14SpeechAccents = Accents
+
+trait-name-N14CowboyAccent = Cowboy Accent
+trait-description-N14CowboyAccent =
+    Howdy, pardner. Whether you rode in off the range or just grew up on old western holotapes, you talk like the frontier never ended.
+
+trait-name-N14SouthernAccent = Southern Drawl
+trait-description-N14SouthernAccent =
+    Y'all ain't gonna believe this, but folks 'round here have been talkin' like this since long before the bombs fell.
+
+trait-name-N14MobsterAccent = Mobster Accent
+trait-description-N14MobsterAccent =
+    Youse got a real nice mouth on ya, see? Perfect for a life of rackets, roulette and "protection".
+
+trait-name-N14RussianAccent = Russian Accent
+trait-description-N14RussianAccent =
+    Your family kept the old country's tongue alive through two centuries and one apocalypse. Ironically hard to understand.
+
+trait-name-N14ItalianAccent = Italian Accent
+trait-description-N14ItalianAccent =
+    Mamma mia! Somewhere between the old country and the wasteland, your family never lost the flavor.

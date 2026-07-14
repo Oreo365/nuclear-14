@@ -42,3 +42,66 @@
     - Tribal
     languagesUnderstood:
     - Tribal
+
+- type: trait
+  id: N14CowboyAccent
+  category: Speech
+  points: 1
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14SpeechAccents
+  functions:
+  - !type:TraitAddComponent
+    components:
+    - type: ReplacementAccent
+      accent: cowboy
+
+- type: trait
+  id: N14SouthernAccent
+  category: Speech
+  points: 1
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14SpeechAccents
+  functions:
+  - !type:TraitAddComponent
+    components:
+    - type: SouthernAccent
+
+- type: trait
+  id: N14MobsterAccent
+  category: Speech
+  points: 1
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14SpeechAccents
+  functions:
+  - !type:TraitAddComponent
+    components:
+    - type: MobsterAccent
+      isBoss: false
+
+- type: trait
+  id: N14RussianAccent
+  category: Speech
+  points: 1
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14SpeechAccents
+  functions:
+  - !type:TraitAddComponent
+    components:
+    - type: RussianAccent
+
+- type: trait
+  id: N14ItalianAccent
+  category: Speech
+  points: 1
+  requirements:
+  - !type:CharacterItemGroupRequirement
+    group: N14SpeechAccents
+  functions:
+  - !type:TraitAddComponent
+    components:
+    - type: ReplacementAccent
+      accent: italian
