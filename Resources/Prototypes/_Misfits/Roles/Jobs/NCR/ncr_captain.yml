@@ -46,13 +46,11 @@
     jumpsuit: N14ClothingOfficerUniformNCRDesert
     outerClothing: N14ClothingOuterPowerArmorT51NCR
     shoes: N14ClothingBootsCombatFilled
-
     belt: ClothingBeltNCR
     eyes: ClothingEyesGlassesSunglasses
     ears: N14ClothingHeadsetNCR
     pocket1: NCRcaptainloadoutkits
-    pocket2: N14Pipboy
-    id: N14IDNCRDogtagCaptain
+    id: N14NCRCommanderPipboy
   innerClothingSkirt: N14ClothingOfficerUniformNCRDesert
   satchel: N14ClothingBackpackSatchelNCRFilled
   storage:
