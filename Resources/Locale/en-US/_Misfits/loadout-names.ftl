@@ -121,6 +121,10 @@ loadout-name-N14ClothingOutershaman = shaman outfit
 loadout-name-N14ClothingOuterforager = forager outfit
 loadout-name-N14ClothingOuterhunter = hunter outfit
 loadout-name-N14ClothingOuterheadtaker = headtaker outfit
+loadout-name-MisfitsLoadoutOuterHighwayPatrolJacket = highway patrol jacket
+loadout-name-MisfitsLoadoutOuterMarlowGangOvercoat = marlow gang overcoat
+loadout-name-MisfitsLoadoutOuterGunfightersOvercoat = gunfighter's gang overcoat
+loadout-name-MisfitsLoadoutOuterVegabondsVest = vagabond's vest
 
 # Shoes
 loadout-name-ClothingShoesBootsLaceupVault = laceup shoes
@@ -625,6 +629,9 @@ loadout-name-MisfitsLoadoutHeadArmyBeret = army beret
 loadout-name-MisfitsLoadoutHeadArmyBeretAirborne = airborne beret
 loadout-name-MisfitsLoadoutHeadArmyBeretSpecial = special forces beret
 loadout-name-MisfitsLoadoutHeadRedBandana = red bandana
+loadout-name-MisfitsLoadoutHeadHeadMarlowHat = marlow hat
+loadout-name-MisfitsLoadoutHeadHeadSchlimmHat = schlimm hat
+loadout-name-MisfitsLoadoutHeadHeadAHPhelmet = highway patrol helmet
 # Head — NCR soldiers
 loadout-name-MisfitsLoadoutHeadNCRSidecap = NCR sidecap
 loadout-name-MisfitsLoadoutHeadNCRBeretOfficer = NCR officer beret
@@ -662,6 +669,7 @@ loadout-name-MisfitsLoadoutShoesJamrock = jamrock skins
 loadout-name-MisfitsLoadoutShoesLeatherBoots = leather boots
 loadout-name-MisfitsLoadoutShoesTribal = tribal shoes
 loadout-name-MisfitsLoadoutShoesRaider = raider treads
+loadout-name-MisfitsLoadoutMilitaryCowboyBoots = military cowboy boots
 # Neck — faction cloaks
 loadout-name-MisfitsLoadoutNeckCloakNCR = NCR cloak
 loadout-name-MisfitsLoadoutNeckCloakNCRSnow = NCR winter cloak
@@ -760,6 +768,13 @@ loadout-name-N14ClothingUniformJumpsuittribalpantsf = tribal clothing
 loadout-name-N14ClothingUniformJumpsuittribalpantsm = tribal clothing
 loadout-name-N14ClothingUniformJumpsuittribalpantsnecklace = tribal clothing
 loadout-name-N14ClothingUniformJumpsuitdrylanderTribal = tribal clothing
+loadout-name-MisfitsLoadoutUniformADPUniform = highway patrol uniform
+loadout-name-MisfitsLoadoutUniformMarlowdudsUniform = marlow gang attire
+loadout-name-MisfitsLoadoutUniformIkedudsUniform = gunfighter's gang attire
+loadout-name-MisfitsLoadoutUniformHelendudsUniform = gambler's gang attire
+loadout-name-MisfitsLoadoutUniformMasondudsUniform = vagabond's gang attire
+loadout-name-MisfitsLoadoutUniformSchlimmUniform = foreign gentleman's attire
+
 
 # Ammo and magazines
 loadout-name-N14MagazinePistol45 = pistol magazine (.45 auto)

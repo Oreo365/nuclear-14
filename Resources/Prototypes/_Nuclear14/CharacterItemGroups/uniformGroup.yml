@@ -159,3 +159,15 @@
       id: N14LoadoutUniversalUniformRangerPatrol
     - type: loadout # Misfits 80s
       id: MisfitsLoadoutUniform80sPants
+    - type: loadout # Misfits
+      id: M14ClothingUniformADPUniform
+    - type: loadout # Misfits
+      id: M14ClothingUniformMarlowdudsUniform
+    - type: loadout # Misfits
+      id: M14ClothingUniformIkedudsUniform
+    - type: loadout # Misfits
+      id: M14ClothingUniformHelendudsUniform
+    - type: loadout # Misfits
+      id: M14ClothingUniformMasondudsUniform
+    - type: loadout # Misfits
+      id: M14ClothingUniformSchlimmUniform
