@@ -32,7 +32,7 @@
   id: N14MFLaserAmber
   damage:
     types:
-      Heat: 30
+      Heat: 25
   tintColor: "#FF8C00"
   muzzleFlash:
     sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi

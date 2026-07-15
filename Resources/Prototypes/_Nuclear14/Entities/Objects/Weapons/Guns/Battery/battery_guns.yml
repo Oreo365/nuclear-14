@@ -506,8 +506,8 @@
   components:
   - type: Wieldable
   - type: GunWieldBonus
-    minAngle: -25 # #Misfits Tweak - wielded spread 0°/3°; 0° min for rifles
-    maxAngle: -57
+    minAngle: -25 # #Misfits Tweak - wielded spread 0°/10° post-wield
+    maxAngle: -45
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Guns/Battery/laser_autorifle.rsi # Reuses AER-9 Auto sprite until dedicated AER-12 art is available
     layers:
@@ -537,6 +537,8 @@
           tags:
             - N14MicrofusionCell
   - type: Gun
+    minAngle: 25
+    maxAngle: 55
     fireRate: 4 # Higher ROF than AER-9 (2.5); reflects advanced pre-war engineering
     soundGunshot:
       collection: N14LaserAutoRifleGunshot
@@ -597,7 +599,7 @@
     selectedMode: SemiAuto
     availableModes:
     - SemiAuto
-  # Blue beam override (30 Heat) — highest damage laser weapon; T5 blueprint item
+  # Blue beam override (40 Heat) — highest damage laser weapon; T5 blueprint item
   - type: GunDamageBonus
     hitscanProtoOverride: N14MFLaserBlue
   - type: FollowDistance

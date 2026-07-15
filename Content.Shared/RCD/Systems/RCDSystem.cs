@@ -605,7 +605,7 @@ public class RCDSystem : EntitySystem
         if (proto.Prototype != null)
         {
             if (proto.Mode == RcdMode.ConstructObject &&
-                _protoManager.TryIndex<EntityPrototype>(proto.Prototype, out var entProto, logError: false))
+                _protoManager.TryIndex<EntityPrototype>(proto.Prototype, out var entProto))
                 return entProto.Name;
 
             if (proto.Mode == RcdMode.ConstructTile &&

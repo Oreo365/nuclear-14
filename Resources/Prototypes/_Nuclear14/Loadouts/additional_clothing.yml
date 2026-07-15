@@ -575,7 +575,7 @@
 - type: loadout
   id: N14LoadoutUniversalBootsCombatMK2
   category: Shoes
-  cost: 10
+  cost: 5
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutShoes

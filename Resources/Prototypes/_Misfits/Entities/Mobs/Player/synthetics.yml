@@ -18,6 +18,13 @@
   - type: IntrinsicRadioTransmitter
   - type: ActiveRadio
   - type: SiliconSelfCellEjectOnly
+  # [Changed by MisfitsCrew/Operator] Reject non-cell interaction probes before quick-swap checks so welders reach Repairable without granting external cell access.
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        whitelist:
+          components:
+          - PowerCell
   - type: Appearance # #Misfits Change: allow robot sprites to swap to their built-in dead state
   - type: DamageStateVisuals # #Misfits Change: use robot dead sprites instead of animated hover frames when downed/dead
     states:

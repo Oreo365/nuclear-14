@@ -53,6 +53,9 @@
 - type: Tag
   id: IdCardVault
 
+- type: Tag
+  id: MisfitsPipBoy
+
 # Medical Items
 - type: Tag
   id: N14DirtyGauze
