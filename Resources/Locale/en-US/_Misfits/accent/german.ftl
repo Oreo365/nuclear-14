@@ -69,3 +69,6 @@ accent-n14-german-words-replace-23 = schnell
 
 accent-n14-german-words-24 = exactly
 accent-n14-german-words-replace-24 = genau
+
+accent-n14-german-words-25 = my
+accent-n14-german-words-replace-25 = mein

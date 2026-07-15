@@ -1,14 +1,12 @@
 using Content.Server._Misfits.Speech.Components;
 using Content.Server.Speech;
 using Content.Server.Speech.EntitySystems;
-using Robust.Shared.Random;
 using System.Text.RegularExpressions;
 
 namespace Content.Server._Misfits.Speech.EntitySystems;
 
 public sealed class GermanAccentSystem : EntitySystem
 {
-    [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly ReplacementAccentSystem _replacement = default!;
 
     private static readonly Regex RegexThe = new(@"\bthe\b", RegexOptions.IgnoreCase);
@@ -45,19 +43,7 @@ public sealed class GermanAccentSystem : EntitySystem
             accentuatedWords.Add(accentuatedWord);
         }
 
-        var result = string.Join(" ", accentuatedWords);
-
-        // Add occasional German filler to the end of the sentence.
-        var roll = _random.NextDouble();
-
-        if (roll < 0.03)
-            result += ", ja?";
-        else if (roll < 0.06)
-            result += ", nein?";
-        else if (roll < 0.09)
-            result += ". Wunderbar";
-
-        return result;
+        return string.Join(" ", accentuatedWords);
     }
 
     private static string ApplyRegexReplacements(string word)

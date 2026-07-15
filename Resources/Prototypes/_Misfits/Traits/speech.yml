@@ -191,7 +191,8 @@
   functions:
   - !type:TraitAddComponent
     components:
-    - type: MisterHandyAccent
+    - type: ReplacementAccent
+      accent: n14MisterHandy
 
 - type: trait
   id: N14GermanAccent
