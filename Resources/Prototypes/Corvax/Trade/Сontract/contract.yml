@@ -695,7 +695,7 @@
 - type: storeContract
   id: caravan_contract_N14MobMirelurk
   name: "Operation Fish-in-a-Barrel"
-  description: "Mirelurks in Wendover Valley has proven to be a consistent nuisance to the local Brotherhood of Steel. Allied chapters with an interest in their success are paying a bounty on local mirelurks as a result."
+  description: "Mirelurks in Wendover Valley have proven to be a consistent nuisance to the local Brotherhood of Steel. Allied chapters with an interest in their success are paying a bounty on local mirelurks as a result."
   difficulty: Silver
   targets:
   - id: N14MobMirelurk
