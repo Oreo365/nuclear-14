@@ -160,8 +160,8 @@
   - type: Clothing
     sprite: Corvax/Clothing/OuterClothing/Armor/deanrecruitarmor.rsi
   - type: ClothingSpeedModifier
-    walkModifier: 1.05 # made a little faster since its just worse than combat mk2
-    sprintModifier: 1.05
+    walkModifier: 1. # made a little faster since its just worse than combat mk2
+    sprintModifier: 1.
   - type: Armor
     modifiers:
       coefficients:
@@ -185,8 +185,8 @@
   - type: Clothing
     sprite: Corvax/Clothing/OuterClothing/Armor/veteranarmor.rsi
   - type: ClothingSpeedModifier
-    walkModifier: 1.10
-    sprintModifier: 1.10
+    walkModifier: 1.0
+    sprintModifier: 1.0
   - type: Armor
     modifiers:
       coefficients:
@@ -208,8 +208,8 @@
   - type: Clothing
     sprite: Corvax/Clothing/OuterClothing/Armor/reconnaissancearmor.rsi
   - type: ClothingSpeedModifier
-    walkModifier: 1.10 #same as ranger recon
-    sprintModifier: 1.10
+    walkModifier: 1.05 #same as ranger recon
+    sprintModifier: 1.05
   - type: Armor
     modifiers:
       coefficients:
@@ -231,8 +231,8 @@
   - type: Clothing
     sprite: Corvax/Clothing/OuterClothing/Armor/lightreconnaissancearmor.rsi
   - type: ClothingSpeedModifier
-    walkModifier: 1.10 #A little faster than the previous recon
-    sprintModifier: 1.10
+    walkModifier: 1.05 #A little faster than the previous recon
+    sprintModifier: 1.05
   - type: Armor
     modifiers:
       coefficients:
@@ -277,8 +277,8 @@
   - type: Clothing
     sprite: Corvax/Clothing/OuterClothing/Armor/lightarmor.rsi
   - type: ClothingSpeedModifier
-    walkModifier: 1.10
-    sprintModifier: 1.10 # the little ones can enjoy the game too.
+    walkModifier: 1.05
+    sprintModifier: 1.05 # the little ones can enjoy the game too.
   - type: Armor
     modifiers:
       coefficients:
@@ -300,8 +300,8 @@
   - type: Clothing
     sprite: Corvax/Clothing/OuterClothing/Armor/vexillariusarmor.rsi
   - type: ClothingSpeedModifier
-    walkModifier: 1.10 # basically the same as veteran
-    sprintModifier: 1.10
+    walkModifier: 1.0 # basically the same as veteran
+    sprintModifier: 1.0
   - type: Armor
     modifiers:
       coefficients:
@@ -323,8 +323,8 @@
   - type: Clothing
     sprite: Corvax/Clothing/OuterClothing/Armor/explorerarmor.rsi
   - type: ClothingSpeedModifier
-    walkModifier: 1.10
-    sprintModifier: 1.10
+    walkModifier: 1.05
+    sprintModifier: 1.05
   - type: Armor
     modifiers:
       coefficients:
@@ -346,8 +346,8 @@
   - type: Clothing
     sprite: Corvax/Clothing/OuterClothing/Armor/oratorarmor.rsi
   - type: ClothingSpeedModifier
-    walkModifier: 1.05 #A little faster than the previous recon
-    sprintModifier: 1.05
+    walkModifier: 1.0 #A little faster than the previous recon
+    sprintModifier: 1.0
   - type: Armor
     modifiers:
       coefficients:
