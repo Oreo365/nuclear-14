@@ -44,20 +44,20 @@
     head: N14ClothingHeadHatNCRBeretOfficer
     back: N14ClothingBackpackNCR
     jumpsuit: N14ClothingOfficerUniformNCRDesert
-    outerClothing: N14ClothingOuterNCRDressJacketCO
+    outerClothing: N14ClothingOuterPowerArmorT51NCR
     shoes: N14ClothingBootsCombatFilled
-
     belt: ClothingBeltNCR
     eyes: ClothingEyesGlassesSunglasses
     ears: N14ClothingHeadsetNCR
     pocket1: NCRcaptainloadoutkits
-    pocket2: TrainingManualPowerArmorOperation
-    id: N14IDNCRDogtagCaptain
+    id: N14NCRCommanderPipboy
   innerClothingSkirt: N14ClothingOfficerUniformNCRDesert
   satchel: N14ClothingBackpackSatchelNCRFilled
   storage:
     back:
     - N14BoxPlasticFilledMilitaryNCR
+    - SyndicateWhistle
+    - N14Binoculars
 
 - type: playTimeTracker
   id: NCRCommander

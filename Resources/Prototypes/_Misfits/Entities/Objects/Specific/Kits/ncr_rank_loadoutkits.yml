@@ -239,7 +239,6 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: MisfitsNCROfficerArmor
       - id: ClothingBeltRevolverCaptainfilled
       - id: N14WeaponRifle308Battle
       - id: ClipMagazine308Rifle
@@ -271,7 +270,6 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: MisfitsClothingOuterNCRTrenchCoat
       - id: ClothingBeltRevolverCaptainfilled
       - id: N14WeaponRifleM1GarandRepublicsPride # #Misfits Change: Republic's Pride scoped M1C replaces .50 rifle
       - id: ClipMagazine308Rifle # #Misfits Change - replaced GarandEnbloc308
@@ -310,7 +308,6 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: MisfitsNCROfficerArmor
       - id: ClothingBeltNCR
       - id: N14WeaponRifle556ServiceScoped
       - id: Magazine556Rifle

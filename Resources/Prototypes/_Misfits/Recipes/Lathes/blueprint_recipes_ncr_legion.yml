@@ -909,26 +909,6 @@
 
 
 - type: latheRecipe
-  id: N14BPNCRArmorPowerArmorT45Sierra
-  result: N14ClothingOuterPowerArmorT45Sierra
-  category: N14BlueprintNCRArmorT4
-  completetime: 30
-  requiresBlueprint: true
-  availableFaction:
-  - NCR
-  materials:
-    Steel: 12000
-
-    N14Iron: 450
-
-    Circuitry: 300
-
-    ScrapElectronic: 250
-
-    N14Brass: 150
-
-
-- type: latheRecipe
   id: N14BPNCRArmorRangerCombat
   result: N14ClothingOuterRangerCombat
   category: N14BlueprintNCRArmorT4

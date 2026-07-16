@@ -178,7 +178,6 @@
   - type: Blueprint
     recipes:
     - N14BPNCRArmorCombatArmorMK2
-    - N14BPNCRArmorPowerArmorT45Sierra
     # #Misfits Add - paired elite combat and ranger helmets
     - N14BPNCRArmorCombatHelmetMK2
     - N14BPNCRArmorRangerHelmetElite
