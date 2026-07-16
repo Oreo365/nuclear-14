@@ -593,6 +593,9 @@
     - !type:CharacterDepartmentTimeRequirement
       department: NCR
       min: 144000 # 40 hours, work for that hat!
+    - !type:CharacterTraitRequirement
+      traits:
+      - N14RidingPerk
   items:
     - N14ClothingHeadHatNCRStetson
 
