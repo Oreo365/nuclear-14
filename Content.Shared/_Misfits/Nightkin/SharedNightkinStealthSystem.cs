@@ -1,9 +1,16 @@
 // #Misfits Add - Shared Nightkin passive Stealth Boy implant behavior.
 using Content.Shared._Misfits.StealthBoy;
+using Content.Shared._N14.Radiation.Components;
 using Content.Shared.Actions;
+using Content.Shared.Damage;
+using Content.Shared.Damage.Components;
+using Content.Shared.FixedPoint;
+using Content.Shared.Nutrition.Components;
 using Content.Shared.Popups;
 using Content.Shared.Stealth.Components;
+using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Weapons.Ranged.Events;
+using Content.Shared.Wieldable;
 using Robust.Shared.Network;
 using Robust.Shared.Timing;
 
@@ -33,6 +40,8 @@ public abstract class SharedNightkinStealthSystem : EntitySystem
 
     private void OnShutdown(Entity<NightkinPassiveStealthComponent> ent, ref ComponentShutdown args)
     {
+        // don't strand the raised hunger rate if the implant is removed mid-cloak
+        RestoreCloakHunger(ent.Owner, ent.Comp);
         _actions.RemoveAction(ent.Owner, ent.Comp.ActionEntity);
     }
 
@@ -68,14 +77,47 @@ public abstract class SharedNightkinStealthSystem : EntitySystem
         }
 
         ActivateNightkinStealth(ent.Owner, ent.Comp);
+        ApplyCloakHunger(ent.Owner, ent.Comp);
     }
 
     private void OnCloakEnded(Entity<NightkinPassiveStealthComponent> ent, ref StealthBoyCloakEndedEvent args)
     {
         ent.Comp.CooldownEndTime = _timing.CurTime + ent.Comp.Cooldown;
+        RestoreCloakHunger(ent.Owner, ent.Comp);
         Dirty(ent.Owner, ent.Comp);
         // put it on the action too so the button shows the countdown
         _actions.SetCooldown(ent.Comp.ActionEntity, ent.Comp.Cooldown);
+    }
+
+    // staying cloaked drains hunger faster. multiply/divide (not store+restore) so
+    // it composes cleanly with the Endurance decay tweak if that changes mid-cloak.
+    private void ApplyCloakHunger(EntityUid uid, NightkinPassiveStealthComponent comp)
+    {
+        if (comp.HungerBumped || comp.CloakHungerMultiplier == 1f)
+            return;
+
+        if (!TryComp<HungerComponent>(uid, out var hunger))
+            return;
+
+        hunger.BaseDecayRate *= comp.CloakHungerMultiplier;
+        hunger.ActualDecayRate *= comp.CloakHungerMultiplier;
+        comp.HungerBumped = true;
+        Dirty(uid, hunger);
+    }
+
+    private void RestoreCloakHunger(EntityUid uid, NightkinPassiveStealthComponent comp)
+    {
+        if (!comp.HungerBumped)
+            return;
+
+        comp.HungerBumped = false;
+
+        if (!TryComp<HungerComponent>(uid, out var hunger))
+            return;
+
+        hunger.BaseDecayRate /= comp.CloakHungerMultiplier;
+        hunger.ActualDecayRate /= comp.CloakHungerMultiplier;
+        Dirty(uid, hunger);
     }
 
     protected abstract void ActivateNightkinStealth(EntityUid uid, NightkinPassiveStealthComponent component);
@@ -86,27 +128,74 @@ public abstract class SharedNightkinStealthSystem : EntitySystem
         StealthBoyActiveComponent active);
 }
 
+// Flat regen that only runs while the mob is soaking rads. Heals every damage
+// type it currently has, so unlike RadiationHealing it isn't limited to physical.
+public sealed class RadiationRegenSystem : EntitySystem
+{
+    [Dependency] private readonly DamageableSystem _damageable = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
+
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        var now = _timing.CurTime;
+        var query = EntityQueryEnumerator<RadiationRegenComponent, RadiationHealingComponent, DamageableComponent>();
+        while (query.MoveNext(out var uid, out var regen, out var rad, out var damage))
+        {
+            if (regen.NextHeal > now)
+                continue;
+
+            // tick once a second - FixedPoint2 only has 2 decimals, per-frame amounts round badly
+            regen.NextHeal = now + TimeSpan.FromSeconds(1);
+
+            if (rad.CurrentExposure <= 0f || damage.TotalDamage <= FixedPoint2.Zero)
+                continue;
+
+            var heal = FixedPoint2.New(-regen.HealPerSecond);
+            var spec = new DamageSpecifier();
+            foreach (var (type, amount) in damage.Damage.DamageDict)
+            {
+                if (amount > FixedPoint2.Zero)
+                    spec.DamageDict[type] = heal;
+            }
+
+            if (spec.DamageDict.Count > 0)
+                _damageable.TryChangeDamage(uid, spec, true, false, damage);
+        }
+    }
+}
+
 // Applies GunHandlingModifierComponent to whatever gun the mob is holding.
-// Same event as SpecialPerceptionSystem so it stacks with Perception.
+// NOTE: has to be a directed subscription on the gun - RefreshModifiers raises
+// the event directed with broadcast off, broadcast handlers never see it.
+// Runs after WieldableSystem so we scale the post-wield-bonus spread. Scaling
+// the base instead sends wielded rifles negative (base * 0.35 - flat wield
+// bonus < 0) which inverts the clamp and sprays bullets everywhere.
 public sealed class GunHandlingModifierSystem : EntitySystem
 {
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeLocalEvent<GunRefreshModifiersEvent>(OnGunRefreshModifiers);
+        SubscribeLocalEvent<GunComponent, GunRefreshModifiersEvent>(OnGunRefreshModifiers,
+            after: [typeof(WieldableSystem)]);
     }
 
-    private void OnGunRefreshModifiers(ref GunRefreshModifiersEvent args)
+    private void OnGunRefreshModifiers(Entity<GunComponent> gun, ref GunRefreshModifiersEvent args)
     {
-        var holder = Transform(args.Gun.Owner).ParentUid;
+        var holder = Transform(gun.Owner).ParentUid;
 
         if (!TryComp<GunHandlingModifierComponent>(holder, out var handling))
             return;
 
-        args.MinAngle = new Angle((double) args.MinAngle * handling.SpreadMultiplier);
-        args.MaxAngle = new Angle((double) args.MaxAngle * handling.SpreadMultiplier);
-        args.AngleIncrease = new Angle((double) args.AngleIncrease * handling.SpreadMultiplier);
+        var min = Math.Max(0, (double) args.MinAngle * handling.SpreadMultiplier);
+        var max = Math.Max(min, (double) args.MaxAngle * handling.SpreadMultiplier);
+        var inc = Math.Max(0, (double) args.AngleIncrease * handling.SpreadMultiplier);
+
+        args.MinAngle = new Angle(min);
+        args.MaxAngle = new Angle(max);
+        args.AngleIncrease = new Angle(inc);
         args.CameraRecoilScalar *= handling.RecoilMultiplier;
 
         if (args.FireRate > 0f)

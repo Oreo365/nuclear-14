@@ -25,6 +25,18 @@ public sealed partial class NightkinPassiveStealthComponent : Component
     [DataField, AutoNetworkedField]
     public float StillVisibility = 0f;
 
+    // how visible while slow walking, between still and the running shimmer
+    [DataField, AutoNetworkedField]
+    public float WalkVisibility = 0.1f;
+
+    // hunger drains this much faster while the cloak is active - staying hidden burns calories
+    [DataField, AutoNetworkedField]
+    public float CloakHungerMultiplier = 2.5f;
+
+    // set while the cloak is up so we only restore the hunger rate once
+    [DataField, AutoNetworkedField]
+    public bool HungerBumped;
+
     [DataField, AutoNetworkedField]
     public TimeSpan FadeInTime = TimeSpan.FromSeconds(1.5);
 
@@ -49,6 +61,21 @@ public sealed partial class NightkinPassiveStealthComponent : Component
 /// Fired by the Nightkin innate stealth action.
 /// </summary>
 public sealed partial class ToggleNightkinStealthActionEvent : InstantActionEvent;
+
+/// <summary>
+/// Heals every damage type the mob is hurt in, but only while it's soaking
+/// radiation. Reads exposure off RadiationHealingComponent.
+/// </summary>
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+public sealed partial class RadiationRegenComponent : Component
+{
+    // healed per second in every damage type the mob currently has
+    [DataField, AutoNetworkedField]
+    public float HealPerSecond = 0.5f;
+
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoNetworkedField]
+    public TimeSpan NextHeal;
+}
 
 /// <summary>
 /// Makes the holder steadier with guns. Below 1 = tighter spread / less recoil.
