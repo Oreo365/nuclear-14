@@ -9005,3 +9005,14 @@ Entries:
   id: 6226
   time: '2026-07-16T22:18:14.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1019
+- author: Oli
+  changes:
+    - type: Add
+      message: >-
+        Schlimm, Marlowe gang and state police officer, military cowboy boots,
+        uniforms, suits, and helmets. This is added to the loadout menu
+    - type: Tweak
+      message: Cavalry Stetson requires the riding perk to select it.
+  id: 6227
+  time: '2026-07-16T22:30:30.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1030
