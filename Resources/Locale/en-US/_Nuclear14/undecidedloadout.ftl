@@ -481,18 +481,18 @@ undecided-loadout-category-Tribal-pain-bringer-description =
 
 # Town Guard Kits
 
-undecided-loadout-category-town-cere-name = Ceremonial Kit
+undecided-loadout-category-town-cere-name = Rifle Kit
 undecided-loadout-category-town-cere-description =
     Sometimes you have to look fancy and not worry about protection.
-    Includes 1 guard hat, 1 guard greatcoat, 1 .308 battle rifle,
-    3 .308 clips, 1 .44 magnum, 2 .44 speedloaders,
+    Includes 1 guard hat, 1 guard greatcoat, 1 .45-70 rifle,
+    3 .45-70 boxes, 1 .44 magnum, 2 .44 speedloaders,
     1 stack of gauze and basic ration supplies.
 
 undecided-loadout-category-town-patr-name = Patrolman Kit
 undecided-loadout-category-town-patr-description =
     You don't ask much from life, all you want is vanilla.
-    Includes 1 brodie helmet, 1 light armour, 1 12.7mm SMG,
-    3 12.7mm SMG mags, 1 Webley pistol, 2 9mm pistol mags,
+    Includes 1 brodie helmet, 1 light armour, 1 9mm sten SMG,
+    4 9mm SMG mags, 1 Webley pistol, 2 9mm pistol mags,
     1 rain mantle, 1 stack of gauze and basic ration supplies.
 
 undecided-loadout-category-town-lawb-name = Lawbringer Kit
@@ -510,10 +510,10 @@ undecided-loadout-category-town-brea-description =
     1 Webley pistol, 2 9mm pistol mags,
     1 stack of gauze and basic ration supplies.
 
-undecided-loadout-category-town-riot-name = Riot Control Kit
+undecided-loadout-category-town-riot-name = Rifleman Kit
 undecided-loadout-category-town-riot-description =
     Let me solo them! I mean send them home, peacefully!
     Includes 1 visor brodie helmet, 1 riot armor,
-    1 spear, 1 heavy metal shield, 1 hunting revolver,
+    1 Fn FAL, 3 7.62 short magazines, 1 hunting revolver,
     2 .45-70 speedloaders, 1 town guard cloak, 1 stack of gauze,
     and basic ration supplies.

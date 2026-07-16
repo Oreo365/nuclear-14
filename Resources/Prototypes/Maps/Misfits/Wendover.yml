@@ -52,7 +52,7 @@
           SyntheticProtectronTribal: [1, 1]
           TownMayor: [ 1, 1 ]
           TownSheriff: [ 1, 1 ]
-          TownDeputy: [ 4, 4 ]
+          TownDeputy: [ 6, 6 ]
           # TownDoctor: [ 1, 1 ] # #Misfits Tweak - disabled; FoTA FollowerDoctor slots replace town medical coverage.
           TownMechanic: [ 2, 2 ]
           TownShopkeeper: [ 1, 1 ]
