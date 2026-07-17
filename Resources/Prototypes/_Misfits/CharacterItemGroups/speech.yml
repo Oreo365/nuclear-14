@@ -30,8 +30,9 @@
       id: N14VaultDwellerAccent
     - type: trait
       id: N14RadioAnnouncerAccent
-    - type: trait
-      id: N14LegionLatinAccent
+    # Misfits - Legion latin accent disabled for now, uncomment here and in Traits/speech.yml to re-enable.
+    #- type: trait
+    #  id: N14LegionLatinAccent
     - type: trait
       id: N14GhoulRaspAccent
     - type: trait

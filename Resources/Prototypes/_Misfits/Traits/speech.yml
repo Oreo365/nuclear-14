@@ -133,21 +133,22 @@
     - type: ReplacementAccent
       accent: n14RadioAnnouncer
 
-- type: trait
-  id: N14LegionLatinAccent
-  category: Speech
-  points: 1
-  requirements:
-  - !type:CharacterItemGroupRequirement
-    group: N14SpeechAccents
-  - !type:CharacterDepartmentRequirement
-    departments:
-    - CaesarLegion
-  functions:
-  - !type:TraitAddComponent
-    components:
-    - type: ReplacementAccent
-      accent: n14LegionLatin
+# Misfits - disabled for now, uncomment here and in CharacterItemGroups/speech.yml to re-enable.
+#- type: trait
+#  id: N14LegionLatinAccent
+#  category: Speech
+#  points: 1
+#  requirements:
+#  - !type:CharacterItemGroupRequirement
+#    group: N14SpeechAccents
+#  - !type:CharacterDepartmentRequirement
+#    departments:
+#    - CaesarLegion
+#  functions:
+#  - !type:TraitAddComponent
+#    components:
+#    - type: ReplacementAccent
+#      accent: n14LegionLatin
 
 - type: trait
   id: N14GhoulRaspAccent
