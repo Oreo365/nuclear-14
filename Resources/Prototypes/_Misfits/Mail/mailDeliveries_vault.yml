@@ -57,3 +57,22 @@
       MailVaultOverseerJusticeSet: 0.4
       MailVaultOverseerPlasmaRifle: 0.01
       MailVaultDwellerPipboy: 0.05
+    VaultCargoSpecialist:
+      MailVaultCargoToolbox: 0.8
+      MailVaultCargoCaps: 0.6
+      MailVaultCargoCaravanSuit: 0.4
+      MailVaultCargoDuffel: 0.5
+      MailVaultCargoShotgun: 0.15
+      MailVaultCargoMantle: 0.3
+      MailVaultCargoWinterCoat: 0.4
+      MailVaultCargoWinterBoots: 0.4
+    VaultCourier:
+      MailVaultCourierRevolver: 0.3
+      MailVaultCourierBinoculars: 0.5
+      MailVaultCourierSatchel: 0.5
+      MailVaultCourierCaps: 0.8
+    VaultSalvageSpecialist:
+      MailVaultSalvageDuffel: 0.5
+      MailVaultSalvageMachete: 0.4
+      MailVaultSalvageGloves: 0.6
+      MailVaultSalvageRadX: 0.6

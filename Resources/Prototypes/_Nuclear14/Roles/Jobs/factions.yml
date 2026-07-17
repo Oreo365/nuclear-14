@@ -141,12 +141,15 @@
   id: Vault
   description: department-Vault-description
   color: "#0d47a1"
-  uiCategory: MajorFaction
+  uiCategory: MinorFaction
   roles:
   - Overseer
   - VaultSecurity
   - VaultDoctor
   - VaultEngineer
+  - VaultSalvageSpecialist
+  - VaultCargoSpecialist
+  - VaultCourier
   - VaultDweller
   # #Misfits Add - vault-assigned robots (showBorder on MrHandy creates the visual separator; hidden without Robots whitelist)
   - SyntheticMrHandy

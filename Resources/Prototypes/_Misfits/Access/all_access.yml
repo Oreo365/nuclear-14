@@ -105,6 +105,9 @@
   - VaultChemistry
   - VaultEngineer
   - VaultDweller
+  - VaultCargo
+  - VaultCourier
+  - VaultSalvage
   # ── N14: Legion (Corvax) ──
   - CaesarLegion
   - CaesarLegionSlave

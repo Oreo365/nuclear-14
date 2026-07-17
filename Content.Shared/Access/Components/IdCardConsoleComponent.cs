@@ -65,6 +65,9 @@ public sealed partial class IdCardConsoleComponent : Component
         "VaultMedical",
         "VaultSecurity",
         "VaultOverseer",
+        "VaultCargo",
+        "VaultCourier",
+        "VaultSalvage",
         "TribeMember", // Misfit: Tribe Start
         "TribeChief",
         "WastelandChaplain", // Misfit: Wastelander

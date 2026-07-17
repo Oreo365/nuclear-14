@@ -681,3 +681,171 @@
     contents:
     - id: ClothingUniformJumpsuitChiefJustice
     - id: ClothingOuterChiefJustice
+
+# cargo specialist
+
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: BaseMail
+  id: MailVaultCargoToolbox
+  suffix: vault-cargo-toolbox
+  components:
+  - type: Mail
+    contents:
+    - id: N14ToolboxMechanical
+
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: BaseMail
+  id: MailVaultCargoCaps
+  suffix: vault-cargo-caps
+  components:
+  - type: Mail
+    contents:
+    - id: N14CurrencyPrewarMoney100
+      maxAmount: 10
+
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: BaseMail
+  id: MailVaultCargoCaravanSuit
+  suffix: vault-cargo-caravan-suit
+  components:
+  - type: Mail
+    contents:
+    - id: N14ClothingUniformJumpsuitCaravan
+
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: BaseMail
+  id: MailVaultCargoDuffel
+  suffix: vault-cargo-duffel
+  components:
+  - type: Mail
+    contents:
+    - id: N14ClothingBackpackDuffel
+
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: BaseMail
+  id: MailVaultCargoMantle
+  suffix: vault-cargo-mantle
+  components:
+  - type: Mail
+    contents:
+    - id: ClothingNeckMantleQM
+
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: BaseMail
+  id: MailVaultCargoWinterCoat
+  suffix: vault-cargo-winter-coat
+  components:
+  - type: Mail
+    contents:
+    - id: ClothingOuterWinterCargo
+
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: BaseMail
+  id: MailVaultCargoWinterBoots
+  suffix: vault-cargo-winter-boots
+  components:
+  - type: Mail
+    contents:
+    - id: ClothingShoesBootsWinterCargo
+
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: BaseMail
+  id: MailVaultCargoShotgun
+  suffix: vault-cargo-shotgun
+  components:
+  - type: Mail
+    contents:
+    - id: N14WeaponShotgunCaravan
+
+# courier
+
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: BaseMail
+  id: MailVaultCourierRevolver
+  suffix: vault-courier-revolver
+  components:
+  - type: Mail
+    contents:
+    - id: N14WeaponRevolver9mm
+
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: BaseMail
+  id: MailVaultCourierBinoculars
+  suffix: vault-courier-binoculars
+  components:
+  - type: Mail
+    contents:
+    - id: N14Binoculars
+
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: BaseMail
+  id: MailVaultCourierSatchel
+  suffix: vault-courier-satchel
+  components:
+  - type: Mail
+    contents:
+    - id: N14ClothingBackpackSatchelExplorer
+
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: BaseMail
+  id: MailVaultCourierCaps
+  suffix: vault-courier-caps
+  components:
+  - type: Mail
+    contents:
+    - id: N14CurrencyPrewarMoney100
+      maxAmount: 2
+
+# salvage specialist
+
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: BaseMail
+  id: MailVaultSalvageDuffel
+  suffix: vault-salvage-duffel
+  components:
+  - type: Mail
+    contents:
+    - id: N14ClothingBackpackDuffelSalvage
+
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: BaseMail
+  id: MailVaultSalvageMachete
+  suffix: vault-salvage-machete
+  components:
+  - type: Mail
+    contents:
+    - id: N14Machete
+
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: BaseMail
+  id: MailVaultSalvageGloves
+  suffix: vault-salvage-gloves
+  components:
+  - type: Mail
+    contents:
+    - id: N14ClothingHandsGlovesLeather
+
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: BaseMail
+  id: MailVaultSalvageRadX
+  suffix: vault-salvage-radx
+  components:
+  - type: Mail
+    contents:
+    - id: N14RadXCanisterFilled
