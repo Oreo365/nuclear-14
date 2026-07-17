@@ -438,6 +438,7 @@
     jumpsuit: ClothingSuperMutantLabcoat
     outerClothing: MisfitsFOTASuperMutantArmoredLabcoat
     mask: ClothingSuperMutantSterileMask
+    head: ClothingSuperMutantDoctorBeret
     back: ClothingBackpackDuffelSurgeryFilled
     belt: N14ClothingBeltMedicalFilled
     shoes: ClothingSuperMutantGladiatorBoots
