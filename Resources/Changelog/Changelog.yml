@@ -9064,3 +9064,12 @@ Entries:
   id: 6232
   time: '2026-07-18T14:26:10.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1040
+- author: Jim
+  changes:
+    - type: Add
+      message: 308 speed loader tube and recipe
+    - type: Tweak
+      message: Made 308 lever actions able to accept speed loader tubes
+  id: 6233
+  time: '2026-07-18T14:43:48.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1043
