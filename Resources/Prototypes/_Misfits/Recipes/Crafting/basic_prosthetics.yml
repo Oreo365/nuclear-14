@@ -1,0 +1,45 @@
+# Misfits - Basic prosthetic limbs in the hand-crafting menu.
+
+- type: construction
+  name: basic prosthetic left hand
+  id: MisfitsBasicProstheticLeftHand
+  graph: MisfitsBasicProstheticGraph
+  startNode: start
+  targetNode: leftHand
+  category: construction-category-medical
+  description: A cheap, crude replacement for a human left hand.
+  icon: { sprite: Mobs/Customization/cyberlimbs/bishop/bishop_main.rsi, state: l_hand }
+  objectType: Item
+
+- type: construction
+  name: basic prosthetic right hand
+  id: MisfitsBasicProstheticRightHand
+  graph: MisfitsBasicProstheticGraph
+  startNode: start
+  targetNode: rightHand
+  category: construction-category-medical
+  description: A cheap, crude replacement for a human right hand.
+  icon: { sprite: Mobs/Customization/cyberlimbs/bishop/bishop_main.rsi, state: r_hand }
+  objectType: Item
+
+- type: construction
+  name: basic prosthetic left foot
+  id: MisfitsBasicProstheticLeftFoot
+  graph: MisfitsBasicProstheticGraph
+  startNode: start
+  targetNode: leftFoot
+  category: construction-category-medical
+  description: A cheap, crude replacement for a human left foot.
+  icon: { sprite: Mobs/Customization/cyberlimbs/bishop/bishop_main.rsi, state: l_foot }
+  objectType: Item
+
+- type: construction
+  name: basic prosthetic right foot
+  id: MisfitsBasicProstheticRightFoot
+  graph: MisfitsBasicProstheticGraph
+  startNode: start
+  targetNode: rightFoot
+  category: construction-category-medical
+  description: A cheap, crude replacement for a human right foot.
+  icon: { sprite: Mobs/Customization/cyberlimbs/bishop/bishop_main.rsi, state: r_foot }
+  objectType: Item

@@ -1,0 +1,90 @@
+# Misfits - Cheap, human-compatible prosthetic limbs.
+# These use the existing Bishop cyberlimb art, but are deliberately inferior to flesh limbs.
+
+- type: entity
+  id: MisfitsBasicProstheticPart
+  parent: BasePart
+  name: basic prosthetic
+  description: A cheap replacement limb assembled from scrap metal and padding. Functional, but clumsy.
+  abstract: true
+  components:
+  - type: Damageable
+    damageContainer: Inorganic
+  - type: StaticPrice
+    price: 2
+
+- type: entity
+  id: MisfitsBasicProstheticLeftHand
+  parent: [MisfitsBasicProstheticPart, BaseLeftHand]
+  name: basic prosthetic left hand
+  description: A cheap left hand replacement with a weak, imprecise grip.
+  components:
+  - type: BodyPart
+    baseLayerId: MobCyberneticBishopLHand
+  - type: Sprite
+    sprite: Mobs/Customization/cyberlimbs/bishop/bishop_main.rsi
+    state: l_hand
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Blunt: 1
+  - type: Construction
+    graph: MisfitsBasicProstheticGraph
+    node: leftHand
+
+- type: entity
+  id: MisfitsBasicProstheticRightHand
+  parent: [MisfitsBasicProstheticPart, BaseRightHand]
+  name: basic prosthetic right hand
+  description: A cheap right hand replacement with a weak, imprecise grip.
+  components:
+  - type: BodyPart
+    baseLayerId: MobCyberneticBishopRHand
+  - type: Sprite
+    sprite: Mobs/Customization/cyberlimbs/bishop/bishop_main.rsi
+    state: r_hand
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Blunt: 1
+  - type: Construction
+    graph: MisfitsBasicProstheticGraph
+    node: rightHand
+
+- type: entity
+  id: MisfitsBasicProstheticLeftFoot
+  parent: [MisfitsBasicProstheticPart, BaseLeftFoot]
+  name: basic prosthetic left foot
+  description: A cheap left foot replacement with poor balance and little striking force.
+  components:
+  - type: BodyPart
+    baseLayerId: MobCyberneticBishopLFoot
+  - type: Sprite
+    sprite: Mobs/Customization/cyberlimbs/bishop/bishop_main.rsi
+    state: l_foot
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Blunt: 2
+  - type: Construction
+    graph: MisfitsBasicProstheticGraph
+    node: leftFoot
+
+- type: entity
+  id: MisfitsBasicProstheticRightFoot
+  parent: [MisfitsBasicProstheticPart, BaseRightFoot]
+  name: basic prosthetic right foot
+  description: A cheap right foot replacement with poor balance and little striking force.
+  components:
+  - type: BodyPart
+    baseLayerId: MobCyberneticBishopRFoot
+  - type: Sprite
+    sprite: Mobs/Customization/cyberlimbs/bishop/bishop_main.rsi
+    state: r_foot
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Blunt: 2
+  - type: Construction
+    graph: MisfitsBasicProstheticGraph
+    node: rightFoot
