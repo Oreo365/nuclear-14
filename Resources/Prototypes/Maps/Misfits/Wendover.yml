@@ -128,11 +128,11 @@
           CaesarLegionTrader: [ 1, 1 ] #
           CaesarLegionSlave: [ 4, 4 ] # Forge-Legion
           # #Misfits Change - Khan removed (deactivated); Eighties expanded to 5-rank department.
-          EightiesTheBlock:  [ 1, 1 ] # leader, 1 slot. set to 1 when ready.
-          EightiesCylinders: [ 2, 2 ] # officer tier, 2 slots. set to 2 when ready.
-          EightiesPistons:   [ 3, 3 ] # NCO tier, 3 slots. set to 3 when ready.
-          EightiesOilers:    [ 4, 4 ] # specialist tier, 4 slots. set to 4 when ready.
-          EightiesRoadRash:  [ 4, 4 ] # recruit tier, 4 slots. set to 4 when ready.
+          EightiesTheBlock:  [ 1, 1 ] # leader
+          EightiesCylinders: [ 1, 1 ] # officer tier
+          EightiesPistons:   [ 1, 1 ] # NCO tier
+          EightiesOilers:    [ 3, 3 ] # specialist tier
+          EightiesRoadRash:  [ 2, 2 ] # recruit tier
           WhiteLegs: [ 16, 16 ] # #Misfits Change - keep the compatible White Legs base role live at 16 slots until ranked markers are placed.
           WhiteLegsWarChief: [ 0, 0 ] # #Misfits Add - prototype-ready rank, no placed map marker yet.
           WhiteLegsBoneBreaker: [ 0, 0 ] # #Misfits Add - prototype-ready rank, no placed map marker yet.
