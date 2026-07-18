@@ -9027,3 +9027,15 @@ Entries:
   id: 6228
   time: '2026-07-17T13:41:06.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/981
+- author: Squagg
+  changes:
+    - type: Add
+      message: >-
+        Added 10 new speech accents to character creation: Cowboy, Southern
+        Drawl, Mobster, Italian, German, Vault Dweller, Radio Announcer, Ghoul
+        Rasp, Old-Timer and Mister Handy Etiquette.
+    - type: Tweak
+      message: Speech accents and quirks are now limited to one per character.
+  id: 6229
+  time: '2026-07-18T14:13:47.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1026
