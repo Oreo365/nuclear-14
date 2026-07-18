@@ -9091,3 +9091,10 @@ Entries:
   id: 6234
   time: '2026-07-18T20:28:07.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1046
+- author: Dpellowski
+  changes:
+    - type: Add
+      message: Prothestics (hands and foot no arm and legs)
+  id: 6235
+  time: '2026-07-18T20:55:29.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1044
