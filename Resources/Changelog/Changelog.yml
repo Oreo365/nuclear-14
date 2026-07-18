@@ -9073,3 +9073,21 @@ Entries:
   id: 6233
   time: '2026-07-18T14:43:48.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1043
+- author: Squagg
+  changes:
+    - type: Fix
+      message: >-
+        Faction database terminals no longer kick you out of the editor while
+        typing documents.
+    - type: Fix
+      message: >-
+        Reading a database document no longer gets interrupted by terminal
+        refreshes.
+    - type: Tweak
+      message: >-
+        Permanently deleting database entries now requires being the original
+        author or the faction's admin rank (e.g. Elder Council). Leadership
+        ranks can still delete and restore entries normally.
+  id: 6234
+  time: '2026-07-18T20:28:07.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1046
