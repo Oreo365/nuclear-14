@@ -1,31 +1,54 @@
-# Misfits - Cheap basic prosthetic hands and feet. Each costs one steel and one cloth.
-# No specialist tools are required.
+# Misfits - Every basic prosthetic costs one steel and one cloth.
 
 - type: constructionGraph
-  id: MisfitsBasicProstheticGraph
+  id: MisfitsProstheticGraph
   start: start
   graph:
   - node: start
     edges:
-    - to: leftHand
-      steps: &smallLimbSteps
+    - to: simpleLeftHand
+      steps: &prostheticSteps
       - material: Steel
         amount: 1
       - material: Cloth
         amount: 1
         doAfter: 3
-    - to: rightHand
-      steps: *smallLimbSteps
-    - to: leftFoot
-      steps: *smallLimbSteps
-    - to: rightFoot
-      steps: *smallLimbSteps
+    - to: simpleRightHand
+      steps: *prostheticSteps
+    - to: vaultTecLeftHand
+      steps: *prostheticSteps
+    - to: vaultTecRightHand
+      steps: *prostheticSteps
+    - to: ncrLeftHand
+      steps: *prostheticSteps
+    - to: ncrRightHand
+      steps: *prostheticSteps
+    - to: simpleLeftFoot
+      steps: *prostheticSteps
+    - to: simpleRightFoot
+      steps: *prostheticSteps
+    - to: vaultTecLeftFoot
+      steps: *prostheticSteps
+    - to: vaultTecRightFoot
+      steps: *prostheticSteps
 
-  - node: leftHand
-    entity: MisfitsBasicProstheticLeftHand
-  - node: rightHand
-    entity: MisfitsBasicProstheticRightHand
-  - node: leftFoot
-    entity: MisfitsBasicProstheticLeftFoot
-  - node: rightFoot
-    entity: MisfitsBasicProstheticRightFoot
+  - node: simpleLeftHand
+    entity: MisfitsProstheticSimpleLeftHand
+  - node: simpleRightHand
+    entity: MisfitsProstheticSimpleRightHand
+  - node: vaultTecLeftHand
+    entity: MisfitsProstheticVaultTecLeftHand
+  - node: vaultTecRightHand
+    entity: MisfitsProstheticVaultTecRightHand
+  - node: ncrLeftHand
+    entity: MisfitsProstheticNCRLeftHand
+  - node: ncrRightHand
+    entity: MisfitsProstheticNCRRightHand
+  - node: simpleLeftFoot
+    entity: MisfitsProstheticSimpleLeftFoot
+  - node: simpleRightFoot
+    entity: MisfitsProstheticSimpleRightFoot
+  - node: vaultTecLeftFoot
+    entity: MisfitsProstheticVaultTecLeftFoot
+  - node: vaultTecRightFoot
+    entity: MisfitsProstheticVaultTecRightFoot
