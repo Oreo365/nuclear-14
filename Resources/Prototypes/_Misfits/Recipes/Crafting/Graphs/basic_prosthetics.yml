@@ -1,0 +1,31 @@
+# Misfits - Cheap basic prosthetic hands and feet. Each costs one steel and one cloth.
+# No specialist tools are required.
+
+- type: constructionGraph
+  id: MisfitsBasicProstheticGraph
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: leftHand
+      steps: &smallLimbSteps
+      - material: Steel
+        amount: 1
+      - material: Cloth
+        amount: 1
+        doAfter: 3
+    - to: rightHand
+      steps: *smallLimbSteps
+    - to: leftFoot
+      steps: *smallLimbSteps
+    - to: rightFoot
+      steps: *smallLimbSteps
+
+  - node: leftHand
+    entity: MisfitsBasicProstheticLeftHand
+  - node: rightHand
+    entity: MisfitsBasicProstheticRightHand
+  - node: leftFoot
+    entity: MisfitsBasicProstheticLeftFoot
+  - node: rightFoot
+    entity: MisfitsBasicProstheticRightFoot
