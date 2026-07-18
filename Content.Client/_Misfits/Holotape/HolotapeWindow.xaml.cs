@@ -992,7 +992,7 @@ public sealed partial class HolotapeWindow : DefaultWindow
                 del.OnPressed += _ => OnDeleteDatabaseFolder?.Invoke(capId, null);
                 row.AddChild(del);
             }
-            if (!deleted && (canModify || isAuthor))
+            if (!deleted && (_databaseState!.CanAdmin || isAuthor))
             {
                 var permDel = new Button { Text = "[ PERM DELETE ]", MinWidth = 110 };
                 permDel.OnPressed += _ => OnPermanentDeleteDatabaseEntry?.Invoke(capId, null, null, null);
@@ -1004,7 +1004,7 @@ public sealed partial class HolotapeWindow : DefaultWindow
                 rest.OnPressed += _ => OnRestoreDatabaseEntry?.Invoke(capId, null, null, null);
                 row.AddChild(rest);
             }
-            if (deleted && (canModify || isAuthor))
+            if (deleted && (_databaseState!.CanAdmin || isAuthor))
             {
                 var permDel = new Button { Text = "[ PERM DELETE ]", MinWidth = 110 };
                 permDel.OnPressed += _ => OnPermanentDeleteDatabaseEntry?.Invoke(capId, null, null, null);
@@ -1088,7 +1088,7 @@ public sealed partial class HolotapeWindow : DefaultWindow
                 del.OnPressed += _ => OnDeleteDatabaseFolder?.Invoke(folder.FolderId, capSub);
                 row.AddChild(del);
             }
-            if (!deleted && (canModify || isAuthor))
+            if (!deleted && (_databaseState!.CanAdmin || isAuthor))
             {
                 var permDel = new Button { Text = "[ PERM DELETE ]", MinWidth = 110 };
                 permDel.OnPressed += _ => OnPermanentDeleteDatabaseEntry?.Invoke(null, folder.FolderId, capSub, null);
@@ -1100,7 +1100,7 @@ public sealed partial class HolotapeWindow : DefaultWindow
                 rest.OnPressed += _ => OnRestoreDatabaseEntry?.Invoke(null, folder.FolderId, capSub, null);
                 row.AddChild(rest);
             }
-            if (deleted && (canModify || isAuthor))
+            if (deleted && (_databaseState!.CanAdmin || isAuthor))
             {
                 var permDel = new Button { Text = "[ PERM DELETE ]", MinWidth = 110 };
                 permDel.OnPressed += _ => OnPermanentDeleteDatabaseEntry?.Invoke(null, folder.FolderId, capSub, null);
@@ -1199,7 +1199,7 @@ public sealed partial class HolotapeWindow : DefaultWindow
             del.OnPressed += _ => OnDeleteDatabaseDocument?.Invoke(capId);
             row.AddChild(del);
         }
-        if (!deleted && (canModify || isAuthor))
+        if (!deleted && (_databaseState!.CanAdmin || isAuthor))
         {
             var permDel = new Button { Text = "[ PERM DELETE ]", MinWidth = 110 };
             permDel.OnPressed += _ => OnPermanentDeleteDatabaseEntry?.Invoke(null, null, null, capId);
@@ -1211,7 +1211,7 @@ public sealed partial class HolotapeWindow : DefaultWindow
             rest.OnPressed += _ => OnRestoreDatabaseEntry?.Invoke(null, null, null, capId);
             row.AddChild(rest);
         }
-        if (deleted && (canModify || isAuthor))
+        if (deleted && (_databaseState!.CanAdmin || isAuthor))
         {
             var permDel = new Button { Text = "[ PERM DELETE ]", MinWidth = 110 };
             permDel.OnPressed += _ => OnPermanentDeleteDatabaseEntry?.Invoke(null, null, null, capId);
@@ -1267,12 +1267,11 @@ public sealed partial class HolotapeWindow : DefaultWindow
         };
         DatabaseActionsBar.AddChild(back);
 
-        // #Misfits Add - Permanent delete button in document viewer. Available to
-        // original author OR Leadership/Admin (same logic as MakeDocRow).
-        var docCanModify = doc.IsAdmin ? _databaseState.CanAdmin : _databaseState.CanLeadership;
+        // #Misfits Add - Permanent delete button in document viewer. Available to the
+        // original author OR Admin tier only (server enforces the same).
         var docIsAuthor = _viewerUserId != null && doc.CreatedByUserId.HasValue
             && _viewerUserId.Value.UserId == doc.CreatedByUserId.Value;
-        if (docCanModify || docIsAuthor)
+        if (_databaseState.CanAdmin || docIsAuthor)
         {
             var capDocId = doc.DocumentId;
             var permDel = new Button
