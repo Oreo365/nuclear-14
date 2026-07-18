@@ -475,6 +475,26 @@
     tags:
     - SuperMutantWearable
 
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingSuperMutantDoctorBeret
+  name: oversized doctor's beret
+  description: A physician's beret stretched over a supermutant's massive skull. The colours of medical and chemistry, in XXXXL.
+  components:
+  - type: Sprite
+    sprite: Clothing/Head/Hats/beret_physician.rsi
+  - type: Clothing
+    sprite: Clothing/Head/Hats/beret_physician.rsi
+  - type: Tag
+    tags:
+    - SuperMutantWearable
+  - type: Armor # Same protection as ClothingSuperMutantTrooperHelmet
+    modifiers:
+      coefficients:
+        Blunt: 0.85
+        Slash: 0.85
+        Piercing: 0.80
+
   # Fancy suits for fancy people
 
 - type: entity
