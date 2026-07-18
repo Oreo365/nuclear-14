@@ -9048,3 +9048,12 @@ Entries:
   id: 6230
   time: '2026-07-18T14:14:02.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1031
+- author: aftemath434
+  changes:
+    - type: Tweak
+      message: >-
+        tweak: Stealth 30s cooldown: decloaking is a commitment, gives targets a
+        window
+  id: 6231
+  time: '2026-07-18T14:23:03.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1035
