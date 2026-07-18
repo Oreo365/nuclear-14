@@ -9039,3 +9039,12 @@ Entries:
   id: 6229
   time: '2026-07-18T14:13:47.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1026
+- author: Jerryaqua
+  changes:
+    - type: Add
+      message: Two more town guards have been hired, for a total of six!
+    - type: Tweak
+      message: Town guards have received new kits!
+  id: 6230
+  time: '2026-07-18T14:14:02.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1031
